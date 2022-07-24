@@ -3,5 +3,8 @@
 ## Author: Aelen
 ## Version: 0.1
 
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
+libs\LibSharedMedia-3.0\LibSharedMedia-3.0.lua
 uiscale.lua
 init.lua
