@@ -2,10 +2,12 @@
 ## Title: AelUI
 ## Author: Aelen
 ## Version: 0.1
+## Dependencies: oUF
 
 libs\LibStub\LibStub.lua
 libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
 libs\LibSharedMedia-3.0\LibSharedMedia-3.0.lua
 media.lua
+colors.lua
 uiscale.lua
 init.lua
