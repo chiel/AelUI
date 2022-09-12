@@ -10,6 +10,5 @@ libs\LibSharedMedia-3.0\LibSharedMedia-3.0.lua
 media.lua
 colors.lua
 uiscale.lua
-init.lua
 utils\load.xml
 unitframes\load.xml
