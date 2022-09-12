@@ -28,5 +28,9 @@ addon.units.player = {
 		local currenthealth = addon.elements.Text(self.Health, { size = 14 })
 		self:Tag(currenthealth, '[AelUI:currenthealth]')
 		currenthealth:SetPoint('BOTTOMRIGHT', healthpercent, 'TOPRIGHT', 0, 0)
+
+		addon.elements.Leader(self, unit)
+		self.LeaderIndicator:SetParent(self.Health)
+		self.LeaderIndicator:SetPoint('LEFT', name, 'RIGHT', 4, -1)
 	end,
 }
