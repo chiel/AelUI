@@ -3,5 +3,6 @@
 	<Script file="player.lua"/>
 	<Script file="target.lua"/>
 	<Script file="targettarget.lua"/>
+	<Script file="boss.lua"/>
 	<Script file="spawn.lua"/>
 </Ui>
