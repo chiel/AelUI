@@ -18,11 +18,12 @@ addon.units.target = {
 		self.Health:SetAllPoints()
 
 		addon.elements.Power(self, unit)
-		self.Power:SetPoint('TOPRIGHT', self, 'BOTTOMRIGHT', 0, -8)
+		self.Power:SetPoint('TOPRIGHT', self, 'BOTTOMRIGHT', 0, -6)
 		self.Power:SetSize(100, 4)
 
 		local name = addon.elements.Text(self.Health)
 		self:Tag(name, '[AelUI:name]')
+		name:SetJustifyH 'RIGHT'
 		name:SetPoint('BOTTOMRIGHT', self, 'TOPRIGHT', -4, -6)
 
 		local healthpercent = addon.elements.Text(self.Health)
