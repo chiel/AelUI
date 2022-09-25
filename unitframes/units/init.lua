@@ -36,6 +36,8 @@ end
 
 local function updateRegionWidths(width)
 	local regions = {
+		{ name = 'CASTBAR', resize = true },
+		{ name = 'GCD', resize = true },
 		{ name = 'POWER', resize = true },
 		{ name = 'PALADIN - Holy Power', resize = playerClass == 'PALADIN' },
 		{ name = 'DEATHKNIGHT - Runes', resize = playerClass == 'DEATHKNIGHT', updateChildren = true },
