@@ -4,7 +4,7 @@ addon.units.targettarget = {
 	spawn = function(self)
 		local f = self:Spawn('targettarget', 'AelUITargetTarget')
 		f:SetSize(150, 20)
-		f:SetPoint('BOTTOMLEFT', AelUITarget, 'BOTTOMRIGHT', 6, 0)
+		f:SetPoint('BOTTOMLEFT', AelUITarget, 'BOTTOMRIGHT', 4, 0)
 	end,
 
 	style = function(self, unit)
@@ -14,11 +14,11 @@ addon.units.targettarget = {
 
 		self.colors = addon.colors
 
-		addon.elements.Health(self, unit)
-		self.Health:SetAllPoints()
+		local health = addon.elements.Health(self, unit)
+		health:SetAllPoints()
 
 		local name = addon.elements.Text(self.Health)
-		self:Tag(name, '[AelUI:name]')
 		name:SetPoint('BOTTOMRIGHT', self, 'TOPRIGHT', -4, -6)
+		self:Tag(name, '[AelUI:name]')
 	end,
 }

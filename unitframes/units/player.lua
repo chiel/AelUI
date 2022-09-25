@@ -3,8 +3,8 @@ local addon = select(2, ...)
 addon.units.player = {
 	spawn = function(self)
 		local f = self:Spawn('player', 'AelUIPlayer')
-		f:SetSize(300, 38)
-		f:SetPoint('TOPRIGHT', addon.uiAnchor, 'TOPLEFT', -21, -1)
+		f:SetSize(300, 40)
+		f:SetPoint('TOPRIGHT', addon.uiAnchor, 'TOPLEFT', -20, 0)
 	end,
 
 	style = function(self, unit)
@@ -14,20 +14,20 @@ addon.units.player = {
 
 		self.colors = addon.colors
 
-		addon.elements.Health(self, unit)
-		self.Health:SetAllPoints()
+		local health = addon.elements.Health(self, unit)
+		health:SetAllPoints()
 
 		local name = addon.elements.Text(self.Health)
-		self:Tag(name, '[AelUI:name]')
 		name:SetPoint('BOTTOMLEFT', self, 'TOPLEFT', 4, -6)
+		self:Tag(name, '[AelUI:name]')
 
 		local healthpercent = addon.elements.Text(self.Health)
-		self:Tag(healthpercent, '[AelUI:healthpercent]')
 		healthpercent:SetPoint('BOTTOMRIGHT', self, 'BOTTOMRIGHT', -4, -4)
+		self:Tag(healthpercent, '[AelUI:healthpercent]')
 
 		local currenthealth = addon.elements.Text(self.Health, { size = 14 })
-		self:Tag(currenthealth, '[AelUI:currenthealth]')
 		currenthealth:SetPoint('BOTTOMRIGHT', healthpercent, 'TOPRIGHT', 0, 0)
+		self:Tag(currenthealth, '[AelUI:currenthealth]')
 
 		addon.elements.Leader(self, unit)
 		self.LeaderIndicator:SetParent(self.Health)

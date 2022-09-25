@@ -5,7 +5,7 @@ addon.units.boss = {
 		local boss = {}
 		for i = 1, MAX_BOSS_FRAMES or 5 do
 			local f = self:Spawn('boss' .. i)
-			f:SetSize(250, 38)
+			f:SetSize(250, 40)
 
 			if i == 1 then
 				-- boss[i]:SetPoint('TOPLEFT', UIParent, 'CENTER', 596, 200)
@@ -25,30 +25,30 @@ addon.units.boss = {
 
 		self.colors = addon.colors
 
-		addon.elements.Health(self, unit)
-		self.Health:SetAllPoints()
+		local health = addon.elements.Health(self, unit)
+		health:SetAllPoints()
 
-		addon.elements.Power(self, unit)
-		self.Power:SetPoint('TOPRIGHT', self, 'BOTTOMRIGHT', 0, -6)
-		self.Power:SetSize(100, 4)
+		local power = addon.elements.Power(self, unit)
+		power:SetPoint('TOPRIGHT', self, 'BOTTOMRIGHT', 0, -4)
+		power:SetSize(100, 6)
 
-		addon.elements.Castbar(self, unit)
-		self.Castbar:SetPoint('TOPLEFT', self, 'BOTTOMLEFT', 0, -6)
-		self.Castbar:SetPoint('TOPRIGHT', self.Power, 'TOPLEFT', -6, 0)
-		self.Castbar:SetHeight(4)
-		self.Castbar.Time:Hide()
+		local castbar = addon.elements.Castbar(self, unit)
+		castbar:SetPoint('TOPLEFT', self, 'BOTTOMLEFT', 0, -4)
+		castbar:SetPoint('TOPRIGHT', self.Power, 'TOPLEFT', -4, 0)
+		castbar:SetHeight(6)
+		castbar.Time:Hide()
 
 		local name = addon.elements.Text(self.Health)
-		self:Tag(name, '[AelUI:name]')
 		name:SetJustifyH 'RIGHT'
 		name:SetPoint('BOTTOMRIGHT', self, 'TOPRIGHT', -4, -6)
+		self:Tag(name, '[AelUI:name]')
 
 		local healthpercent = addon.elements.Text(self.Health)
-		self:Tag(healthpercent, '[AelUI:healthpercent]')
 		healthpercent:SetPoint('BOTTOMLEFT', self, 'BOTTOMLEFT', 4, -4)
+		self:Tag(healthpercent, '[AelUI:healthpercent]')
 
 		local currenthealth = addon.elements.Text(self.Health, { size = 14 })
-		self:Tag(currenthealth, '[AelUI:currenthealth]')
 		currenthealth:SetPoint('BOTTOMLEFT', healthpercent, 'TOPLEFT', 0, 0)
+		self:Tag(currenthealth, '[AelUI:currenthealth]')
 	end,
 }
