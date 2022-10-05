@@ -33,5 +33,17 @@ addon.units.target = {
 		local currenthealth = addon.elements.Text(self.Health, { size = 14 })
 		currenthealth:SetPoint('BOTTOMLEFT', healthpercent, 'TOPLEFT', 0, 0)
 		self:Tag(currenthealth, '[AelUI:currenthealth]')
+
+		local buffSize = 24
+		local buffSpacing = 2
+		local buffColumns = 6
+		local buffRows = 2
+
+		local buffs = CreateFrame('Frame', nil, self)
+		buffs.size = buffSize
+		buffs.spacing = buffSpacing
+		buffs:SetPoint('BOTTOMLEFT', self, 'TOPLEFT', 0, 2)
+		buffs:SetSize((buffSize + buffSpacing) * buffColumns, (buffSize + buffSpacing) * buffRows)
+		self.Buffs = buffs
 	end,
 }
