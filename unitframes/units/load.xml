@@ -4,5 +4,6 @@
 	<Script file="target.lua"/>
 	<Script file="targettarget.lua"/>
 	<Script file="boss.lua"/>
+	<Script file="party.lua"/>
 	<Script file="spawn.lua"/>
 </Ui>
