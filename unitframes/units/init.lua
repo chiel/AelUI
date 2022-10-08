@@ -40,6 +40,7 @@ local function updateRegionWidths(width)
 		{ name = 'GCD', resize = true },
 		{ name = 'POWER', resize = true },
 		{ name = 'PALADIN - Holy Power', resize = playerClass == 'PALADIN' },
+		{ name = 'ROGUE - Combo Points', resize = playerClass == 'ROGUE' },
 		{ name = 'DEATHKNIGHT - Runes', resize = playerClass == 'DEATHKNIGHT', updateChildren = true },
 	}
 
