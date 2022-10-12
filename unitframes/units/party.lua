@@ -41,7 +41,7 @@ addon.units.party = {
 			]]
 		)
 
-		party:SetPoint('BOTTOMRIGHT', addon.uiAnchor, 'TOPLEFT', -368, 48)
+		party:SetPoint('BOTTOMRIGHT', AelUIPlayer, 'TOPLEFT', -48, 48)
 	end,
 
 	style = function(self, unit)
