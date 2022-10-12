@@ -60,23 +60,25 @@ local function updateRegionWidths(width)
 	end
 end
 
+local iconSize = 40
+local spacing = 2
+
 function AelUIPrimaryGrowFunction(newPositions, activeRegions)
-	local spacing = 2
-	local xOffset = 0
 	local total = #activeRegions
-	local totalWidth = 0
 
 	for i, regionData in ipairs(activeRegions) do
 		local region = regionData.region
-		local index = i - 1
+		region:SetRegionWidth(iconSize)
+		region:SetRegionHeight(iconSize)
 
-		xOffset = 0 - (region.width + spacing) / 2 * (total - 1) + (index * (region.width + spacing))
+		local index = i - 1
+		local xOffset = 0 - (iconSize + spacing) / 2 * (total - 1) + (index * (iconSize + spacing))
 
 		newPositions[i] = { xOffset, 0 }
-		totalWidth = totalWidth + region.width
 	end
 
-	local w = totalWidth + ((total - 1) * spacing)
+	local w = (total * iconSize) + ((total - 1) * spacing)
+
 	updateAnchorWidth(w)
 	updateRegionWidths(w)
 end
