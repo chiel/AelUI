@@ -11,6 +11,7 @@ function addon.elements.Health(self, unit)
 	health.colorReaction = true
 	health:SetPoint('TOPLEFT', 1, -1)
 	health:SetPoint('BOTTOMRIGHT', -1, 1)
+	backdrop.background:SetPoint('TOPLEFT', health:GetStatusBarTexture(), 'TOPRIGHT', 0, 0)
 
 	health.PostUpdateColor = function(element, unit, r, g, b)
 		element:SetStatusBarColor(38 / 255, 38 / 255, 38 / 255)
