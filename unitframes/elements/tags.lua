@@ -15,14 +15,8 @@ oUF.Tags.Methods['AelUI:healthpercent'] = function(unit)
 	return string.format('%d%%', math.floor(UnitHealth(unit) / max * 100 + 0.5))
 end
 
-oUF.Tags.Events['AelUI:name'] = 'UNIT_NAME_UPDATE UNIT_CONNECTION UNIT_FACTION'
+oUF.Tags.Events['AelUI:name'] = 'UNIT_NAME_UPDATE'
 oUF.Tags.Methods['AelUI:name'] = function(unit)
 	local name = UnitName(unit)
-	local color = addon.utils.UnitColor(unit)
-
-	if color then
-		return addon.utils.Hex(color) .. name
-	end
-
 	return name
 end

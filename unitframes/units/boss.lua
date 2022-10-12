@@ -42,6 +42,9 @@ addon.units.boss = {
 		name:SetJustifyH 'RIGHT'
 		name:SetPoint('BOTTOMRIGHT', self, 'TOPRIGHT', -4, -6)
 		self:Tag(name, '[AelUI:name]')
+		health.PostUpdateColor = function(r, g, b)
+			name:SetTextColor(r, g, b)
+		end
 
 		local healthpercent = addon.elements.Text(self.Health)
 		healthpercent:SetPoint('BOTTOMLEFT', self, 'BOTTOMLEFT', 4, -4)

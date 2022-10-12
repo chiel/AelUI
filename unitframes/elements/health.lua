@@ -19,6 +19,10 @@ function addon.elements.Health(self, unit)
 		end
 
 		backdrop.background:SetVertexColor(r * 0.75, g * 0.75, b * 0.75)
+
+		if backdrop.PostUpdateColor then
+			backdrop.PostUpdateColor(r, g, b)
+		end
 	end
 
 	self.Health = health
