@@ -1,7 +1,7 @@
+local addon = select(2, ...)
+
 local f = CreateFrame 'Frame'
 f:SetScript('OnEvent', function()
-	local height = select(2, GetPhysicalScreenSize())
-	local scale = 768 / height
-	UIParent:SetScale(scale)
+	UIParent:SetScale(768 / addon.config.screenSize.height)
 end)
 f:RegisterEvent 'PLAYER_LOGIN'
