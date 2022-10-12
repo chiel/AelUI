@@ -6,6 +6,7 @@
 	<Script file="leader.lua"/>
 	<Script file="power.lua"/>
 	<Script file="readycheck.lua"/>
+	<Script file="resurrect.lua"/>
 	<Script file="summon.lua"/>
 	<Script file="tags.lua"/>
 	<Script file="text.lua"/>

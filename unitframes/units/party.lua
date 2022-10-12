@@ -79,6 +79,10 @@ addon.units.party = {
 		readyCheck:SetParent(self.Health)
 		readyCheck:SetPoint('CENTER', self.Health, 'CENTER')
 
+		local resurrect = addon.elements.Resurrect(self, unit)
+		resurrect:SetParent(self.Health)
+		resurrect:SetPoint('CENTER', self.Health, 'CENTER')
+
 		self.Range = {
 			insideAlpha = 1,
 			outsideAlpha = 0.5,
