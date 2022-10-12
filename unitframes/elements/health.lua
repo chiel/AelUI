@@ -14,6 +14,10 @@ function addon.elements.Health(self, unit)
 
 	health.PostUpdateColor = function(element, unit, r, g, b)
 		element:SetStatusBarColor(38 / 255, 38 / 255, 38 / 255)
+		if not b then
+			return
+		end
+
 		backdrop.background:SetVertexColor(r * 0.75, g * 0.75, b * 0.75)
 	end
 

@@ -63,9 +63,9 @@ addon.units.party = {
 		name:SetPoint('BOTTOMLEFT', self, 'TOPLEFT', 4, -6)
 		self:Tag(name, '[AelUI:name]')
 
-		addon.elements.Leader(self, unit)
-		self.LeaderIndicator:SetParent(self.Health)
-		self.LeaderIndicator:SetPoint('LEFT', name, 'RIGHT', 4, -1)
+		local leader = addon.elements.Leader(self, unit)
+		leader:SetParent(self.Health)
+		leader:SetPoint('LEFT', name, 'RIGHT', 4, -1)
 
 		local groupRole = addon.elements.GroupRole(self, unit)
 		groupRole:SetParent(self.Health)

@@ -5,4 +5,5 @@ function addon.elements.Leader(self, unit)
 	leader:SetSize(16, 16)
 
 	self.LeaderIndicator = leader
+	return leader
 end
