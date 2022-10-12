@@ -75,6 +75,10 @@ addon.units.party = {
 		summon:SetParent(self.Health)
 		summon:SetPoint('CENTER', self.Health, 'CENTER')
 
+		local readyCheck = addon.elements.ReadyCheck(self, unit)
+		readyCheck:SetParent(self.Health)
+		readyCheck:SetPoint('CENTER', self.Health, 'CENTER')
+
 		self.Range = {
 			insideAlpha = 1,
 			outsideAlpha = 0.5,
