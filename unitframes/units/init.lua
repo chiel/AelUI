@@ -2,8 +2,10 @@ local addon = select(2, ...)
 
 addon.units = {}
 
+local anchorOffset = addon.utils.Round((addon.config.screenSize.height / 16) * 3)
+
 local anchor = CreateFrame('Frame', 'AelUIAnchor', UIParent)
-anchor:SetPoint('TOP', UIParent, 'CENTER', 0, -280)
+anchor:SetPoint('TOP', UIParent, 'CENTER', 0, -anchorOffset)
 anchor:SetWidth(400)
 anchor:SetHeight(40)
 addon.uiAnchor = anchor
