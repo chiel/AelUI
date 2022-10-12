@@ -71,6 +71,10 @@ addon.units.party = {
 		groupRole:SetParent(self.Health)
 		groupRole:SetPoint('RIGHT', self.Health, 'TOPRIGHT', -4, 0)
 
+		local summon = addon.elements.Summon(self, unit)
+		summon:SetParent(self.Health)
+		summon:SetPoint('CENTER', self.Health, 'CENTER')
+
 		self.Range = {
 			insideAlpha = 1,
 			outsideAlpha = 0.5,
