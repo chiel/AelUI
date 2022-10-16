@@ -1,5 +1,8 @@
 local addon = select(2, ...)
 
+local ufConfig = addon.config.unitframes
+local round = addon.utils.Round
+
 local function CreateUpdatePower(power)
 	return function(self, event, unit)
 		if unit ~= self.unit then
@@ -29,19 +32,25 @@ addon.units.party = {
 			'showPlayer',
 			true,
 			'yOffset',
-			-48,
+			-(ufConfig.height * 1.5),
 			'groupBy',
 			'ASSIGNEDROLE',
 			'groupingOrder',
 			'TANK,HEALER,DAMAGER',
 			'oUF-initialConfigFunction',
-			[[
-				self:SetWidth(250)
-				self:SetHeight(40)
-			]]
+			([[
+				self:SetWidth(%d)
+				self:SetHeight(%d)
+			]]):format(ufConfig.height * 7, ufConfig.height)
 		)
 
-		party:SetPoint('BOTTOMRIGHT', AelUIPlayer, 'TOPLEFT', -48, 48)
+		party:SetPoint(
+			'TOPRIGHT',
+			addon.uiAnchor,
+			'TOPLEFT',
+			-((ufConfig.height * 8) + 20 + 4),
+			ufConfig.height * (5 + 2 + (1.5 * 4))
+		)
 	end,
 
 	style = function(self, unit)
@@ -59,8 +68,8 @@ addon.units.party = {
 		power:SetSize(100, 6)
 		self.Power.Override = CreateUpdatePower(power)
 
-		local name = addon.elements.Text(self.Health)
-		name:SetPoint('BOTTOMLEFT', self, 'TOPLEFT', 4, -6)
+		local name = addon.elements.Text(self.Health, { size = round(ufConfig.height * 0.5) })
+		name:SetPoint('BOTTOMLEFT', self, 'TOPLEFT', round(ufConfig.height * 0.1), -(ufConfig.height * 0.15))
 		self:Tag(name, '[AelUI:name]')
 		health.PostUpdateColor = function(r, g, b)
 			name:SetTextColor(r, g, b)

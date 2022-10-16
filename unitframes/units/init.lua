@@ -60,7 +60,7 @@ local function updateRegionWidths(width)
 	end
 end
 
-local iconSize = 40
+local iconSize = addon.config.unitframes.height
 local spacing = 2
 
 function AelUIPrimaryGrowFunction(newPositions, activeRegions)
