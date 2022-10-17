@@ -2,15 +2,17 @@ local addon = select(2, ...)
 
 addon.units = {}
 
+local playerClass = select(2, UnitClass 'player')
+local iconSize = addon.config.unitframes.height
+local iconSpacing = 2
+
 local anchorOffset = addon.utils.Round((addon.config.screenSize.height / 16) * 3)
 
 local anchor = CreateFrame('Frame', 'AelUIAnchor', UIParent)
 anchor:SetPoint('TOP', UIParent, 'CENTER', 0, -anchorOffset)
-anchor:SetWidth(400)
-anchor:SetHeight(40)
+anchor:SetWidth((8 * iconSize) + (7 * 2))
+anchor:SetHeight(iconSize)
 addon.uiAnchor = anchor
-
-local playerClass = select(2, UnitClass 'player')
 
 local updatePending = false
 
@@ -62,9 +64,6 @@ local function updateRegionWidths(width)
 	end
 end
 
-local iconSize = addon.config.unitframes.height
-local spacing = 2
-
 function AelUIPrimaryGrowFunction(newPositions, activeRegions)
 	local total = #activeRegions
 
@@ -74,12 +73,12 @@ function AelUIPrimaryGrowFunction(newPositions, activeRegions)
 		region:SetRegionHeight(iconSize)
 
 		local index = i - 1
-		local xOffset = 0 - (iconSize + spacing) / 2 * (total - 1) + (index * (iconSize + spacing))
+		local xOffset = 0 - (iconSize + iconSpacing) / 2 * (total - 1) + (index * (iconSize + iconSpacing))
 
 		newPositions[i] = { xOffset, 0 }
 	end
 
-	local w = (total * iconSize) + ((total - 1) * spacing)
+	local w = (total * iconSize) + ((total - 1) * iconSpacing)
 
 	updateAnchorWidth(w)
 	updateRegionWidths(w)
