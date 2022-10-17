@@ -44,6 +44,8 @@ local function updateRegionWidths(width)
 		{ name = 'PALADIN - Holy Power', resize = playerClass == 'PALADIN' },
 		{ name = 'ROGUE - Combo Points', resize = playerClass == 'ROGUE' },
 		{ name = 'DEATHKNIGHT - Runes', resize = playerClass == 'DEATHKNIGHT', updateChildren = true },
+		{ name = 'DEMONHUNTER - Soul Fragments', resize = playerClass == 'DEMONHUNTER' },
+		{ name = 'WARLOCK - Soul Shards', resize = playerClass == 'WARLOCK' },
 	}
 
 	for _, r in ipairs(regions) do
