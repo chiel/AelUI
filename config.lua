@@ -15,4 +15,8 @@ addon.config = {
 	unitframes = {
 		height = ufHeight,
 	},
+	weakauras = {
+		primaryIconSize = ufHeight,
+		primaryIconSpacing = 2,
+	},
 }

@@ -12,4 +12,5 @@ media.lua
 colors.lua
 uiscale.lua
 utils\load.xml
+core\load.xml
 unitframes\load.xml
