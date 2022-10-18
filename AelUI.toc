@@ -13,4 +13,5 @@ colors.lua
 uiscale.lua
 utils\load.xml
 core\load.xml
+blizzard\load.xml
 unitframes\load.xml
