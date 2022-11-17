@@ -3,14 +3,20 @@ local addon = select(2, ...)
 local anchorOffset = addon.utils.Round((addon.config.screenSize.height / 16) * 3)
 local iconSize = addon.config.weakauras.primaryIconSize
 local iconSpacing = addon.config.weakauras.primaryIconSpacing
+local minIcons = 7
+local minWidth = (minIcons * iconSize) + ((minIcons - 1) * iconSpacing)
 
 local anchor = CreateFrame('Frame', 'AelUIAnchor', UIParent)
 anchor:SetPoint('TOP', UIParent, 'CENTER', 0, -anchorOffset)
-anchor:SetWidth((8 * iconSize) + (7 * iconSpacing))
+anchor:SetWidth(minWidth)
 anchor:SetHeight(iconSize)
 
 local updatePending = false
 anchor.UpdateWidth = function(width)
+	if width < minWidth then
+		width = minWidth
+	end
+
 	local currentWidth = addon.utils.Round(anchor:GetWidth())
 	if width == currentWidth then
 		return
@@ -36,5 +42,7 @@ anchor.UpdateWidth = function(width)
 		f:RegisterEvent 'PLAYER_REGEN_ENABLED'
 	end
 end
+
+anchor.minWidth = minWidth
 
 addon.uiAnchor = anchor

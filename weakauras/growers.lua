@@ -14,6 +14,10 @@ local function updateRegionWidths(width)
 		{ name = 'AelUI - Warlock - Soul Shards', resize = playerClass == 'WARLOCK' },
 	}
 
+	if width < addon.uiAnchor.minWidth then
+		width = addon.uiAnchor.minWidth
+	end
+
 	for _, r in ipairs(regions) do
 		if r.resize then
 			local region = WeakAuras.GetRegion(r.name)
