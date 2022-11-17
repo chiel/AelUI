@@ -6,12 +6,14 @@ local function updateRegionWidths(width)
 	local regions = {
 		{ name = 'AelUI - Castbar', resize = true },
 		{ name = 'AelUI - Power', resize = true },
-		{ name = 'AelUI - Warrior - Protection - Shield Block buff', resize = playerClass == 'WARRIOR' },
-		{ name = 'AelUI - Paladin - Holy Power', resize = playerClass == 'PALADIN' },
-		{ name = 'AelUI - Rogue - Combo Points', resize = playerClass == 'ROGUE' },
+
 		{ name = 'AelUI - Death Knight - Runes', resize = playerClass == 'DEATHKNIGHT', updateChildren = true },
 		{ name = 'AelUI - Demon Hunter - Soul Fragments', resize = playerClass == 'DEMONHUNTER' },
+		{ name = 'AelUI - Evoker - Essence', resize = playerClass == 'EVOKER' },
+		{ name = 'AelUI - Paladin - Holy Power', resize = playerClass == 'PALADIN' },
+		{ name = 'AelUI - Rogue - Combo Points', resize = playerClass == 'ROGUE' },
 		{ name = 'AelUI - Warlock - Soul Shards', resize = playerClass == 'WARLOCK' },
+		{ name = 'AelUI - Warrior - Protection - Shield Block buff', resize = playerClass == 'WARRIOR' },
 	}
 
 	if width < addon.uiAnchor.minWidth then
