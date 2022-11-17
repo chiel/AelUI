@@ -95,6 +95,8 @@ addon.units.party = {
 		resurrect:SetParent(self.Health)
 		resurrect:SetPoint('CENTER', self.Health, 'CENTER')
 
+		addon.elements.DispelBorder(self, unit)
+
 		self.Range = {
 			insideAlpha = 1,
 			outsideAlpha = 0.5,
