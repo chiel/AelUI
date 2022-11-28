@@ -44,13 +44,7 @@ addon.units.party = {
 			]]):format(ufConfig.height * 7, ufConfig.height)
 		)
 
-		party:SetPoint(
-			'TOPRIGHT',
-			addon.uiAnchor,
-			'TOPLEFT',
-			-((ufConfig.height * 8) + 20 + 4),
-			ufConfig.height * (5 + 2 + (1.5 * 4))
-		)
+		party:SetPoint('TOPRIGHT', addon.uiGroupAnchor, 'TOPLEFT')
 	end,
 
 	style = function(self, unit)

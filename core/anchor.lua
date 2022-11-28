@@ -1,5 +1,7 @@
 local addon = select(2, ...)
 
+local ufHeight = addon.config.unitframes.height
+
 local anchorOffset = addon.utils.Round((addon.config.screenSize.height / 16) * 3)
 local iconSize = addon.config.weakauras.primaryIconSize
 local iconSpacing = addon.config.weakauras.primaryIconSpacing
@@ -10,6 +12,11 @@ local anchor = CreateFrame('Frame', 'AelUIAnchor', UIParent)
 anchor:SetPoint('TOP', UIParent, 'CENTER', 0, -anchorOffset)
 anchor:SetWidth(minWidth)
 anchor:SetHeight(iconSize)
+
+local groupAnchor = CreateFrame('Frame', 'AelUIGroupAnchor', UIParent)
+groupAnchor:SetPoint('TOPRight', anchor, 'TOPLEFT', -((ufHeight * 8) + 20 + 4), ufHeight * (5 + 2 + (1.5 * 4)))
+groupAnchor:SetWidth(1)
+groupAnchor:SetHeight(1)
 
 local updatePending = false
 anchor.UpdateWidth = function(width)
@@ -46,3 +53,4 @@ end
 anchor.minWidth = minWidth
 
 addon.uiAnchor = anchor
+addon.uiGroupAnchor = groupAnchor
