@@ -8,11 +8,14 @@ local function updateRegionWidths(width)
 		{ name = 'AelUI - Power', resize = true },
 
 		{ name = 'AelUI - Death Knight - Runes', resize = playerClass == 'DEATHKNIGHT', updateChildren = true },
-		{ name = 'AelUI - Demon Hunter - Soul Fragments', resize = playerClass == 'DEMONHUNTER' },
+		{ name = 'AelUI - Demon Hunter - Vengeance - Soul Fragments', resize = playerClass == 'DEMONHUNTER' },
 		{ name = 'AelUI - Evoker - Essence', resize = playerClass == 'EVOKER' },
+		{ name = 'AelUI - Monk - Windwalker - Chi', resize = playerClass == 'MONK' },
 		{ name = 'AelUI - Paladin - Holy Power', resize = playerClass == 'PALADIN' },
 		{ name = 'AelUI - Rogue - Combo Points', resize = playerClass == 'ROGUE' },
+		{ name = 'AelUI - Shaman - Enhancement - Maelstrom Weapon', resize = playerClass == 'SHAMAN' },
 		{ name = 'AelUI - Warlock - Soul Shards', resize = playerClass == 'WARLOCK' },
+		{ name = 'AelUI - Warrior - Fury - Enrage buff', resize = playerClass == 'WARRIOR' },
 		{ name = 'AelUI - Warrior - Protection - Shield Block buff', resize = playerClass == 'WARRIOR' },
 	}
 
