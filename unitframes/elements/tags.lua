@@ -24,6 +24,9 @@ oUF.Tags.Methods['AelUI:healthpercent'] = function(unit)
 	return string.format('%d%%', math.floor(hp / max * 100 + 0.5))
 end
 
+oUF.Tags.Events['AelUI:currentpower'] = 'UNIT_POWER_UPDATE UNIT_MAXPOWER'
+oUF.Tags.Methods['AelUI:currentpower'] = UnitPower
+
 oUF.Tags.Events['AelUI:name'] = 'UNIT_NAME_UPDATE'
 oUF.Tags.Methods['AelUI:name'] = function(unit)
 	local name = UnitName(unit)

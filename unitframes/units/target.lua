@@ -40,6 +40,10 @@ addon.units.target = {
 		currenthealth:SetPoint('BOTTOMLEFT', healthpercent, 'TOPLEFT', 0, 0)
 		self:Tag(currenthealth, '[AelUI:currenthealth]')
 
+		local currentpower = addon.elements.Text(power, { size = round(ufConfig.height * 0.35) })
+		currentpower:SetPoint('RIGHT', power, 'LEFT', -4, 0)
+		self:Tag(currentpower, '[AelUI:currentpower]')
+
 		local buffSize = 24
 		local buffSpacing = 2
 		local buffColumns = 6
