@@ -29,3 +29,9 @@ oUF.Tags.Methods['AelUI:name'] = function(unit)
 	local name = UnitName(unit)
 	return name
 end
+
+oUF.Tags.Events['AelUI:raidtext'] = 'UNIT_NAME_UPDATE UNIT_HEALTH UNIT_CONNECTION'
+oUF.Tags.Methods['AelUI:raidtext'] = function(unit)
+	local name = UnitName(unit)
+	return name:utf8sub(0, 3)
+end

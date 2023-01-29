@@ -6,5 +6,6 @@
 	<Script file="targettarget.lua"/>
 	<Script file="boss.lua"/>
 	<Script file="party.lua"/>
+	<Script file="raid.lua"/>
 	<Script file="spawn.lua"/>
 </Ui>
