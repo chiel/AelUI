@@ -47,6 +47,8 @@ end
 local iconSize = addon.config.weakauras.primaryIconSize
 local iconSpacing = addon.config.weakauras.primaryIconSpacing
 
+local prevWidth = -1
+
 function AelUIPrimaryGrowFunction(newPositions, activeRegions)
 	local total = #activeRegions
 
@@ -63,6 +65,9 @@ function AelUIPrimaryGrowFunction(newPositions, activeRegions)
 
 	local w = (total * iconSize) + ((total - 1) * iconSpacing)
 
-	addon.uiAnchor.UpdateWidth(w)
-	updateRegionWidths(w)
+	if w ~= prevWidth then
+		addon.uiAnchor.UpdateWidth(w)
+		updateRegionWidths(w)
+		prevWidth = w
+	end
 end

@@ -18,35 +18,41 @@ groupAnchor:SetPoint('TOPRight', anchor, 'TOPLEFT', -((ufHeight * 8) + 20 + 4), 
 groupAnchor:SetWidth(1)
 groupAnchor:SetHeight(1)
 
-local updatePending = false
+local currentWidth = -1
+local pendingWidth = -1
+
+local function updateAnchorWidth()
+	if pendingWidth == currentWidth then
+		pendingWidth = -1
+		return
+	end
+
+	if pendingWidth == -1 then
+		return
+	end
+
+	anchor:SetWidth(pendingWidth)
+	currentWidth = pendingWidth
+	pendingWidth = -1
+end
+
+local anchorUpdates = CreateFrame 'Frame'
+anchorUpdates:SetScript('OnEvent', function()
+	updateAnchorWidth()
+end)
+anchorUpdates:RegisterEvent 'PLAYER_REGEN_ENABLED'
+
 anchor.UpdateWidth = function(width)
 	if width < minWidth then
 		width = minWidth
 	end
 
-	local currentWidth = addon.utils.Round(anchor:GetWidth())
-	if width == currentWidth then
-		return
-	end
-
-	local function doUpdate()
-		anchor:SetWidth(width)
-		updatePending = false
-	end
+	pendingWidth = width
 
 	local inCombat = UnitAffectingCombat 'player'
 	if not inCombat then
-		doUpdate()
+		updateAnchorWidth()
 		return
-	end
-
-	if not updatePending then
-		updatePending = true
-		local f = CreateFrame 'Frame'
-		f:SetScript('OnEvent', function()
-			doUpdate()
-		end)
-		f:RegisterEvent 'PLAYER_REGEN_ENABLED'
 	end
 end
 
