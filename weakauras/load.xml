@@ -1,4 +1,7 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="init.lua"/>
+	<Script file="config.lua"/>
 	<Script file="growers.lua"/>
+	<Include file="utils\load.xml"/>
+	<Include file="classes\load.xml"/>
 </Ui>
