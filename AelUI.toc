@@ -9,6 +9,7 @@ libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
 libs\LibSharedMedia-3.0\LibSharedMedia-3.0.lua
 libs\UTF8\utf8data.lua
 libs\UTF8\utf8.lua
+init.lua
 config.lua
 media.lua
 colors.lua

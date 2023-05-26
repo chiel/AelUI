@@ -1,5 +1,7 @@
 local addon = select(2, ...)
 
+AelUI.weakauras.growers = {}
+
 local playerClass = select(2, UnitClass 'player')
 
 local function updateRegionWidths(width)
@@ -71,3 +73,5 @@ function AelUIPrimaryGrowFunction(newPositions, activeRegions)
 		prevWidth = w
 	end
 end
+
+AelUI.weakauras.growers.primary = AelUIPrimaryGrowFunction
