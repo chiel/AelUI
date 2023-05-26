@@ -8,7 +8,7 @@ local debuffPrioByClass = {
 	['MAGE'] = { 'Curse' },
 	['MONK'] = { 'Poison', 'Disease' },
 	['PALADIN'] = { 'Poison', 'Disease' },
-	['PRIEST'] = { 'Disease' },
+	['PRIEST'] = { 'Magic', 'Disease' },
 	['SHAMAN'] = { 'Curse', 'Poison' },
 	['WARLOCK'] = { 'Magic' },
 }
