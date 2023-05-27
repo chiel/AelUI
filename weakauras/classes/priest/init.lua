@@ -166,6 +166,25 @@ addon.weakauras.classes.priest = {
 						},
 					},
 				},
+				{
+					name = 'Defensives',
+					type = 'defensives',
+
+					icons = {
+						{
+							name = 'Vampiric Embrace',
+							spellId = 15286,
+						},
+						{
+							name = 'Desperate Prayer',
+							spellId = 19236,
+						},
+						{
+							name = 'Dispersion',
+							spellId = 47585,
+						},
+					},
+				},
 			},
 		},
 	},

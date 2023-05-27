@@ -32,5 +32,21 @@ addon.weakauras.config = {
 				height = 32,
 			},
 		},
+
+		defensives = {
+			groupConfig = {
+				anchorFrameType = 'SELECTFRAME',
+				anchorFrameFrame = 'AelUIAnchor',
+				anchorPoint = 'TOPLEFT',
+				selfPoint = 'BOTTOMRIGHT',
+				grow = 'LEFT',
+				xOffset = -20,
+				yOffset = 2,
+			},
+			childConfig = {
+				width = 32,
+				height = 32,
+			},
+		},
 	},
 }
