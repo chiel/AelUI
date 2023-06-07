@@ -27,7 +27,7 @@ addon.weakauras.utils.buildSpellIconAura = function(data, groupType)
 				trigger = 1,
 				variable = 'charges',
 				op = '==',
-				value = 0,
+				value = '0',
 			},
 			changes = {
 				{

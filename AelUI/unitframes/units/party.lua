@@ -69,6 +69,10 @@ addon.units.party = {
 			name:SetTextColor(r, g, b)
 		end
 
+		local healthpercent = addon.elements.Text(self.Health, { size = round(ufConfig.height * 0.40) })
+		healthpercent:SetPoint('BOTTOMRIGHT', self, 'BOTTOMRIGHT', -(ufConfig.height * 0.05), 0)
+		self:Tag(healthpercent, '[AelUI:healthpercent]')
+
 		local leader = addon.elements.Leader(self, unit)
 		leader:SetParent(self.Health)
 		leader:SetPoint('LEFT', name, 'RIGHT', 4, -1)
