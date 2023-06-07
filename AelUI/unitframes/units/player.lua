@@ -38,5 +38,9 @@ addon.units.player = {
 		local leader = addon.elements.Leader(self, unit)
 		leader:SetParent(self.Health)
 		leader:SetPoint('LEFT', name, 'RIGHT', 4, -1)
+
+		local raidMarker = addon.elements.RaidMarker(self, unit)
+		raidMarker:SetParent(self.Health)
+		raidMarker:SetPoint('CENTER', self.Health)
 	end,
 }

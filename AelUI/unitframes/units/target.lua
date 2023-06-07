@@ -44,6 +44,10 @@ addon.units.target = {
 		currentpower:SetPoint('RIGHT', power, 'LEFT', -4, 0)
 		self:Tag(currentpower, '[AelUI:currentpower]')
 
+		local raidMarker = addon.elements.RaidMarker(self, unit)
+		raidMarker:SetParent(self.Health)
+		raidMarker:SetPoint('CENTER', self.Health)
+
 		local buffSize = 24
 		local buffSpacing = 2
 		local buffColumns = 6

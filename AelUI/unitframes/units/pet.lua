@@ -26,5 +26,9 @@ addon.units.pet = {
 		health.PostUpdateColor = function(r, g, b)
 			name:SetTextColor(r, g, b)
 		end
+
+		local raidMarker = addon.elements.RaidMarker(self, unit)
+		raidMarker:SetParent(self.Health)
+		raidMarker:SetPoint('CENTER', self.Health)
 	end,
 }

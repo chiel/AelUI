@@ -61,5 +61,9 @@ addon.units.boss = {
 		local currenthealth = addon.elements.Text(self.Health, { size = round(ufConfig.height * 0.35) })
 		currenthealth:SetPoint('BOTTOMLEFT', healthpercent, 'TOPLEFT', 0, 0)
 		self:Tag(currenthealth, '[AelUI:currenthealth]')
+
+		local raidMarker = addon.elements.RaidMarker(self, unit)
+		raidMarker:SetParent(self.Health)
+		raidMarker:SetPoint('CENTER', self.Health)
 	end,
 }

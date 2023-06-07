@@ -89,6 +89,10 @@ addon.units.party = {
 		resurrect:SetParent(self.Health)
 		resurrect:SetPoint('CENTER', self.Health, 'CENTER')
 
+		local raidMarker = addon.elements.RaidMarker(self, unit)
+		raidMarker:SetParent(self.Health)
+		raidMarker:SetPoint('CENTER', self.Health)
+
 		addon.elements.DispelBorder(self, unit)
 
 		self.Range = {
