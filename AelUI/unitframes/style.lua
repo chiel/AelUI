@@ -24,6 +24,13 @@ addon.unitframes.style = function(self, unit)
 		power:SetSize(100, 6)
 	end
 
+	if bars.cast then
+		local castbar = addon.elements.Castbar(self, unit)
+		castbar:SetPoint('TOPLEFT', self, 'BOTTOMLEFT', 0, -4)
+		castbar:SetPoint('TOPRIGHT', self, 'BOTTOMRIGHT', 0, 4)
+		castbar:SetHeight(6)
+	end
+
 	local name
 
 	if texts.name then

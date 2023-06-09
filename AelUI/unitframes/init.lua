@@ -3,6 +3,18 @@ local addon = select(2, ...)
 addon.unitframes = {}
 
 addon.unitframes.config = {
+	focus = {
+		bars = {
+			cast = true,
+		},
+		indicators = {
+			raidmarker = true,
+		},
+		texts = {
+			healthpercent = true,
+			name = true,
+		},
+	},
 	player = {
 		indicators = {
 			leader = true,
