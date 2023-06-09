@@ -90,11 +90,9 @@ addon.weakauras.classes.priest = {
 								stacks = 2,
 							},
 							customConfig = function(aura)
-								aura.color = { 1, 1, 1, 0.85 }
-								aura.desaturate = true
-								table.insert(aura.conditions[3].changes, {
-									property = 'desaturate',
-								})
+								aura.conditions[1].check.trigger = 2
+								aura.conditions[1].check.variable = 'show'
+								aura.conditions[1].check.value = 0
 								return aura
 							end,
 						},
