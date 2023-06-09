@@ -4,8 +4,6 @@ local ufConfig = addon.config.unitframes
 local round = addon.utils.Round
 
 addon.unitframes.style = function(self, unit)
-	print('style unit frame', unit)
-
 	self:RegisterForClicks 'AnyUp'
 	self:SetScript('OnEnter', UnitFrame_OnEnter)
 	self:SetScript('OnLeave', UnitFrame_OnLeave)
@@ -13,11 +11,18 @@ addon.unitframes.style = function(self, unit)
 	self.colors = addon.colors
 
 	local unitConfig = addon.unitframes.config[unit] or {}
+	local bars = unitConfig.bars or {}
 	local indicators = unitConfig.indicators or {}
 	local texts = unitConfig.texts or {}
 
 	local health = addon.elements.Health(self, unit)
 	health:SetAllPoints()
+
+	if bars.power then
+		local power = addon.elements.Power(self, unit, { healerOnly = bars.power == 'healer' })
+		power:SetPoint('TOPLEFT', self, 'BOTTOMLEFT', 0, -4)
+		power:SetSize(100, 6)
+	end
 
 	local name
 
@@ -72,5 +77,36 @@ addon.unitframes.style = function(self, unit)
 		local raidMarker = addon.elements.RaidMarker(self, unit)
 		raidMarker:SetParent(self.Health)
 		raidMarker:SetPoint('CENTER', self.Health)
+	end
+
+	if indicators.readycheck then
+		local readyCheck = addon.elements.ReadyCheck(self, unit)
+		readyCheck:SetParent(self.Health)
+		readyCheck:SetPoint('CENTER', self.Health, 'CENTER')
+	end
+
+	if indicators.resurrect then
+		local resurrect = addon.elements.Resurrect(self, unit)
+		resurrect:SetParent(self.Health)
+		resurrect:SetPoint('CENTER', self.Health, 'CENTER')
+	end
+
+	if indicators.role then
+		local groupRole = addon.elements.GroupRole(self, unit)
+		groupRole:SetParent(self.Health)
+		groupRole:SetPoint('RIGHT', self.Health, 'TOPRIGHT', -4, 0)
+	end
+
+	if indicators.summon then
+		local summon = addon.elements.Summon(self, unit)
+		summon:SetParent(self.Health)
+		summon:SetPoint('CENTER', self.Health, 'CENTER')
+	end
+
+	if unitConfig.range then
+		self.Range = {
+			insideAlpha = 1,
+			outsideAlpha = 0.5,
+		}
 	end
 end
