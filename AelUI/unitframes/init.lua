@@ -32,6 +32,7 @@ addon.unitframes.config = {
 			power = 'healer',
 		},
 		indicators = {
+			dispel = true,
 			leader = true,
 			raidmarker = true,
 			readycheck = true,

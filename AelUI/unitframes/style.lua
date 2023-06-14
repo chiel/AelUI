@@ -70,6 +70,10 @@ addon.unitframes.style = function(self, unit)
 		end
 	end
 
+	if indicators.dispel then
+		addon.elements.DispelBorder(self, unit)
+	end
+
 	if indicators.leader then
 		local leader = addon.elements.Leader(self, unit)
 		leader:SetParent(self.Health)
