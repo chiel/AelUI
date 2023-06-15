@@ -40,7 +40,7 @@ addon.weakauras.utils.buildClassAuras = function(data)
 			table.insert(specAura.controlledChildren, groupAuraId)
 
 			for _, icon in ipairs(group.icons) do
-				local auraId = 'AelUI - Class - ' .. data.name .. ' - ' .. ' - ' .. spec.name .. ' - ' .. icon.name
+				local auraId = 'AelUI - Class - ' .. data.name .. ' - ' .. spec.name .. ' - ' .. icon.name
 				local aura = u.buildSpellIconAura(icon, group.type)
 				aura.internalVersion = internalVersion
 				aura.id = auraId
