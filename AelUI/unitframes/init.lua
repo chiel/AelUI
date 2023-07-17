@@ -15,6 +15,7 @@ addon.unitframes.config = {
 			name = true,
 		},
 	},
+
 	player = {
 		indicators = {
 			leader = true,
@@ -42,8 +43,22 @@ addon.unitframes.config = {
 		},
 		range = true,
 		texts = {
-			name = true,
 			healthpercent = true,
+			name = true,
+			power = true,
+		},
+	},
+
+	target = {
+		bars = {
+			power = true,
+		},
+		buffs = true,
+		style = 'mirror',
+		texts = {
+			health = true,
+			healthpercent = true,
+			name = true,
 			power = true,
 		},
 	},
