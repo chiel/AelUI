@@ -11,23 +11,46 @@ addon.weakauras.utils.buildSpellIconAura = function(data, groupType)
 	}
 
 	aura.triggers = {
-		[1] = {
+		disjunctive = 'any',
+	}
+
+	local spellTriggerIndex = 1
+	if data.buffId ~= nil then
+		spellTriggerIndex = 2
+		aura.triggers[1] = {
 			trigger = {
-				type = 'spell',
-				event = 'Cooldown Progress (Spell)',
-				spellName = data.spellId,
-				genericShowOn = 'showAlways',
+				type = 'aura2',
+				unit = 'player',
+				debuffType = 'HELPFUL',
+				auraspellids = { data.buffId },
+				useExactSpellId = true,
+				ownOnly = true,
 			},
+		}
+	end
+
+	aura.triggers[spellTriggerIndex] = {
+		trigger = {
+			type = 'spell',
+			event = 'Cooldown Progress (Spell)',
+			spellName = data.spellId,
+			genericShowOn = 'showAlways',
 		},
 	}
 
 	aura.conditions = {
-		{ -- ability on cd
+		{
 			check = {
-				trigger = 1,
-				variable = 'charges',
-				op = '==',
-				value = '0',
+				trigger = -2,
+				variable = 'AND',
+				checks = { -- ability on cd
+					{
+						trigger = spellTriggerIndex,
+						variable = 'charges',
+						op = '==',
+						value = '0',
+					},
+				},
 			},
 			changes = {
 				{
@@ -42,7 +65,7 @@ addon.weakauras.utils.buildSpellIconAura = function(data, groupType)
 		},
 		{ -- ability out of range
 			check = {
-				trigger = 1,
+				trigger = spellTriggerIndex,
 				variable = 'spellInRange',
 				value = 0,
 			},
@@ -59,9 +82,30 @@ addon.weakauras.utils.buildSpellIconAura = function(data, groupType)
 		},
 	}
 
+	if data.buffId ~= nil then
+		table.insert(aura.conditions[1].check.checks, {
+			trigger = 1,
+			variable = 'show',
+			value = 0,
+		})
+
+		table.insert(aura.conditions, {
+			check = {
+				trigger = 1,
+				variable = 'show',
+				value = 1,
+			},
+			changes = {
+				{
+					property = 'inverse',
+				},
+			},
+		})
+	end
+
 	if glow ~= nil then
 		local check = {
-			trigger = 2,
+			trigger = spellTriggerIndex + 1,
 			variable = 'show',
 			value = 1,
 		}
@@ -79,7 +123,7 @@ addon.weakauras.utils.buildSpellIconAura = function(data, groupType)
 				table.insert(auraIds, tostring(auraId))
 			end
 
-			aura.triggers[2] = {
+			aura.triggers[spellTriggerIndex + 1] = {
 				trigger = {
 					type = 'aura2',
 					unit = 'player',
@@ -91,7 +135,7 @@ addon.weakauras.utils.buildSpellIconAura = function(data, groupType)
 
 			if glow.stacks ~= nil then
 				check = {
-					trigger = 2,
+					trigger = spellTriggerIndex + 1,
 					variable = 'stacks',
 					op = '>=',
 					value = tostring(glow.stacks),
@@ -100,7 +144,7 @@ addon.weakauras.utils.buildSpellIconAura = function(data, groupType)
 		end
 
 		if glow.type == 'overlay' then
-			aura.triggers[2] = {
+			aura.triggers[spellTriggerIndex + 1] = {
 				trigger = {
 					type = 'spell',
 					event = 'Spell Activation Overlay',
@@ -108,8 +152,6 @@ addon.weakauras.utils.buildSpellIconAura = function(data, groupType)
 				},
 			}
 		end
-
-		aura.triggers.disjunctive = 'any'
 
 		table.insert(aura.conditions, {
 			check = check,
