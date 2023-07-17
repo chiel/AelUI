@@ -49,7 +49,7 @@ addon.weakauras.classes.paladin = {
 			icon = 236264,
 			specId = 66,
 
-			groups = {
+			spells = {
 				-- Shield of the Righteous 53600
 				{
 					name = 'Primary',
@@ -163,7 +163,7 @@ addon.weakauras.classes.paladin = {
 			icon = 0,
 			specId = 70,
 
-			groups = {
+			spells = {
 				{
 					name = 'Primary',
 					type = 'primary',

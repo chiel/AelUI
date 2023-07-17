@@ -14,7 +14,7 @@ addon.weakauras.classes.monk = {
 			icon = 608951,
 			specId = 268,
 
-			groups = {
+			spells = {
 				{
 					name = 'Primary',
 					type = 'primary',

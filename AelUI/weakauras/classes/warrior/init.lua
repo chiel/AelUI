@@ -10,7 +10,7 @@ addon.weakauras.classes.warrior = {
 			icon = 134952,
 			specId = 73,
 
-			groups = {
+			spells = {
 				{
 					name = 'Primary',
 					type = 'primary',

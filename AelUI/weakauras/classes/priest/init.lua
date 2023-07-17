@@ -10,7 +10,7 @@ addon.weakauras.classes.priest = {
 			icon = 136207,
 			specId = 258,
 
-			groups = {
+			spells = {
 				{
 					name = 'Primary',
 					type = 'primary',

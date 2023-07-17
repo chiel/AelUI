@@ -28,7 +28,7 @@ addon.weakauras.utils.buildClassAuras = function(data)
 		table.insert(childAuras, specAura)
 		table.insert(classAura.controlledChildren, specAuraId)
 
-		for _, group in ipairs(spec.groups) do
+		for _, group in ipairs(spec.spells) do
 			local groupAuraId = 'AelUI - Class - ' .. data.name .. ' - ' .. spec.name .. ' - ' .. group.name
 			local groupAura = u.buildGroupAura(group)
 			groupAura.internalVersion = internalVersion

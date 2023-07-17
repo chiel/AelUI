@@ -10,7 +10,7 @@ addon.weakauras.classes.warlock = {
 			icon = 136172,
 			specId = 266,
 
-			groups = {
+			spells = {
 				{
 					name = 'Primary',
 					type = 'primary',
