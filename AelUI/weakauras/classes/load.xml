@@ -1,6 +1,7 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="init.lua"/>
 	<Include file="deathknight\load.xml"/>
+	<Include file="druid\load.xml"/>
 	<Include file="monk\load.xml"/>
 	<Include file="paladin\load.xml"/>
 	<Include file="priest\load.xml"/>
