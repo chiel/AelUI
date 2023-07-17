@@ -174,6 +174,10 @@ addon.weakauras.classes.paladin = {
 							spellId = 31884,
 						},
 						{
+							name = 'Execution Sentence',
+							spellId = 343527,
+						},
+						{
 							name = 'Final Reckoning',
 							spellId = 343721,
 						},
@@ -186,28 +190,30 @@ addon.weakauras.classes.paladin = {
 							spellId = 255937,
 						},
 						{
-							name = 'Judgment',
-							spellId = 20271,
+							name = 'Hammer of Wrath',
+							spellId = 24275,
+							glow = {
+								type = 'overlay',
+							},
+							customConfig = function(aura)
+								aura.desaturate = true
+								table.insert(aura.conditions[3].changes, {
+									property = 'desaturate',
+								})
+								return aura
+							end,
 						},
 						{
-							name = 'Crusader Strike',
-							spellId = 35395,
+							name = 'Judgment',
+							spellId = 20271,
 						},
 						{
 							name = 'Blade of Justice',
 							spellId = 184575,
 						},
 						{
-							name = 'Templar\'s Verdict',
-							spellId = 85256,
-						},
-						{
-							name = 'Divine Storm',
-							spellId = 53385,
-						},
-						{
-							name = 'Hammer of Wrath',
-							spellId = 24275,
+							name = 'Crusader Strike',
+							spellId = 35395,
 						},
 					},
 				},
