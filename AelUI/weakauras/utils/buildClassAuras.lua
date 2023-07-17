@@ -2,7 +2,7 @@ local addon = select(2, ...)
 
 local u = addon.weakauras.utils
 
-local internalVersion = 65
+local internalVersion = 66
 
 addon.weakauras.utils.buildClassAuras = function(data)
 	local classAuraId = 'AelUI - Class - ' .. data.name
