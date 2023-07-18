@@ -34,6 +34,7 @@ addon.weakauras.utils.buildIconAura = function(options)
 		table.insert(aura.subRegions, {
 			type = 'subglow',
 			glow = false,
+			glowType = 'Proc',
 		})
 	end
 
