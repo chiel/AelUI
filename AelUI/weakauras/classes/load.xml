@@ -2,6 +2,7 @@
 	<Script file="init.lua"/>
 	<Include file="deathknight\load.xml"/>
 	<Include file="druid\load.xml"/>
+	<Include file="evoker\load.xml"/>
 	<Include file="monk\load.xml"/>
 	<Include file="paladin\load.xml"/>
 	<Include file="priest\load.xml"/>
