@@ -11,6 +11,7 @@ local function updateRegionWidths(width)
 
 		{ name = 'AelUI - Class - Evoker - Augmentation - Aura - Ebon Might', resize = playerClass == 'EVOKER' },
 		{ name = 'AelUI - Class - Evoker - Augmentation - Aura - Hover', resize = playerClass == 'EVOKER' },
+		{ name = 'AelUI - Class - Evoker - Devastation - Aura - Hover', resize = playerClass == 'EVOKER' },
 		{ name = 'AelUI - Death Knight - Runes', resize = playerClass == 'DEATHKNIGHT', updateChildren = true },
 		{ name = 'AelUI - Demon Hunter - Vengeance - Soul Fragments', resize = playerClass == 'DEMONHUNTER' },
 		{ name = 'AelUI - Evoker - Essence', resize = playerClass == 'EVOKER' },

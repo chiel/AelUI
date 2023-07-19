@@ -205,6 +205,14 @@ addon.weakauras.classes.evoker = {
 			icon = 4511811,
 			specId = 1467,
 
+			auraBars = {
+				{
+					name = 'Hover',
+					auraId = 358267,
+					color = { 175, 175, 175 },
+				},
+			},
+
 			spells = {
 				{
 					name = 'Primary',
