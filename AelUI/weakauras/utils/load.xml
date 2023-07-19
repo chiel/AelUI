@@ -1,5 +1,7 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="init.lua"/>
+	<Script file="buildBarAura.lua"/>
+	<Script file="buildAuraBar.lua"/>
 	<Script file="buildIconAura.lua"/>
 	<Script file="buildSpellIconAura.lua"/>
 	<Script file="buildGroupAura.lua"/>

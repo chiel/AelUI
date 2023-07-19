@@ -48,5 +48,17 @@ addon.weakauras.config = {
 				height = 32,
 			},
 		},
+
+		aurabars = {
+			groupConfig = {
+				anchorFrameType = 'SELECTFRAME',
+				anchorFrameFrame = 'AelUIAnchor',
+				anchorPoint = 'TOP',
+				selfPoint = 'BOTTOM',
+				grow = 'UP',
+				xOffset = 0,
+				yOffset = 21,
+			},
+		},
 	},
 }
