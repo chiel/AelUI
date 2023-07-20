@@ -10,13 +10,32 @@ if ufHeight % 2 > 0 then
 	ufHeight = ufHeight + 1
 end
 
+local iconSpacing = 2
+local minPrimaryIcons = 7
+local minSecondaryIcons = 7
+
 addon.config = {
+	core = {
+		anchors = {
+			primary = {
+				height = ufHeight,
+				minWidth = (minPrimaryIcons * ufHeight) + ((minPrimaryIcons - 1) * iconSpacing),
+			},
+			secondary = {
+				height = 32,
+				minWidth = (minSecondaryIcons * ufHeight) + ((minSecondaryIcons - 1) * iconSpacing),
+			},
+		},
+	},
 	screenSize = { width = width, height = height },
 	unitframes = {
 		height = ufHeight,
 	},
 	weakauras = {
 		primaryIconSize = ufHeight,
-		primaryIconSpacing = 2,
+		primaryIconSpacing = iconSpacing,
+
+		secondaryIconSize = 32,
+		secondaryIconSpacing = iconSpacing,
 	},
 }

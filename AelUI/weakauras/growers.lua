@@ -1,6 +1,9 @@
 local addon = select(2, ...)
 
 AelUI.weakauras.growers = {}
+local c = addon.config.weakauras
+local anchorConfig = addon.config.core.anchors
+local anchors = addon.core.anchors
 
 local playerClass = select(2, UnitClass 'player')
 
@@ -24,8 +27,8 @@ local function updateRegionWidths(width)
 		{ name = 'AelUI - Warrior - Protection - Shield Block buff', resize = playerClass == 'WARRIOR' },
 	}
 
-	if width < addon.uiAnchor.minWidth then
-		width = addon.uiAnchor.minWidth
+	if width < anchorConfig.primary.minWidth then
+		width = anchorConfig.primary.minWidth
 	end
 
 	for _, r in ipairs(regions) do
@@ -49,32 +52,37 @@ local function updateRegionWidths(width)
 	end
 end
 
-local iconSize = addon.config.weakauras.primaryIconSize
-local iconSpacing = addon.config.weakauras.primaryIconSpacing
+local function createGrower(iconSize, iconSpacing, callback)
+	local prevWidth = -1
 
-local prevWidth = -1
+	return function(newPositions, activeRegions)
+		local total = #activeRegions
 
-function AelUIPrimaryGrowFunction(newPositions, activeRegions)
-	local total = #activeRegions
+		for i, regionData in ipairs(activeRegions) do
+			local region = regionData.region
+			region:SetRegionWidth(iconSize)
+			region:SetRegionHeight(iconSize)
 
-	for i, regionData in ipairs(activeRegions) do
-		local region = regionData.region
-		region:SetRegionWidth(iconSize)
-		region:SetRegionHeight(iconSize)
+			local index = i - 1
+			local xOffset = 0 - (iconSize + iconSpacing) / 2 * (total - 1) + (index * (iconSize + iconSpacing))
 
-		local index = i - 1
-		local xOffset = 0 - (iconSize + iconSpacing) / 2 * (total - 1) + (index * (iconSize + iconSpacing))
+			newPositions[i] = { xOffset, 0 }
+		end
 
-		newPositions[i] = { xOffset, 0 }
-	end
+		local w = (total * iconSize) + ((total - 1) * iconSpacing)
 
-	local w = (total * iconSize) + ((total - 1) * iconSpacing)
-
-	if w ~= prevWidth then
-		addon.uiAnchor.UpdateWidth(w)
-		updateRegionWidths(w)
-		prevWidth = w
+		if w ~= prevWidth then
+			prevWidth = w
+			callback(w)
+		end
 	end
 end
 
-AelUI.weakauras.growers.primary = AelUIPrimaryGrowFunction
+AelUI.weakauras.growers.primary = createGrower(c.primaryIconSize, c.primaryIconSpacing, function(w)
+	anchors.primary.UpdateWidth(w)
+	updateRegionWidths(w)
+end)
+
+AelUI.weakauras.growers.secondary = createGrower(c.secondaryIconSize, c.secondaryIconSpacing, function(w)
+	anchors.secondary.UpdateWidth(w)
+end)

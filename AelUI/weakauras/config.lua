@@ -25,7 +25,9 @@ addon.weakauras.config = {
 				anchorPoint = 'BOTTOM',
 				selfPoint = 'TOP',
 				yOffset = -2,
-				grow = 'HORIZONTAL',
+				grow = 'CUSTOM',
+				growOn = 'changed',
+				customGrow = 'function(newPositions, activeRegions) AelUI.weakauras.growers.secondary(newPositions, activeRegions) end',
 			},
 			childConfig = {
 				width = 32,
