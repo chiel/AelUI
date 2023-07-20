@@ -107,7 +107,7 @@ addon.weakauras.utils.buildSpellIconAura = function(data, groupType)
 		local check = {
 			trigger = spellTriggerIndex + 1,
 			variable = 'show',
-			value = 1,
+			value = glow.missing and 0 or 1,
 		}
 
 		local changes = {
