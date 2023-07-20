@@ -126,12 +126,19 @@ addon.weakauras.utils.buildSpellIconAura = function(data, groupType)
 			aura.triggers[spellTriggerIndex + 1] = {
 				trigger = {
 					type = 'aura2',
-					unit = 'player',
+					unit = glow.unit or 'player',
 					debuffType = 'HELPFUL',
 					auraspellids = auraIds,
 					useExactSpellId = true,
+					ownOnly = true,
 				},
 			}
+
+			if glow.unit == 'group' then
+				check.variable = 'unitCount'
+				check.op = glow.missing and '==' or '>'
+				check.value = '0'
+			end
 
 			if glow.stacks ~= nil then
 				check = {
