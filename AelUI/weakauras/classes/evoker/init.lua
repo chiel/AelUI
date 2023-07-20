@@ -189,6 +189,16 @@ addon.weakauras.classes.evoker = {
 						{
 							name = 'Blistering Scales',
 							spellId = 360827,
+							glow = {
+								type = 'buff',
+								auraIds = { 360827 },
+								unit = 'group',
+								missing = true,
+							},
+							customConfig = function(aura)
+								aura.subRegions[4].text_text = '%2.s'
+								return aura
+							end,
 						},
 						{
 							name = 'Living Flame',
