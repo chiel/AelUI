@@ -7,28 +7,32 @@ local anchors = addon.core.anchors
 
 local playerClass = select(2, UnitClass 'player')
 
-local function updateRegionWidths(width)
-	local regions = {
-		{ name = 'AelUI - Castbar', resize = true },
-		{ name = 'AelUI - Power', resize = true },
+local primaryRegions = {
+	{ name = 'AelUI - Castbar', resize = true },
+	{ name = 'AelUI - Power', resize = true },
 
-		{ name = 'AelUI - Class - Evoker - Augmentation - Aura - Ebon Might', resize = playerClass == 'EVOKER' },
-		{ name = 'AelUI - Class - Evoker - Augmentation - Aura - Hover', resize = playerClass == 'EVOKER' },
-		{ name = 'AelUI - Class - Evoker - Devastation - Aura - Hover', resize = playerClass == 'EVOKER' },
-		{ name = 'AelUI - Death Knight - Runes', resize = playerClass == 'DEATHKNIGHT', updateChildren = true },
-		{ name = 'AelUI - Demon Hunter - Vengeance - Soul Fragments', resize = playerClass == 'DEMONHUNTER' },
-		{ name = 'AelUI - Evoker - Essence', resize = playerClass == 'EVOKER' },
-		{ name = 'AelUI - Monk - Windwalker - Chi', resize = playerClass == 'MONK' },
-		{ name = 'AelUI - Paladin - Holy Power', resize = playerClass == 'PALADIN' },
-		{ name = 'AelUI - Rogue - Combo Points', resize = playerClass == 'ROGUE' },
-		{ name = 'AelUI - Shaman - Enhancement - Maelstrom Weapon', resize = playerClass == 'SHAMAN' },
-		{ name = 'AelUI - Warlock - Soul Shards', resize = playerClass == 'WARLOCK' },
-		{ name = 'AelUI - Warrior - Fury - Enrage buff', resize = playerClass == 'WARRIOR' },
-		{ name = 'AelUI - Warrior - Protection - Shield Block buff', resize = playerClass == 'WARRIOR' },
-	}
+	{ name = 'AelUI - Class - Evoker - Augmentation - Aura - Ebon Might', resize = playerClass == 'EVOKER' },
+	{ name = 'AelUI - Class - Evoker - Augmentation - Aura - Hover', resize = playerClass == 'EVOKER' },
+	{ name = 'AelUI - Class - Evoker - Devastation - Aura - Hover', resize = playerClass == 'EVOKER' },
+	{ name = 'AelUI - Death Knight - Runes', resize = playerClass == 'DEATHKNIGHT', updateChildren = true },
+	{ name = 'AelUI - Demon Hunter - Vengeance - Soul Fragments', resize = playerClass == 'DEMONHUNTER' },
+	{ name = 'AelUI - Evoker - Essence', resize = playerClass == 'EVOKER' },
+	{ name = 'AelUI - Monk - Windwalker - Chi', resize = playerClass == 'MONK' },
+	{ name = 'AelUI - Paladin - Holy Power', resize = playerClass == 'PALADIN' },
+	{ name = 'AelUI - Rogue - Combo Points', resize = playerClass == 'ROGUE' },
+	{ name = 'AelUI - Shaman - Enhancement - Maelstrom Weapon', resize = playerClass == 'SHAMAN' },
+	{ name = 'AelUI - Warlock - Soul Shards', resize = playerClass == 'WARLOCK' },
+	{ name = 'AelUI - Warrior - Fury - Enrage buff', resize = playerClass == 'WARRIOR' },
+	{ name = 'AelUI - Warrior - Protection - Shield Block buff', resize = playerClass == 'WARRIOR' },
+}
 
-	if width < anchorConfig.primary.minWidth then
-		width = anchorConfig.primary.minWidth
+local secondaryRegions = {
+	{ name = 'AelUI - GCD', resize = true },
+}
+
+local function updateRegionWidths(regions, width, minWidth)
+	if width < minWidth then
+		width = minWidth
 	end
 
 	for _, r in ipairs(regions) do
@@ -78,11 +82,12 @@ local function createGrower(iconSize, iconSpacing, callback)
 	end
 end
 
-AelUI.weakauras.growers.primary = createGrower(c.primaryIconSize, c.primaryIconSpacing, function(w)
-	anchors.primary.UpdateWidth(w)
-	updateRegionWidths(w)
+AelUI.weakauras.growers.primary = createGrower(c.primaryIconSize, c.primaryIconSpacing, function(width)
+	anchors.primary.UpdateWidth(width)
+	updateRegionWidths(primaryRegions, width, anchorConfig.primary.minWidth)
 end)
 
-AelUI.weakauras.growers.secondary = createGrower(c.secondaryIconSize, c.secondaryIconSpacing, function(w)
-	anchors.secondary.UpdateWidth(w)
+AelUI.weakauras.growers.secondary = createGrower(c.secondaryIconSize, c.secondaryIconSpacing, function(width)
+	anchors.secondary.UpdateWidth(width)
+	updateRegionWidths(secondaryRegions, width, anchorConfig.secondary.minWidth)
 end)
