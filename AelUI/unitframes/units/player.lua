@@ -1,6 +1,7 @@
 local addon = select(2, ...)
 
 local ufConfig = addon.config.unitframes
+local anchors = addon.core.anchors
 local round = addon.utils.Round
 
 addon.units.player = {
@@ -10,5 +11,17 @@ addon.units.player = {
 		f:SetPoint('TOPRIGHT', addon.uiAnchor, 'TOPLEFT', -20, 0)
 	end,
 
-	style = addon.unitframes.style,
+	style = function(self, unit)
+		addon.unitframes.style(self, unit)
+
+		AelUIPlayerCastbar = self.Castbar
+
+		local castbar = self.CastbarBackdrop
+		castbar:ClearAllPoints()
+		castbar:SetPoint('TOPLEFT', anchors.secondary, 'BOTTOMLEFT', 0, -2)
+		castbar:SetPoint('TOPRIGHT', anchors.secondary, 'BOTTOMRIGHT', 0, -2)
+		castbar:SetHeight(16)
+
+		castbar.Spark:SetHeight(30)
+	end,
 }

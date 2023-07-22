@@ -17,6 +17,9 @@ addon.unitframes.config = {
 	},
 
 	player = {
+		bars = {
+			cast = true,
+		},
 		indicators = {
 			leader = true,
 			raidmarker = true,
