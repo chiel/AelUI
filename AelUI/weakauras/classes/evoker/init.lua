@@ -210,6 +210,16 @@ addon.weakauras.classes.evoker = {
 						{
 							name = 'Living Flame',
 							spellId = 361469,
+							glow = {
+								type = 'buff',
+								auraIds = { 370901 },
+							},
+
+							customConfig = function(aura)
+								aura.subRegions[4].text_text = '%2.s'
+
+								return aura
+							end,
 						},
 					},
 				},
