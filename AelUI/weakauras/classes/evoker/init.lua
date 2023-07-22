@@ -150,6 +150,13 @@ addon.weakauras.classes.evoker = {
 						{
 							name = 'Time Skip',
 							spellId = 404977,
+							customConfig = function(aura)
+								aura.load = {
+									use_not_spellknown = true,
+									not_spellknown = 412713,
+								}
+								return aura
+							end,
 						},
 						{
 							name = 'Breath of Eons',

@@ -47,12 +47,12 @@ addon.weakauras.utils.buildClassAuras = function(data)
 				aura.uid = auraId
 				aura.parent = groupAuraId
 
-				aura.load = {
+				aura.load = Mixin(aura.load or {}, {
 					class_and_spec = {
 						single = spec.specId,
 					},
 					use_class_and_spec = true,
-				}
+				})
 
 				table.insert(childAuras, aura)
 				table.insert(groupAura.controlledChildren, auraId)
@@ -78,12 +78,12 @@ addon.weakauras.utils.buildClassAuras = function(data)
 				aura.uid = auraId
 				aura.parent = groupAuraId
 
-				aura.load = {
+				aura.load = Mixin(aura.load or {}, {
 					class_and_spec = {
 						single = spec.specId,
 					},
 					use_class_and_spec = true,
-				}
+				})
 
 				table.insert(childAuras, aura)
 				table.insert(groupAura.controlledChildren, auraId)
