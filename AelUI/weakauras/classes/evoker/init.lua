@@ -216,6 +216,18 @@ addon.weakauras.classes.evoker = {
 							},
 
 							customConfig = function(aura)
+								aura.triggers[3] = {
+									trigger = {
+										type = 'aura2',
+										unit = 'player',
+										debuffType = 'HELPFUL',
+										auraspellids = { '372470' },
+										useExactSpellId = true,
+										fetchTooltip = true,
+									},
+								}
+								aura.subRegions[3].text_text = '%3.tooltip1'
+								aura.subRegions[3]['text_text_format_3.tooltip1_format'] = 'BigNumber'
 								aura.subRegions[4].text_text = '%2.s'
 
 								return aura
