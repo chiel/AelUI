@@ -1,0 +1,3 @@
+[submodule "AelUI_Options/libs/Ace3"]
+	path = AelUI_Options/libs/Ace3
+	url = git@github.com:WoWUIDev/Ace3.git

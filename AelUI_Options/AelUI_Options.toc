@@ -1,0 +1,11 @@
+## Interface: 100100
+## Title: AelUI: Options
+## Author: Aelen
+## Version: 0.1
+
+libs\LibStub\LibStub.lua
+libs\Ace3\AceGUI-3.0\AceGUI-3.0.xml
+libs\Ace3\AceConfig-3.0\AceConfig-3.0.xml
+libs\Ace3\AceConsole-3.0\AceConsole-3.0.xml
+init.lua
+register.lua
