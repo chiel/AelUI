@@ -3,16 +3,14 @@ local addon = select(2, ...)
 local options = {
 	type = 'group',
 	name = 'AelUI',
-	args = {},
+	args = {
+		weakauras = addon.options.weakauras,
+	},
 }
 
-local console = LibStub 'AceConsole-3.0'
-local dialog = LibStub 'AceConfigDialog-3.0'
-local registry = LibStub 'AceConfigRegistry-3.0'
+addon.dialog:SetDefaultSize('AelUI', 800, 600)
+addon.registry:RegisterOptionsTable('AelUI', options, false)
 
-dialog:SetDefaultSize('AelUI', 800, 600)
-registry:RegisterOptionsTable('AelUI', options, false)
-
-console:RegisterChatCommand('aelui', function()
-	dialog:Open 'AelUI'
+addon.console:RegisterChatCommand('aelui', function()
+	addon.dialog:Open 'AelUI'
 end)
