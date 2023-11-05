@@ -190,4 +190,30 @@ addon.unitframes.style = function(self, unit)
 			outsideAlpha = 0.5,
 		}
 	end
+
+	-- style = function(self, unit)
+	-- 	local debuffs = CreateFrame('Frame', nil, self)
+	-- 	debuffs:SetPoint('TOPLEFT', self, 'TOPRIGHT', 4, 0)
+	-- 	debuffs:SetSize((40 + 2) * 10, 40)
+	-- 	debuffs.size = 40
+	-- 	debuffs.spacing = 2
+	-- 	debuffs.initialAnchor = 'TOPLEFT'
+	-- 	debuffs['growth-x'] = 'RIGHT'
+	-- 	self.Debuffs = debuffs
+	-- end,
+
+	-- TARGET CAST
+	-- 	-- addon.elements.Castbar(self, unit)
+	-- 	-- self.Castbar:SetPoint('TOP', UIParent, 'CENTER', 0, -140)
+	-- 	-- self.Castbar:SetSize(298, 12)
+	-- 	-- self.Castbar.Icon:ClearAllPoints()
+	-- 	-- self.Castbar.Icon:SetPoint('TOPRIGHT', self.Castbar, 'TOPLEFT', -5, 1)
+
+	-- TARGET DEBUFF
+	-- 	-- local debuffs = CreateFrame('Frame', nil, self)
+	-- 	-- debuffs.size = buffSize
+	-- 	-- debuffs.spacing = buffSpacing
+	-- 	-- debuffs:SetPoint('BOTTOMLEFT', buffs, 'TOPLEFT', 0, 2)
+	-- 	-- debuffs:SetSize((buffSize + buffSpacing) * buffColumns, (buffSize + buffSpacing) * buffRows)
+	-- 	-- self.Debuffs = debuffs
 end

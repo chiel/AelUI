@@ -5,6 +5,47 @@ addon.weakauras.classes.deathknight = {
 	icon = 0,
 
 	specs = {
+		-- {
+		-- 	name = 'Blood',
+		-- 	icon = 0,
+		-- 	specId = 250,
+
+		-- 	spells = {
+		-- 		{
+		-- 			name = 'Primary',
+		-- 			type = 'primary',
+
+		-- 			icons = {
+		-- 				{
+		-- 					name = '',
+		-- 					spellId = 0,
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 		{
+		-- 			name = 'Secondary',
+		-- 			type = 'secondary',
+
+		-- 			icons = {
+		-- 				{
+		-- 					name = '',
+		-- 					spellId = 0,
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 		{
+		-- 			name = 'Defensives',
+		-- 			type = 'defensives',
+
+		-- 			icons = {
+		-- 				{
+		-- 					name = '',
+		-- 					spellId = 0,
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 	},
+		-- },
 		{
 			name = 'Frost',
 			icon = 0,
@@ -117,5 +158,46 @@ addon.weakauras.classes.deathknight = {
 				},
 			},
 		},
+		-- {
+		-- 	name = 'Unholy',
+		-- 	icon = 0,
+		-- 	specId = 252,
+
+		-- 	spells = {
+		-- 		{
+		-- 			name = 'Primary',
+		-- 			type = 'primary',
+
+		-- 			icons = {
+		-- 				{
+		-- 					name = '',
+		-- 					spellId = 0,
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 		{
+		-- 			name = 'Secondary',
+		-- 			type = 'secondary',
+
+		-- 			icons = {
+		-- 				{
+		-- 					name = '',
+		-- 					spellId = 0,
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 		{
+		-- 			name = 'Defensives',
+		-- 			type = 'defensives',
+
+		-- 			icons = {
+		-- 				{
+		-- 					name = '',
+		-- 					spellId = 0,
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 	},
+		-- },
 	},
 }

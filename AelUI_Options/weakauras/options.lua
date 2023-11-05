@@ -17,12 +17,17 @@ local options = {
 }
 
 local groups = {
+	-- 'general',
 	'deathknight',
+	-- 'demonhunter',
 	'druid',
 	'evoker',
+	-- 'hunter',
+	-- 'mage',
 	'monk',
 	'paladin',
 	'priest',
+	-- 'rogue',
 	'shaman',
 	'warlock',
 	'warrior',

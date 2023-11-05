@@ -1,6 +1,8 @@
 local addon = select(2, ...)
 
-local function CreatePip(element)
+local function CreatePip(element, stage)
+	-- print('CREATE PIP', stage)
+	-- local frame = CreateFrame('Frame', nil, element, 'CastingBarFrameStagePipTemplate')
 	local frame = CreateFrame('Frame', nil, element, 'BackdropTemplate')
 	frame:SetBackdrop { edgeFile = addon.media.border, edgeSize = 1 }
 	frame:SetWidth(2)
@@ -23,6 +25,10 @@ function addon.elements.Castbar(self, unit)
 	Spark:SetBlendMode 'ADD'
 	Spark:SetPoint('CENTER', castbar:GetStatusBarTexture(), 'RIGHT', 0, 0)
 
+	-- local Icon = castbar:CreateTexture(nil, 'OVERLAY')
+	-- Icon:SetPoint('BOTTOMRIGHT', backdrop, 'BOTTOMLEFT', -4, 0)
+	-- Icon:SetSize(32, 32)
+
 	local options = { pixel = true, size = 8 }
 
 	local Text = addon.elements.Text(castbar, options)
@@ -32,11 +38,13 @@ function addon.elements.Castbar(self, unit)
 	Time:SetPoint('TOPRIGHT', backdrop, 'BOTTOMRIGHT', -4, -6)
 	Time:SetJustifyH 'RIGHT'
 
+	-- backdrop.Icon = Icon
 	backdrop.Spark = Spark
 	backdrop.Text = Text
 	backdrop.Time = Time
 
 	castbar.CreatePip = CreatePip
+	-- castbar.Icon = Icon
 	castbar.Spark = Spark
 	castbar.Text = Text
 	castbar.Time = Time

@@ -7,6 +7,7 @@ addon.units.boss = {
 	spawn = function(self)
 		local boss = {}
 		for i = 1, MAX_BOSS_FRAMES or 5 do
+			-- local f = self:Spawn 'player'
 			local f = self:Spawn('boss' .. i)
 			f:SetSize(ufConfig.height * 7, ufConfig.height)
 
@@ -45,6 +46,13 @@ addon.units.boss = {
 		castbar:SetPoint('TOPRIGHT', self.Power, 'TOPLEFT', -4, 0)
 		castbar:SetHeight(6)
 		castbar.Time:Hide()
+
+		-- self.Castbar:SetSize(100, 4)
+		-- self.Castbar:SetPoint('TOPRIGHT', self.Power, 'BOTTOMRIGHT', 0, -4)
+		-- self.Castbar:SetHeight(4)
+		-- self.Castbar.Icon:SetSize(40, 40)
+		-- self.Castbar.Icon:ClearAllPoints()
+		-- self.Castbar.Icon:SetPoint('BOTTOMLEFT', self.Castbar, 'BOTTOMRIGHT', 5, -1)
 
 		local name = addon.elements.Text(self.Health, { size = round(ufConfig.height * 0.5) })
 		name:SetPoint('BOTTOMRIGHT', self, 'TOPRIGHT', -round(ufConfig.height * 0.1), -(ufConfig.height * 0.15))

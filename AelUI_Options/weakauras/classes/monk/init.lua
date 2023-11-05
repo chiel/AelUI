@@ -33,12 +33,27 @@ addon.weakauras.classes.monk = {
 							spellId = 325153,
 						},
 						{
+							name = 'Summon White Tiger Statue',
+							spellId = 388686,
+						},
+						{
 							name = 'Bonedust Brew',
 							spellId = 386276,
 						},
 						{
 							name = 'Touch of Death',
 							spellId = 322109,
+							glow = {
+								type = 'overlay',
+							},
+							customConfig = function(aura)
+								aura.desaturate = true
+								table.insert(aura.conditions[3].changes, {
+									property = 'desaturate',
+								})
+
+								return aura
+							end,
 						},
 						{
 							name = 'Blackout Kick',

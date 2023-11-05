@@ -13,6 +13,7 @@ end
 local iconSpacing = 2
 local minPrimaryIcons = 7
 local minSecondaryIcons = 7
+local secondaryIconSize = 32
 
 addon.config = {
 	core = {
@@ -22,8 +23,8 @@ addon.config = {
 				minWidth = (minPrimaryIcons * ufHeight) + ((minPrimaryIcons - 1) * iconSpacing),
 			},
 			secondary = {
-				height = 32,
-				minWidth = (minSecondaryIcons * ufHeight) + ((minSecondaryIcons - 1) * iconSpacing),
+				height = secondaryIconSize,
+				minWidth = (minSecondaryIcons * secondaryIconSize) + ((minSecondaryIcons - 1) * iconSpacing),
 			},
 		},
 	},

@@ -51,6 +51,21 @@ addon.weakauras.config = {
 			},
 		},
 
+		consumables = {
+			groupConfig = {
+				anchorFrameType = 'SELECTFRAME',
+				anchorFrameFrame = 'AelUIPlayer',
+				anchorPoint = 'BOTTOMLEFT',
+				selfPoint = 'TOPLEFT',
+				grow = 'RIGHT',
+				yOffset = -2,
+			},
+			childConfig = {
+				width = 32,
+				height = 32,
+			},
+		},
+
 		aurabars = {
 			groupConfig = {
 				anchorFrameType = 'SELECTFRAME',

@@ -1,6 +1,4 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="init.lua"/>
-	<Script file="anchors.lua"/>
-
-	<Include file="dungeons\load.xml"/>
+	<Script file="teleports.lua"/>
 </Ui>

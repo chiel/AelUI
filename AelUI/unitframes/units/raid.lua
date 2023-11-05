@@ -111,6 +111,22 @@ addon.units.raid = {
 		local health = addon.elements.Health(self, unit)
 		health:SetAllPoints()
 
+		-- addon.elements.Power(self, unit)
+		-- self.Power:SetPoint('BOTTOMLEFT')
+		-- self.Power:SetPoint('BOTTOMRIGHT')
+		-- self.Power:SetHeight(4)
+		-- self.Power:SetStatusBarColor(unpack(self.colors.power.MANA))
+		-- self.Power.Override = UpdatePower
+
+		-- local buffs = CreateFrame('Frame', nil, self)
+		-- buffs:SetAllPoints()
+		-- buffs.size = 6
+		-- buffs.CustomFilter = CustomFilter
+		-- buffs.PostCreateIcon = PostCreateIcon
+		-- buffs.PostUpdateIcon = PostUpdateIcon
+		-- buffs.SetPosition = function() end
+		-- self.Buffs = buffs
+
 		local text = addon.elements.Text(self.Health, { size = 16 })
 		self:Tag(text, '[AelUI:raidtext]')
 		text:SetPoint('BOTTOM', self, 'BOTTOM', 0, 6)

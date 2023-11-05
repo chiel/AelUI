@@ -117,6 +117,15 @@ local defensives = {
 	},
 }
 
+local consumables = {
+	name = 'Consumables',
+	type = 'consumables',
+
+	icons = {
+		addon.weakauras.shared.refreshingHealingPotion,
+	},
+}
+
 addon.weakauras.classes.evoker = {
 	name = 'Evoker',
 	icon = 4574311,
@@ -237,6 +246,7 @@ addon.weakauras.classes.evoker = {
 				},
 				secondary,
 				defensives,
+				consumables,
 			},
 		},
 		{
