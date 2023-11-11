@@ -33,6 +33,10 @@ addon.weakauras.classes.monk = {
 							spellId = 325153,
 						},
 						{
+							name = 'Summon White Tiger Statue',
+							spellId = 388686,
+						},
+						{
 							name = 'Bonedust Brew',
 							spellId = 386276,
 						},
