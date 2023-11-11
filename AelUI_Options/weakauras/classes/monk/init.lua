@@ -43,6 +43,17 @@ addon.weakauras.classes.monk = {
 						{
 							name = 'Touch of Death',
 							spellId = 322109,
+							glow = {
+								type = 'overlay',
+							},
+							customConfig = function(aura)
+								aura.desaturate = true
+								table.insert(aura.conditions[3].changes, {
+									property = 'desaturate',
+								})
+
+								return aura
+							end,
 						},
 						{
 							name = 'Blackout Kick',
