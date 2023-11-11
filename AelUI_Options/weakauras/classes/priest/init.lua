@@ -33,6 +33,10 @@ addon.weakauras.classes.priest = {
 							spellId = 263165,
 						},
 						{
+							name = 'Dark Ascension',
+							spellId = 391109,
+						},
+						{
 							name = 'Void Eruption',
 							spellId = 228260,
 							customConfig = function(aura)
@@ -49,6 +53,15 @@ addon.weakauras.classes.priest = {
 
 								aura.triggers.disjunctive = 'custom'
 								aura.triggers.customTriggerLogic = 'function(t) return t[2] end'
+
+								aura.load = {
+									talent = {
+										multi = {
+											[103674] = true,
+										},
+									},
+									use_talent = false,
+								}
 
 								return aura
 							end,
@@ -69,6 +82,15 @@ addon.weakauras.classes.priest = {
 
 								aura.triggers.disjunctive = 'custom'
 								aura.triggers.customTriggerLogic = 'function(t) return t[2] end'
+
+								aura.load = {
+									talent = {
+										multi = {
+											[103674] = true,
+										},
+									},
+									use_talent = false,
+								}
 
 								return aura
 							end,
