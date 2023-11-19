@@ -1,0 +1,24 @@
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  package:
+    name: Package the UI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: montudor/action-zip@v1
+        with:
+          args: zip -r AelUI.zip AelUI AelUI_Options
+      - uses: marvinpinto/action-automatic-releases@v1.2.1
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: latest
+          prerelease: true
+          title: Development build
+          files: |
+            AelUI.zip
