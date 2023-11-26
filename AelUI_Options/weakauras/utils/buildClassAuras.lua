@@ -2,7 +2,7 @@ local addon = select(2, ...)
 
 local u = addon.weakauras.utils
 
-local internalVersion = 69
+local internalVersion = 70
 
 addon.weakauras.utils.buildClassAuras = function(data)
 	local classAuraId = 'AelUI - Class - ' .. data.name
@@ -41,10 +41,7 @@ addon.weakauras.utils.buildClassAuras = function(data)
 
 			for _, icon in ipairs(group.icons) do
 				local auraId = specAuraId .. ' - ' .. icon.name
-				local aura = u.buildSpellIconAura(icon, group.type)
-				aura.internalVersion = internalVersion
-				aura.id = auraId
-				aura.uid = auraId
+				local aura = u.buildSpellIconAura(auraId, icon, group.type)
 				aura.parent = groupAuraId
 
 				aura.load = Mixin(aura.load or {}, {

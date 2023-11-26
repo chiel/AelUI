@@ -2,10 +2,10 @@ local addon = select(2, ...)
 
 local u = addon.weakauras.utils
 
-addon.weakauras.utils.buildSpellIconAura = function(data, groupType)
+addon.weakauras.utils.buildSpellIconAura = function(id, data, groupType)
 	local glow = data.glow
 
-	local aura = u.buildIconAura({
+	local aura = u.buildIconAura(id, {
 		groupType = groupType,
 		showGlow = glow ~= nil,
 	})

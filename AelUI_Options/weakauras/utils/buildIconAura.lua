@@ -2,7 +2,7 @@ local addon = select(2, ...)
 
 local c = addon.weakauras.config
 
-addon.weakauras.utils.buildIconAura = function(options)
+addon.weakauras.utils.buildIconAura = function(id, options)
 	local options = options or {}
 	local showGlow = options.showGlow or false
 	local showProgress = options.showProgress or true
@@ -10,28 +10,15 @@ addon.weakauras.utils.buildIconAura = function(options)
 
 	local config = c.groupTypes[options.groupType].childConfig
 
-	local aura = {
-		regionType = 'icon',
+	local aura = LibWA.CreateIcon(id)
+	aura:SetSize(config.width or 40, config.height or 40)
+	aura:AddCooldown()
 
-		cooldown = true,
-		cooldownEdge = false,
-		cooldownSwipe = true,
-		cooldownTextDisabled = true,
-		inverse = true,
-
-		width = config.width or 40,
-		height = config.height or 40,
-
-		subRegions = {
-			{
-				type = 'subbackground',
-			},
-		},
-	}
+	local a = aura:Serialize()
 
 	-- action bar glow
 	if showGlow then
-		table.insert(aura.subRegions, {
+		table.insert(a.subRegions, {
 			type = 'subglow',
 			glow = false,
 			glowType = 'Proc',
@@ -40,7 +27,7 @@ addon.weakauras.utils.buildIconAura = function(options)
 
 	-- cooldown progress text
 	if showProgress then
-		table.insert(aura.subRegions, {
+		table.insert(a.subRegions, {
 			type = 'subtext',
 			text_text = '%p',
 
@@ -59,7 +46,7 @@ addon.weakauras.utils.buildIconAura = function(options)
 
 	-- stacks text
 	if showStacks then
-		table.insert(aura.subRegions, {
+		table.insert(a.subRegions, {
 			type = 'subtext',
 			text_text = '%s',
 
@@ -74,5 +61,5 @@ addon.weakauras.utils.buildIconAura = function(options)
 		})
 	end
 
-	return aura
+	return a
 end
