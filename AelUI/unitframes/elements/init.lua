@@ -6,7 +6,7 @@ local defaultBgColor = { 50 / 255, 50 / 255, 50 / 255 }
 
 function addon.elements.Backdrop(parent, color)
 	local bd = CreateFrame('Frame', nil, parent, 'BackdropTemplate')
-	bd:SetBackdrop { edgeFile = addon.media.border, edgeSize = 1 }
+	bd:SetBackdrop({ edgeFile = addon.media.border, edgeSize = 1 })
 	bd:SetBackdropBorderColor(0, 0, 0, 1)
 
 	local bg = bd:CreateTexture(nil, 'BORDER')

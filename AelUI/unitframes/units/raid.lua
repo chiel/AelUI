@@ -38,7 +38,7 @@ local function Position(raid)
 		end
 	end
 
-	local inCombat = UnitAffectingCombat 'player'
+	local inCombat = UnitAffectingCombat('player')
 	if not inCombat then
 		doUpdate()
 		return
@@ -46,11 +46,11 @@ local function Position(raid)
 
 	if not updatePending then
 		updatePending = true
-		local f = CreateFrame 'Frame'
+		local f = CreateFrame('Frame')
 		f:SetScript('OnEvent', function()
 			doUpdate()
 		end)
-		f:RegisterEvent 'PLAYER_REGEN_ENABLED'
+		f:RegisterEvent('PLAYER_REGEN_ENABLED')
 	end
 end
 
@@ -92,8 +92,8 @@ addon.units.raid = {
 
 		Position(raid)
 
-		local f = CreateFrame 'Frame'
-		f:RegisterEvent 'PLAYER_SPECIALIZATION_CHANGED'
+		local f = CreateFrame('Frame')
+		f:RegisterEvent('PLAYER_SPECIALIZATION_CHANGED')
 		f:SetScript('OnEvent', function(_, event)
 			if event == 'PLAYER_SPECIALIZATION_CHANGED' then
 				Position(raid)
@@ -102,7 +102,7 @@ addon.units.raid = {
 	end,
 
 	style = function(self, unit)
-		self:RegisterForClicks 'AnyUp'
+		self:RegisterForClicks('AnyUp')
 		self:SetScript('OnEnter', UnitFrame_OnEnter)
 		self:SetScript('OnLeave', UnitFrame_OnLeave)
 

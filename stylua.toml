@@ -1,2 +1,2 @@
-call_parentheses = "None"
+call_parentheses = "Always"
 quote_style = "ForceSingle"

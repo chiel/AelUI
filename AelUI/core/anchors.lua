@@ -24,9 +24,9 @@ local function createWidthUpdater(anchor, minWidth)
 		pendingWidth = -1
 	end
 
-	local updater = CreateFrame 'Frame'
+	local updater = CreateFrame('Frame')
 	updater:SetScript('OnEvent', update)
-	updater:RegisterEvent 'PLAYER_REGEN_ENABLED'
+	updater:RegisterEvent('PLAYER_REGEN_ENABLED')
 
 	return function(width)
 		if width < minWidth then
@@ -35,7 +35,7 @@ local function createWidthUpdater(anchor, minWidth)
 
 		pendingWidth = width
 
-		if not UnitAffectingCombat 'player' then
+		if not UnitAffectingCombat('player') then
 			update()
 		end
 	end

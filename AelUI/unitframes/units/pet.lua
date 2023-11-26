@@ -11,7 +11,7 @@ addon.units.pet = {
 	end,
 
 	style = function(self, unit)
-		self:RegisterForClicks 'AnyUp'
+		self:RegisterForClicks('AnyUp')
 		self:SetScript('OnEnter', UnitFrame_OnEnter)
 		self:SetScript('OnLeave', UnitFrame_OnLeave)
 

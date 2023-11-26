@@ -2,7 +2,7 @@ local addon = select(2, ...)
 
 local function CreatePip(element)
 	local frame = CreateFrame('Frame', nil, element, 'BackdropTemplate')
-	frame:SetBackdrop { edgeFile = addon.media.border, edgeSize = 1 }
+	frame:SetBackdrop({ edgeFile = addon.media.border, edgeSize = 1 })
 	frame:SetWidth(2)
 	frame:SetBackdropBorderColor(1, 1, 1)
 	return frame
@@ -20,7 +20,7 @@ function addon.elements.Castbar(self, unit)
 
 	local Spark = castbar:CreateTexture(nil, 'OVERLAY')
 	Spark:SetSize(10, 10)
-	Spark:SetBlendMode 'ADD'
+	Spark:SetBlendMode('ADD')
 	Spark:SetPoint('CENTER', castbar:GetStatusBarTexture(), 'RIGHT', 0, 0)
 
 	local options = { pixel = true, size = 8 }
@@ -30,7 +30,7 @@ function addon.elements.Castbar(self, unit)
 
 	local Time = addon.elements.Text(castbar, options)
 	Time:SetPoint('TOPRIGHT', backdrop, 'BOTTOMRIGHT', -4, -6)
-	Time:SetJustifyH 'RIGHT'
+	Time:SetJustifyH('RIGHT')
 
 	backdrop.Spark = Spark
 	backdrop.Text = Text

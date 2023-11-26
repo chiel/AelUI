@@ -5,7 +5,7 @@ local c = addon.config.weakauras
 local anchorConfig = addon.config.core.anchors
 local anchors = addon.core.anchors
 
-local playerClass = select(2, UnitClass 'player')
+local playerClass = select(2, UnitClass('player'))
 
 local primaryRegions = {
 	{ name = 'AelUI - Castbar', resize = true },

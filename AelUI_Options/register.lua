@@ -12,5 +12,5 @@ addon.dialog:SetDefaultSize('AelUI', 800, 600)
 addon.registry:RegisterOptionsTable('AelUI', options, false)
 
 addon.console:RegisterChatCommand('aelui', function()
-	addon.dialog:Open 'AelUI'
+	addon.dialog:Open('AelUI')
 end)

@@ -1,6 +1,6 @@
 local addon = select(2, ...)
 
-local playerClass = select(2, UnitClass 'player')
+local playerClass = select(2, UnitClass('player'))
 
 local debuffPrioByClass = {
 	['DRUID'] = { 'Curse', 'Poison' },
@@ -25,13 +25,13 @@ local debuffPrioBySpec = {
 
 function addon.elements.DispelBorder(self, unit)
 	local border = CreateFrame('Frame', nil, self, 'BackdropTemplate')
-	border:SetBackdrop { edgeFile = addon.media.border, edgeSize = 2 }
+	border:SetBackdrop({ edgeFile = addon.media.border, edgeSize = 2 })
 	border:SetBackdropBorderColor(0, 0, 0, 1)
 	border:SetPoint('TOPLEFT', -2, 2)
 	border:SetPoint('BOTTOMRIGHT', 2, -2)
 	border:SetBackdropBorderColor(0, 0, 0, 0)
 
-	border:RegisterEvent 'UNIT_AURA'
+	border:RegisterEvent('UNIT_AURA')
 	border:SetScript('OnEvent', function(_, event, unit)
 		if event ~= 'UNIT_AURA' or not UnitIsUnit(self.unit, unit) then
 			return

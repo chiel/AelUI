@@ -3,7 +3,7 @@ local addon = select(2, ...)
 local u = addon.weakauras.utils
 
 addon.weakauras.utils.buildAuraBar = function(data, groupType)
-	local aura = u.buildBarAura { showSpark = true }
+	local aura = u.buildBarAura({ showSpark = true })
 
 	aura.barColor = {
 		data.color[1] / 255,

@@ -27,7 +27,7 @@ addon.units.boss = {
 	end,
 
 	style = function(self, unit)
-		self:RegisterForClicks 'AnyUp'
+		self:RegisterForClicks('AnyUp')
 		self:SetScript('OnEnter', UnitFrame_OnEnter)
 		self:SetScript('OnLeave', UnitFrame_OnLeave)
 
@@ -48,7 +48,7 @@ addon.units.boss = {
 
 		local name = addon.elements.Text(self.Health, { size = round(ufConfig.height * 0.5) })
 		name:SetPoint('BOTTOMRIGHT', self, 'TOPRIGHT', -round(ufConfig.height * 0.1), -(ufConfig.height * 0.15))
-		name:SetJustifyH 'RIGHT'
+		name:SetJustifyH('RIGHT')
 		self:Tag(name, '[AelUI:name]')
 		health.PostUpdateColor = function(r, g, b)
 			name:SetTextColor(r, g, b)

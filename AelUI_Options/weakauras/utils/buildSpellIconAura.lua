@@ -5,10 +5,10 @@ local u = addon.weakauras.utils
 addon.weakauras.utils.buildSpellIconAura = function(data, groupType)
 	local glow = data.glow
 
-	local aura = u.buildIconAura {
+	local aura = u.buildIconAura({
 		groupType = groupType,
 		showGlow = glow ~= nil,
-	}
+	})
 
 	aura.triggers = {
 		disjunctive = 'any',

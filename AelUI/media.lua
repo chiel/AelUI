@@ -10,7 +10,7 @@ addon.media = {
 	texturePixel = [[Interface\AddOns\AelUI\media\statusbar-pixel]],
 }
 
-local LSM = LibStub 'LibSharedMedia-3.0'
+local LSM = LibStub('LibSharedMedia-3.0')
 local MT = LSM.MediaType
 LSM:Register(MT.FONT, 'AelUI', addon.media.font)
 LSM:Register(MT.FONT, 'AelUI Bold', addon.media.fontBold)

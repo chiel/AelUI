@@ -61,7 +61,7 @@ addon.weakauras.utils.buildClassAuras = function(data)
 
 		if spec.auraBars ~= nil then
 			local groupAuraId = specAuraId .. ' - Aura Bars'
-			local groupAura = u.buildGroupAura { type = 'aurabars' }
+			local groupAura = u.buildGroupAura({ type = 'aurabars' })
 			groupAura.internalVersion = internalVersion
 			groupAura.id = groupAuraId
 			groupAura.uid = groupAuraId

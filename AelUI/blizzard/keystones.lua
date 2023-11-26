@@ -7,10 +7,10 @@ local function ScaleKeystoneFrame()
 	ckf:SetPoint('BOTTOM', addon.uiAnchor, 'TOP', 0, 120)
 end
 
-local f = CreateFrame 'Frame'
+local f = CreateFrame('Frame')
 f:SetScript('OnEvent', function(self, event, name)
 	if name == 'Blizzard_ChallengesUI' then
 		ChallengesKeystoneFrame:HookScript('OnShow', ScaleKeystoneFrame)
 	end
 end)
-f:RegisterEvent 'ADDON_LOADED'
+f:RegisterEvent('ADDON_LOADED')

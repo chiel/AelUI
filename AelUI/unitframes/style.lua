@@ -44,7 +44,7 @@ local getPoints = function(style)
 end
 
 addon.unitframes.style = function(self, unit)
-	self:RegisterForClicks 'AnyUp'
+	self:RegisterForClicks('AnyUp')
 	self:SetScript('OnEnter', UnitFrame_OnEnter)
 	self:SetScript('OnLeave', UnitFrame_OnLeave)
 
@@ -86,7 +86,7 @@ addon.unitframes.style = function(self, unit)
 		name = addon.elements.Text(self.Health, { size = round(ufConfig.height * 0.5) })
 		name:SetPoint(unpack(points.name(self)))
 		if style == 'mirror' then
-			name:SetJustifyH 'RIGHT'
+			name:SetJustifyH('RIGHT')
 		end
 		self:Tag(name, '[AelUI:name]')
 		health.PostUpdateColor = function(r, g, b)
