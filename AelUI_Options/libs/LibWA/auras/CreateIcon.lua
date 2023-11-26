@@ -21,6 +21,12 @@ LibWA.CreateIcon = function(id)
 		aura.table.inverse = true
 	end
 
+	aura.AddGlow = function(self)
+		local glow = addon.regions.CreateGlow()
+		table.insert(self.subRegions, glow)
+		return glow
+	end
+
 	aura.Serialize = function(self)
 		local t = aura.table
 		t.subRegions = {}

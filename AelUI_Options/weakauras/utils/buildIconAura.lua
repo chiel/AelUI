@@ -14,16 +14,11 @@ addon.weakauras.utils.buildIconAura = function(id, options)
 	aura:SetSize(config.width or 40, config.height or 40)
 	aura:AddCooldown()
 
-	local a = aura:Serialize()
-
-	-- action bar glow
 	if showGlow then
-		table.insert(a.subRegions, {
-			type = 'subglow',
-			glow = false,
-			glowType = 'Proc',
-		})
+		aura:AddGlow()
 	end
+
+	local a = aura:Serialize()
 
 	-- cooldown progress text
 	if showProgress then
