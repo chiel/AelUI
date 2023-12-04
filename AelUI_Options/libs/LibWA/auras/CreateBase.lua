@@ -10,5 +10,9 @@ addon.auras.CreateBase = function(id)
 		},
 	}
 
+	aura.SetParent = function(self, parentId)
+		self.table.parent = parentId
+	end
+
 	return aura
 end

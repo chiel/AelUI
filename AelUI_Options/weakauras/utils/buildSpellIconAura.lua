@@ -10,14 +10,16 @@ addon.weakauras.utils.buildSpellIconAura = function(id, data, groupType)
 		showGlow = glow ~= nil,
 	})
 
-	aura.triggers = {
+	local a = aura:Serialize()
+
+	a.triggers = {
 		disjunctive = 'any',
 	}
 
 	local spellTriggerIndex = 1
 	if data.buffId ~= nil then
 		spellTriggerIndex = 2
-		aura.triggers[1] = {
+		a.triggers[1] = {
 			trigger = {
 				type = 'aura2',
 				unit = 'player',
@@ -29,7 +31,7 @@ addon.weakauras.utils.buildSpellIconAura = function(id, data, groupType)
 		}
 	end
 
-	aura.triggers[spellTriggerIndex] = {
+	a.triggers[spellTriggerIndex] = {
 		trigger = {
 			type = 'spell',
 			event = 'Cooldown Progress (Spell)',
@@ -38,7 +40,7 @@ addon.weakauras.utils.buildSpellIconAura = function(id, data, groupType)
 		},
 	}
 
-	aura.conditions = {
+	a.conditions = {
 		{
 			check = {
 				trigger = -2,
@@ -83,13 +85,13 @@ addon.weakauras.utils.buildSpellIconAura = function(id, data, groupType)
 	}
 
 	if data.buffId ~= nil then
-		table.insert(aura.conditions[1].check.checks, {
+		table.insert(a.conditions[1].check.checks, {
 			trigger = 1,
 			variable = 'show',
 			value = 0,
 		})
 
-		table.insert(aura.conditions, {
+		table.insert(a.conditions, {
 			check = {
 				trigger = 1,
 				variable = 'show',
@@ -123,7 +125,7 @@ addon.weakauras.utils.buildSpellIconAura = function(id, data, groupType)
 				table.insert(auraIds, tostring(auraId))
 			end
 
-			aura.triggers[spellTriggerIndex + 1] = {
+			a.triggers[spellTriggerIndex + 1] = {
 				trigger = {
 					type = 'aura2',
 					unit = glow.unit or 'player',
@@ -151,7 +153,7 @@ addon.weakauras.utils.buildSpellIconAura = function(id, data, groupType)
 		end
 
 		if glow.type == 'overlay' then
-			aura.triggers[spellTriggerIndex + 1] = {
+			a.triggers[spellTriggerIndex + 1] = {
 				trigger = {
 					type = 'spell',
 					event = 'Spell Activation Overlay',
@@ -160,15 +162,15 @@ addon.weakauras.utils.buildSpellIconAura = function(id, data, groupType)
 			}
 		end
 
-		table.insert(aura.conditions, {
+		table.insert(a.conditions, {
 			check = check,
 			changes = changes,
 		})
 	end
 
 	if data.customConfig ~= nil then
-		aura = data.customConfig(aura)
+		a = data.customConfig(a)
 	end
 
-	return aura
+	return a
 end

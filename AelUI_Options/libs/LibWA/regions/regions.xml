@@ -2,4 +2,5 @@
 	<Script file="init.lua"/>
 	<Script file="CreateBackground.lua"/>
 	<Script file="CreateGlow.lua"/>
+	<Script file="CreateText.lua"/>
 </Ui>

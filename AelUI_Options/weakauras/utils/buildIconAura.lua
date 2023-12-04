@@ -18,43 +18,38 @@ addon.weakauras.utils.buildIconAura = function(id, options)
 		aura:AddGlow()
 	end
 
-	local a = aura:Serialize()
-
 	-- cooldown progress text
 	if showProgress then
-		table.insert(a.subRegions, {
-			type = 'subtext',
-			text_text = '%p',
-
-			text_font = 'AelUI Bold',
-			text_fontSize = 14,
-			text_justify = 'CENTER',
-
-			text_anchorPoint = 'BOTTOM',
-			text_anchorXOffset = 0,
-			text_anchorYOffset = -1,
-			text_selfPoint = 'BOTTOM',
-
-			text_text_format_p_time_dynamic_threshold = 0,
+		aura:AddText('%p', {
+			font = 'AelUI Bold',
+			size = 14,
+			justify = 'CENTER',
+			anchor = {
+				from = 'BOTTOM',
+				to = 'BOTTOM',
+				x = 0,
+				y = -1,
+			},
+			format = {
+				dynamic_threshold = 0,
+			},
 		})
 	end
 
 	-- stacks text
 	if showStacks then
-		table.insert(a.subRegions, {
-			type = 'subtext',
-			text_text = '%s',
-
-			text_font = 'AelUI Bold',
-			text_fontSize = 12,
-			text_justify = 'CENTER',
-
-			text_anchorPoint = 'TOPRIGHT',
-			text_anchorXOffset = -2,
-			text_anchorYOffset = -2,
-			text_selfPoint = 'TOPRIGHT',
+		aura:AddText('%s', {
+			font = 'AelUI Bold',
+			size = 12,
+			justify = 'RIGHT',
+			anchor = {
+				from = 'TOPRIGHT',
+				to = 'TOPRIGHT',
+				x = -2,
+				y = -2,
+			},
 		})
 	end
 
-	return a
+	return aura
 end

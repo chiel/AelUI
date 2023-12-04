@@ -27,6 +27,16 @@ LibWA.CreateIcon = function(id)
 		return glow
 	end
 
+	aura.AddText = function(self, ...)
+		local text = addon.regions.CreateText(...)
+		table.insert(self.subRegions, text)
+		return text
+	end
+
+	-- aura.AddTrigger = function(self)
+	-- 	print('add trigger', self)
+	-- end
+
 	aura.Serialize = function(self)
 		local t = aura.table
 		t.subRegions = {}
