@@ -1,5 +1,3 @@
-local addon = select(2, ...)
-
 oUF.Tags.Events['AelUI:currenthealth'] = 'UNIT_HEALTH UNIT_MAXHEALTH'
 oUF.Tags.Methods['AelUI:currenthealth'] = function(unit)
 	local hp = UnitHealth(unit)

@@ -1,5 +1,7 @@
 local addon = select(2, ...)
 
+local m = addon.core.media
+
 local function CreateUpdateHealerPower(backdrop)
 	return function(self, event, unit)
 		if unit ~= self.unit then
@@ -23,7 +25,7 @@ function addon.elements.Power(self, unit, options)
 	local backdrop = addon.elements.Backdrop(self)
 
 	local power = CreateFrame('StatusBar', nil, backdrop)
-	power:SetStatusBarTexture(addon.media.texture)
+	power:SetStatusBarTexture(m.statusbars.default.file)
 	power.colorPower = true
 	power.frequentUpdates = true
 	power:SetPoint('TOPLEFT', 1, -1)

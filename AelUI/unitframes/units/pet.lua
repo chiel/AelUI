@@ -1,7 +1,7 @@
 local addon = select(2, ...)
 
-local ufConfig = addon.config.unitframes
-local round = addon.utils.Round
+local ufConfig = addon.core.config.unitframes
+local round = addon.core.utils.round
 
 addon.units.pet = {
 	spawn = function(self)

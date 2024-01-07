@@ -1,3 +1,3 @@
 local addon = select(2, ...)
 
-AelUI = {}
+addon.core.utils = {}

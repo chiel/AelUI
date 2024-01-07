@@ -1,7 +1,7 @@
 local addon = select(2, ...)
 
-local ufConfig = addon.config.unitframes
-local round = addon.utils.Round
+local ufConfig = addon.core.config.unitframes
+local round = addon.core.utils.round
 local size = round(ufConfig.height * 0.8)
 
 function addon.elements.Resurrect(self, unit)

@@ -1,7 +1,7 @@
 local addon = select(2, ...)
 
-local ufConfig = addon.config.unitframes
-local round = addon.utils.Round
+local ufConfig = addon.core.config.unitframes
+local round = addon.core.utils.round
 
 local getPoints = function(style)
 	if style == 'mirror' then
@@ -48,7 +48,7 @@ addon.unitframes.style = function(self, unit)
 	self:SetScript('OnEnter', UnitFrame_OnEnter)
 	self:SetScript('OnLeave', UnitFrame_OnLeave)
 
-	self.colors = addon.colors
+	self.colors = addon.core.colors
 
 	local unitConfig = addon.unitframes.config[unit] or {}
 	local style = unitConfig.style

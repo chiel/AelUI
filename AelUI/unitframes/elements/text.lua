@@ -1,5 +1,7 @@
 local addon = select(2, ...)
 
+local m = addon.core.media
+
 function addon.elements.Text(parent, options)
 	local options = options or {}
 	options.size = options.size or 20
@@ -9,12 +11,12 @@ function addon.elements.Text(parent, options)
 		style = 'pixel'
 	end
 
-	local font = addon.media.font
+	local font = m.fonts.default.file
 	if style == 'bold' then
-		font = addon.media.fontBold
+		font = m.fonts.bold.file
 	end
 	if style == 'pixel' then
-		font = addon.media.fontPixel
+		font = m.fonts.pixel.file
 	end
 
 	local flags = style == 'pixel' and 'MONOCHROME,OUTLINE' or 'OUTLINE'

@@ -1,0 +1,7 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="init.lua"/>
+	<Script file="createUpdater.lua"/>
+	<Script file="primary.lua"/>
+	<Script file="secondary.lua"/>
+	<Script file="group.lua"/>
+</Ui>

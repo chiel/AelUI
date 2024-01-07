@@ -1,0 +1,7 @@
+## Interface: 11500
+## Title: AelUI: Options
+## Author: Aelen
+## Version: 0.1
+
+core\load.xml
+classic\load.xml

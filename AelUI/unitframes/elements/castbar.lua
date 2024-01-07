@@ -1,8 +1,10 @@
 local addon = select(2, ...)
 
+local m = addon.core.media
+
 local function CreatePip(element)
 	local frame = CreateFrame('Frame', nil, element, 'BackdropTemplate')
-	frame:SetBackdrop({ edgeFile = addon.media.border, edgeSize = 1 })
+	frame:SetBackdrop({ edgeFile = m.borders.default.file, edgeSize = 1 })
 	frame:SetWidth(2)
 	frame:SetBackdropBorderColor(1, 1, 1)
 	return frame
@@ -10,7 +12,7 @@ end
 
 function addon.elements.Castbar(self, unit)
 	local castbar = CreateFrame('StatusBar', nil, self)
-	castbar:SetStatusBarTexture(addon.media.texture)
+	castbar:SetStatusBarTexture(m.statusbars.default.file)
 	castbar:SetStatusBarColor(32 / 255, 32 / 255, 32 / 255)
 
 	local backdrop = addon.elements.Backdrop(castbar)

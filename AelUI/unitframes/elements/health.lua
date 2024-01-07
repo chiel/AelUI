@@ -1,10 +1,12 @@
 local addon = select(2, ...)
 
+local m = addon.core.media
+
 function addon.elements.Health(self, unit)
 	local backdrop = addon.elements.Backdrop(self)
 
 	local health = CreateFrame('StatusBar', nil, backdrop)
-	health:SetStatusBarTexture(addon.media.texture)
+	health:SetStatusBarTexture(m.statusbars.default.file)
 	health.colorTapping = unit ~= 'raid'
 	health.colorDisconnected = true
 	health.colorClass = true

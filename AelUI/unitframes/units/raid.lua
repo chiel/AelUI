@@ -1,12 +1,14 @@
 local addon = select(2, ...)
 
+local u = addon.core.utils
+
 local healerSize = { 88, 66, 4 }
 local normalSize = { 68, 56, 4 }
 local updatePending = false
 
 local function Position(raid)
 	local function doUpdate()
-		local isHealer = addon.utils.GetSpecRole() == 'HEALER'
+		local isHealer = u.getSpecRole() == 'HEALER'
 		for i = 1, NUM_RAID_GROUPS do
 			raid[i]:ClearAllPoints()
 
@@ -56,7 +58,7 @@ end
 
 addon.units.raid = {
 	spawn = function(self)
-		local isHealer = addon.utils.GetSpecRole() == 'HEALER'
+		local isHealer = u.getSpecRole() == 'HEALER'
 		local width = isHealer and healerSize[1] or normalSize[1]
 		local height = isHealer and healerSize[2] or normalSize[2]
 

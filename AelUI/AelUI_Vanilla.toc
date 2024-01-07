@@ -1,0 +1,8 @@
+## Interface: 11500
+## Title: AelUI: Classic
+## Author: Aelen
+## Version: 0.1
+
+core\load.xml
+classic\load.xml
+uiscale.lua

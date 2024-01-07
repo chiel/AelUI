@@ -1,5 +1,7 @@
 local addon = select(2, ...)
 
+local m = addon.core.media
+
 local playerClass = select(2, UnitClass('player'))
 
 local debuffPrioByClass = {
@@ -25,7 +27,7 @@ local debuffPrioBySpec = {
 
 function addon.elements.DispelBorder(self, unit)
 	local border = CreateFrame('Frame', nil, self, 'BackdropTemplate')
-	border:SetBackdrop({ edgeFile = addon.media.border, edgeSize = 2 })
+	border:SetBackdrop({ edgeFile = m.borders.default.file, edgeSize = 2 })
 	border:SetBackdropBorderColor(0, 0, 0, 1)
 	border:SetPoint('TOPLEFT', -2, 2)
 	border:SetPoint('BOTTOMRIGHT', 2, -2)

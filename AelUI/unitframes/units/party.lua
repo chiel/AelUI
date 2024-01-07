@@ -1,6 +1,6 @@
 local addon = select(2, ...)
 
-local ufConfig = addon.config.unitframes
+local ufConfig = addon.core.config.unitframes
 
 addon.units.party = {
 	spawn = function(self)

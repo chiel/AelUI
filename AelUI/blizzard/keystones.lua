@@ -1,10 +1,12 @@
 local addon = select(2, ...)
 
+local anchors = addon.core.anchors
+
 local function ScaleKeystoneFrame()
 	local ckf = ChallengesKeystoneFrame
 	ckf:SetScale(0.75)
 	ckf:ClearAllPoints()
-	ckf:SetPoint('BOTTOM', addon.uiAnchor, 'TOP', 0, 120)
+	ckf:SetPoint('BOTTOM', anchors.primary, 'TOP', 0, 120)
 end
 
 local f = CreateFrame('Frame')

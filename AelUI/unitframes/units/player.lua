@@ -1,14 +1,14 @@
 local addon = select(2, ...)
 
-local ufConfig = addon.config.unitframes
+local ufConfig = addon.core.config.unitframes
 local anchors = addon.core.anchors
-local round = addon.utils.Round
+local round = addon.core.utils.round
 
 addon.units.player = {
 	spawn = function(self)
 		local f = self:Spawn('player', 'AelUIPlayer')
 		f:SetSize(ufConfig.height * 8, ufConfig.height)
-		f:SetPoint('TOPRIGHT', addon.uiAnchor, 'TOPLEFT', -20, 0)
+		f:SetPoint('TOPRIGHT', anchors.primary, 'TOPLEFT', -20, 0)
 	end,
 
 	style = function(self, unit)

@@ -1,0 +1,8 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="init.lua"/>
+	<Include file="backgrounds\load.xml"/>
+	<Include file="borders\load.xml" />
+	<Include file="fonts\load.xml"/>
+	<Include file="statusbars\load.xml"/>
+	<Script file="register.lua"/>
+</Ui>
