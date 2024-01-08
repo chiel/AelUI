@@ -4,6 +4,7 @@
 ## Version: 0.1
 ## Dependencies: oUF
 
+libs\load_retail.xml
 core\load.xml
 retail\load.xml
 uiscale.lua

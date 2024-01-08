@@ -1,5 +1,4 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
-	<Include file="libs\load.xml"/>
 	<Script file="init.lua"/>
 	<Include file="colors\load.xml"/>
 	<Include file="media\load.xml"/>

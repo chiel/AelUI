@@ -3,6 +3,7 @@
 ## Author: Aelen
 ## Version: 0.1
 
+libs\load_classic.xml
 core\load.xml
 classic\load.xml
 uiscale.lua
