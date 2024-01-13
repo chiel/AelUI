@@ -6,5 +6,6 @@
 	<Include file="events\load.xml"/>
 	<Include file="utils\load.xml"/>
 	<Include file="anchors\load.xml"/>
+	<Include file="unitframes\load.xml"/>
 	<Include file="weakauras\load.xml"/>
 </Ui>

@@ -1,7 +1,7 @@
 local addon = select(2, ...)
 
 local c = addon.core.config.anchors.primary
-local anchorOffset = 180
+local anchorOffset = 220
 
 local primaryAnchor = CreateFrame('Frame', 'AelUIPrimaryAnchor', UIParent)
 primaryAnchor:SetPoint('TOP', UIParent, 'CENTER', 0, -anchorOffset)
