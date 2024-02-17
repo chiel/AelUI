@@ -1,4 +1,4 @@
-## Interface: 11500
+## Interface: 11501
 ## Title: AelUI: Classic
 ## Author: Aelen
 ## Version: 0.1
