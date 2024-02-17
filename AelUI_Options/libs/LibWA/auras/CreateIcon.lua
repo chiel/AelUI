@@ -1,51 +1,28 @@
 local addon = select(2, ...)
 
 LibWA.CreateIcon = function(id)
-	local aura = addon.auras.CreateBase(id)
-	aura.table.regionType = 'icon'
-	aura.subRegions = {
-		addon.regions.CreateBackground(),
+	local aura = {
+		base = addon.auras.CreateBase(id),
+		conditions = addon.conditions.Create(),
+		display = addon.display.Create(),
+		load = addon.load.Create(),
+		triggers = addon.triggers.Create(),
 	}
 
-	aura.SetSize = function(self, width, height)
-		aura.table.width = width
-		aura.table.height = height
+	aura.SetParent = function(self, ...)
+		self.base:SetParent(...)
 	end
-
-	aura.AddCooldown = function(self, options)
-		options = options or {}
-		aura.table.cooldown = true
-		aura.table.cooldownEdge = false
-		aura.table.cooldownSwipe = true
-		aura.table.cooldownTextDisabled = true
-		aura.table.inverse = true
-	end
-
-	aura.AddGlow = function(self)
-		local glow = addon.regions.CreateGlow()
-		table.insert(self.subRegions, glow)
-		return glow
-	end
-
-	aura.AddText = function(self, ...)
-		local text = addon.regions.CreateText(...)
-		table.insert(self.subRegions, text)
-		return text
-	end
-
-	-- aura.AddTrigger = function(self)
-	-- 	print('add trigger', self)
-	-- end
 
 	aura.Serialize = function(self)
-		local t = aura.table
-		t.subRegions = {}
-
-		for _, subRegion in ipairs(self.subRegions) do
-			table.insert(t.subRegions, subRegion:Serialize())
-		end
-
-		return t
+		local r = self.base:Serialize()
+		r.regionType = 'icon'
+		return Mixin(
+			r,
+			aura.display:Serialize(),
+			aura.triggers:Serialize(),
+			aura.conditions:Serialize(),
+			aura.load:Serialize()
+		)
 	end
 
 	return aura

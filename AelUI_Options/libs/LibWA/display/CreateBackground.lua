@@ -1,11 +1,9 @@
 local addon = select(2, ...)
 
-addon.regions.CreateGlow = function()
+addon.display.CreateBackground = function()
 	local aura = {
 		table = {
-			type = 'subglow',
-			glow = false,
-			glowType = 'Proc',
+			type = 'subbackground',
 		},
 	}
 

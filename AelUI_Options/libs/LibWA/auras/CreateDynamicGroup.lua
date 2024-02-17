@@ -1,30 +1,42 @@
 local addon = select(2, ...)
 
 LibWA.CreateDynamicGroup = function(id)
-	local aura = addon.auras.CreateBase(id)
-	aura.table.regionType = 'dynamicgroup'
-	aura.table.controlledChildren = {}
-	aura.children = {}
+	local aura = {
+		base = addon.auras.CreateGroupBase(id),
+	}
 
-	aura.AddChild = function(self, child)
-		child:SetParent(self.id)
-		table.insert(self.children, child)
-		table.insert(self.table.controlledChildren, child.id)
+	aura.SetGrow = function(self, grow)
+		self.grow = grow
+	end
+
+	aura.AddChild = function(self, ...)
+		self.base:AddChild(...)
+	end
+
+	aura.SetAnchor = function(self, ...)
+		self.base:SetAnchor(...)
+	end
+
+	aura.SetIcon = function(self, ...)
+		self.base:SetIcon(...)
+	end
+
+	aura.SetParent = function(self, ...)
+		self.base:SetParent(...)
 	end
 
 	aura.Serialize = function(self)
-		local childAuras = {}
-		for _, child in ipairs(self.children) do
-			local boop, grandChildren = child:Serialize()
-			table.insert(childAuras, boop)
-			if grandChildren ~= nil then
-				for _, grandChild in ipairs(grandChildren) do
-					table.insert(childAuras, grandChild)
-				end
-			end
+		local r, rc = self.base:Serialize()
+		r.regionType = 'dynamicgroup'
+
+		if self.grow ~= nil then
+			r.grow = self.grow.type
+			r.growOn = self.grow.on
+			r.customGrow = self.grow.custom
+			r.align = self.grow.align
 		end
 
-		return self.table, childAuras
+		return r, rc
 	end
 
 	return aura

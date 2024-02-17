@@ -1,6 +1,6 @@
 local addon = select(2, ...)
 
-addon.regions.CreateText = function(text, options)
+addon.display.CreateText = function(text, options)
 	local o = options or {}
 
 	local aura = {
