@@ -1,3 +1,3 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-addon.core.unitframes = {}
+ns.core.unitframes = {}

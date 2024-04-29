@@ -1,8 +1,8 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-local m = addon.core.media
+local m = ns.core.media
 
-addon.core.unitframes.elements.text = function(self, options)
+ns.core.unitframes.elements.text = function(self, options)
 	local o = options or {}
 	o.size = options.size or 20
 	o.style = options.style or 'normal'

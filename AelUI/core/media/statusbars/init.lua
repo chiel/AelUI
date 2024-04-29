@@ -1,6 +1,6 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-addon.core.media.statusbars = {
+ns.core.media.statusbars = {
 	default = {
 		name = 'AelUI Bar',
 		file = [[Interface\AddOns\AelUI\core\media\statusbars\statusbar]],

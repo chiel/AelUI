@@ -1,6 +1,6 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-addon.core.unitframes.elements.masterlooter = function(self, unit)
+ns.core.unitframes.elements.masterlooter = function(self, unit)
 	local icon = self:CreateTexture(nil, 'OVERLAY')
 	icon:SetSize(16, 16)
 

@@ -1,6 +1,4 @@
-local addon = select(2, ...)
-
-local width, height = GetPhysicalScreenSize()
+local ns = select(2, ...)
 
 local icons = {
 	spacing = 2,
@@ -29,10 +27,9 @@ local anchors = {
 	},
 }
 
-addon.core.config = {
+ns.core.config = {
 	anchors = anchors,
 	icons = icons,
-	screenSize = { width = width, height = height },
 	unitframes = {
 		height = p.size,
 	},

@@ -1,1 +1,3 @@
-print('retail/init')
+local ns = select(2, ...)
+
+ns.retail = {}

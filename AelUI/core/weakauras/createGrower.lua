@@ -1,6 +1,6 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-addon.core.weakauras.createGrower = function(iconSize, iconSpacing, callback)
+ns.core.weakauras.createGrower = function(iconSize, iconSpacing, callback)
 	local prevWidth = -1
 
 	return function(newPositions, activeRegions)

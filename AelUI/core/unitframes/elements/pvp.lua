@@ -1,6 +1,6 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-addon.core.unitframes.elements.pvp = function(self, unit)
+ns.core.unitframes.elements.pvp = function(self, unit)
 	local icon = self:CreateTexture(nil, 'ARTWORK', nil, 1)
 	icon:SetSize(42, 42)
 

@@ -1,9 +1,6 @@
-local addon = select(2, ...)
-
-local offsetX = -((40 * 8) + 20 + 4)
-local offsetY = 40 * (5 + 2 + (1.5 * 4))
+local ns = select(2, ...)
 
 local groupAnchor = CreateFrame('Frame', 'AelUIGroupAnchor', UIParent)
-groupAnchor:SetPoint('TOPRIGHT', addon.core.anchors.primary, 'TOPLEFT', offsetX, offsetY)
-groupAnchor:SetSize(1, 1)
-addon.core.anchors.group = groupAnchor
+groupAnchor:SetPoint('TOP', ns.core.anchors.primary, 'BOTTOM', 0, -100)
+groupAnchor:SetSize((100 * 5) + (4 * 4), 70)
+ns.core.anchors.group = groupAnchor

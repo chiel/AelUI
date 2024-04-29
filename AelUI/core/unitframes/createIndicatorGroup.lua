@@ -1,8 +1,8 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-local u = addon.core.utils
+local u = ns.core.utils
 
-addon.core.unitframes.createIndicatorGroup = function(parent)
+ns.core.unitframes.createIndicatorGroup = function(parent, mirror)
 	local indicators = {}
 	local anchor = nil
 
@@ -20,7 +20,11 @@ addon.core.unitframes.createIndicatorGroup = function(parent)
 			if i:IsShown() then
 				local w = i:GetSize()
 
-				i:SetPoint('LEFT', offsetX, offsetY or 0)
+				if mirror then
+					i:SetPoint('RIGHT', -offsetX, offsetY or 0)
+				else
+					i:SetPoint('LEFT', offsetX, offsetY or 0)
+				end
 				offsetX = offsetX + u.round(w + 2)
 				anchor = i
 			end

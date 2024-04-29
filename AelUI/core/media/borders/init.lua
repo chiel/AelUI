@@ -1,6 +1,6 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-addon.core.media.borders = {
+ns.core.media.borders = {
 	default = {
 		name = 'AelUI Border',
 		file = [[Interface\Buttons\WHITE8X8]],

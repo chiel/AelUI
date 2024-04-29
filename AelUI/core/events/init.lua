@@ -1,4 +1,4 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
 local events = {}
 
@@ -10,7 +10,7 @@ f:SetScript('OnEvent', function(self, event, ...)
 	end
 end)
 
-addon.core.events = {
+ns.core.events = {
 	register = function(type, callback)
 		if events[type] == nil then
 			f:RegisterEvent(type)

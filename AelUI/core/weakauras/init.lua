@@ -1,3 +1,4 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-addon.core.weakauras = {}
+ns.core.weakauras = {}
+AelUI.weakauras = {}

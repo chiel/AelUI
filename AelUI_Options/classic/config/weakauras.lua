@@ -16,4 +16,22 @@ local config = {
 	},
 }
 
+local lastIndex = 0
+
+for key, classData in pairs(addon.classic.weakauras.classes) do
+	lastIndex = lastIndex + 1
+	config.args[key] = {
+		order = lastIndex,
+		type = 'execute',
+		name = classData.name,
+		desc = 'Import ' .. classData.name .. ' WeakAuras',
+		func = function()
+			local data, children = addon.classic.weakauras.convertClassData(classData)
+			addon.core.weakauras.import(data, children, function()
+				addon.console:Printf('[AelUI] WeakAuras group %s done', classData.name)
+			end)
+		end,
+	}
+end
+
 addon.core.config.addSection('weakauras', config)

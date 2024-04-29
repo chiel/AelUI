@@ -1,6 +1,6 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-addon.core.media.fonts = {
+ns.core.media.fonts = {
 	default = {
 		name = 'AelUI',
 		file = [[Interface\AddOns\AelUI\core\media\fonts\RobotoCondensed-Regular.ttf]],

@@ -1,0 +1,5 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="anchor.lua"/>
+	<Script file="weakauras.lua"/>
+	<Script file="register.lua"/>
+</Ui>

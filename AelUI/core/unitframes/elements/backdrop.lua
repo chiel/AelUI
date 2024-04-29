@@ -1,10 +1,10 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-local m = addon.core.media
+local m = ns.core.media
 
 local defaultBgColor = { 50 / 255, 50 / 255, 50 / 255 }
 
-addon.core.unitframes.elements.backdrop = function(self)
+ns.core.unitframes.elements.backdrop = function(self)
 	local bd = CreateFrame('Frame', nil, self, 'BackdropTemplate')
 	bd:SetBackdrop({ edgeFile = m.borders.default.file, edgeSize = 1 })
 	bd:SetBackdropBorderColor(0, 0, 0, 1)

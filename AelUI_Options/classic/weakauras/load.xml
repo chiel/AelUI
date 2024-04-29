@@ -1,4 +1,6 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="init.lua"/>
+	<Include file="config\load.xml"/>
+	<Script file="convertClassData.lua"/>
 	<Include file="classes\load.xml"/>
 </Ui>

@@ -1,7 +1,7 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-addon.classic = {}
+ns.classic = {}
 
-addon.core.events.register('PLAYER_ENTERING_WORLD', function()
+ns.core.events.register('PLAYER_ENTERING_WORLD', function()
 	SetCVar('cameraDistanceMaxZoomFactor', 4)
 end)

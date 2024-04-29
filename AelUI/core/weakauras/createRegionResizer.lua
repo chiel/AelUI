@@ -1,6 +1,6 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-addon.core.weakauras.createRegionResizer = function(minWidth, regions)
+ns.core.weakauras.createRegionResizer = function(minWidth, regions)
 	return function(width)
 		if regions == nil then
 			return
@@ -12,7 +12,6 @@ addon.core.weakauras.createRegionResizer = function(minWidth, regions)
 
 		for _, r in ipairs(regions) do
 			local region = WeakAuras.GetRegion(r.name)
-			print('resize region', r.name, region)
 			if region then
 				if not r.updateChildren then
 					region:SetRegionWidth(width)

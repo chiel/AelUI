@@ -1,14 +1,10 @@
-## Interface: 100200
+## Interface: 100206
 ## Title: AelUI
 ## Author: Aelen
 ## Version: 0.1
-## Dependencies: oUF
+## SavedVariables: AelUIDB
 
 libs\load_retail.xml
 core\load.xml
 retail\load.xml
 uiscale.lua
-# utils\load.xml
-# blizzard\load.xml
-unitframes\load.xml
-weakauras\load.xml

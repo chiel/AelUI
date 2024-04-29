@@ -1,9 +1,8 @@
-## Interface: 100200
+## Interface: 100206
 ## Title: AelUI: Options
 ## Author: Aelen
 ## Version: 0.1
 
 libs\load.xml
-init.lua
-weakauras\load.xml
-register.lua
+core\load.xml
+retail\load.xml

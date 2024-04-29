@@ -1,10 +1,10 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-local anchors = addon.core.anchors
+local anchors = ns.core.anchors
 
-addon.classic.unitframes = {}
+ns.classic.unitframes = {}
 
-addon.core.events.register('PLAYER_LOGIN', function()
+ns.core.events.register('PLAYER_LOGIN', function()
 	TargetFrame:ClearAllPoints()
-	TargetFrame:SetPoint('TOPLEFT', addon.core.anchors.primary, 'TOPRIGHT', 20, 0)
+	TargetFrame:SetPoint('TOPLEFT', ns.core.anchors.primary, 'TOPRIGHT', 20, 0)
 end)

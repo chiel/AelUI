@@ -2,4 +2,5 @@
 	<Script file="init.lua"/>
 	<Include file="elements\load.xml"/>
 	<Script file="createIndicatorGroup.lua"/>
+	<Script file="createStyler.lua"/>
 </Ui>

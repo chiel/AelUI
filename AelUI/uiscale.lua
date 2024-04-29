@@ -1,5 +1,6 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-addon.core.events.register('PLAYER_LOGIN', function()
-	UIParent:SetScale(768 / addon.core.config.screenSize.height)
+ns.core.addon:RegisterEvent('PLAYER_LOGIN', function()
+	local width, height = GetPhysicalScreenSize()
+	UIParent:SetScale(768 / height)
 end)

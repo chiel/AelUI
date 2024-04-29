@@ -2,10 +2,16 @@
 	<Script file="init.lua"/>
 	<Script file="backdrop.lua"/>
 	<Script file="health.lua"/>
+	<Script file="castbar.lua"/>
 	<Script file="combat.lua"/>
+	<Script file="grouprole.lua"/>
 	<Script file="leader.lua"/>
 	<Script file="masterlooter.lua"/>
 	<Script file="pvp.lua"/>
+	<Script file="readycheck.lua"/>
+	<Script file="resting.lua"/>
+	<Script file="resurrect.lua"/>
+	<Script file="summon.lua"/>
 	<Script file="text.lua"/>
 	<Script file="tags.lua"/>
 </Ui>

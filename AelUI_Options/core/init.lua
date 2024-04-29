@@ -1,7 +1,7 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-addon.console = LibStub('AceConsole-3.0')
-addon.dialog = LibStub('AceConfigDialog-3.0')
-addon.registry = LibStub('AceConfigRegistry-3.0')
+ns.console = LibStub('AceConsole-3.0')
+ns.dialog = LibStub('AceConfigDialog-3.0')
+ns.registry = LibStub('AceConfigRegistry-3.0')
 
-addon.core = {}
+ns.core = {}

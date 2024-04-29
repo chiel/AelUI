@@ -1,9 +1,9 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-local m = addon.core.media
-local ce = addon.core.unitframes.elements
+local m = ns.core.media
+local ce = ns.core.unitframes.elements
 
-addon.core.unitframes.elements.health = function(self, unit)
+ns.core.unitframes.elements.health = function(self, unit)
 	local backdrop, background = ce.backdrop(self)
 
 	local health = CreateFrame('StatusBar', nil, backdrop)

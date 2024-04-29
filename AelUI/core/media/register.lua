@@ -1,4 +1,4 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
 local LSM = LibStub('LibSharedMedia-3.0')
 local MT = LSM.MediaType
@@ -6,19 +6,19 @@ local MT = LSM.MediaType
 local allmedia = {
 	{
 		type = MT.BACKGROUND,
-		entries = addon.core.media.backgrounds,
+		entries = ns.core.media.backgrounds,
 	},
 	{
 		type = MT.BORDER,
-		entries = addon.core.media.borders,
+		entries = ns.core.media.borders,
 	},
 	{
 		type = MT.FONT,
-		entries = addon.core.media.fonts,
+		entries = ns.core.media.fonts,
 	},
 	{
 		type = MT.STATUSBAR,
-		entries = addon.core.media.statusbars,
+		entries = ns.core.media.statusbars,
 	},
 }
 

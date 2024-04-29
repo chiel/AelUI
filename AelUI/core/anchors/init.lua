@@ -1,3 +1,8 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-addon.core.anchors = {}
+ns.core.anchors = {}
+
+function ns.core.anchors:Initialise()
+	ns.core.anchors.primary:Initialise()
+	ns.core.anchors.secondary:Initialise()
+end

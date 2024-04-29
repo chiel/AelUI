@@ -1,6 +1,6 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-addon.core.utils.getSpecRole = function()
+ns.core.utils.getSpecRole = function()
 	local specIndex = GetSpecialization()
 	return GetSpecializationRole(specIndex)
 end
