@@ -6,7 +6,7 @@ local function PostUpdate(element, role)
 	end
 end
 
-ns.core.unitframes.elements.groupRole = function(self, unit)
+ns.unitframes.elements.groupRole = function(self, unit)
 	local groupRole = self:CreateTexture(nil, 'OVERLAY')
 	groupRole:SetSize(16, 16)
 	groupRole.PostUpdate = PostUpdate

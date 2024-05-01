@@ -1,6 +1,6 @@
 local ns = select(2, ...)
 
-ns.core.unitframes.elements.pvp = function(self, unit)
+ns.unitframes.elements.pvp = function(self, unit)
 	local icon = self:CreateTexture(nil, 'ARTWORK', nil, 1)
 	icon:SetSize(42, 42)
 

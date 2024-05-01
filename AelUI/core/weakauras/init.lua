@@ -1,4 +1,4 @@
 local ns = select(2, ...)
 
-ns.core.weakauras = {}
+ns.weakauras = {}
 AelUI.weakauras = {}

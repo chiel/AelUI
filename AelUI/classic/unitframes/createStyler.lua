@@ -1,8 +1,8 @@
 local ns = select(2, ...)
 
-local ce = ns.core.unitframes.elements
+local ce = ns.unitframes.elements
 
-ns.classic.unitframes.createStyler = function(config)
+ns.unitframes.createStyler = function(config)
 	local indicators = config.indicators or {}
 	local texts = config.texts or {}
 
@@ -11,12 +11,12 @@ ns.classic.unitframes.createStyler = function(config)
 		self:SetScript('OnEnter', UnitFrame_OnEnter)
 		self:SetScript('OnLeave', UnitFrame_OnLeave)
 
-		self.colors = ns.core.colors
+		self.colors = ns.colors
 
 		local health = ce.health(self, unit)
 		health:SetAllPoints()
 
-		local nameIndicators = ns.core.unitframes.createIndicatorGroup(self.Health, config.mirror == true)
+		local nameIndicators = ns.unitframes.createIndicatorGroup(self.Health, config.mirror == true)
 		if config.mirror then
 			nameIndicators:SetPoint('BOTTOMRIGHT', self, 'TOPRIGHT', -3, 4)
 		else

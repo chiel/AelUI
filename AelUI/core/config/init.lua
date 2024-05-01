@@ -27,7 +27,7 @@ local anchors = {
 	},
 }
 
-ns.core.config = {
+ns.config = {
 	anchors = anchors,
 	icons = icons,
 	unitframes = {

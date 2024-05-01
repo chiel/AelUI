@@ -1,11 +1,11 @@
 local ns = select(2, ...)
 
-local anchors = ns.core.anchors
+local anchors = ns.anchors
 
-local ce = ns.core.unitframes.elements
-local createStyler = ns.retail.unitframes.createStyler
+local ce = ns.unitframes.elements
+local createStyler = ns.unitframes.createStyler
 
-ns.retail.unitframes.units = {
+ns.unitframes.units = {
 	{
 		name = 'player',
 		spawn = function(self)
@@ -176,7 +176,7 @@ ns.retail.unitframes.units = {
 			self:SetScript('OnEnter', UnitFrame_OnEnter)
 			self:SetScript('OnLeave', UnitFrame_OnLeave)
 
-			self.colors = ns.core.colors
+			self.colors = ns.colors
 
 			local health = ce.health(self, unit)
 			health:SetAllPoints()

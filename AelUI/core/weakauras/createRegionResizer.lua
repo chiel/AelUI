@@ -1,6 +1,6 @@
 local ns = select(2, ...)
 
-ns.core.weakauras.createRegionResizer = function(minWidth, regions)
+ns.weakauras.createRegionResizer = function(minWidth, regions)
 	return function(width)
 		if regions == nil then
 			return

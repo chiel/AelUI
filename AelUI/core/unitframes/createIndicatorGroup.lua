@@ -1,8 +1,8 @@
 local ns = select(2, ...)
 
-local u = ns.core.utils
+local u = ns.utils
 
-ns.core.unitframes.createIndicatorGroup = function(parent, mirror)
+ns.unitframes.createIndicatorGroup = function(parent, mirror)
 	local indicators = {}
 	local anchor = nil
 

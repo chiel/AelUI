@@ -1,8 +1,8 @@
 local ns = select(2, ...)
 
-ns.core.anchors = {}
+ns.anchors = {}
 
-function ns.core.anchors:Initialise()
-	ns.core.anchors.primary:Initialise()
-	ns.core.anchors.secondary:Initialise()
+function ns.anchors:Initialise()
+	ns.anchors.primary:Initialise()
+	ns.anchors.secondary:Initialise()
 end

@@ -1,10 +1,10 @@
 local ns = select(2, ...)
 
 local oUF = ns.oUF
-local anchors = ns.core.anchors
+local anchors = ns.anchors
 
-local ce = ns.core.unitframes.elements
-local createStyler = ns.classic.unitframes.createStyler
+local ce = ns.unitframes.elements
+local createStyler = ns.unitframes.createStyler
 
 local units = {
 	{

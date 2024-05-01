@@ -1,9 +1,9 @@
 local ns = select(2, ...)
 
-local m = ns.core.media
-local ce = ns.core.unitframes.elements
+local m = ns.media
+local ce = ns.unitframes.elements
 
-ns.core.unitframes.elements.castbar = function(self, unit)
+ns.unitframes.elements.castbar = function(self, unit)
 	if unit == 'player' then
 		if CastingBarFrame then
 			CastingBarFrame:UnregisterAllEvents()

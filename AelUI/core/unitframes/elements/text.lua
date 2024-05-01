@@ -1,8 +1,8 @@
 local ns = select(2, ...)
 
-local m = ns.core.media
+local m = ns.media
 
-ns.core.unitframes.elements.text = function(self, options)
+ns.unitframes.elements.text = function(self, options)
 	local o = options or {}
 	o.size = options.size or 20
 	o.style = options.style or 'normal'

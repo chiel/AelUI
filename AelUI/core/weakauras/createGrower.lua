@@ -1,6 +1,6 @@
 local ns = select(2, ...)
 
-ns.core.weakauras.createGrower = function(iconSize, iconSpacing, callback)
+ns.weakauras.createGrower = function(iconSize, iconSpacing, callback)
 	local prevWidth = -1
 
 	return function(newPositions, activeRegions)

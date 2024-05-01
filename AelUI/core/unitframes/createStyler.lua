@@ -1,8 +1,8 @@
 local ns = select(2, ...)
 
-local ce = ns.core.unitframes.elements
+local ce = ns.unitframes.elements
 
-ns.core.unitframes.createStyler = function(config)
+ns.unitframes.createStyler = function(config)
 	local indicators = config.indicators or {}
 	local texts = config.texts or {}
 
@@ -11,7 +11,7 @@ ns.core.unitframes.createStyler = function(config)
 		self:SetScript('OnEnter', UnitFrame_OnEnter)
 		self:SetScript('OnLeave', UnitFrame_OnLeave)
 
-		self.colors = ns.core.colors
+		self.colors = ns.colors
 
 		local health = ce.health(self, unit)
 		health:SetAllPoints()

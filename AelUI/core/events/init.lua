@@ -10,7 +10,7 @@ f:SetScript('OnEvent', function(self, event, ...)
 	end
 end)
 
-ns.core.events = {
+ns.events = {
 	register = function(type, callback)
 		if events[type] == nil then
 			f:RegisterEvent(type)

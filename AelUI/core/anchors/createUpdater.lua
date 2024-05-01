@@ -1,6 +1,6 @@
 local ns = select(2, ...)
 
-ns.core.anchors.createUpdater = function(anchor, minWidth)
+ns.anchors.createUpdater = function(anchor, minWidth)
 	local minWidth = minWidth
 	local currentWidth = -1
 	local requestedWidth = -1

@@ -1,10 +1,10 @@
 local ns = select(2, ...)
 
-ns.core.utils = {}
+ns.utils = {}
 
-local m = ns.core.media
+local m = ns.media
 
-ns.core.utils.AddBackdrop = function(frame)
+ns.utils.AddBackdrop = function(frame)
 	local bg = frame:CreateTexture(nil, 'BORDER')
 	bg:SetTexture(m.backgrounds.default.file)
 	bg:SetVertexColor(50 / 255, 50 / 255, 50 / 255)

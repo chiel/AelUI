@@ -1,7 +1,5 @@
 local addonName, ns = ...
 
-ns.core = {}
-
 AelUI = {}
 
 local addon = LibStub('AceAddon-3.0'):NewAddon(addonName)
@@ -38,9 +36,9 @@ local defaults = {
 
 function addon:OnInitialize()
 	local db = LibStub('AceDB-3.0'):New('AelUIDB', defaults, true)
-	ns.core.db = db.profile
+	ns.db = db.profile
 
-	ns.core.anchors.Initialise(db.profile.anchors)
+	ns.anchors.Initialise(db.profile.anchors)
 end
 
-ns.core.addon = addon
+ns.addon = addon

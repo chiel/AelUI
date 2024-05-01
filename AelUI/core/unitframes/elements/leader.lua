@@ -1,6 +1,6 @@
 local ns = select(2, ...)
 
-ns.core.unitframes.elements.leader = function(self, unit)
+ns.unitframes.elements.leader = function(self, unit)
 	local icon = self:CreateTexture(nil, 'OVERLAY')
 	icon:SetSize(16, 16)
 

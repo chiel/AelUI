@@ -1,7 +1,7 @@
 local ns = select(2, ...)
 
-local anchors = ns.core.anchors
-local ce = ns.core.unitframes.elements
+local anchors = ns.anchors
+local ce = ns.unitframes.elements
 
 local function positionGroups(groups)
 	for i = 1, NUM_RAID_GROUPS do
@@ -15,7 +15,7 @@ local function positionGroups(groups)
 	end
 end
 
-table.insert(ns.retail.unitframes.units, {
+table.insert(ns.unitframes.units, {
 	name = 'raid',
 	spawn = function(self)
 		local groups = {}
@@ -53,7 +53,7 @@ table.insert(ns.retail.unitframes.units, {
 		self:SetScript('OnEnter', UnitFrame_OnEnter)
 		self:SetScript('OnLeave', UnitFrame_OnLeave)
 
-		self.colors = ns.core.colors
+		self.colors = ns.colors
 
 		local health = ce.health(self, unit)
 		health:SetAllPoints()

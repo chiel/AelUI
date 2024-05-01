@@ -6,19 +6,19 @@ local MT = LSM.MediaType
 local allmedia = {
 	{
 		type = MT.BACKGROUND,
-		entries = ns.core.media.backgrounds,
+		entries = ns.media.backgrounds,
 	},
 	{
 		type = MT.BORDER,
-		entries = ns.core.media.borders,
+		entries = ns.media.borders,
 	},
 	{
 		type = MT.FONT,
-		entries = ns.core.media.fonts,
+		entries = ns.media.fonts,
 	},
 	{
 		type = MT.STATUSBAR,
-		entries = ns.core.media.statusbars,
+		entries = ns.media.statusbars,
 	},
 }
 

@@ -1,6 +1,6 @@
 local ns = select(2, ...)
 
-ns.core.media.fonts = {
+ns.media.fonts = {
 	default = {
 		name = 'AelUI',
 		file = [[Interface\AddOns\AelUI\core\media\fonts\RobotoCondensed-Regular.ttf]],

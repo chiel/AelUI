@@ -1,6 +1,6 @@
 local ns = select(2, ...)
 
-local oUF = oUF or ns.oUF
+local oUF = ns.oUF
 
 oUF.Tags.Events['AelUI:healthcurrent'] = 'UNIT_HEALTH UNIT_MAXHEALTH'
 oUF.Tags.Methods['AelUI:healthcurrent'] = function(unit)
