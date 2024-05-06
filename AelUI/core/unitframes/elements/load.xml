@@ -7,6 +7,7 @@
 	<Script file="grouprole.lua"/>
 	<Script file="leader.lua"/>
 	<Script file="masterlooter.lua"/>
+	<Script file="power.lua"/>
 	<Script file="pvp.lua"/>
 	<Script file="raidmarker.lua"/>
 	<Script file="readycheck.lua"/>

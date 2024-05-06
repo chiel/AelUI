@@ -54,7 +54,7 @@ end
 oUF.Tags.Events['AelUI:name'] = 'UNIT_NAME_UPDATE'
 oUF.Tags.Methods['AelUI:name'] = UnitName
 
-oUF.Tags.Events['AelUI:powercurrent'] = 'UNIT_POWER_UPDATE UNIT_MAXPOWER'
+oUF.Tags.Events['AelUI:powercurrent'] = 'UNIT_POWER_FREQUENT UNIT_MAXPOWER'
 oUF.Tags.Methods['AelUI:powercurrent'] = UnitPower
 
 oUF.Tags.Events['AelUI:raidtext'] = 'UNIT_NAME_UPDATE UNIT_HEALTH UNIT_CONNECTION'

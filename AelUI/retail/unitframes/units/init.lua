@@ -31,6 +31,16 @@ ns.unitframes.units = {
 		style = function(self, unit)
 			playerStyler(self, unit)
 
+			local power = ce.power(self, unit)
+			power:SetPoint('BOTTOMLEFT', anchors.primary, 'TOPLEFT', 0, 2)
+			power:SetPoint('BOTTOMRIGHT', anchors.primary, 'TOPRIGHT', 0, 2)
+			power:SetHeight(6)
+			AelUIPlayerPower = power
+
+			local powerText = ce.text(self.Power, { size = 18 })
+			powerText:SetPoint('BOTTOM', 0, -1)
+			self:Tag(powerText, '[AelUI:powercurrent]')
+
 			local castbar = ce.castbar(self, unit)
 			castbar:SetPoint('TOPLEFT', anchors.secondary, 'BOTTOMLEFT', 0, -2)
 			castbar:SetPoint('TOPRIGHT', anchors.secondary, 'BOTTOMRIGHT', 0, -2)
