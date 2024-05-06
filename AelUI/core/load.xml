@@ -5,6 +5,7 @@
 	<Include file="config\load.xml"/>
 	<Include file="events\load.xml"/>
 	<Include file="utils\load.xml"/>
+	<Include file="options\load.xml"/>
 	<Include file="anchors\load.xml"/>
 	<Include file="unitframes\load.xml"/>
 	<Include file="weakauras\load.xml"/>
