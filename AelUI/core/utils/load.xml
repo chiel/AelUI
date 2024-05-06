@@ -3,4 +3,5 @@
 	<Script file="addBackdrop.lua"/>
 	<Script file="getSpecRole.lua"/>
 	<Script file="round.lua"/>
+	<Script file="setSmoothing.lua"/>
 </Ui>

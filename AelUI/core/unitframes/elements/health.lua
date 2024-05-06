@@ -14,6 +14,7 @@ ns.unitframes.elements.health = function(self, unit)
 	health.colorReaction = true
 	health:SetPoint('TOPLEFT', 1, -1)
 	health:SetPoint('BOTTOMRIGHT', -1, 1)
+	ns.utils.setSmoothing(health, true)
 
 	background:SetPoint('TOPLEFT', health:GetStatusBarTexture(), 'TOPRIGHT', 0, 0)
 
