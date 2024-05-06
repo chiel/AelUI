@@ -59,6 +59,12 @@ ns.unitframes.createStyler = function(config)
 			end
 		end
 
+		if indicators.raidmarker then
+			local raidMarker = ce.raidMarker(self, unit)
+			raidMarker:SetParent(self.Health)
+			raidMarker:SetPoint('CENTER')
+		end
+
 		if config.range then
 			self.Range = {
 				insideAlpha = 1,

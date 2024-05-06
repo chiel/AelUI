@@ -5,6 +5,21 @@ local anchors = ns.anchors
 local ce = ns.unitframes.elements
 local createStyler = ns.unitframes.createStyler
 
+local playerStyler = createStyler({
+	indicators = {
+		combat = true,
+		leader = true,
+		raidmarker = true,
+		resting = true,
+	},
+	texts = {
+		health = true,
+		healthpercent = true,
+		level = true,
+		name = true,
+	},
+})
+
 ns.unitframes.units = {
 	{
 		name = 'player',
@@ -14,23 +29,7 @@ ns.unitframes.units = {
 			f:SetPoint('TOPRIGHT', anchors.primary, 'TOPLEFT', -20, 0)
 		end,
 		style = function(self, unit)
-			local styler = createStyler({
-				indicators = {
-					combat = true,
-					leader = true,
-					masterlooter = true,
-					pvp = true,
-					resting = true,
-				},
-				texts = {
-					health = true,
-					healthpercent = true,
-					level = true,
-					name = true,
-				},
-			})
-
-			styler(self, unit)
+			playerStyler(self, unit)
 
 			local castbar = ce.castbar(self, unit)
 			castbar:SetPoint('TOPLEFT', anchors.secondary, 'BOTTOMLEFT', 0, -2)
@@ -49,6 +48,7 @@ ns.unitframes.units = {
 			indicators = {
 				combat = true,
 				leader = true,
+				raidmarker = true,
 			},
 			texts = {
 				health = true,
@@ -69,9 +69,7 @@ ns.unitframes.units = {
 			mirror = true,
 			indicators = {
 				leader = true,
-				masterlooter = true,
-				pvp = true,
-				resting = true,
+				raidmarker = true,
 			},
 			texts = {
 				health = true,
@@ -91,8 +89,8 @@ ns.unitframes.units = {
 		style = createStyler({
 			mirror = true,
 			indicators = {
-				combat = true,
 				leader = true,
+				raidmarker = true,
 			},
 			texts = {
 				health = true,
@@ -110,7 +108,9 @@ ns.unitframes.units = {
 			f:SetPoint('BOTTOMRIGHT', anchors.primary, 'TOPLEFT', -60, 140)
 		end,
 		style = createStyler({
-			indicators = {},
+			indicators = {
+				raidmarker = true,
+			},
 			texts = {
 				health = true,
 				healthpercent = true,
@@ -137,6 +137,9 @@ ns.unitframes.units = {
 		end,
 		style = createStyler({
 			mirror = true,
+			indicators = {
+				raidmarker = true,
+			},
 			texts = {
 				health = true,
 				healthpercent = true,
@@ -195,6 +198,10 @@ ns.unitframes.units = {
 			local groupRole = ce.groupRole(self, unit)
 			groupRole:SetParent(self.Health)
 			groupRole:SetPoint('RIGHT', self, 'TOPRIGHT', -4, -1)
+
+			local raidMarker = ce.raidMarker(self, unit)
+			raidMarker:SetParent(self.Health)
+			raidMarker:SetPoint('TOP', 0, -12)
 
 			local readyCheck = ce.readyCheck(self, unit)
 			readyCheck:SetParent(self.Health)

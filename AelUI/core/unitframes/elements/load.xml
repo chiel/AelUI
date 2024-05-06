@@ -8,6 +8,7 @@
 	<Script file="leader.lua"/>
 	<Script file="masterlooter.lua"/>
 	<Script file="pvp.lua"/>
+	<Script file="raidmarker.lua"/>
 	<Script file="readycheck.lua"/>
 	<Script file="resting.lua"/>
 	<Script file="resurrect.lua"/>

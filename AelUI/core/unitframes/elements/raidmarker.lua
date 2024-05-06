@@ -1,8 +1,8 @@
-local addon = select(2, ...)
+local ns = select(2, ...)
 
-function addon.elements.RaidMarker(self, unit)
+ns.unitframes.elements.raidMarker = function(self, unit)
 	local raidMarker = self:CreateTexture(nil, 'OVERLAY')
-	raidMarker:SetSize(20, 20)
+	raidMarker:SetSize(16, 16)
 
 	self.RaidTargetIndicator = raidMarker
 	return raidMarker

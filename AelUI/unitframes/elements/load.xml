@@ -2,5 +2,4 @@
 	<Script file="init.lua"/>
 	<Script file="dispelborder.lua"/>
 	<Script file="power.lua"/>
-	<Script file="raidmarker.lua"/>
 </Ui>
