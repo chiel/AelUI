@@ -1,5 +1,7 @@
 local ns = select(2, ...)
 
+local oUF = ns.oUF
+
 if oUF ~= nil then
 	ns.colors = setmetatable({
 		power = setmetatable({
