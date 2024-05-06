@@ -4,6 +4,7 @@ ns.anchors.createUpdater = function(anchor, minWidth)
 	local minWidth = minWidth
 	local currentWidth = -1
 	local requestedWidth = -1
+	local onResize
 
 	local function update()
 		local newWidth = requestedWidth
@@ -18,6 +19,10 @@ ns.anchors.createUpdater = function(anchor, minWidth)
 
 		anchor:SetWidth(newWidth)
 		currentWidth = newWidth
+
+		if onResize ~= nil then
+			onResize(newWidth)
+		end
 	end
 
 	local updater = CreateFrame('Frame')
@@ -25,6 +30,10 @@ ns.anchors.createUpdater = function(anchor, minWidth)
 	updater:RegisterEvent('PLAYER_REGEN_ENABLED')
 
 	return {
+		OnResize = function(callback)
+			onResize = callback
+		end,
+
 		SetMinWidth = function(width)
 			minWidth = width
 
