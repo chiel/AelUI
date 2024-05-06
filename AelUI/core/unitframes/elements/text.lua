@@ -19,6 +19,7 @@ ns.unitframes.elements.text = function(self, options)
 
 	local text = self:CreateFontString(nil, 'OVERLAY', 'GameFontNormal')
 	text:SetFont(font, o.size, flags)
+	text:SetShadowOffset(0, 0)
 	text:SetTextColor(1, 1, 1)
 
 	return text
