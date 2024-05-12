@@ -1,3 +1,9 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Include file="consumables\load.xml"/>
+	<Include file="racials\load.xml"/>
+	<Include file="classes\load.xml"/>
+	<Include file="config\load.xml"/>
+	<Script file="convertClassData.lua"/>
+	<Script file="options.lua"/>
 	<Script file="growers.lua"/>
 </Ui>

@@ -1,0 +1,8 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="init.lua"/>
+	<Script file="primary.lua"/>
+	<Script file="secondary.lua"/>
+	<Script file="defensives.lua"/>
+	<Script file="consumables.lua"/>
+	<Script file="tracking.lua"/>
+</Ui>

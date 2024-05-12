@@ -41,5 +41,8 @@ addon.classic.weakauras.classes.priest = {
 			{ spellId = 9578 }, -- Fade
 			{ spellId = 8122 }, -- Psychic Scream
 		},
+		-- tracking = {
+		-- 	{ debuffId = 0 }, -- Shadow Word: Pain
+		-- },
 	},
 }

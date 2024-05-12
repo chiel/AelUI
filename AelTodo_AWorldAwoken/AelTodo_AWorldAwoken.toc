@@ -1,0 +1,9 @@
+## Interface: 100207
+## Title: AelTodo: A World Awoken
+## Author: Aelen
+## Version: 0.1
+## RequiredDeps: AelTodo
+
+init.lua
+dragon_quests.lua
+clutchmates.lua

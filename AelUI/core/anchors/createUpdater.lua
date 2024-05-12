@@ -30,6 +30,10 @@ ns.anchors.createUpdater = function(anchor, minWidth)
 	updater:RegisterEvent('PLAYER_REGEN_ENABLED')
 
 	return {
+		GetWidth = function()
+			return currentWidth
+		end,
+
 		OnResize = function(callback)
 			onResize = callback
 		end,

@@ -1,5 +1,14 @@
 local ns = select(2, ...)
 
+-- local resolutionConfigs = {}
+-- local resConfig = resolutionConfigs[height]
+
+-- local ufHeight = resConfig and resConfig.unitFrameHeight or height * 0.025
+
+-- if ufHeight % 2 > 0 then
+-- 	ufHeight = ufHeight + 1
+-- end
+
 local icons = {
 	spacing = 2,
 

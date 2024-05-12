@@ -1,0 +1,8 @@
+## Interface: 100207
+## Title: AelTodo: Dragonflight Errands
+## Author: Aelen
+## Version: 0.1
+## RequiredDeps: AelTodo
+
+init.lua
+weeklies.lua

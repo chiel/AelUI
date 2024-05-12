@@ -11,4 +11,5 @@
 	<Script file="LibSharedMedia-3.0\LibSharedMedia-3.0.lua"/>
 	<Script file="UTF8\utf8data.lua"/>
 	<Script file="UTF8\utf8.lua"/>
+	<Include file="LibWA\LibWA.xml"/>
 </Ui>

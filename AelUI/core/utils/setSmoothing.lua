@@ -125,6 +125,10 @@ local function DesmoothBar(bar)
 	end
 end
 
+-- function SetSmoothingAmount(amount)
+-- 	AMOUNT = clamp(amount, 0.2, 0.8)
+-- end
+
 ns.utils.setSmoothing = function(bar, enable)
 	if enable then
 		SmoothBar(bar)

@@ -1,5 +1,7 @@
 local ns = select(2, ...)
 
+local onResizeCallbacks = {}
+
 local anchor = CreateFrame('Frame', 'AelUIPrimaryAnchor', UIParent)
 anchor.Initialise = function()
 	local c = ns.db.anchors.primary
@@ -9,24 +11,41 @@ anchor.Initialise = function()
 	local updater = ns.anchors.createUpdater(anchor, c.minWidth)
 	anchor.UpdateMinWidth = updater.SetMinWidth
 	anchor.UpdateWidth = updater.SetWidth
+
+	updater.OnResize(function(newWidth)
+		onResizeFired = true
+		for _, callback in ipairs(onResizeCallbacks) do
+			callback(newWidth)
+		end
+	end)
+
+	C_Timer.After(1, function()
+		for _, callback in ipairs(onResizeCallbacks) do
+			callback(updater.GetWidth())
+		end
+	end)
 end
 
-ns.anchors.primary = anchor
+anchor.OnResize = function(self, callback)
+	table.insert(onResizeCallbacks, callback)
+end
 
-AelUIPrimaryAnchor.GetMinimumWidth = function(self)
+anchor.GetMinimumWidth = function(self)
 	return ns.db.anchors.primary.minWidth
 end
 
-AelUIPrimaryAnchor.SetMinimumWidth = function(self, width)
+anchor.SetMinimumWidth = function(self, width)
 	ns.db.anchors.primary.minWidth = width
 	anchor.UpdateMinWidth(width)
 end
 
-AelUIPrimaryAnchor.GetOffset = function(self)
+anchor.GetOffset = function(self)
 	return ns.db.anchors.primary.offset
 end
 
-AelUIPrimaryAnchor.SetOffset = function(self, position)
+anchor.SetOffset = function(self, position)
 	ns.db.anchors.primary.offset = position
 	anchor:SetPoint('TOP', UIParent, 'CENTER', 0, -position)
 end
+
+ns.anchors.primary = anchor

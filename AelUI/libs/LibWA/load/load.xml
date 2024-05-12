@@ -1,0 +1,6 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="load.lua"/>
+	<Script file="CreateClassCondition.lua"/>
+	<Script file="CreateClassAndSpecCondition.lua"/>
+	<Script file="CreateSpellKnownCondition.lua"/>
+</Ui>

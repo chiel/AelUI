@@ -1,0 +1,13 @@
+## Interface: 100207
+## Title: AelTodo
+## Author: Aelen
+## Version: 0.1
+## RequiredDeps: WeakAuras
+
+init.lua
+checkers\load.xml
+utils\load.xml
+config.lua
+trigger.lua
+handler.lua
+plugins.lua

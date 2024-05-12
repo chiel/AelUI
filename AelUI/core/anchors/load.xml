@@ -4,4 +4,5 @@
 	<Script file="primary.lua"/>
 	<Script file="secondary.lua"/>
 	<Script file="group.lua"/>
+	<Script file="options.lua"/>
 </Ui>

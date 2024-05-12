@@ -1,0 +1,9 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="init.lua"/>
+	<Script file="AchievementCompleted.lua"/>
+	<Script file="MountKnown.lua"/>
+	<Script file="Multiple.lua"/>
+	<Script file="QuestCompleted.lua"/>
+	<Script file="QuestsCompleted.lua"/>
+	<Script file="WorldQuestActive.lua"/>
+</Ui>

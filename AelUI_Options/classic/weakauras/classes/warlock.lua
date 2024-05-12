@@ -6,6 +6,9 @@ addon.classic.weakauras.classes.warlock = {
 	class = 'WARLOCK',
 
 	groups = {
+		-- primary = {
+		-- 	-- { spellId = 402799 },
+		-- },
 		tracking = {
 			{ -- Haunt
 				debuffId = 403501,

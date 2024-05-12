@@ -1,6 +1,0 @@
-<Ui xmlns="http://www.blizzard.com/wow/ui/">
-	<Script file="triggers.lua"/>
-	<Script file="CreateAura.lua"/>
-	<Script file="CreateCustomStatus.lua"/>
-	<Script file="CreateSpellCooldown.lua"/>
-</Ui>

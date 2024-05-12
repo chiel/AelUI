@@ -2,4 +2,10 @@
 	<Script file="init.lua"/>
 	<Script file="createGrower.lua"/>
 	<Script file="createRegionResizer.lua"/>
+	<Script file="createIcon.lua"/>
+	<Script file="createAuraIconBuilder.lua"/>
+	<Script file="createConsumableIconBuilder.lua"/>
+	<Script file="createItemIconBuilder.lua"/>
+	<Script file="createSpellIconBuilder.lua"/>
+	<Script file="import.lua"/>
 </Ui>

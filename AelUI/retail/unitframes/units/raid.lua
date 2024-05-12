@@ -68,10 +68,12 @@ table.insert(ns.unitframes.units, {
 		local leader = ce.leader(self, unit)
 		leader:SetParent(self.Health)
 		leader:SetPoint('LEFT', self, 'TOPLEFT', 4, 0)
+		-- leader:SetPoint('BOTTOMLEFT', self, 'BOTTOMLEFT', 4, 4)
 
 		local groupRole = ce.groupRole(self, unit)
 		groupRole:SetParent(self.Health)
 		groupRole:SetPoint('RIGHT', self, 'TOPRIGHT', -4, -1)
+		-- groupRole:SetPoint('BOTTOMRIGHT', self, 'BOTTOMRIGHT', -4, 3)
 
 		local readyCheck = ce.readyCheck(self, unit)
 		readyCheck:SetParent(self.Health)
