@@ -26,7 +26,10 @@ local defaultConfig = {
 
 local specConfigs = {
 	-- monk
-	[269] = {
+	[270] = { -- mistweaver
+		hidePowerText = true,
+	},
+	[269] = { -- windwalker
 		powerbarHeight = 6,
 	},
 
@@ -77,7 +80,7 @@ table.insert(ns.unitframes.units, {
 		local function handleSpecChange()
 			local specIndex = GetSpecialization()
 			local specId = GetSpecializationInfo(specIndex)
-			local specConfig = specConfigs[specId] or defaultConfig
+			local specConfig = Mixin({}, defaultConfig, specConfigs[specId] or {})
 
 			power:SetHeight(specConfig.powerbarHeight)
 			classpower:SetHeight(defaultConfig.powerbarHeight - specConfig.powerbarHeight)

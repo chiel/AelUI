@@ -3,4 +3,5 @@
 	<Include file="monk\load.xml"/>
 	<Include file="paladin\load.xml"/>
 	<Include file="priest\load.xml"/>
+	<Include file="shaman\load.xml"/>
 </Ui>

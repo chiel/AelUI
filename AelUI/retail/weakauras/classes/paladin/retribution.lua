@@ -7,9 +7,7 @@ local consumables = wa.consumables
 local spells = wa.classes.paladin.spells
 
 table.insert(ns.weakauras.classes.paladin.specs, {
-	name = 'Retribution',
-	icon = 135873,
-	specId = 70,
+	specId = 70, -- Retribution
 
 	groups = {
 		primary = {

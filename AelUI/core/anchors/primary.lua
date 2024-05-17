@@ -9,6 +9,7 @@ anchor.Initialise = function()
 	anchor:SetSize(c.minWidth, ns.db.icons.primary.size)
 
 	local updater = ns.anchors.createUpdater(anchor, c.minWidth)
+	anchor.GetCurrentWidth = updater.GetWidth
 	anchor.UpdateMinWidth = updater.SetMinWidth
 	anchor.UpdateWidth = updater.SetWidth
 

@@ -6,9 +6,10 @@ ns.weakauras.convertClassData = function(classData)
 	classGroup:SetIcon(classData.icon)
 
 	for _, specData in ipairs(classData.specs) do
-		local specId = classId .. ' - ' .. specData.name
+		local _, specName, _, specIcon = GetSpecializationInfoByID(specData.specId)
+		local specId = classId .. ' - ' .. specName
 		local specGroup = LibWA.CreateGroup(specId)
-		specGroup:SetIcon(specData.icon)
+		specGroup:SetIcon(specIcon)
 		classGroup:AddChild(specGroup)
 
 		for groupType, typeData in pairs(specData.groups) do

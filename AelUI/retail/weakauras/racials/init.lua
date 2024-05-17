@@ -6,4 +6,5 @@ local spellIcon = wa.createSpellIconBuilder
 
 ns.weakauras.racials = {
 	arcaneTorrent = spellIcon(129597),
+	bloodFury = spellIcon(33697),
 }

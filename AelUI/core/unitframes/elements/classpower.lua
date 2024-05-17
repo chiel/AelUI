@@ -36,7 +36,8 @@ ns.unitframes.elements.classpower = function(self, unit)
 	local currentWidth = 0
 
 	local function handleUpdate()
-		local shouldShow = currentVisible and currentMax > 0 and currentWidth > 0
+		local currentWidth = anchors.primary.GetCurrentWidth()
+		local shouldShow = currentVisible and currentMax ~= nil and currentMax > 0 and currentWidth > 0
 		if not shouldShow then
 			if container:IsShown() then
 				container:Hide()
@@ -55,8 +56,13 @@ ns.unitframes.elements.classpower = function(self, unit)
 		for i = 1, currentMax do
 			local widthPerPower = math.ceil(remainingWidth / remainingPower)
 			backdrops[i]:SetWidth(widthPerPower)
+			backdrops[i]:Show()
 			remainingPower = remainingPower - 1
 			remainingWidth = remainingWidth - widthPerPower
+		end
+
+		for i = currentMax + 1, 10 do
+			backdrops[i]:Hide()
 		end
 	end
 
@@ -70,12 +76,7 @@ ns.unitframes.elements.classpower = function(self, unit)
 		handleUpdate()
 	end
 
-	local function handleResize()
-		currentWidth = ns.utils.round(container:GetWidth())
-		handleUpdate()
-	end
-
-	anchors.primary:OnResize(handleResize)
+	anchors.primary:OnResize(handleUpdate)
 
 	self.ClassPower = classpower
 	return container

@@ -45,6 +45,10 @@ addon.conditions.CreateCondition = function(trigger)
 		self.check = addon.conditions.CheckOnCooldown(...)
 	end
 
+	aura.CheckSpellCount = function(self, ...)
+		self.check = addon.conditions.CheckSpellCount(...)
+	end
+
 	aura.CheckSpellInRange = function(self, ...)
 		self.check = addon.conditions.CheckSpellInRange(...)
 	end

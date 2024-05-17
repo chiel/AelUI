@@ -1,6 +1,7 @@
 local ns = select(2, ...)
 
 local wa = ns.weakauras
+local auraIcon = wa.createAuraIconBuilder
 local itemIcon = wa.createItemIconBuilder
 local spellIcon = wa.createSpellIconBuilder
 local consumables = wa.consumables
@@ -9,9 +10,7 @@ local spells = wa.classes.priest.spells
 local voidformId = 194249
 
 table.insert(ns.weakauras.classes.priest.specs, {
-	name = 'Shadow',
-	icon = 136207,
-	specId = 258,
+	specId = 258, -- Shadow
 
 	groups = {
 		primary = {
@@ -74,6 +73,24 @@ table.insert(ns.weakauras.classes.priest.specs, {
 			spells.vampiricEmbrace,
 			spells.desperatePrayer,
 			spellIcon(47585), -- Dispersion
+		},
+		tracking = {
+			auraIcon('target', 'debuff', 34914), -- Vampric Touch
+			auraIcon('target', 'debuff', 589), -- Shadow Word: Pain
+			auraIcon('target', 'debuff', 335467, function(icon) -- Devouring Plague
+				local glow = icon.display:AddGlow('proc', { startAnimation = true })
+				icon.display:Move(glow, 3)
+
+				icon.triggers:SetDisjunctive('any')
+				local trigger = icon.triggers:AddAura('player', 'buff', {
+					exactSpellIds = { 373204 }, -- Mind Devourer
+					show = 'onActive',
+				})
+
+				local cond = icon.conditions:Add()
+				cond:CheckTriggerActive(trigger, true)
+				cond:ChangeGlowVisibility(glow, true)
+			end),
 		},
 		consumables = {
 			consumables.dreamwalkersHealingPotion,

@@ -2,7 +2,7 @@ local ns = select(2, ...)
 
 local m = ns.media
 
-ns.weakauras.createAuraIconBuilder = function(auraType, auraId, custom)
+ns.weakauras.createAuraIconBuilder = function(unit, auraType, auraId, custom)
 	return function(idPrefix, config)
 		local spellName = GetSpellInfo(auraId)
 
@@ -21,7 +21,7 @@ ns.weakauras.createAuraIconBuilder = function(auraType, auraId, custom)
 			},
 		})
 
-		local trigger = icon.triggers:AddAura('player', auraType, {
+		local trigger = icon.triggers:AddAura(unit, auraType, {
 			exactSpellIds = { auraId },
 			show = 'always',
 		})

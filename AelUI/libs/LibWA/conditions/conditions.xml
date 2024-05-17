@@ -8,6 +8,7 @@
 	<Script file="CheckAuraFound.lua"/>
 	<Script file="CheckCharges.lua"/>
 	<Script file="CheckOnCooldown.lua"/>
+	<Script file="CheckSpellCount.lua"/>
 	<Script file="CheckSpellInRange.lua"/>
 	<Script file="CheckStacks.lua"/>
 	<Script file="CheckTriggerActive.lua"/>

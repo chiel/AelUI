@@ -9,24 +9,24 @@ local racials = wa.racials
 local spells = wa.classes.monk.spells
 
 table.insert(ns.weakauras.classes.monk.specs, {
-	name = 'Brewmaster',
-	icon = 608951,
-	specId = 268,
+	specId = 268, -- Brewmaster
 
 	groups = {
 		primary = {
 			spellIcon(132578), -- Invoke Niuzao, the Black Ox
 			spellIcon(387184), -- Weapons of Order
 			spellIcon(325153), -- Exploding Keg
-			spellIcon(388686), -- Summon White Tiger Statue
+			spells.summonWhiteTigerStatue,
 			itemIcon(202569), -- Djaruun, Pillar of the Elder Flame
 			spellIcon(386276), -- Bonedust Brew
 			spells.touchOfDeath,
+			spellIcon(116847), -- Rushing Jade Wind
 			spellIcon(205523), -- Blackout Kick
 			spellIcon(115181), -- Breath of Fire
 			spellIcon(121253), -- Keg Smash
-			spellIcon(107428), -- Rising Sun Kick
-			spellIcon(115098), -- Chi Wave
+			spells.risingSunKick,
+			spells.chiBurst,
+			spells.chiWave,
 			spellIcon(322101), -- Expel Harm
 		},
 		secondary = {
@@ -37,6 +37,7 @@ table.insert(ns.weakauras.classes.monk.specs, {
 			spells.provoke,
 			racials.arcaneTorrent,
 			spells.detox,
+			spellIcon(324312), -- Clash
 			spells.roll,
 			spells.tigersLust,
 			spells.transcendence,
@@ -56,6 +57,7 @@ table.insert(ns.weakauras.classes.monk.specs, {
 			consumables.potionOfTheHushedZephyr,
 		},
 		tracking = {
+			spellIcon(115399), -- Black Ox Brew
 			spellIcon(119582, function(icon) -- Purifying Brew
 				local glow = icon.display:AddGlow('proc', { startAnimation = true })
 				icon.display:Move(glow, 3)
@@ -90,6 +92,7 @@ table.insert(ns.weakauras.classes.monk.specs, {
 				cond:CheckStacks(purifiedChi, '==', 10)
 				cond:ChangeGlowVisibility(glow, true)
 			end),
+			spellIcon(122281), -- Healing Elixir
 		},
 	},
 })

@@ -8,9 +8,7 @@ local consumables = wa.consumables
 local spells = wa.classes.paladin.spells
 
 table.insert(ns.weakauras.classes.paladin.specs, {
-	name = 'Protection',
-	icon = 236264,
-	specId = 66,
+	specId = 66, -- Protection
 
 	groups = {
 		primary = {
@@ -47,8 +45,8 @@ table.insert(ns.weakauras.classes.paladin.specs, {
 			consumables.potionOfTheHushedZephyr,
 		},
 		tracking = {
-			auraIcon('buff', 132403), -- Shield of the Righteous
-			auraIcon('buff', 327510, function(icon) -- Shining Light
+			auraIcon('player', 'buff', 132403), -- Shield of the Righteous
+			auraIcon('player', 'buff', 327510, function(icon) -- Shining Light
 				icon.display:SetIcon(133192)
 				local glow = icon.display:AddGlow('proc', { startAnimation = true })
 				icon.display:Move(glow, 3)
