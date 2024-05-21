@@ -6,7 +6,7 @@ ns.weakauras.createAuraIconBuilder = function(unit, auraType, auraId, custom)
 	return function(idPrefix, config)
 		local spellName = GetSpellInfo(auraId)
 
-		local id = idPrefix .. ' - ' .. spellName
+		local id = idPrefix .. ' - ' .. spellName .. ' ' .. auraType
 		local icon = ns.weakauras.createIcon(id, config)
 		icon.display:SetCooldown({ inverse = false })
 
@@ -23,6 +23,7 @@ ns.weakauras.createAuraIconBuilder = function(unit, auraType, auraId, custom)
 
 		local trigger = icon.triggers:AddAura(unit, auraType, {
 			exactSpellIds = { auraId },
+			ownOnly = true,
 			show = 'always',
 		})
 

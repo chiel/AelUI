@@ -63,12 +63,12 @@ table.insert(ns.weakauras.classes.shaman.specs, {
 			spells.earthElemental,
 			spells.stoneskinTotem,
 		},
-		consumables = {
-			consumables.dreamwalkersHealingPotion,
-			consumables.healthstone,
-			consumables.elementalPotionOfUltimatePower,
-			consumables.potionOfShockingDisclosure,
-			consumables.potionOfTheHushedZephyr,
-		},
+		-- consumables = {
+		-- 	consumables.dreamwalkersHealingPotion,
+		-- 	consumables.healthstone,
+		-- 	consumables.elementalPotionOfUltimatePower,
+		-- 	consumables.potionOfShockingDisclosure,
+		-- 	consumables.potionOfTheHushedZephyr,
+		-- },
 	},
 })

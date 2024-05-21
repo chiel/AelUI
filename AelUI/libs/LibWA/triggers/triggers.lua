@@ -53,6 +53,21 @@ addon.triggers.Create = function()
 		return self.triggers[index]
 	end
 
+	aura.Move = function(self, trigger, layer)
+		local newTriggers = {}
+		for i, t in ipairs(self.triggers) do
+			if t ~= trigger then
+				if i == layer then
+					table.insert(newTriggers, trigger)
+				end
+
+				table.insert(newTriggers, t)
+			end
+		end
+
+		self.triggers = newTriggers
+	end
+
 	aura.SetDisjunctive = function(self, disjunctive, customTrigger)
 		if disjunctive == nil then
 			self.disjunctive = nil

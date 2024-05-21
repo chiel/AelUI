@@ -5,9 +5,9 @@ local ce = ns.unitframes.elements
 
 table.insert(ns.unitframes.units, {
 	name = 'party',
-	spawn = function(self)
+	spawn = function(self, unit)
 		local party = self:SpawnHeader(
-			nil,
+			'AelUI_Party',
 			nil,
 			'party',
 			'showPlayer',

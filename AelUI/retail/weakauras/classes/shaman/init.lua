@@ -22,7 +22,20 @@ ns.weakauras.classes.shaman = {
 		gustOfWind = spellIcon(192063),
 		healingStreamTotem = spellIcon(5394),
 		hex = spellIcon(51514),
-		lavaBurst = spellIcon(51505),
+		lavaBurst = spellIcon(51505, function(icon)
+			local glow = icon.display:AddGlow('proc', { startAnimation = true })
+			icon.display:Move(glow, 3)
+
+			icon.triggers:SetDisjunctive('any')
+			local trigger = icon.triggers:AddAura('player', 'buff', {
+				exactSpellIds = { 77762 }, -- Lava Surge
+				show = 'onActive',
+			})
+
+			local cond = icon.conditions:Add()
+			cond:CheckTriggerActive(trigger, true)
+			cond:ChangeGlowVisibility(glow, true)
+		end),
 		lightningLasso = spellIcon(305483),
 		naturesSwiftness = spellIcon(378081),
 		poisonCleansingTotem = spellIcon(383013),

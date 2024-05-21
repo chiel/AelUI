@@ -1,6 +1,7 @@
 local ns = select(2, ...)
 
 local wa = ns.weakauras
+local auraIcon = wa.createAuraIconBuilder
 local consumableIcon = wa.createConsumableIconBuilder
 local itemIcon = wa.createItemIconBuilder
 local spellIcon = wa.createSpellIconBuilder
@@ -14,16 +15,33 @@ table.insert(ns.weakauras.classes.shaman.specs, {
 	groups = {
 		primary = {
 			racials.bloodFury,
+			spellIcon(191634, function(icon) -- Stormkeeper
+				local glow = icon.display:AddGlow('proc', { startAnimation = true })
+				icon.display:Move(glow, 3)
+
+				local trigger = icon.triggers:AddAura('player', 'buff', {
+					exactSpellIds = { 191634 },
+					ownOnly = true,
+				})
+				icon.triggers:SetDisjunctive('any')
+				icon.triggers:Move(trigger, 1)
+
+				local cond = icon.conditions:Add()
+				cond:CheckTriggerActive(trigger, true)
+				cond:ChangeColor({ 1, 1, 1, 1 })
+				cond:ChangeDesaturate(false)
+				cond:ChangeInverse(false)
+				cond:ChangeGlowVisibility(glow, true)
+			end),
+			spellIcon(114050), -- Ascendance
 			spellIcon(198067), -- Fire Elemental
 			spellIcon(192249), -- Storm Elemental
 			spellIcon(210714), -- Icefury
-			spellIcon(191634), -- Stormkeeper
-			spells.elementalBlast,
 			spells.primordialWave,
-			spellIcon(114050), -- Ascendance
+			spells.elementalBlast,
+			spells.lavaBurst,
 			spellIcon(192222), -- Liquid Magma Totem
 			spells.flameShock,
-			spells.lavaBurst,
 			spells.naturesSwiftness,
 			spells.totemicRecall,
 		},
@@ -45,7 +63,6 @@ table.insert(ns.weakauras.classes.shaman.specs, {
 			spells.greaterPurge,
 			spells.cleanseSpirit,
 
-			spells.healingStreamTotem,
 			spells.poisonCleansingTotem,
 			spells.tranquilAirTotem,
 			spells.tremorTotem,
@@ -53,17 +70,21 @@ table.insert(ns.weakauras.classes.shaman.specs, {
 			spells.totemicProjection,
 		},
 		defensives = {
-			spells.ancestralGuidance,
-			spells.astralShift,
-			spells.earthElemental,
 			spells.stoneskinTotem,
+			spells.earthElemental,
+			spells.ancestralGuidance,
+			spells.healingStreamTotem,
+			spells.astralShift,
 		},
-		consumables = {
-			consumables.dreamwalkersHealingPotion,
-			consumables.healthstone,
-			consumables.elementalPotionOfUltimatePower,
-			consumables.potionOfShockingDisclosure,
-			consumables.potionOfTheHushedZephyr,
+		tracking = {
+			auraIcon('target', 'debuff', 188389),
 		},
+		-- consumables = {
+		-- 	consumables.dreamwalkersHealingPotion,
+		-- 	consumables.healthstone,
+		-- 	consumables.elementalPotionOfUltimatePower,
+		-- 	consumables.potionOfShockingDisclosure,
+		-- 	consumables.potionOfTheHushedZephyr,
+		-- },
 	},
 })
