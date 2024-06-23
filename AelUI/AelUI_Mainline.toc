@@ -4,4 +4,5 @@
 ## Version: 1.0.0
 ## SavedVariables: AelUIDB
 
+libs\load.xml
 core\load.xml
