@@ -1,0 +1,7 @@
+## Interface: 110000
+## Title: AelUI
+## Author: Aelen
+## Version: 1.0.0
+## SavedVariables: AelUIDB
+
+core\load.xml
