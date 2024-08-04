@@ -1,6 +1,7 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="init.lua"/>
 	<Script file="uiscale.lua"/>
+	<Script file="media\init.lua"/>
 	<Script file="options\init.lua"/>
 	<Include file="anchors\load.xml"/>
 </Ui>
