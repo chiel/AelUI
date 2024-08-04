@@ -29,3 +29,4 @@ function addon:OnEnable()
 end
 
 ns.addon = addon
+ns.console = LibStub('AceConsole-3.0')
