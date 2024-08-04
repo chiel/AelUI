@@ -6,3 +6,4 @@
 
 libs\load.xml
 core\load.xml
+retail\load.xml
