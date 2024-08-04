@@ -1,0 +1,7 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="display.lua"/>
+	<Script file="CreateBackground.lua"/>
+	<Script file="CreateBorder.lua"/>
+	<Script file="CreateGlow.lua"/>
+	<Script file="CreateText.lua"/>
+</Ui>

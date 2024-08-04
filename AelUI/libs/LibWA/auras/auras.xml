@@ -1,0 +1,9 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="auras.lua"/>
+	<Script file="CreateBase.lua"/>
+	<Script file="CreateGroupBase.lua"/>
+	<Script file="CreateDynamicGroup.lua"/>
+	<Script file="CreateGroup.lua"/>
+	<Script file="CreateIcon.lua"/>
+	<Script file="CreateBar.lua"/>
+</Ui>
