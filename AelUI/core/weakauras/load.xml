@@ -1,0 +1,8 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="init.lua"/>
+	<Script file="icon.lua"/>
+	<Script file="addProgressText.lua"/>
+	<Script file="addStacksText.lua"/>
+	<Script file="spellIcon.lua"/>
+	<Script file="import.lua"/>
+</Ui>
