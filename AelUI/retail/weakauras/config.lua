@@ -11,8 +11,9 @@ ns.weakauras.config = {
 				to = 'TOP',
 			},
 			grow = {
-				type = 'HORIZONTAL',
-				align = 'RIGHT',
+				type = 'CUSTOM',
+				on = 'changed',
+				custom = 'function(newPositions, activeRegions) AelUI.weakauras.growers.primary(newPositions, activeRegions) end',
 			},
 		},
 		childConfig = {
@@ -31,8 +32,9 @@ ns.weakauras.config = {
 				to = 'TOP',
 			},
 			grow = {
-				type = 'HORIZONTAL',
-				align = 'RIGHT',
+				type = 'CUSTOM',
+				on = 'changed',
+				custom = 'function(newPositions, activeRegions) AelUI.weakauras.growers.secondary(newPositions, activeRegions) end',
 			},
 		},
 		childConfig = {
