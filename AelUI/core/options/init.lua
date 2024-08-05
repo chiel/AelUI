@@ -9,8 +9,18 @@ local config = {
 	args = {},
 }
 
+local sections = {}
+
 ns.options = {
+	addSection = function(key, config)
+		table.insert(sections, { key = key, config = config })
+	end,
+
 	finalise = function()
+		for i, section in ipairs(sections) do
+			config.args[section.key] = Mixin({ order = i }, section.config)
+		end
+
 		dialog:SetDefaultSize('AelUI', 800, 600)
 		registry:RegisterOptionsTable('AelUI', config, false)
 
