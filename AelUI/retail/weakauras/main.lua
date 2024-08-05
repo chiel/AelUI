@@ -32,7 +32,10 @@ ns.OnEnable(function()
 			imageWidth = 48,
 			imageHeight = 48,
 			func = function()
-				print('import', classData.name)
+				local data, children = ns.weakauras.convertClassData(classData)
+				ns.weakauras.import(data, children, function()
+					ns.console:Printf('[AelUI] WeakAuras group %s done', classData.name)
+				end)
 			end,
 		}
 	end
