@@ -1,4 +1,3 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
-	<Include file="weakauras\load.xml"/>
 	<Script file="main.lua"/>
 </Ui>
