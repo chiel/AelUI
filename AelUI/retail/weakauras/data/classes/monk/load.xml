@@ -1,4 +1,4 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="init.lua"/>
-	<Include file="monk\load.xml"/>
+	<Script file="brewmaster.lua"/>
 </Ui>
