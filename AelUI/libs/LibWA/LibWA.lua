@@ -1,5 +1,5 @@
 local _, addon = ...
 
-addon.internalVersion = 75
+addon.internalVersion = 77
 
 LibWA = {}
