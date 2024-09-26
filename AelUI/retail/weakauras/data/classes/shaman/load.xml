@@ -1,5 +1,5 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="init.lua"/>
-	<Include file="monk\load.xml"/>
-	<Include file="shaman\load.xml"/>
+	<Script file="elemental.lua"/>
+	<Script file="enhancement.lua"/>
 </Ui>
