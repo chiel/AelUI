@@ -4,9 +4,9 @@ local m = ns.media
 
 ns.weakauras.spellIcon = function(spellId, custom)
 	return function(idPrefix, config)
-		local spellName = GetSpellInfo(spellId)
+		local spellInfo = C_Spell.GetSpellInfo(spellId)
 
-		local id = idPrefix .. ' - ' .. spellName
+		local id = idPrefix .. ' - ' .. spellInfo.name
 		local icon = ns.weakauras.icon(id, config)
 		ns.weakauras.addProgressText(icon)
 		ns.weakauras.addStacksText(icon)
