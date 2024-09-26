@@ -28,8 +28,23 @@ ns.weakauras.data.classes.monk = {
 		songOfChiJi = spellIcon(198898),
 		soothingMist = spellIcon(115175),
 		tigersLust = spellIcon(116841),
-		touchOfDeath = spellIcon(322109),
 		transcendence = spellIcon(101643),
 		transcendenceTransfer = spellIcon(119996),
+
+		touchOfDeath = spellIcon(322109, function(icon)
+			local glow = icon.display:AddGlow('proc', { startAnimation = true })
+			icon.display:Move(glow, 3)
+			icon.display:SetColor({ 1, 1, 1, 0.75 })
+			icon.display:SetDesaturate(true)
+
+			icon.triggers:SetDisjunctive('any')
+			local trigger = icon.triggers:AddSpellActivationOverlay(322109)
+
+			local cond = icon.conditions:Add()
+			cond:CheckTriggerActive(trigger, true)
+			cond:ChangeColor({ 1, 1, 1, 1 })
+			cond:ChangeDesaturate(false)
+			cond:ChangeGlowVisibility(glow, true)
+		end),
 	},
 }
