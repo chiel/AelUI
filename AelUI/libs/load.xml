@@ -8,4 +8,5 @@
 	<Include file="Ace3\AceConsole-3.0\AceConsole-3.0.xml"/>
 	<Script file="LibSharedMedia-3.0\LibSharedMedia-3.0.lua"/>
 	<Include file="LibWA\LibWA.xml"/>
+	<Include file="oUF\oUF.xml"/>
 </Ui>
