@@ -19,5 +19,14 @@ table.insert(ns.unitframes.units, {
 
 		local health = e.health(self, unit)
 		health:SetAllPoints()
+
+		local power = e.power(self, unit)
+		power:SetPoint('BOTTOMLEFT', a.primary, 'TOPLEFT', 0, 2)
+		power:SetPoint('BOTTOMRIGHT', a.primary, 'TOPRIGHT', 0, 2)
+		power:SetHeight(16)
+
+		local powerText = e.text(self.Power, { size = 18 })
+		powerText:SetPoint('BOTTOM', 0, -1)
+		self:Tag(powerText, '[AelUI:powercurrent]')
 	end,
 })
