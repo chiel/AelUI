@@ -1,5 +1,4 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
-	<Include file="unitframes\load.xml"/>
-	<Include file="weakauras\load.xml"/>
+	<Include file="units\load.xml"/>
 	<Script file="main.lua"/>
 </Ui>

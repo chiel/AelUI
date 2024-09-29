@@ -4,5 +4,6 @@
 	<Script file="media\init.lua"/>
 	<Script file="options\init.lua"/>
 	<Include file="anchors\load.xml"/>
+	<Include file="unitframes\load.xml"/>
 	<Include file="weakauras\load.xml"/>
 </Ui>
