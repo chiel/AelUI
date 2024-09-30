@@ -28,5 +28,17 @@ table.insert(ns.unitframes.units, {
 		local powerText = e.text(self.Power, { size = 18 })
 		powerText:SetPoint('BOTTOM', 0, -1)
 		self:Tag(powerText, '[AelUI:powercurrent]')
+
+		local _, playerClass = UnitClass('player')
+		if playerClass == 'DEATHKNIGHT' then
+			local runes = e.runes(self, unit)
+			runes:SetHeight(10)
+			runes:SetPoint('BOTTOMLEFT', power, 'TOPLEFT', 0, -1)
+			runes:SetFrameLevel(runes:GetFrameLevel() - 1)
+
+			a.primary:OnResize(function(width)
+				runes:UpdateWidth(width)
+			end)
+		end
 	end,
 })
