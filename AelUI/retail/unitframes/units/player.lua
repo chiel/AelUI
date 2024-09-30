@@ -26,7 +26,7 @@ table.insert(ns.unitframes.units, {
 		power:SetPoint('BOTTOMRIGHT', a.primary, 'TOPRIGHT', 0, 2)
 		power:SetHeight(16)
 
-		local powerText = e.text(self.Power, { size = 18 })
+		local powerText = e.text(self.Power, { size = 18, style = 'bold' })
 		powerText:SetPoint('BOTTOM', 0, -1)
 		self:Tag(powerText, '[AelUI:powercurrent]')
 
