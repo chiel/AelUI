@@ -16,6 +16,7 @@ table.insert(ns.unitframes.units, {
 		self:RegisterForClicks('AnyUp')
 		self:SetScript('OnEnter', UnitFrame_OnEnter)
 		self:SetScript('OnLeave', UnitFrame_OnLeave)
+		self.colors = ns.colors
 
 		local health = e.health(self, unit)
 		health:SetAllPoints()
