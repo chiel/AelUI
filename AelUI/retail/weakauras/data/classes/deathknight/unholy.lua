@@ -12,7 +12,7 @@ table.insert(wa.data.classes.deathknight.specs, {
 			spells.abominationLimb,
 			spellIcon(42650), -- Army of the Dead / Raise Abomination
 			spellIcon(49206), -- Summon Gargoyle
-			spellIcon(207290), -- Unholy Assault
+			spellIcon(207289), -- Unholy Assault
 			spellIcon(63560), -- Dark Transformation
 			spellIcon(275699), -- Apocalypse
 			spellIcon(390279), -- Vile Contagion

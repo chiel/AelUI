@@ -15,6 +15,7 @@ table.insert(wa.data.classes.deathknight.specs, {
 			spellIcon(47568), -- Empower Rune Weapon
 			spellIcon(57330), -- Horn of Winter
 			spellIcon(51271), -- Pillar of Frost
+			spellIcon(439843), -- Reaper's Mark
 			spellIcon(305392), -- Chill Streak
 			spellIcon(207230), -- Frostscythe
 			spellIcon(196770), -- Remorseless Winter
