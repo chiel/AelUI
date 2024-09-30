@@ -4,6 +4,7 @@ ns.anchors.create = function(name)
 	local minWidth = -1
 	local currentWidth = -1
 	local requestedWidth = -1
+	local resizeListeners = {}
 
 	local anchor = CreateFrame('Frame', name, UIParent)
 
@@ -24,10 +25,18 @@ ns.anchors.create = function(name)
 
 		anchor:SetWidth(newWidth)
 		currentWidth = newWidth
+
+		for _, listener in ipairs(resizeListeners) do
+			listener(newWidth)
+		end
 	end
 
 	anchor:SetScript('OnEvent', update)
 	anchor:RegisterEvent('PLAYER_REGEN_ENABLED')
+
+	anchor.OnResize = function(self, listener)
+		table.insert(resizeListeners, listener)
+	end
 
 	anchor.SetMinWidth = function(self, width)
 		minWidth = width
