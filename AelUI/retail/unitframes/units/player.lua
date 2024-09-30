@@ -30,6 +30,11 @@ table.insert(ns.unitframes.units, {
 		powerText:SetPoint('BOTTOM', 0, -1)
 		self:Tag(powerText, '[AelUI:powercurrent]')
 
+		local castbar = e.castbar(self, unit)
+		castbar:SetPoint('TOPLEFT', a.secondary, 'BOTTOMLEFT', 0, -2)
+		castbar:SetPoint('TOPRIGHT', a.secondary, 'BOTTOMRIGHT', 0, -2)
+		castbar:SetHeight(16)
+
 		local _, playerClass = UnitClass('player')
 		if playerClass == 'DEATHKNIGHT' then
 			local runes = e.runes(self, unit)
