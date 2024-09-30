@@ -12,6 +12,7 @@ ns.unitframes.elements.power = function(self, unit)
 	power.frequentUpdates = true
 	power:SetPoint('TOPLEFT', 1, -1)
 	power:SetPoint('BOTTOMRIGHT', -1, 1)
+	ns.utils.setSmoothing(power, true)
 
 	self.Power = power
 	return backdrop
