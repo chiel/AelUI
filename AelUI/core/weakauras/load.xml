@@ -6,5 +6,6 @@
 	<Script file="auraIcon.lua"/>
 	<Script file="spellIcon.lua"/>
 	<Script file="createGrower.lua"/>
+	<Script file="createRegionResizer.lua"/>
 	<Script file="import.lua"/>
 </Ui>
