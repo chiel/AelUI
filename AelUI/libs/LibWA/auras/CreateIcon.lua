@@ -3,6 +3,7 @@ local _, addon = ...
 LibWA.CreateIcon = function(id)
 	local aura = {
 		base = addon.auras.CreateBase(id),
+		animations = addon.animations.Create(),
 		conditions = addon.conditions.Create(),
 		display = addon.display.Create(),
 		load = addon.load.Create(),
@@ -21,6 +22,7 @@ LibWA.CreateIcon = function(id)
 			aura.triggers:Serialize(),
 			aura.display:Serialize(),
 			aura.conditions:Serialize(),
+			aura.animations:Serialize(),
 			aura.load:Serialize()
 		)
 	end

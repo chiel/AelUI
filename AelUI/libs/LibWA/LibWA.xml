@@ -1,5 +1,6 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="LibWA.lua"/>
+	<Include file="animations\animations.xml"/>
 	<Include file="conditions\conditions.xml"/>
 	<Include file="display\display.xml"/>
 	<Include file="load\load.xml"/>
