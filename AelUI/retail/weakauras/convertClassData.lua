@@ -4,6 +4,7 @@ local groupTypeOrder = {
 	'primary',
 	'secondary',
 	'tracking',
+	'reminders',
 	'defensives',
 	'consumables',
 }

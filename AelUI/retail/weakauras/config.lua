@@ -65,6 +65,28 @@ ns.weakauras.config = {
 		},
 	},
 
+	reminders = {
+		name = 'Reminders',
+		groupConfig = {
+			anchor = {
+				type = 'SELECTFRAME',
+				frame = 'AelUIPrimaryAnchor',
+				from = 'BOTTOM',
+				to = 'TOP',
+				x = 0,
+				y = 80,
+			},
+			grow = {
+				type = 'HORIZONTAL',
+				align = 'RIGHT',
+			},
+		},
+		childConfig = {
+			width = 48,
+			height = 48,
+		},
+	},
+
 	defensives = {
 		name = 'Defensives',
 		groupConfig = {
