@@ -63,6 +63,10 @@ addon.conditions.CreateCondition = function(trigger)
 		self.check = addon.conditions.CheckSpellInRange(...)
 	end
 
+	aura.CheckSpellUsable = function(self, ...)
+		self.check = addon.conditions.CheckSpellUsable(...)
+	end
+
 	aura.CheckStacks = function(self, ...)
 		self.check = addon.conditions.CheckStacks(...)
 	end

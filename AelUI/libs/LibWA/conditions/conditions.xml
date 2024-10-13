@@ -12,6 +12,7 @@
 	<Script file="CheckOnCooldown.lua"/>
 	<Script file="CheckSpellCount.lua"/>
 	<Script file="CheckSpellInRange.lua"/>
+	<Script file="CheckSpellUsable.lua"/>
 	<Script file="CheckStacks.lua"/>
 	<Script file="CheckTriggerActive.lua"/>
 	<Script file="CheckUnitCount.lua"/>
