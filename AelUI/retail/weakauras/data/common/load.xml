@@ -1,5 +1,4 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="init.lua"/>
-	<Include file="classes\load.xml"/>
-	<Include file="common\load.xml"/>
+	<Script file="gcd.lua"/>
 </Ui>
