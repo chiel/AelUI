@@ -37,8 +37,20 @@ addon.triggers.Create = function()
 		return trigger
 	end
 
+	aura.AddSpellGlobalCooldown = function(self, ...)
+		local trigger = addon.triggers.CreateSpellGlobalCooldown(...)
+		table.insert(self.triggers, trigger)
+		return trigger
+	end
+
 	aura.AddSpellCooldown = function(self, ...)
 		local trigger = addon.triggers.CreateSpellCooldown(...)
+		table.insert(self.triggers, trigger)
+		return trigger
+	end
+
+	aura.AddUnitCast = function(self, ...)
+		local trigger = addon.triggers.CreateUnitCast(...)
 		table.insert(self.triggers, trigger)
 		return trigger
 	end

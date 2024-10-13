@@ -6,5 +6,7 @@
 	<Script file="CreateItemCount.lua"/>
 	<Script file="CreateSpellActivationOverlay.lua"/>
 	<Script file="CreateSpellCooldown.lua"/>
+	<Script file="CreateSpellGlobalCooldown.lua"/>
+	<Script file="CreateUnitCast.lua"/>
 	<Script file="CreateUnitCharacteristics.lua"/>
 </Ui>
