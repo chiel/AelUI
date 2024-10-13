@@ -43,7 +43,7 @@ ns.weakauras.data.classes.shaman = {
 
 			icon.triggers:SetDisjunctive('any')
 			local trigger = icon.triggers:AddAura('player', 'buff', {
-				exactSpellIds = { 378081 }, -- Lava Surge
+				exactSpellIds = { 378081, 443454 }, -- Nature's Swiftness, Ancestral Swiftness
 				show = 'onActive',
 			})
 
