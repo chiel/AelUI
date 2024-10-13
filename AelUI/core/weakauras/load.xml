@@ -3,6 +3,7 @@
 	<Script file="icon.lua"/>
 	<Script file="addProgressText.lua"/>
 	<Script file="addStacksText.lua"/>
+	<Script file="auraIcon.lua"/>
 	<Script file="spellIcon.lua"/>
 	<Script file="createGrower.lua"/>
 	<Script file="import.lua"/>
