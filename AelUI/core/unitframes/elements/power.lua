@@ -14,6 +14,24 @@ ns.unitframes.elements.power = function(self, unit)
 	power:SetPoint('BOTTOMRIGHT', -1, 1)
 	ns.utils.setSmoothing(power, true)
 
+	local spark = power:CreateTexture(nil, 'OVERLAY')
+	spark:SetTexture([[Interface\CastingBar\UI-CastingBar-Spark]])
+	spark:SetSize(10, 30)
+	spark:SetBlendMode('ADD')
+	spark:SetPoint('CENTER', power:GetStatusBarTexture(), 'RIGHT', 0, 0)
+
+	power.PostUpdate = function(self, unit, cur, min, max)
+		if min == nil then
+			min = 0
+		end
+
+		if cur == min or cur == max then
+			spark:Hide()
+		else
+			spark:Show()
+		end
+	end
+
 	self.Power = power
 	return backdrop
 end
