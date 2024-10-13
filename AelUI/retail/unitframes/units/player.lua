@@ -21,6 +21,14 @@ table.insert(ns.unitframes.units, {
 		local health = e.health(self, unit)
 		health:SetAllPoints()
 
+		local nameText = e.text(self.Health, { size = 20 })
+		self:Tag(nameText, '[AelUI:name]')
+		nameText:SetPoint('BOTTOMLEFT', self, 'TOPLEFT', 4, -6)
+
+		health.PostUpdateColor = function(r, g, b)
+			nameText:SetTextColor(r, g, b)
+		end
+
 		local power = e.power(self, unit)
 		power:SetPoint('BOTTOMLEFT', a.primary, 'TOPLEFT', 0, 2)
 		power:SetPoint('BOTTOMRIGHT', a.primary, 'TOPRIGHT', 0, 2)
