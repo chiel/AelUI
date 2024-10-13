@@ -1,8 +1,6 @@
 local _, addon = ...
 
-addon.display = {}
-
-addon.display.Create = function()
+addon.display.CreateIconOptions = function()
 	local aura = {
 		subRegions = {
 			addon.display.CreateBackground(),

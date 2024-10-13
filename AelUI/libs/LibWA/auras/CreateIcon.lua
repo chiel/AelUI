@@ -5,7 +5,7 @@ LibWA.CreateIcon = function(id)
 		base = addon.auras.CreateBase(id),
 		animations = addon.animations.Create(),
 		conditions = addon.conditions.Create(),
-		display = addon.display.Create(),
+		display = addon.display.CreateIconOptions(),
 		load = addon.load.Create(),
 		triggers = addon.triggers.Create(),
 	}
