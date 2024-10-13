@@ -29,6 +29,11 @@ addon.conditions.CreateCondition = function(trigger)
 		table.insert(self.changes, change)
 	end
 
+	aura.ChangeTextText = function(self, ...)
+		local change = addon.conditions.ChangeTextText(...)
+		table.insert(self.changes, change)
+	end
+
 	aura.ChangeTextVisibility = function(self, ...)
 		local change = addon.conditions.ChangeTextVisibility(...)
 		table.insert(self.changes, change)

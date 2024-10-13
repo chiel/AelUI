@@ -4,6 +4,7 @@
 	<Script file="ChangeDesaturate.lua"/>
 	<Script file="ChangeGlowVisibility.lua"/>
 	<Script file="ChangeInverse.lua"/>
+	<Script file="ChangeTextText.lua"/>
 	<Script file="ChangeTextVisibility.lua"/>
 	<Script file="CreateCondition.lua"/>
 	<Script file="CheckAuraFound.lua"/>
