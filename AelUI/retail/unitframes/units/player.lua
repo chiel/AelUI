@@ -43,6 +43,10 @@ table.insert(ns.unitframes.units, {
 		castbar:SetPoint('TOPRIGHT', a.secondary, 'BOTTOMRIGHT', 0, -2)
 		castbar:SetHeight(16)
 
+		local leader = e.leader(self, unit)
+		leader:SetParent(self.Health)
+		leader:SetPoint('LEFT', nameText, 'RIGHT', 4, -1)
+
 		local _, playerClass = UnitClass('player')
 		if playerClass == 'DEATHKNIGHT' then
 			local runes = e.runes(self, unit)
