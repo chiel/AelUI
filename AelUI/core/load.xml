@@ -3,6 +3,7 @@
 	<Script file="uiscale.lua"/>
 	<Script file="colors.lua"/>
 	<Script file="media\init.lua"/>
+	<!-- <Include file="config\load.xml"/> -->
 	<Include file="utils\load.xml"/>
 	<Script file="options\init.lua"/>
 	<Include file="anchors\load.xml"/>

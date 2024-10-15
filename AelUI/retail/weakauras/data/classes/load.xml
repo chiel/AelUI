@@ -5,4 +5,5 @@
 	<Include file="priest\load.xml"/>
 	<Include file="shaman\load.xml"/>
 	<Include file="warrior\load.xml"/>
+	<!-- <Script file="main.lua"/> -->
 </Ui>

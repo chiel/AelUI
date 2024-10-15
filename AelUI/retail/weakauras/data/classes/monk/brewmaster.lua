@@ -1,7 +1,12 @@
 local _, ns = ...
 
 local wa = ns.weakauras
+-- local auraIcon = wa.createAuraIconBuilder
+-- local consumableIcon = wa.createConsumableIconBuilder
+-- local itemIcon = wa.createItemIconBuilder
 local spellIcon = wa.spellIcon
+-- local consumables = wa.consumables
+-- local racials = wa.racials
 local spells = wa.data.classes.monk.spells
 
 table.insert(ns.weakauras.data.classes.monk.specs, {
@@ -29,12 +34,17 @@ table.insert(ns.weakauras.data.classes.monk.specs, {
 			spells.songOfChiJi,
 			spells.provoke,
 			spellIcon(115315), -- Summon Black Ox Statue
+			-- racials.arcaneTorrent,
 			spellIcon(218164), -- Detox
 			spells.clash,
 			spells.roll,
 			spells.tigersLust,
 			spells.transcendence,
 			spells.transcendenceTransfer,
+
+			-- spells.cracklingJadeLightning,
+			-- spells.resuscitate,
+			-- spells.soothingMist,
 		},
 		defensives = {
 			spellIcon(115176), -- Zen Meditation
@@ -42,6 +52,14 @@ table.insert(ns.weakauras.data.classes.monk.specs, {
 			spells.diffuseMagic,
 			spells.fortifyingBrew,
 		},
+		-- consumables = {
+		-- 	-- consumables.dreamwalkersHealingPotion,
+		-- 	-- consumables.healthstone,
+		-- 	-- consumables.elementalPotionOfUltimatePower,
+		-- 	-- consumables.potionOfShockingDisclosure,
+		-- 	-- consumables.potionOfTheHushedZephyr,
+		-- 	-- consumables.dreamboundAugmentRune,
+		-- },
 		tracking = {
 			spellIcon(115399), -- Black Ox Brew
 			spellIcon(119582, function(icon) -- Purifying Brew

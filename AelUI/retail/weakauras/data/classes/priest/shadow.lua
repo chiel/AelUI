@@ -88,5 +88,11 @@ table.insert(ns.weakauras.data.classes.priest.specs, {
 				cond:ChangeGlowVisibility(glow, true)
 			end),
 		},
+		-- consumables = {
+		-- 	consumables.dreamwalkersHealingPotion,
+		-- 	consumables.healthstone,
+		-- 	consumables.elementalPotionOfUltimatePower,
+		-- 	consumables.potionOfTheHushedZephyr,
+		-- },
 	},
 })

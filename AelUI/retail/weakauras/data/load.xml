@@ -2,4 +2,6 @@
 	<Script file="init.lua"/>
 	<Include file="classes\load.xml"/>
 	<Include file="common\load.xml"/>
+	<!-- <Include file="weakauras\load.xml"/> -->
+	<!-- <Script file="main.lua"/> -->
 </Ui>
