@@ -52,7 +52,11 @@ ns.unitframes.createStyler = function(config)
 		if i.leader then
 			local leader = e.leader(self, unit)
 			leader:SetParent(self.Health)
-			leader:SetPoint('LEFT', nameText, 'RIGHT', 4, -1)
+			if c.mirror then
+				leader:SetPoint('RIGHT', nameText, 'LEFT', -4, -1)
+			else
+				leader:SetPoint('LEFT', nameText, 'RIGHT', 4, -1)
+			end
 		end
 	end
 end

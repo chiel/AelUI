@@ -14,6 +14,9 @@ table.insert(ns.unitframes.units, {
 
 	style = ns.unitframes.createStyler({
 		mirror = true,
+		indicators = {
+			leader = true,
+		},
 		texts = {
 			health = true,
 			healthpercent = true,

@@ -4,6 +4,9 @@ local a = ns.anchors
 local e = ns.unitframes.elements
 
 local styler = ns.unitframes.createStyler({
+	indicators = {
+		leader = true,
+	},
 	texts = {
 		health = true,
 		healthpercent = true,
