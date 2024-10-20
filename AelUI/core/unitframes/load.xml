@@ -1,4 +1,5 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="init.lua"/>
 	<Include file="elements\load.xml"/>
+	<Script file="createStyler.lua"/>
 </Ui>

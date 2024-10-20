@@ -3,6 +3,13 @@ local _, ns = ...
 local a = ns.anchors
 local e = ns.unitframes.elements
 
+local styler = ns.unitframes.createStyler({
+	texts = {
+		health = true,
+		healthpercent = true,
+	},
+})
+
 table.insert(ns.unitframes.units, {
 	name = 'player',
 
@@ -13,21 +20,7 @@ table.insert(ns.unitframes.units, {
 	end,
 
 	style = function(self, unit)
-		self:RegisterForClicks('AnyUp')
-		self:SetScript('OnEnter', UnitFrame_OnEnter)
-		self:SetScript('OnLeave', UnitFrame_OnLeave)
-		self.colors = ns.colors
-
-		local health = e.health(self, unit)
-		health:SetAllPoints()
-
-		local nameText = e.text(self.Health, { size = 20 })
-		self:Tag(nameText, '[AelUI:name]')
-		nameText:SetPoint('BOTTOMLEFT', self, 'TOPLEFT', 4, -6)
-
-		health.PostUpdateColor = function(r, g, b)
-			nameText:SetTextColor(r, g, b)
-		end
+		styler(self, unit)
 
 		local power = e.power(self, unit)
 		power:SetPoint('BOTTOMLEFT', a.primary, 'TOPLEFT', 0, 2)
@@ -42,10 +35,6 @@ table.insert(ns.unitframes.units, {
 		castbar:SetPoint('TOPLEFT', a.secondary, 'BOTTOMLEFT', 0, -2)
 		castbar:SetPoint('TOPRIGHT', a.secondary, 'BOTTOMRIGHT', 0, -2)
 		castbar:SetHeight(16)
-
-		local leader = e.leader(self, unit)
-		leader:SetParent(self.Health)
-		leader:SetPoint('LEFT', nameText, 'RIGHT', 4, -1)
 
 		local _, playerClass = UnitClass('player')
 		if playerClass == 'DEATHKNIGHT' then
