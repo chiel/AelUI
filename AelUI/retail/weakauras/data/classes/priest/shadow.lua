@@ -2,6 +2,7 @@ local _, ns = ...
 
 local wa = ns.weakauras
 local auraIcon = wa.auraIcon
+local reminderIcon = wa.reminderIcon
 local spellIcon = wa.spellIcon
 local spells = wa.data.classes.priest.spells
 
@@ -87,6 +88,16 @@ table.insert(ns.weakauras.data.classes.priest.specs, {
 				cond:CheckTriggerActive(trigger, true)
 				cond:ChangeGlowVisibility(glow, true)
 			end),
+		},
+		-- consumables = {
+		-- 	consumables.dreamwalkersHealingPotion,
+		-- 	consumables.healthstone,
+		-- 	consumables.elementalPotionOfUltimatePower,
+		-- 	consumables.potionOfTheHushedZephyr,
+		-- },
+		reminders = {
+			reminderIcon(21562), -- Power Word: Fortitude
+			reminderIcon(232698), -- Shadowform
 		},
 	},
 })

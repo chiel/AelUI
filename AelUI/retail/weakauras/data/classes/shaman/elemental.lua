@@ -2,6 +2,7 @@ local _, ns = ...
 
 local wa = ns.weakauras
 local auraIcon = wa.auraIcon
+local reminderIcon = wa.reminderIcon
 local spellIcon = wa.spellIcon
 local spells = wa.data.classes.shaman.spells
 
@@ -10,8 +11,6 @@ table.insert(ns.weakauras.data.classes.shaman.specs, {
 
 	groups = {
 		primary = {
-			spellIcon(114050), -- Ascendance
-			spellIcon(198067), -- Fire Elemental
 			spellIcon(191634, function(icon) -- Stormkeeper
 				local glow = icon.display:AddGlow('proc', { startAnimation = true })
 				icon.display:Move(glow, 3)
@@ -30,7 +29,9 @@ table.insert(ns.weakauras.data.classes.shaman.specs, {
 				cond:ChangeInverse(false)
 				cond:ChangeGlowVisibility(glow, true)
 			end),
+			spellIcon(198067), -- Fire Elemental
 			spellIcon(192249), -- Storm Elemental
+			spellIcon(114050), -- Ascendance
 			spellIcon(375982, function(icon) -- Primordial Wave
 				local glow = icon.display:AddGlow('proc', { startAnimation = true })
 				icon.display:Move(glow, 3)
@@ -47,6 +48,35 @@ table.insert(ns.weakauras.data.classes.shaman.specs, {
 				cond:ChangeDesaturate(false)
 				cond:ChangeGlowVisibility(glow, true)
 				cond:ChangeInverse(false)
+			end),
+			spellIcon(188196, function(icon) -- Lightning Bolt
+				local glow = icon.display:AddGlow('proc', { startAnimation = true })
+				icon.display:Move(glow, 3)
+				icon.display:SetColor({ 1, 1, 1, 0.75 })
+				icon.display:SetDesaturate(true)
+				icon.display:SetIcon(5927653)
+
+				icon.triggers:SetDisjunctive('any')
+				icon.triggers:AddAura('player', 'buff', {
+					exactSpellIds = { 462131 }, -- Awakening Storms
+					show = 'onActive',
+				})
+
+				local tempestTrigger = icon.triggers:AddAura('player', 'buff', {
+					exactSpellIds = { 454015 }, -- Tempest
+					show = 'onActive',
+				})
+
+				local stackText = icon.display:GetSubRegion(5)
+				stackText:SetText('%2.s')
+
+				local cond = icon.conditions:Add()
+				cond:CheckTriggerActive(tempestTrigger, true)
+				cond:ChangeColor({ 1, 1, 1, 1 })
+				cond:ChangeDesaturate(false)
+				cond:ChangeGlowVisibility(glow, true)
+
+				icon.load:SpellKnown(454009, { exact = true })
 			end),
 			spells.lavaBurst,
 			spellIcon(192222), -- Liquid Magma Totem
@@ -72,7 +102,6 @@ table.insert(ns.weakauras.data.classes.shaman.specs, {
 
 				local cond = icon.conditions:Add()
 				cond:CheckTriggerActive(frostShockBuff, true)
-				cond:ChangeGlowVisibility(glow, true)
 				cond:ChangeTextText(stackText, '%3.s')
 
 				local cond = icon.conditions:Add()
@@ -112,36 +141,8 @@ table.insert(ns.weakauras.data.classes.shaman.specs, {
 		},
 		tracking = {},
 		reminders = {
-			function(idPrefix, config)
-				local spellInfo = C_Spell.GetSpellInfo(462854) -- Skyfury
-				local id = idPrefix .. ' - ' .. spellInfo.name
-				local icon = wa.icon(id, config)
-				icon.display:SetCooldown({ inverse = false })
-				local trigger = icon.triggers:AddAura('player', 'buff', {
-					exactSpellIds = { 462854 },
-					show = 'onMissing',
-				})
-
-				icon.animations:Start('preset', 'fade')
-				icon.animations:Main('preset', 'flash')
-				icon.animations:Finish('preset', 'fade')
-				return icon
-			end,
-			function(idPrefix, config)
-				local spellInfo = C_Spell.GetSpellInfo(192106) -- Lightning Shield
-				local id = idPrefix .. ' - ' .. spellInfo.name
-				local icon = wa.icon(id, config)
-				icon.display:SetCooldown({ inverse = false })
-				local trigger = icon.triggers:AddAura('player', 'buff', {
-					exactSpellIds = { 192106 },
-					show = 'onMissing',
-				})
-
-				icon.animations:Start('preset', 'fade')
-				icon.animations:Main('preset', 'flash')
-				icon.animations:Finish('preset', 'fade')
-				return icon
-			end,
+			reminderIcon(462854), -- Skyfury
+			reminderIcon(192106), -- Lightning Shield
 		},
 	},
 })

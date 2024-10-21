@@ -1,6 +1,7 @@
 local _, ns = ...
 
 local wa = ns.weakauras
+local reminderIcon = wa.reminderIcon
 local spellIcon = wa.spellIcon
 local spells = wa.data.classes.warrior.spells
 
@@ -75,6 +76,9 @@ table.insert(ns.weakauras.data.classes.warrior.specs, {
 			spellIcon(97462), -- Rallying Cry
 			spellIcon(871), -- Shield Wall
 			spellIcon(12975), -- Last Stand
+		},
+		reminders = {
+			reminderIcon(6673), -- Battle Shout
 		},
 	},
 })
