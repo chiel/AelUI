@@ -1,4 +1,4 @@
-## Interface: 110000
+## Interface: 110200
 ## Title: AelUI
 ## Author: Aelen
 ## Version: 1.0.0
