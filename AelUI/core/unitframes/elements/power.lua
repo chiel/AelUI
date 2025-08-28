@@ -32,6 +32,8 @@ ns.unitframes.elements.power = function(self, unit)
 		end
 	end
 
+	backdrop.spark = spark
+
 	self.Power = power
 	return backdrop
 end
