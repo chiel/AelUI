@@ -36,6 +36,10 @@ ns.anchors.create = function(name)
 
 	anchor.OnResize = function(self, listener)
 		table.insert(resizeListeners, listener)
+
+		if currentWidth > -1 then
+			listener(currentWidth)
+		end
 	end
 
 	anchor.SetMinWidth = function(self, width)
