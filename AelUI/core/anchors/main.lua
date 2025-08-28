@@ -1,7 +1,7 @@
 local _, ns = ...
 
 local primary = ns.anchors.create('AelUIPrimaryAnchor')
-primary:SetPoint('TOP', UIParent, 'CENTER', 0, -240)
+primary:SetPoint('TOP', UIParent, 'CENTER', 0, -260)
 primary:SetMinWidth((7 * 40) + (6 * 2))
 primary:SetHeight(40)
 
