@@ -1,7 +1,12 @@
 local _, ns = ...
 
 local wa = ns.weakauras
+local auraIcon = wa.auraIcon
+-- local consumableIcon = wa.createConsumableIconBuilder
+-- local itemIcon = wa.createItemIconBuilder
 local spellIcon = wa.spellIcon
+-- local consumables = wa.consumables
+-- local racials = wa.racials
 local spells = wa.data.classes.monk.spells
 
 table.insert(ns.weakauras.data.classes.monk.specs, {
@@ -29,12 +34,17 @@ table.insert(ns.weakauras.data.classes.monk.specs, {
 			spells.songOfChiJi,
 			spells.provoke,
 			spellIcon(115315), -- Summon Black Ox Statue
+			-- racials.arcaneTorrent,
 			spellIcon(218164), -- Detox
 			spells.clash,
 			spells.roll,
 			spells.tigersLust,
 			spells.transcendence,
 			spells.transcendenceTransfer,
+
+			-- spells.cracklingJadeLightning,
+			-- spells.resuscitate,
+			-- spells.soothingMist,
 		},
 		defensives = {
 			spellIcon(115176), -- Zen Meditation
@@ -42,6 +52,14 @@ table.insert(ns.weakauras.data.classes.monk.specs, {
 			spells.diffuseMagic,
 			spells.fortifyingBrew,
 		},
+		-- consumables = {
+		-- 	-- consumables.dreamwalkersHealingPotion,
+		-- 	-- consumables.healthstone,
+		-- 	-- consumables.elementalPotionOfUltimatePower,
+		-- 	-- consumables.potionOfShockingDisclosure,
+		-- 	-- consumables.potionOfTheHushedZephyr,
+		-- 	-- consumables.dreamboundAugmentRune,
+		-- },
 		tracking = {
 			spellIcon(115399), -- Black Ox Brew
 			spellIcon(119582, function(icon) -- Purifying Brew
@@ -62,6 +80,20 @@ table.insert(ns.weakauras.data.classes.monk.specs, {
 				cond:CheckTriggerActive(staggerBuff, false)
 				cond:ChangeGlowVisibility(glow, false)
 			end),
+			auraIcon('player', 'buff', 392883, function(icon) -- Vivacious Vivification
+				icon.display:Delete(4)
+				icon.display:SetColor({ 1, 1, 1, 0.75 })
+				icon.display:SetDesaturate(true)
+
+				local aura = icon.triggers:Get(1)
+
+				local cond = icon.conditions:Add()
+				cond:CheckAuraFound(aura, true)
+				cond:ChangeColor({ 1, 1, 1, 1 })
+				cond:ChangeDesaturate(false)
+
+				icon.load:SpellKnown(388812)
+			end),
 			spellIcon(322507, function(icon) -- Celestial Brew
 				local stackText = icon.display:GetSubRegion(4)
 				stackText:SetText('%2.s')
@@ -77,6 +109,15 @@ table.insert(ns.weakauras.data.classes.monk.specs, {
 				local cond = icon.conditions:Add()
 				cond:CheckStacks(purifiedChi, '==', 10)
 				cond:ChangeGlowVisibility(glow, true)
+
+				icon.load:SpellKnown(322507)
+			end),
+			spellIcon(1241059, function(icon) -- Celestial Infusion
+				icon.triggers:SetDisjunctive('any')
+				local buff = icon.triggers:AddAura('player', 'buff', { exactSpellIds = { 1241059 } })
+				icon.triggers:Move(buff, 1)
+
+				icon.load:SpellKnown(1241059)
 			end),
 		},
 	},

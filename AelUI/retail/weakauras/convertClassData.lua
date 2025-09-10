@@ -35,7 +35,7 @@ ns.weakauras.convertClassData = function(classData)
 				specGroup:AddChild(typeGroup)
 
 				for _, createIcon in ipairs(typeData) do
-					local icon = createIcon(specId, childConfig)
+					local icon = createIcon(typeId, childConfig)
 					icon.load:ClassAndSpec(specData.specId)
 					typeGroup:AddChild(icon)
 				end

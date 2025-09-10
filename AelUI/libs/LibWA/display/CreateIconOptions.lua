@@ -114,7 +114,7 @@ addon.display.CreateIconOptions = function()
 			Mixin(r, self.size)
 		end
 
-		if self.cooldown ~= nil then
+		if self.cooldown ~= nil and self.cooldown ~= false then
 			r.cooldown = true
 			r.cooldownEdge = self.cooldown.edge or false
 			r.cooldownSwipe = self.cooldown.swipe ~= nil and self.cooldown.swipe or true

@@ -13,6 +13,12 @@ addon.triggers.Create = function()
 		return trigger
 	end
 
+	aura.AddCombatLog = function(self, ...)
+		local trigger = addon.triggers.CreateCombatLog(...)
+		table.insert(self.triggers, trigger)
+		return trigger
+	end
+
 	aura.AddCustomStatus = function(self, ...)
 		local trigger = addon.triggers.CreateCustomStatus(...)
 		table.insert(self.triggers, trigger)
@@ -66,15 +72,22 @@ addon.triggers.Create = function()
 	end
 
 	aura.Move = function(self, trigger, layer)
+		local moved = false
 		local newTriggers = {}
+
 		for i, t in ipairs(self.triggers) do
 			if t ~= trigger then
-				if i == layer then
+				if layer == #newTriggers + 1 then
+					moved = true
 					table.insert(newTriggers, trigger)
 				end
 
 				table.insert(newTriggers, t)
 			end
+		end
+
+		if not moved then
+			table.insert(newTriggers, trigger)
 		end
 
 		self.triggers = newTriggers

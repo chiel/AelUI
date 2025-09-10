@@ -2,6 +2,7 @@ local _, ns = ...
 
 local wa = ns.weakauras
 local auraIcon = wa.auraIcon
+local reminderIcon = wa.reminderIcon
 local spellIcon = wa.spellIcon
 local spells = wa.data.classes.priest.spells
 
@@ -21,6 +22,8 @@ table.insert(ns.weakauras.data.classes.priest.specs, {
 					exactSpellIds = { voidformId },
 					show = 'onMissing',
 				})
+
+				icon.load:SpellKnown(228260)
 			end),
 			spellIcon(205448, function(icon) -- Void Bolt
 				icon.triggers:SetDisjunctive('custom', 'function(t) return t[2] end')
@@ -28,6 +31,8 @@ table.insert(ns.weakauras.data.classes.priest.specs, {
 					exactSpellIds = { voidformId },
 					show = 'onActive',
 				})
+
+				icon.load:SpellKnown(228260)
 			end),
 			spells.mindBlast,
 			spellIcon(15407, function(icon) -- Mind Flay
@@ -71,22 +76,61 @@ table.insert(ns.weakauras.data.classes.priest.specs, {
 			spellIcon(47585), -- Dispersion
 		},
 		tracking = {
-			auraIcon('target', 'debuff', 34914), -- Vampric Touch
-			auraIcon('target', 'debuff', 589), -- Shadow Word: Pain
+			auraIcon('target', 'debuff', 34914, function(icon) -- Vampric Touch
+				icon.display:SetColor({ 1, 1, 1, 0.75 })
+				icon.display:SetDesaturate(true)
+
+				local trigger = icon.triggers:Get(1)
+
+				local cond = icon.conditions:Add()
+				cond:CheckAuraFound(trigger, true)
+				cond:ChangeColor({ 1, 1, 1, 1 })
+				cond:ChangeDesaturate(false)
+			end),
+			auraIcon('target', 'debuff', 589, function(icon) -- Shadow Word: Pain
+				icon.display:SetColor({ 1, 1, 1, 0.75 })
+				icon.display:SetDesaturate(true)
+
+				local trigger = icon.triggers:Get(1)
+
+				local cond = icon.conditions:Add()
+				cond:CheckAuraFound(trigger, true)
+				cond:ChangeColor({ 1, 1, 1, 1 })
+				cond:ChangeDesaturate(false)
+			end),
 			auraIcon('target', 'debuff', 335467, function(icon) -- Devouring Plague
 				local glow = icon.display:AddGlow('proc', { startAnimation = true })
 				icon.display:Move(glow, 3)
+				icon.display:SetColor({ 1, 1, 1, 0.75 })
+				icon.display:SetDesaturate(true)
 
-				icon.triggers:SetDisjunctive('any')
-				local trigger = icon.triggers:AddAura('player', 'buff', {
+				icon.triggers:SetDisjunctive('custom', 'function(t) return t[1] end')
+				local trigger = icon.triggers:Get(1)
+
+				local proc = icon.triggers:AddAura('player', 'buff', {
 					exactSpellIds = { 373204 }, -- Mind Devourer
 					show = 'onActive',
 				})
 
 				local cond = icon.conditions:Add()
-				cond:CheckTriggerActive(trigger, true)
+				cond:CheckAuraFound(trigger, true)
+				cond:ChangeColor({ 1, 1, 1, 1 })
+				cond:ChangeDesaturate(false)
+
+				local cond = icon.conditions:Add()
+				cond:CheckTriggerActive(proc, true)
 				cond:ChangeGlowVisibility(glow, true)
 			end),
+		},
+		-- consumables = {
+		-- 	consumables.dreamwalkersHealingPotion,
+		-- 	consumables.healthstone,
+		-- 	consumables.elementalPotionOfUltimatePower,
+		-- 	consumables.potionOfTheHushedZephyr,
+		-- },
+		reminders = {
+			reminderIcon(21562), -- Power Word: Fortitude
+			reminderIcon(232698), -- Shadowform
 		},
 	},
 })

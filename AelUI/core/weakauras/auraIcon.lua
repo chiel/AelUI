@@ -15,6 +15,7 @@ ns.weakauras.auraIcon = function(unit, auraType, auraId, custom)
 		local trigger = icon.triggers:AddAura(unit, auraType, {
 			show = 'always',
 			exactSpellIds = { auraId },
+			ownOnly = true,
 		})
 
 		if custom ~= nil then

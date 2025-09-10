@@ -31,7 +31,6 @@ table.insert(ns.weakauras.data.classes.shaman.specs, {
 			spells.capacitorTotem,
 			spells.thunderstorm,
 			spells.earthbindTotem,
-			spells.earthgrabTotem,
 			spells.hex,
 
 			spells.purge,

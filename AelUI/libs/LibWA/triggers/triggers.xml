@@ -1,6 +1,7 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="triggers.lua"/>
 	<Script file="CreateAura.lua"/>
+	<Script file="CreateCombatLog.lua"/>
 	<Script file="CreateCustomStatus.lua"/>
 	<Script file="CreateItemCooldown.lua"/>
 	<Script file="CreateItemCount.lua"/>

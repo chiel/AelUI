@@ -4,6 +4,7 @@
 	<Script file="addProgressText.lua"/>
 	<Script file="addStacksText.lua"/>
 	<Script file="auraIcon.lua"/>
+	<Script file="reminderIcon.lua"/>
 	<Script file="spellIcon.lua"/>
 	<Script file="createGrower.lua"/>
 	<Script file="createRegionResizer.lua"/>

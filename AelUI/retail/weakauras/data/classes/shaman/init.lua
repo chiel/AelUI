@@ -15,7 +15,6 @@ ns.weakauras.data.classes.shaman = {
 		cleanseSpirit = spellIcon(51886),
 		earthElemental = spellIcon(198103),
 		earthbindTotem = spellIcon(2484),
-		earthgrabTotem = spellIcon(51485),
 		flameShock = spellIcon(188389),
 		frostShock = spellIcon(196840),
 		greaterPurge = spellIcon(378773),
