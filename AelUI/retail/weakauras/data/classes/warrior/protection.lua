@@ -17,8 +17,6 @@ table.insert(ns.weakauras.data.classes.warrior.specs, {
 			spellIcon(1160), -- Demoralizing Shout
 			spellIcon(385952), -- Shield Charge
 			spellIcon(163201, function(icon) -- Execute
-				local glow = icon.display:AddGlow('proc', { startAnimation = true })
-				icon.display:Move(glow, 3)
 				icon.display:SetColor({ 1, 1, 1, 0.75 })
 				icon.display:SetDesaturate(true)
 
@@ -27,7 +25,6 @@ table.insert(ns.weakauras.data.classes.warrior.specs, {
 				local cond = icon.conditions:Add()
 				cond:CheckSpellUsable(trigger, true)
 				cond:ChangeDesaturate(false)
-				cond:ChangeGlowVisibility(glow, true)
 			end),
 			spellIcon(6343, function(icon) -- Thunder Clap
 				local glow = icon.display:AddGlow('proc', { startAnimation = true })

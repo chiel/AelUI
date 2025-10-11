@@ -2,14 +2,18 @@ local _, ns = ...
 
 local wa = ns.weakauras
 
-ns.weakauras.reminderIcon = function(auraId)
+ns.weakauras.reminderIcon = function(auraIds)
 	return function(idPrefix, config)
-		local spellInfo = C_Spell.GetSpellInfo(auraId)
+		if type(auraIds) ~= 'table' then
+			auraIds = { auraIds }
+		end
+
+		local spellInfo = C_Spell.GetSpellInfo(auraIds[1])
 		local id = idPrefix .. ' - ' .. spellInfo.name
 		local icon = wa.icon(id, config)
 		icon.display:SetCooldown({ inverse = false })
 		local trigger = icon.triggers:AddAura('player', 'buff', {
-			exactSpellIds = { auraId },
+			exactSpellIds = auraIds,
 			show = 'onMissing',
 		})
 

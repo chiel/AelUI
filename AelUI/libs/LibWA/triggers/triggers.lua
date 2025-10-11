@@ -25,6 +25,12 @@ addon.triggers.Create = function()
 		return trigger
 	end
 
+	aura.AddEvent = function(self, ...)
+		local trigger = addon.triggers.CreateEvent(...)
+		table.insert(self.triggers, trigger)
+		return trigger
+	end
+
 	aura.AddItemCooldown = function(self, ...)
 		local trigger = addon.triggers.CreateItemCooldown(...)
 		table.insert(self.triggers, trigger)

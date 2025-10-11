@@ -1,6 +1,7 @@
 local _, ns = ...
 
 local wa = ns.weakauras
+local auraIcon = wa.auraIcon
 local reminderIcon = wa.reminderIcon
 local spellIcon = wa.spellIcon
 local spells = wa.data.classes.druid.spells
@@ -48,14 +49,29 @@ table.insert(ns.weakauras.data.classes.druid.specs, {
 			spellIcon(48438), -- Wild Growth
 		},
 		defensives = {
-			spellIcon(22842), -- Frenzied Regeneration
-			spellIcon(124974), -- Nature's Vigil
+			-- 	spellIcon(22842), -- Frenzied Regeneration
 			spellIcon(108238), -- Renewal
+			spellIcon(124974), -- Nature's Vigil
 			spellIcon(61336), -- Survival Instincts
 			spellIcon(22812), -- Barkskin
 		},
 		reminders = {
 			reminderIcon(1126), -- Mark of the Wild
+			auraIcon('player', 'buff', 5215, function(icon) -- Prowl
+				icon.display:SetCooldown({ inverse = true })
+				icon.display:Delete(4)
+				icon.display:SetColor({ 1, 1, 1, 0.75 })
+
+				icon.triggers:SetDisjunctive('any')
+				local auraTrigger = icon.triggers:Get(1)
+				auraTrigger:SetShow('onActive')
+
+				local cooldownTrigger = icon.triggers:AddSpellCooldown(5215)
+				local cond = icon.conditions:Add()
+				cond:CheckTriggerActive(cooldownTrigger, true)
+				cond:ChangeColor({ 1, 1, 1, 0.5 })
+				cond:ChangeDesaturate(true)
+			end),
 		},
 	},
 })

@@ -21,6 +21,10 @@ addon.triggers.CreateSpellCooldown = function(spellName, options)
 		},
 	}
 
+	aura.SetShow = function(self, show)
+		self.table.trigger.genericShowOn = show ~= nil and showMap[show] or showMap.onCooldown
+	end
+
 	aura.Serialize = function(self)
 		return self.table
 	end

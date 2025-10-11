@@ -36,6 +36,10 @@ addon.display.CreateIconOptions = function()
 		self.subRegions = newRegions
 	end
 
+	aura.Get = function(self, index)
+		return self.subRegions[index]
+	end
+
 	aura.GetSubRegion = function(self, index)
 		return self.subRegions[index]
 	end

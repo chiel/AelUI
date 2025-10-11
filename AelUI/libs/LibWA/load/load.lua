@@ -17,6 +17,11 @@ addon.load.Create = function()
 		table.insert(self.conditions, condition)
 	end
 
+	aura.NotSpellKnown = function(self, ...)
+		local condition = addon.load.CreateNotSpellKnownCondition(...)
+		table.insert(self.conditions, condition)
+	end
+
 	aura.SpellKnown = function(self, ...)
 		local condition = addon.load.CreateSpellKnownCondition(...)
 		table.insert(self.conditions, condition)

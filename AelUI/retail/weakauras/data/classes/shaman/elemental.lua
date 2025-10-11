@@ -32,6 +32,8 @@ table.insert(ns.weakauras.data.classes.shaman.specs, {
 			spellIcon(198067), -- Fire Elemental
 			spellIcon(192249), -- Storm Elemental
 			spellIcon(114050), -- Ascendance
+			spellIcon(33697), -- Blood Fury (Orc Racial)
+			spells.naturesSwiftness,
 			spellIcon(375982, function(icon) -- Primordial Wave
 				local glow = icon.display:AddGlow('proc', { startAnimation = true })
 				icon.display:Move(glow, 3)
@@ -81,8 +83,6 @@ table.insert(ns.weakauras.data.classes.shaman.specs, {
 			end),
 			spells.lavaBurst,
 			spellIcon(192222), -- Liquid Magma Totem
-			spells.flameShock,
-			spells.naturesSwiftness,
 			spells.totemicRecall,
 			spellIcon(196840, function(icon) -- Frost Shock
 				local glow = icon.display:AddGlow('proc', { startAnimation = true })
@@ -116,6 +116,7 @@ table.insert(ns.weakauras.data.classes.shaman.specs, {
 				cond:ChangeGlowVisibility(glow, true)
 				cond:ChangeTextText(stackText, '%2.s')
 			end),
+			spells.flameShock,
 			spells.spiritwalkersGrace,
 		},
 		secondary = {
@@ -214,6 +215,34 @@ table.insert(ns.weakauras.data.classes.shaman.specs, {
 			end),
 		},
 		reminders = {
+			spellIcon(2825, function(icon) -- Bloodlust
+				local satedSpellIds = { 57724, 80354, 264689, 390435 }
+
+				icon.display:SetCooldown(false)
+				icon.display:Delete(4)
+				local text = icon.display:GetSubRegion(3)
+				text:SetText('LUST')
+				local glow = icon.display:AddGlow('proc', { enabled = true, startAnimation = true })
+				icon.display:Move(glow, 3)
+
+				icon.triggers:SetDisjunctive(
+					'custom',
+					'function(t) return t[1] and t[2] and (t[3] or (t[4] and t[5])) end'
+				)
+				local cooldownTrigger = icon.triggers:Get(1)
+				cooldownTrigger:SetShow('onReady')
+				local debuffTrigger = icon.triggers:AddAura('player', 'debuff', {
+					exactSpellIds = satedSpellIds,
+					show = 'onMissing',
+				})
+				icon.triggers:AddEvent('combat:entering', { duration = 10 })
+				icon.triggers:AddUnitCharacteristics('player', { inCombat = true })
+				icon.triggers:AddCombatLog({
+					subevent = { 'spell', 'aura_removed' },
+					destinationUnit = 'player',
+					spellIds = satedSpellIds,
+				})
+			end),
 			reminderIcon(462854), -- Skyfury
 			reminderIcon(383648), -- Earth Shield
 			reminderIcon(192106), -- Lightning Shield

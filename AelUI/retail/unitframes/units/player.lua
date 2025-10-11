@@ -20,6 +20,11 @@ local specConfigs = {
 		powerbarHeight = 6,
 	},
 
+	-- monk
+	[268] = { -- brewmaster
+		powerbarHeight = 6,
+	},
+
 	-- paladin
 	[65] = { -- holy
 		hidePowerText = true,

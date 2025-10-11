@@ -50,31 +50,33 @@ table.insert(ns.weakauras.data.classes.paladin.specs, {
 				cond:ChangeColor({ 1, 1, 1, 1 })
 				cond:ChangeDesaturate(false)
 			end),
-			-- auraIcon('player', 'buff', 327510, function(icon) -- Shining Light
-			-- 	icon.display:SetIcon(133192)
-			-- 	local glow = icon.display:AddGlow('proc', { startAnimation = true })
-			-- 	icon.display:Move(glow, 3)
+			auraIcon('player', 'buff', 327510, function(icon) -- Shining Light
+				icon.display:SetColor({ 1, 1, 1, 0.75 })
+				icon.display:SetDesaturate(true)
 
-			-- 	icon.triggers:SetDisjunctive('any')
+				-- icon.display:SetIcon(133192)
+				-- local glow = icon.display:AddGlow('proc', { startAnimation = true })
+				-- icon.display:Move(glow, 3)
 
-			-- 	local trigger1 = icon.triggers:Get(1)
-			-- 	trigger1:SetShow('onActive')
+				icon.triggers:SetDisjunctive('any')
 
-			-- 	local trigger2 = icon.triggers:AddAura('player', 'buff', {
-			-- 		exactSpellIds = { 182104 },
-			-- 		show = 'always',
-			-- 	})
+				local trigger1 = icon.triggers:Get(1)
+				trigger1:SetShow('onActive')
 
-			-- 	local text2 = icon.display:GetSubRegion(5)
+				local trigger2 = icon.triggers:AddAura('player', 'buff', {
+					exactSpellIds = { 182104 },
+					show = 'always',
+				})
 
-			-- 	local cond = icon.conditions:Get(1)
-			-- 	cond:CheckTriggerActive(trigger1, false)
-
-			-- 	local cond = icon.conditions:Add()
-			-- 	cond:CheckTriggerActive(trigger1, true)
-			-- 	cond:ChangeGlowVisibility(glow, true)
-			-- 	cond:ChangeTextVisibility(text2, false)
-			-- end),
+				local cond = icon.conditions:Add()
+				cond:CheckTriggerActive(trigger1, true)
+				cond:ChangeColor({ 1, 1, 1, 1 })
+				cond:ChangeDesaturate(false)
+			end),
+			wa.data.shared.tomeOfLightsDevotion,
+		},
+		reminders = {
+			reminderIcon(433550), -- Rite of Sanctification
 		},
 	},
 })

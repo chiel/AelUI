@@ -38,17 +38,7 @@ ns.weakauras.data.classes.priest = {
 		powerWordShield = spellIcon(17),
 		psychicScream = spellIcon(8122),
 		purifyDisease = spellIcon(213634),
-		shadowWordDeath = spellIcon(32379, function(icon)
-			local glow = icon.display:AddGlow('proc', { startAnimation = true })
-			icon.display:Move(glow, 3)
-
-			icon.triggers:SetDisjunctive('any')
-			local trigger = icon.triggers:AddSpellActivationOverlay(32379)
-
-			local cond = icon.conditions:Add()
-			cond:CheckTriggerActive(trigger, true)
-			cond:ChangeGlowVisibility(glow, true)
-		end),
+		shadowWordDeath = spellIcon(32379),
 		shadowWordPain = spellIcon(589),
 		vampiricEmbrace = spellIcon(15286),
 	},

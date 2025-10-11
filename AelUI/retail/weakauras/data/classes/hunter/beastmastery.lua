@@ -10,10 +10,9 @@ table.insert(ns.weakauras.data.classes.hunter.specs, {
 
 	groups = {
 		primary = {
-			spellIcon(19574), -- Bestial Wrath
 			spellIcon(359844), -- Call of the Wild
-			spellIcon(462031), -- Implosive Trap
-			spellIcon(120679), -- Dire Beast
+			spellIcon(19574), -- Bestial Wrath
+			spellIcon(321530), -- Bloodshed
 			spellIcon(53351, function(icon) -- Kill Shot
 				local glow = icon.display:AddGlow('proc', { startAnimation = true })
 				icon.display:Move(glow, 3)
@@ -35,15 +34,16 @@ table.insert(ns.weakauras.data.classes.hunter.specs, {
 			spellIcon(34026), -- Kill Command
 			spellIcon(212431), -- Explosive Shot
 			spellIcon(217200), -- Barbed Shot
-			spellIcon(193455), -- Cobra Shot
-			spellIcon(2643), -- Multi Shot
-		},
-		secondary = {
+			-- spellIcon(193455), -- Cobra Shot
+			-- spellIcon(2643), -- Multi Shot
 			spellIcon(147362), -- Counter Shot
 			spellIcon(19577), -- Intimidation
+			spellIcon(109248), -- Binding Shot
+		},
+		secondary = {
+			spellIcon(462031), -- Implosive Trap
 			spellIcon(186387), -- Bursting Shot
 			spellIcon(187650), -- Freezing Trap
-			spellIcon(109248), -- Binding Shot
 			spellIcon(187698), -- Tar Trap
 
 			spellIcon(5384), -- Feign Death

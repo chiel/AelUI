@@ -2,5 +2,6 @@
 	<Script file="load.lua"/>
 	<Script file="CreateClassCondition.lua"/>
 	<Script file="CreateClassAndSpecCondition.lua"/>
+	<Script file="CreateNotSpellKnownCondition.lua"/>
 	<Script file="CreateSpellKnownCondition.lua"/>
 </Ui>

@@ -18,7 +18,9 @@ table.insert(wa.data.classes.deathknight.specs, {
 			spellIcon(439843), -- Reaper's Mark
 			spellIcon(305392), -- Chill Streak
 			spellIcon(207230), -- Frostscythe
-			spellIcon(196770), -- Remorseless Winter
+			spellIcon(196770, function(icon) -- Remorseless Winter
+				icon.load:NotSpellKnown(377226)
+			end),
 			spellIcon(49020, function(icon) -- Obliterate
 				local glow = icon.display:AddGlow('proc', { startAnimation = true })
 				icon.display:Move(glow, 3)

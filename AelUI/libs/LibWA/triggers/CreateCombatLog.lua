@@ -22,14 +22,19 @@ addon.triggers.CreateCombatLog = function(options)
 			r.subeventSuffix = self.subevent[2] ~= nil and '_' .. string.upper(self.subevent[2]) or ''
 		end
 
+		if o.destinationUnit then
+			r.use_destUnit = true
+			r.destUnit = o.destinationUnit
+		end
+
 		if self.sourceUnit then
 			r.use_sourceUnit = true
 			r.sourceUnit = self.sourceUnit
 		end
 
-		if self.spellId then
+		if o.spellIds then
 			r.use_spellId = true
-			r.spellId = { self.spellId }
+			r.spellId = o.spellIds
 		end
 
 		if self.duration then

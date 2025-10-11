@@ -1,12 +1,12 @@
 local _, addon = ...
 
-addon.triggers.CreateUnitCharacteristics = function(o)
+addon.triggers.CreateUnitCharacteristics = function(unit, o)
 	local aura = {
 		table = {
 			trigger = {
 				type = 'unit',
 				event = 'Unit Characteristics',
-				unit = o.unit,
+				unit = unit,
 			},
 			untrigger = {},
 		},
@@ -33,6 +33,10 @@ addon.triggers.CreateUnitCharacteristics = function(o)
 			table.insert(trigger.level_operator, level[1])
 			table.insert(trigger.level, tostring(level[2]))
 		end
+	end
+
+	if o.inCombat ~= nil then
+		trigger.use_inCombat = o.inCombat
 	end
 
 	aura.Serialize = function(self)

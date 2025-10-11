@@ -119,6 +119,7 @@ table.insert(ns.weakauras.data.classes.monk.specs, {
 
 				icon.load:SpellKnown(1241059)
 			end),
+			wa.data.shared.tomeOfLightsDevotion,
 		},
 	},
 })

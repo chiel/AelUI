@@ -130,7 +130,7 @@ table.insert(ns.weakauras.data.classes.priest.specs, {
 		-- },
 		reminders = {
 			reminderIcon(21562), -- Power Word: Fortitude
-			reminderIcon(232698), -- Shadowform
+			reminderIcon({ 232698, 194249 }), -- Shadowform
 		},
 	},
 })
