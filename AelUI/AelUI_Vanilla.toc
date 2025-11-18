@@ -1,0 +1,6 @@
+## Interface: 11508
+## Title: AelUI
+## Author: Aelen
+## Version: 0.0.1
+
+core\load.xml
