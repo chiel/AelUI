@@ -2,4 +2,5 @@
 	<Script file="init.lua"/>
 	<Script file="options.lua"/>
 	<Include file="anchors\load.xml"/>
+	<Include file="weakauras\load.xml"/>
 </Ui>
