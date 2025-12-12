@@ -12,7 +12,6 @@ ns.weakauras.convertClassData = function(classData)
 	classGroup:SetIcon(classData.icon)
 
 	for _, groupType in ipairs(groupTypeOrder) do
-		print('-- ' .. groupType)
 		local typeData = classData.groups[groupType]
 		if typeData ~= nil then
 			local typeConfig = ns.weakauras.config[groupType]
@@ -24,6 +23,12 @@ ns.weakauras.convertClassData = function(classData)
 			typeGroup:SetAnchor(groupConfig.anchor)
 			typeGroup:SetGrow(groupConfig.grow)
 			classGroup:AddChild(typeGroup)
+
+			local auraSuffix = ' (' .. classId .. ' - ' .. typeConfig.name .. ')'
+			for _, createAura in ipairs(typeData) do
+				local icon = createAura(auraSuffix, childConfig)
+				typeGroup:AddChild(icon)
+			end
 		end
 	end
 
