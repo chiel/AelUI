@@ -1,4 +1,5 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="LibWA.lua"/>
+	<Include file="display\load.xml"/>
 	<Include file="auras\load.xml"/>
 </Ui>
