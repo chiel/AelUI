@@ -3,6 +3,7 @@
 	<Include file="animations\load.xml"/>
 	<Include file="conditions\load.xml"/>
 	<Include file="display\load.xml"/>
+	<Include file="load\load.xml"/>
 	<Include file="triggers\load.xml"/>
 	<Include file="auras\load.xml"/>
 </Ui>

@@ -6,6 +6,7 @@ LibWA.CreateIcon = function(id)
 		animations = ns.animations.Create(),
 		conditions = ns.conditions.Create(),
 		display = ns.display.CreateIconOptions(),
+		load = ns.load.Create(),
 		triggers = ns.triggers.Create(),
 	}
 
@@ -22,7 +23,8 @@ LibWA.CreateIcon = function(id)
 			self.triggers:Serialize(),
 			self.display:Serialize(),
 			self.conditions:Serialize(),
-			self.animations:Serialize()
+			self.animations:Serialize(),
+			self.load:Serialize()
 		)
 	end
 
