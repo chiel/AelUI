@@ -3,6 +3,7 @@ local _, ns = ...
 LibWA.CreateIcon = function(id)
 	local aura = {
 		base = ns.auras.CreateBase(id),
+		conditions = ns.conditions.Create(),
 		display = ns.display.CreateIconOptions(),
 		triggers = ns.triggers.Create(),
 	}
@@ -14,7 +15,7 @@ LibWA.CreateIcon = function(id)
 	aura.Serialize = function(self)
 		local r = self.base:Serialize()
 		r.regionType = 'icon'
-		return Mixin(r, self.triggers:Serialize(), self.display:Serialize())
+		return Mixin(r, self.triggers:Serialize(), self.display:Serialize(), self.conditions:Serialize())
 	end
 
 	return aura
