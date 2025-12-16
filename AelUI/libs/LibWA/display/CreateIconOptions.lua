@@ -7,6 +7,12 @@ ns.display.CreateIconOptions = function()
 		},
 	}
 
+	aura.AddBorder = function(self, ...)
+		local border = ns.display.CreateBorder(...)
+		table.insert(self.subregions, border)
+		return border
+	end
+
 	aura.SetSize = function(self, width, height)
 		self.size = { width = width, height = height }
 	end
