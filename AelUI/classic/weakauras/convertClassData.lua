@@ -6,8 +6,6 @@ local groupTypeOrder = {
 
 ns.weakauras.convertClassData = function(classData)
 	local classId = 'AelUI - ' .. classData.name
-	print('convert class data for ' .. classData.name)
-
 	local classGroup = LibWA.CreateGroup(classId)
 	classGroup:SetIcon(classData.icon)
 
