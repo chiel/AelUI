@@ -22,6 +22,11 @@ ns.display.CreateIconOptions = function()
 			r.height = self.size.height
 		end
 
+		for i, subregion in ipairs(self.subregions) do
+			subregion.id = i
+			table.insert(r.subRegions, subregion:Serialize())
+		end
+
 		return r
 	end
 
