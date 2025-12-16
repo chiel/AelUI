@@ -25,6 +25,7 @@ ns.weakauras.convertClassData = function(classData)
 			local auraSuffix = ' (' .. classId .. ' - ' .. typeConfig.name .. ')'
 			for _, createAura in ipairs(typeData) do
 				local icon = createAura(auraSuffix, childConfig)
+				icon.load:Class(classData.id)
 				typeGroup:AddChild(icon)
 			end
 		end
