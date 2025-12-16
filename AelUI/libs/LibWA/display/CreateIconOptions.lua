@@ -13,6 +13,10 @@ ns.display.CreateIconOptions = function()
 		return border
 	end
 
+	aura.SetCooldown = function(self, cooldown)
+		self.cooldown = cooldown
+	end
+
 	aura.SetKeepAspectRatio = function(self, value)
 		self.keepAspectRatio = value
 	end
@@ -34,6 +38,15 @@ ns.display.CreateIconOptions = function()
 		if self.size ~= nil then
 			r.width = self.size.width
 			r.height = self.size.height
+		end
+
+		local cd = self.cooldown
+		if cd ~= nil and cd ~= false then
+			r.cooldown = true
+			r.cooldownEdge = cd.edge or false
+			r.cooldownSwipe = cd.swipe ~= nil and cd.swipe or true
+			r.cooldownTextDisabled = cd.text == false
+			r.inverse = cd.inverse or false
 		end
 
 		for i, subregion in ipairs(self.subregions) do
