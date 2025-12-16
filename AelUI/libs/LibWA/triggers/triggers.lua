@@ -7,8 +7,19 @@ ns.triggers.Create = function()
 		triggers = {},
 	}
 
+	aura.AddSpellCooldown = function(self, ...)
+		local trigger = ns.triggers.CreateSpellCooldown(...)
+		table.insert(self.triggers, trigger)
+		return trigger
+	end
+
 	aura.Serialize = function(self)
 		local r = { triggers = {} }
+
+		for i, trigger in ipairs(self.triggers) do
+			trigger.id = i
+			r.triggers[i] = trigger:Serialize()
+		end
 
 		return r
 	end
