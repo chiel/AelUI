@@ -13,6 +13,10 @@ ns.display.CreateIconOptions = function()
 		return border
 	end
 
+	aura.SetKeepAspectRatio = function(self, value)
+		self.keepAspectRatio = value
+	end
+
 	aura.SetSize = function(self, width, height)
 		self.size = { width = width, height = height }
 	end
@@ -22,6 +26,10 @@ ns.display.CreateIconOptions = function()
 			cooldown = false,
 			subRegions = {},
 		}
+
+		if self.keepAspectRatio ~= nil then
+			r.keepAspectRatio = self.keepAspectRatio
+		end
 
 		if self.size ~= nil then
 			r.width = self.size.width
