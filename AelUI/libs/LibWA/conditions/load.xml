@@ -1,5 +1,6 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="conditions.lua"/>
+	<Script file="ChangeColor.lua"/>
 	<Script file="CheckOnCooldown.lua"/>
 	<Script file="CreateCondition.lua"/>
 </Ui>
