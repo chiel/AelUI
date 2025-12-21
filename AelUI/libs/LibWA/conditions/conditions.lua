@@ -7,8 +7,18 @@ ns.conditions.Create = function()
 		conditions = {},
 	}
 
+	aura.Add = function(self, ...)
+		local condition = ns.conditions.CreateCondition(...)
+		table.insert(self.conditions, condition)
+		return condition
+	end
+
 	aura.Serialize = function(self)
 		local r = { conditions = {} }
+
+		for i, condition in ipairs(self.conditions) do
+			table.insert(r.conditions, condition:Serialize())
+		end
 
 		return r
 	end
