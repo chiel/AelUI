@@ -6,6 +6,10 @@ ns.conditions.CreateCondition = function(trigger)
 		check = nil,
 	}
 
+	aura.CheckOnCooldown = function(self, ...)
+		self.check = ns.conditions.CheckOnCooldown(...)
+	end
+
 	aura.Serialize = function(self)
 		local r = { changes = {}, check = {} }
 
