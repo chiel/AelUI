@@ -2,4 +2,5 @@
 	<Script file="init.lua"/>
 	<Script file="composeAura.lua"/>
 	<Script file="spellIconBase.lua"/>
+	<Script file="spellIcon.lua"/>
 </Ui>
