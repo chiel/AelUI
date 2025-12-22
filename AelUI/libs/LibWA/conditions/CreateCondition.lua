@@ -11,6 +11,11 @@ ns.conditions.CreateCondition = function(trigger)
 		table.insert(self.changes, change)
 	end
 
+	aura.ChangeDesaturate = function(self, ...)
+		local change = ns.conditions.ChangeDesaturate(...)
+		table.insert(self.changes, change)
+	end
+
 	aura.CheckOnCooldown = function(self, ...)
 		self.check = ns.conditions.CheckOnCooldown(...)
 	end
