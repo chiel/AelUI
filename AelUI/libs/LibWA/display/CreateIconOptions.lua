@@ -13,6 +13,12 @@ ns.display.CreateIconOptions = function()
 		return border
 	end
 
+	aura.AddText = function(self, ...)
+		local text = ns.display.CreateText(...)
+		table.insert(self.subregions, text)
+		return text
+	end
+
 	aura.SetCooldown = function(self, cooldown)
 		self.cooldown = cooldown
 	end
