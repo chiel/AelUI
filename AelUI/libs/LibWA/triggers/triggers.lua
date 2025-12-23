@@ -8,6 +8,12 @@ ns.triggers.Create = function()
 		triggers = {},
 	}
 
+	aura.AddCustomStatus = function(self, ...)
+		local trigger = ns.triggers.CreateCustomStatus(...)
+		table.insert(self.triggers, trigger)
+		return trigger
+	end
+
 	aura.AddSpellCooldown = function(self, ...)
 		local trigger = ns.triggers.CreateSpellCooldown(...)
 		table.insert(self.triggers, trigger)
