@@ -3,11 +3,8 @@ local _, ns = ...
 LibWA.CreateDynamicGroup = function(id)
 	local aura = {
 		base = ns.auras.CreateGroupBase(id),
+		spacing = 2,
 	}
-
-	aura.SetGrow = function(self, grow)
-		self.grow = grow
-	end
 
 	aura.AddChild = function(self, ...)
 		self.base:AddChild(...)
@@ -15,6 +12,10 @@ LibWA.CreateDynamicGroup = function(id)
 
 	aura.SetAnchor = function(self, ...)
 		self.base:SetAnchor(...)
+	end
+
+	aura.SetGrow = function(self, grow)
+		self.grow = grow
 	end
 
 	aura.SetIcon = function(self, ...)
@@ -25,9 +26,14 @@ LibWA.CreateDynamicGroup = function(id)
 		self.base:SetParent(...)
 	end
 
+	aura.SetSpacing = function(self, spacing)
+		aura.spacing = spacing
+	end
+
 	aura.Serialize = function(self)
 		local r, rc = self.base:Serialize()
 		r.regionType = 'dynamicgroup'
+		r.space = self.spacing
 
 		if self.grow ~= nil then
 			r.grow = self.grow.type
