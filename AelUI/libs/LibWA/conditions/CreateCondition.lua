@@ -16,6 +16,11 @@ ns.conditions.CreateCondition = function(trigger)
 		table.insert(self.changes, change)
 	end
 
+	aura.ChangeGlowVisibility = function(self, ...)
+		local change = ns.conditions.ChangeGlowVisibility(...)
+		table.insert(self.changes, change)
+	end
+
 	aura.CheckActive = function(self, ...)
 		self.check = ns.conditions.CheckActive(...)
 	end
