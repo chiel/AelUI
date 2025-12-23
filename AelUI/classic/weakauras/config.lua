@@ -15,14 +15,11 @@ ns.weakauras.config = {
 				on = 'changed',
 				custom = 'function(newPositions, activeRegions) AelUI.weakauras.growers.primary(newPositions, activeRegions) end',
 			},
-			-- grow = {
-			-- 	type = 'HORIZONTAL',
-			-- 	align = 'RIGHT',
-			-- },
+			spacing = 1,
 		},
 		childConfig = {
-			width = 40,
-			height = 40,
+			width = 32,
+			height = 32,
 		},
 	},
 }
