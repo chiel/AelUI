@@ -2,6 +2,7 @@
 	<Script file="conditions.lua"/>
 	<Script file="ChangeColor.lua"/>
 	<Script file="ChangeDesaturate.lua"/>
+	<Script file="CheckActive.lua"/>
 	<Script file="CheckOnCooldown.lua"/>
 	<Script file="CreateCondition.lua"/>
 </Ui>

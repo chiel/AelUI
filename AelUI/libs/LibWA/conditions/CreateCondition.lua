@@ -16,6 +16,10 @@ ns.conditions.CreateCondition = function(trigger)
 		table.insert(self.changes, change)
 	end
 
+	aura.CheckActive = function(self, ...)
+		self.check = ns.conditions.CheckActive(...)
+	end
+
 	aura.CheckOnCooldown = function(self, ...)
 		self.check = ns.conditions.CheckOnCooldown(...)
 	end
