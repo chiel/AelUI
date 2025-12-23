@@ -13,6 +13,12 @@ ns.display.CreateIconOptions = function()
 		return border
 	end
 
+	aura.AddGlow = function(self, ...)
+		local glow = ns.display.CreateGlow(...)
+		table.insert(self.subregions, glow)
+		return glow
+	end
+
 	aura.AddText = function(self, ...)
 		local text = ns.display.CreateText(...)
 		table.insert(self.subregions, text)
