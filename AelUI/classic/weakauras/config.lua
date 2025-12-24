@@ -1,5 +1,8 @@
 local _, ns = ...
 
+local pc = ns.config.groups.primary
+local sc = ns.config.groups.secondary
+
 ns.weakauras.config = {
 	primary = {
 		name = 'Primary',
@@ -15,11 +18,11 @@ ns.weakauras.config = {
 				on = 'changed',
 				custom = 'function(newPositions, activeRegions) AelUI.weakauras.growers.primary(newPositions, activeRegions) end',
 			},
-			spacing = 1,
+			spacing = pc.spacing,
 		},
 		childConfig = {
-			width = 32,
-			height = 32,
+			width = pc.width,
+			height = pc.height,
 		},
 	},
 }
