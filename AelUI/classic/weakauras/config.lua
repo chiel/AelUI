@@ -25,4 +25,26 @@ ns.weakauras.config = {
 			height = pc.height,
 		},
 	},
+
+	secondary = {
+		name = 'Secondary',
+		groupConfig = {
+			anchor = {
+				type = 'SELECTFRAME',
+				frame = 'AelUISecondaryAnchor',
+				from = 'TOP',
+				to = 'TOP',
+			},
+			grow = {
+				type = 'CUSTOM',
+				on = 'changed',
+				custom = 'function(newPositions, activeRegions) AelUI.weakauras.growers.secondary(newPositions, activeRegions) end',
+			},
+			spacing = sc.spacing,
+		},
+		childConfig = {
+			width = sc.width,
+			height = sc.height,
+		},
+	},
 }

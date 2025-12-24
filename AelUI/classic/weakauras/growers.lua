@@ -4,7 +4,7 @@ local anchors = ns.anchors
 local wa = ns.weakauras
 
 AelUI.weakauras.growers = {}
-local growers = { 'primary' }
+local growers = { 'primary', 'secondary' }
 
 for _, name in ipairs(growers) do
 	local gc = wa.config[name].groupConfig
