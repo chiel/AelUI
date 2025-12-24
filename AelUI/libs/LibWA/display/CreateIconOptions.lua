@@ -29,6 +29,10 @@ ns.display.CreateIconOptions = function()
 		self.cooldown = cooldown
 	end
 
+	aura.SetDesaturate = function(self, value)
+		self.desaturate = value
+	end
+
 	aura.SetKeepAspectRatio = function(self, value)
 		self.keepAspectRatio = value
 	end
@@ -42,6 +46,10 @@ ns.display.CreateIconOptions = function()
 			cooldown = false,
 			subRegions = {},
 		}
+
+		if self.desaturate ~= nil then
+			r.desaturate = self.desaturate
+		end
 
 		if self.keepAspectRatio ~= nil then
 			r.keepAspectRatio = self.keepAspectRatio
