@@ -1,12 +1,52 @@
 local _, ns = ...
 
 local wa = ns.weakauras
+local c = wa.creators
+local h = wa.helpers
 
 ns.weakauras.data.classes.hunter = {
 	name = 'Hunter',
 	icon = 626000,
+	id = 'HUNTER',
 
 	groups = {
-		primary = {},
+		primary = {
+			c.spellIcon(3045), -- Rapid Fire
+			c.spellIcon(19574), -- Bestial Wrath
+			c.spellIcon(14294), -- Volley
+			c.composeAura(
+				c.spellIconBase(75), -- Auto Shot
+				function(icon)
+					icon.display:SetDesaturate(true)
+					local glow = icon.display:AddGlow('pixel', {
+						color = { 1, 1, 1, 0.75 },
+						length = 8,
+						lines = 6,
+						speed = 0.2,
+						x = -1,
+						y = -1,
+					})
+
+					icon.triggers:SetActivateOn('any')
+					local t = icon.triggers:AddCustomStatus({
+						events = 'START_AUTOREPEAT_SPELL STOP_AUTOREPEAT_SPELL',
+						custom = 'function() return IsAutoRepeatSpell(75) end',
+					})
+
+					local cond = icon.conditions:Add()
+					cond:CheckActive(t, true)
+					cond:ChangeGlowVisibility(glow, true)
+				end
+			),
+			c.spellIcon(20903), -- Aimed Shot
+			c.spellIcon(14289), -- Multi-Shot
+			c.spellIcon(5116), -- Concussive Shot
+		},
+		secondary = {
+			c.spellIcon(19503), -- Scatter Shot
+			c.spellIcon(5384), -- Feign Death
+			c.spellIcon(13809), -- Frost Trap
+			c.spellIcon(19801), -- Tranquilizing Shot
+		},
 	},
 }
