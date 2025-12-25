@@ -10,8 +10,8 @@ ns.config = {
 			minIcons = 6,
 		},
 		secondary = {
-			width = 28,
-			height = 28,
+			width = 24,
+			height = 24,
 			spacing = 1,
 			minIcons = 7,
 		},
