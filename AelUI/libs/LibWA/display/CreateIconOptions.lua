@@ -25,6 +25,10 @@ ns.display.CreateIconOptions = function()
 		return text
 	end
 
+	aura.SetColor = function(self, color)
+		self.color = color
+	end
+
 	aura.SetCooldown = function(self, cooldown)
 		self.cooldown = cooldown
 	end
@@ -46,6 +50,10 @@ ns.display.CreateIconOptions = function()
 			cooldown = false,
 			subRegions = {},
 		}
+
+		if self.color ~= nil then
+			r.color = self.color
+		end
 
 		if self.desaturate ~= nil then
 			r.desaturate = self.desaturate
