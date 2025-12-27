@@ -6,7 +6,7 @@ ns.anchors.create = function(name)
 	local requestedWidth = -1
 	local resizeListeners = {}
 
-	local anchor = CreateFrame('Frame', name, UIParent)
+	local anchor = CreateFrame('Frame', name, AelUIParent)
 
 	local function update()
 		if UnitAffectingCombat('player') then

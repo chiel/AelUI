@@ -6,7 +6,7 @@ local m = ns.media
 wa.helpers.addProgressText = function(icon)
 	icon.display:AddText('%p', {
 		font = m.fonts.bold.name,
-		size = 10,
+		size = 16,
 		justify = 'CENTER',
 		anchor = {
 			from = 'BOTTOM',
