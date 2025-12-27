@@ -17,6 +17,7 @@ ns.weakauras.data.classes.hunter = {
 			c.composeAura(
 				c.spellIconBase(75), -- Auto Shot
 				function(icon)
+					icon.display:SetColor({ 1, 1, 1, 0.75 })
 					icon.display:SetDesaturate(true)
 					local glow = icon.display:AddGlow('pixel', {
 						color = { 1, 1, 1, 0.75 },
@@ -41,12 +42,19 @@ ns.weakauras.data.classes.hunter = {
 			c.spellIcon(20903), -- Aimed Shot
 			c.spellIcon(14289), -- Multi-Shot
 			c.spellIcon(5116), -- Concussive Shot
+			c.spellIcon(14266), -- Raptor Strike
+			c.spellIcon(14271), -- Mongoose Bite
 		},
 		secondary = {
+			c.spellIcon(19263), -- Deterrence
 			c.spellIcon(19503), -- Scatter Shot
 			c.spellIcon(5384), -- Feign Death
 			c.spellIcon(13809), -- Frost Trap
+			c.spellIcon(1543), -- Flare
 			c.spellIcon(19801), -- Tranquilizing Shot
+			c.spellIcon(14327), -- Scare Beast
+			c.spellIcon(15632), -- Distracting Shot
+			c.spellIcon(14273), -- Disengage
 		},
 	},
 }
