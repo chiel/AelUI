@@ -4,16 +4,21 @@ ns.config = {
 	anchorOffset = 120,
 	groups = {
 		primary = {
-			width = 64,
-			height = 64,
+			width = 58,
+			height = 58,
 			spacing = 1,
 			minIcons = 6,
 		},
 		secondary = {
-			width = 48,
-			height = 48,
+			width = 42,
+			height = 42,
 			spacing = 1,
 			minIcons = 7,
+		},
+		tracking = {
+			width = 42,
+			height = 34,
+			spacing = 1,
 		},
 	},
 }
