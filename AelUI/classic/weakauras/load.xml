@@ -3,5 +3,6 @@
 	<Script file="config.lua"/>
 	<Script file="growers.lua"/>
 	<Script file="convertClassData.lua"/>
+	<Script file="convertCommonData.lua"/>
 	<Script file="main.lua"/>
 </Ui>

@@ -14,6 +14,22 @@ local config = {
 }
 
 ns.OnEnable(function()
+	config.args.common = {
+		order = 1,
+		type = 'execute',
+		name = 'Common',
+		desc = 'Import common WeakAuras',
+		image = 135740,
+		imageWidth = 48,
+		imageHeight = 48,
+		func = function()
+			local data, children = ns.weakauras.convertCommonData(ns.weakauras.data.common)
+			ns.weakauras.import(data, children, function()
+				ns.console:Printf('[AelUI] WeakAuras group common done')
+			end)
+		end,
+	}
+
 	local classKeys = {}
 	for key, _ in pairs(ns.weakauras.data.classes) do
 		table.insert(classKeys, key)
