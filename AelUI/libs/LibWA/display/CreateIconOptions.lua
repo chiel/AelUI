@@ -25,6 +25,10 @@ ns.display.CreateIconOptions = function()
 		return text
 	end
 
+	aura.Get = function(self, index)
+		return self.subregions[index]
+	end
+
 	aura.SetColor = function(self, color)
 		self.color = color
 	end
