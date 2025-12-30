@@ -29,6 +29,10 @@ ns.conditions.CreateCondition = function(trigger)
 		self.check = ns.conditions.CheckOnCooldown(...)
 	end
 
+	aura.CheckSpellInRange = function(self, ...)
+		self.check = ns.conditions.CheckSpellInRange(...)
+	end
+
 	aura.Serialize = function(self)
 		local r = { changes = {}, check = {} }
 
