@@ -8,7 +8,7 @@ ns.conditions.ChangeGlowVisibility = function(glow, value)
 
 	aura.Serialize = function(self)
 		return {
-			property = 'sub.' .. glow.id .. '.glow',
+			property = 'sub.' .. self.glow.id .. '.glow',
 			value = self.value,
 		}
 	end
