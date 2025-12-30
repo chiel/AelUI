@@ -6,6 +6,11 @@ ns.conditions.CreateCondition = function(trigger)
 		check = nil,
 	}
 
+	aura.ChangeBorderColor = function(self, ...)
+		local change = ns.conditions.ChangeBorderColor(...)
+		table.insert(self.changes, change)
+	end
+
 	aura.ChangeColor = function(self, ...)
 		local change = ns.conditions.ChangeColor(...)
 		table.insert(self.changes, change)
