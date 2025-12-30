@@ -26,6 +26,10 @@ ns.triggers.Create = function()
 		return trigger
 	end
 
+	aura.Get = function(self, index)
+		return self.triggers[index]
+	end
+
 	aura.SetActivateOn = function(self, type, customFn)
 		if type == nil then
 			self.type = nil
