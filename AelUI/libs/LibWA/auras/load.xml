@@ -4,5 +4,6 @@
 	<Script file="CreateGroupBase.lua"/>
 	<Script file="CreateDynamicGroup.lua"/>
 	<Script file="CreateGroup.lua"/>
+	<Script file="CreateBar.lua"/>
 	<Script file="CreateIcon.lua"/>
 </Ui>
