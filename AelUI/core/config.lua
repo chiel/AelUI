@@ -20,5 +20,10 @@ ns.config = {
 			height = 34,
 			spacing = 1,
 		},
+		reminders = {
+			width = 64,
+			height = 64,
+			spacing = 1,
+		},
 	},
 }

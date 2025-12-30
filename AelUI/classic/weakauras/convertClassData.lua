@@ -4,6 +4,7 @@ local groupTypeOrder = {
 	'primary',
 	'secondary',
 	'tracking',
+	'reminders',
 }
 
 ns.weakauras.convertClassData = function(classData)
