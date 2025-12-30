@@ -1,7 +1,6 @@
 local _, ns = ...
 
-local pc = ns.config.groups.primary
-local sc = ns.config.groups.secondary
+local gc = ns.config.groups
 
 ns.weakauras.config = {
 	primary = {
@@ -18,11 +17,11 @@ ns.weakauras.config = {
 				on = 'changed',
 				custom = 'function(newPositions, activeRegions) AelUI.weakauras.growers.primary(newPositions, activeRegions) end',
 			},
-			spacing = pc.spacing,
+			spacing = gc.primary.spacing,
 		},
 		childConfig = {
-			width = pc.width,
-			height = pc.height,
+			width = gc.primary.width,
+			height = gc.primary.height,
 		},
 	},
 
@@ -40,11 +39,33 @@ ns.weakauras.config = {
 				on = 'changed',
 				custom = 'function(newPositions, activeRegions) AelUI.weakauras.growers.secondary(newPositions, activeRegions) end',
 			},
-			spacing = sc.spacing,
+			spacing = gc.secondary.spacing,
 		},
 		childConfig = {
-			width = sc.width,
-			height = sc.height,
+			width = gc.secondary.width,
+			height = gc.secondary.height,
+		},
+	},
+
+	tracking = {
+		name = 'Tracking',
+		groupConfig = {
+			anchor = {
+				type = 'SELECTFRAME',
+				frame = 'AelUIPrimaryAnchor',
+				from = 'BOTTOM',
+				to = 'TOP',
+				x = 0,
+				y = 20,
+			},
+			grow = {
+				type = 'HORIZONTAL',
+				align = 'RIGHT',
+			},
+		},
+		childConfig = {
+			width = gc.tracking.width,
+			height = gc.tracking.height,
 		},
 	},
 }

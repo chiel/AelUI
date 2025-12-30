@@ -3,6 +3,7 @@ local _, ns = ...
 local groupTypeOrder = {
 	'primary',
 	'secondary',
+	'tracking',
 }
 
 ns.weakauras.convertClassData = function(classData)
