@@ -8,6 +8,12 @@ ns.triggers.Create = function()
 		triggers = {},
 	}
 
+	aura.AddAura = function(self, ...)
+		local trigger = ns.triggers.CreateAura(...)
+		table.insert(self.triggers, trigger)
+		return trigger
+	end
+
 	aura.AddCustomStatus = function(self, ...)
 		local trigger = ns.triggers.CreateCustomStatus(...)
 		table.insert(self.triggers, trigger)
