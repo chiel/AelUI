@@ -3,4 +3,5 @@
 	<Script file="CreateAura.lua"/>
 	<Script file="CreateCustomStatus.lua"/>
 	<Script file="CreateSpellCooldown.lua"/>
+	<Script file="CreateUnitSwingTimer.lua"/>
 </Ui>

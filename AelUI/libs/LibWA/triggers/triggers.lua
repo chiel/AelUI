@@ -26,6 +26,12 @@ ns.triggers.Create = function()
 		return trigger
 	end
 
+	aura.AddUnitSwingTimer = function(self, ...)
+		local trigger = ns.triggers.CreateUnitSwingTimer(...)
+		table.insert(self.triggers, trigger)
+		return trigger
+	end
+
 	aura.Get = function(self, index)
 		return self.triggers[index]
 	end
