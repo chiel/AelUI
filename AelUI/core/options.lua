@@ -1,7 +1,5 @@
 local _, ns = ...
 
-print('AelUI: options')
-
 local dialog = LibStub('AceConfigDialog-3.0')
 local registry = LibStub('AceConfigRegistry-3.0')
 
