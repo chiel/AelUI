@@ -1,7 +1,7 @@
 local _, ns = ...
 
 local secondaryResizer = ns.weakauras.createResizer({
-	'Swing (AelUI - Common)',
+	'Swing (Ranged) (AelUI - Common)',
 })
 
 ns.OnInitialise(function()

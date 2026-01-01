@@ -3,7 +3,7 @@ local _, ns = ...
 local m = ns.media
 
 table.insert(ns.weakauras.data.common, function(idSuffix)
-	local bar = LibWA.CreateBar('Swing' .. idSuffix)
+	local bar = LibWA.CreateBar('Swing (Ranged)' .. idSuffix)
 
 	bar.display:SetTexture(m.statusbars.default.name)
 	bar.display:SetBackgroundColor({ 50 / 255, 50 / 255, 50 / 255, 1 })
