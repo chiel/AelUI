@@ -3,5 +3,6 @@
 	<Include file="helpers\load.xml"/>
 	<Include file="creators\load.xml"/>
 	<Script file="createGrower.lua"/>
+	<Script file="createResizer.lua"/>
 	<Script file="import.lua"/>
 </Ui>
