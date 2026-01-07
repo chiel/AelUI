@@ -30,6 +30,10 @@ ns.conditions.CreateCondition = function(trigger)
 		self.check = ns.conditions.CheckActive(...)
 	end
 
+	aura.CheckAuraFound = function(self, ...)
+		self.check = ns.conditions.CheckAuraFound(...)
+	end
+
 	aura.CheckOnCooldown = function(self, ...)
 		self.check = ns.conditions.CheckOnCooldown(...)
 	end
