@@ -44,6 +44,17 @@ ns.triggers.Create = function()
 		return trigger
 	end
 
+	aura.Delete = function(self, index)
+		local newTriggers = {}
+		for i, trigger in ipairs(self.triggers) do
+			if i ~= index then
+				table.insert(newTriggers, trigger)
+			end
+		end
+
+		self.triggers = newTriggers
+	end
+
 	aura.Get = function(self, index)
 		return self.triggers[index]
 	end
