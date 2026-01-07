@@ -26,6 +26,12 @@ ns.triggers.Create = function()
 		return trigger
 	end
 
+	aura.AddSpellQueuedAction = function(self, ...)
+		local trigger = ns.triggers.CreateSpellQueuedAction(...)
+		table.insert(self.triggers, trigger)
+		return trigger
+	end
+
 	aura.AddUnitConditions = function(self, ...)
 		local trigger = ns.triggers.CreateUnitConditions(...)
 		table.insert(self.triggers, trigger)
