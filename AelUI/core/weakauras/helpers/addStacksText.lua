@@ -6,7 +6,7 @@ local m = ns.media
 wa.helpers.addStacksText = function(icon)
 	icon.display:AddText('%s', {
 		font = m.fonts.bold.name,
-		size = 12,
+		size = 14,
 		justify = 'RIGHT',
 		anchor = {
 			from = 'TOPRIGHT',
