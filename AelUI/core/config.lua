@@ -6,24 +6,24 @@ ns.config = {
 		primary = {
 			width = 58,
 			height = 58,
-			spacing = 1,
+			spacing = 2,
 			minIcons = 6,
 		},
 		secondary = {
 			width = 42,
 			height = 42,
-			spacing = 1,
+			spacing = 2,
 			minIcons = 7,
 		},
 		tracking = {
 			width = 42,
 			height = 34,
-			spacing = 1,
+			spacing = 2,
 		},
 		reminders = {
 			width = 64,
-			height = 48,
-			spacing = 1,
+			height = 52,
+			spacing = 2,
 		},
 	},
 }
