@@ -16,7 +16,7 @@ ns.weakauras.data.classes.druid = {
 				function(icon)
 					icon.display:SetCooldown({ inverse = true, text = false })
 
-					icon.triggers:SetActivateOn('any')
+					icon.triggers:Delete(2)
 					local buff = icon.triggers:Get(1)
 					buff:SetShow('onActive')
 					icon.triggers:AddSpellCooldown(6783, { show = 'onCooldown' })
@@ -27,6 +27,11 @@ ns.weakauras.data.classes.druid = {
 					cond:ChangeDesaturate(true)
 				end
 			),
+		},
+		tracking = {
+			c.auraIcon('target', 'debuff', 17392), -- Faerie Fire (Feral)
+			c.auraIcon('target', 'debuff', 9904), -- Rake
+			c.auraIcon('target', 'debuff', 9894), -- Rip
 		},
 	},
 }
