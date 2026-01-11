@@ -41,6 +41,10 @@ ns.display.CreateIconOptions = function()
 		self.desaturate = value
 	end
 
+	aura.SetIcon = function(self, icon)
+		self.icon = icon
+	end
+
 	aura.SetKeepAspectRatio = function(self, value)
 		self.keepAspectRatio = value
 	end
@@ -61,6 +65,19 @@ ns.display.CreateIconOptions = function()
 
 		if self.desaturate ~= nil then
 			r.desaturate = self.desaturate
+		end
+
+		if self.icon ~= nil then
+			if type(self.icon) == 'number' then
+				r.icon = true
+				r.iconSource = 0
+				r.displayIcon = tostring(self.icon)
+			end
+
+			if type(self.icon) == 'table' then
+				r.icon = true
+				r.iconSource = self.icon.id
+			end
 		end
 
 		if self.keepAspectRatio ~= nil then
