@@ -10,12 +10,23 @@ wa.creators.auraIcon = function(unit, auraType, auraId)
 
 		local icon = h.icon(id, config)
 		icon.display:SetCooldown({ inverse = false, text = false })
+		icon.display:SetColor({ 1, 1, 1, 0.75 })
+		icon.display:SetDesaturate(true)
+		icon.display:SetIcon(spellInfo.iconID)
+		h.addProgressText(icon)
 
-		icon.triggers:AddAura(unit, auraType, {
+		icon.triggers:SetActivateOn('any')
+		local aura = icon.triggers:AddAura(unit, auraType, {
 			ownOnly = true,
-			show = 'always',
+			show = 'onActive',
 			spellIds = { auraId },
 		})
+		icon.triggers:AddUnitConditions({ alwaysActive = true })
+
+		local cond = icon.conditions:Add()
+		cond:CheckActive(aura, true)
+		cond:ChangeColor({ 1, 1, 1, 1 })
+		cond:ChangeDesaturate(false)
 
 		return icon
 	end
