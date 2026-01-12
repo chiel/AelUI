@@ -13,6 +13,21 @@ ns.conditions.Create = function()
 		return condition
 	end
 
+	aura.Move = function(self, cond, layer)
+		local newConditions = {}
+		for i, c in ipairs(self.conditions) do
+			if c ~= cond then
+				if i == layer then
+					table.insert(newConditions, cond)
+				end
+
+				table.insert(newConditions, c)
+			end
+		end
+
+		self.conditions = newConditions
+	end
+
 	aura.Serialize = function(self)
 		local r = { conditions = {} }
 
