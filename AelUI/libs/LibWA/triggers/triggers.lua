@@ -32,6 +32,12 @@ ns.triggers.Create = function()
 		return trigger
 	end
 
+	aura.AddSpellUsable = function(self, ...)
+		local trigger = ns.triggers.CreateSpellUsable(...)
+		table.insert(self.triggers, trigger)
+		return trigger
+	end
+
 	aura.AddUnitConditions = function(self, ...)
 		local trigger = ns.triggers.CreateUnitConditions(...)
 		table.insert(self.triggers, trigger)

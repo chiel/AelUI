@@ -4,6 +4,7 @@
 	<Script file="CreateCustomStatus.lua"/>
 	<Script file="CreateSpellCooldown.lua"/>
 	<Script file="CreateSpellQueuedAction.lua"/>
+	<Script file="CreateSpellUsable.lua"/>
 	<Script file="CreateUnitConditions.lua"/>
 	<Script file="CreateUnitSwingTimer.lua"/>
 </Ui>
