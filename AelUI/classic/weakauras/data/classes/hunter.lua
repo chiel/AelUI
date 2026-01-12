@@ -39,7 +39,19 @@ ns.weakauras.data.classes.hunter = {
 					cond:ChangeGlowVisibility(glow, true)
 				end
 			),
-			c.spellIcon(20903), -- Aimed Shot
+			c.composeAura(
+				c.spellIcon(20903), -- Aimed Shot
+				function(icon)
+					local border = icon.display:Get(2)
+
+					icon.triggers:SetActivateOn('any')
+					local queuedAction = icon.triggers:AddSpellQueuedAction(20903)
+
+					local cond = icon.conditions:Add()
+					cond:CheckActive(queuedAction, true)
+					cond:ChangeBorderColor(border, { 1, 1, 0, 1 })
+				end
+			),
 			c.spellIcon(14289), -- Multi-Shot
 			c.spellIcon(5116), -- Concussive Shot
 			c.spellIcon(14266), -- Raptor Strike
