@@ -14,6 +14,21 @@ ns.display.CreateBarOptions = function()
 		return border
 	end
 
+	aura.Move = function(self, subregion, layer)
+		local newRegions = {}
+		for i, sr in ipairs(self.subregions) do
+			if sr ~= subregion then
+				if i == layer then
+					table.insert(newRegions, subregion)
+				end
+
+				table.insert(newRegions, sr)
+			end
+		end
+
+		self.subregions = newRegions
+	end
+
 	aura.SetAnchor = function(self, anchor)
 		self.anchor = anchor
 	end
