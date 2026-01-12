@@ -68,5 +68,8 @@ ns.weakauras.data.classes.hunter = {
 			c.spellIcon(15632), -- Distracting Shot
 			c.spellIcon(14273), -- Disengage
 		},
+		tracking = {
+			c.auraIcon('target', 'debuff', 14325), -- Hunter's Mark
+		},
 	},
 }
