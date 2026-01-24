@@ -12,6 +12,10 @@ table.insert(ns.unitframes.units, {
 		local healthbar = e.healthbar(f)
 		healthbar:SetAllPoints()
 
+		local powerbar = e.powerbar(f)
+		powerbar:SetPoint('TOPLEFT', healthbar, 'BOTTOMLEFT', 0, -2)
+		powerbar:SetSize(140, 8)
+
 		return f
 	end,
 })
