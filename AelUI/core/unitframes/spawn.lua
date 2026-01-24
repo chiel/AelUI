@@ -14,5 +14,23 @@ ns.unitframes.spawn = function(unit)
 	f:SetAttribute('*type1', 'target')
 	f:SetAttribute('*type2', 'togglemenu')
 
+	f.eventCallbacks = {}
+
+	f:SetScript('OnEvent', function(self, event, ...)
+		if self.eventCallbacks[event] then
+			for _, cb in ipairs(self.eventCallbacks[event]) do
+				cb(self, event, ...)
+			end
+		end
+	end)
+
+	f.RegisterCallback = function(self, event, cb)
+		if not self.eventCallbacks[event] then
+			self.eventCallbacks[event] = {}
+			self:RegisterUnitEvent(event, f.unit)
+		end
+		table.insert(self.eventCallbacks[event], cb)
+	end
+
 	return f
 end
