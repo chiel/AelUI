@@ -12,14 +12,14 @@ ns.weakauras.data.classes.druid = {
 	groups = {
 		reminders = {
 			c.composeAura(
-				c.auraIcon('player', 'buff', 6783), -- Prowl
+				c.auraIcon('player', 'buff', 9913), -- Prowl
 				function(icon)
 					icon.display:SetCooldown({ inverse = true, text = false })
 
 					icon.triggers:Delete(2)
 					local buff = icon.triggers:Get(1)
 					buff:SetShow('onActive')
-					icon.triggers:AddSpellCooldown(6783, { show = 'onCooldown' })
+					icon.triggers:AddSpellCooldown(9913, { show = 'onCooldown' })
 
 					local cond = icon.conditions:Add()
 					cond:CheckActive(buff, false)
