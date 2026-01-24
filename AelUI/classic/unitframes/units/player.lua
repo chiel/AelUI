@@ -1,25 +1,21 @@
 local _, ns = ...
 
+local e = ns.unitframes.elements
 local m = ns.media
-
-local defaultBgColor = { 50 / 255, 50 / 255, 50 / 255 }
 
 table.insert(ns.unitframes.units, {
 	unit = 'player',
 	style = function(f)
-		f:SetPoint('TOPLEFT', AelUIParent, 'TOPLEFT', 30, -30)
+		f:SetPoint('TOPRIGHT', AelUIPrimaryAnchor, 'TOPLEFT', -20, 0)
 		f:SetSize(280, 60)
 
-		local bd = CreateFrame('Frame', nil, f, 'BackdropTemplate')
-		bd:SetBackdrop({ edgeFile = m.borders.default.file, edgeSize = 1 })
-		bd:SetBackdropBorderColor(0, 0, 0, 1)
-		bd:SetAllPoints()
+		local healthbar = e.healthbar(f)
+		healthbar:SetAllPoints()
 
-		local bg = bd:CreateTexture(nil, 'BORDER')
-		bg:SetTexture(m.backgrounds.default.file)
-		bg:SetVertexColor(unpack(defaultBgColor))
-		bg:SetPoint('TOPLEFT', 1, -1)
-		bg:SetPoint('BOTTOMRIGHT', -1, 1)
+		local powerbar = e.powerbar(f)
+		powerbar:SetPoint('BOTTOMLEFT', AelUIPrimaryAnchor, 'TOPLEFT', 0, 2)
+		powerbar:SetPoint('BOTTOMRIGHT', AelUIPrimaryAnchor, 'TOPRIGHT', 0, 2)
+		powerbar:SetHeight(16)
 
 		return f
 	end,
