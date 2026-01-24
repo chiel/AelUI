@@ -15,6 +15,15 @@ ns.unitframes.elements.powerbar = function(f)
 	bar:SetAllPoints()
 	bar:SetPoint('TOPLEFT', 1, -1)
 	bar:SetPoint('BOTTOMRIGHT', -1, 1)
+	bar:SetClipsChildren(true)
+
+	local spark = bar:CreateTexture(nil, 'OVERLAY')
+	spark:SetTexture([[Interface\CastingBar\UI-CastingBar-Spark]])
+	spark:SetBlendMode('ADD')
+	spark:SetWidth(10)
+	spark:SetSize(10, 30)
+	spark:SetPoint('TOP', bar:GetStatusBarTexture(), 'TOPRIGHT', 0, 10)
+	spark:SetPoint('BOTTOM', bar:GetStatusBarTexture(), 'BOTTOMRIGHT', 0, -10)
 
 	local function update(self, event, ...)
 		local current = UnitPower(self.unit)
@@ -22,6 +31,7 @@ ns.unitframes.elements.powerbar = function(f)
 
 		bar:SetMinMaxValues(0, max)
 		bar:SetValue(current)
+		spark:SetShown(current > 0 and current < max)
 
 		local powerType = UnitPowerType(self.unit)
 		local color = PowerBarColor[powerType]
