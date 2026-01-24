@@ -14,6 +14,8 @@ ns.unitframes.spawn = function(unit)
 	f:SetAttribute('*type1', 'target')
 	f:SetAttribute('*type2', 'togglemenu')
 
+	RegisterUnitWatch(f)
+
 	f.eventCallbacks = {}
 
 	f:SetScript('OnEvent', function(self, event, ...)
