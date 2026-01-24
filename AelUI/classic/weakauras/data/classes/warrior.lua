@@ -11,8 +11,11 @@ ns.weakauras.data.classes.warrior = {
 
 	groups = {
 		primary = {
-			c.spellIcon(12292), -- Sweeping Strikes
+			c.spellIcon(12328), -- Sweeping Strikes
 			c.spellIcon(2687), -- Bloodrage
+			c.spellIcon(23924), -- Shield Slam
+			c.spellIcon(23881), -- Bloodthirst
+			c.spellIcon(1680), -- Whirlwind
 			c.composeAura(
 				c.spellIcon(7384), -- Overpower
 				function(icon)
@@ -59,20 +62,23 @@ ns.weakauras.data.classes.warrior = {
 			c.spellIcon(2565), -- Shield Block
 		},
 		secondary = {
+			c.spellIcon(6552), -- Pummel
 			c.spellIcon(72), -- Shield Bash
 			c.spellIcon(676), -- Disarm
 			c.spellIcon(5246), -- Intimidating Shout
+			c.spellIcon(11556), -- Demoralizing Shout
 			c.spellIcon(100), -- Charge
-			c.spellIcon(20616), -- Charge
+			c.spellIcon(20617), -- Intercept
+			c.spellIcon(18499), -- Berserker Rage
 			c.spellIcon(20230), -- Retaliation
 			c.spellIcon(694), -- Mocking Blow
 			c.spellIcon(355), -- Taunt
 		},
 		tracking = {
-			c.auraIcon('target', 'debuff', 8205), -- Thunder Clap
-			c.auraIcon('target', 'debuff', 11555), -- Demoralizing Shout
+			c.auraIcon('target', 'debuff', 11580), -- Thunder Clap
+			c.auraIcon('target', 'debuff', 11556), -- Demoralizing Shout
 			c.composeAura(
-				c.auraIcon('target', 'debuff', 8380), -- Sunder Armor
+				c.auraIcon('target', 'debuff', 11596), -- Sunder Armor
 				h.addStacksText
 			),
 			c.auraIcon('target', 'debuff', 11572), -- Rend
