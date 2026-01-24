@@ -6,6 +6,7 @@
 	<Script file="uiscale.lua"/>
 	<Script file="media\init.lua"/>
 	<Script file="options.lua"/>
+	<Include file="helpers\load.xml"/>
 	<Include file="anchors\load.xml"/>
 	<Include file="unitframes\load.xml"/>
 	<Include file="weakauras\load.xml"/>
