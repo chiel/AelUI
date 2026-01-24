@@ -1,5 +1,5 @@
 local _, ns = ...
 
-ns.internalVersion = 87
+ns.internalVersion = 88
 
 LibWA = {}
