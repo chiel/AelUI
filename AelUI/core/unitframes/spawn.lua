@@ -17,6 +17,7 @@ ns.unitframes.spawn = function(unit)
 	RegisterUnitWatch(f)
 
 	f.eventCallbacks = {}
+	f.updaters = {}
 
 	f:SetScript('OnEvent', function(self, event, ...)
 		if self.eventCallbacks[event] then
@@ -32,6 +33,27 @@ ns.unitframes.spawn = function(unit)
 			self:RegisterUnitEvent(event, f.unit)
 		end
 		table.insert(self.eventCallbacks[event], cb)
+
+		f.updaters[cb] = true
+	end
+
+	f.Update = function(self)
+		for cb in pairs(self.updaters) do
+			cb(self)
+		end
+	end
+
+	f:SetScript('OnShow', function(self)
+		self:Update()
+	end)
+
+	if unit == 'target' then
+		f:RegisterEvent('PLAYER_TARGET_CHANGED')
+		f.eventCallbacks['PLAYER_TARGET_CHANGED'] = {
+			function(self)
+				self:Update()
+			end,
+		}
 	end
 
 	return f
