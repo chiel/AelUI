@@ -25,15 +25,15 @@ ns.unitframes.elements.powerbar = function(f)
 	spark:SetPoint('TOP', bar:GetStatusBarTexture(), 'TOPRIGHT', 0, 10)
 	spark:SetPoint('BOTTOM', bar:GetStatusBarTexture(), 'BOTTOMRIGHT', 0, -10)
 
-	local function update(self, event, ...)
-		local current = UnitPower(self.unit)
-		local max = UnitPowerMax(self.unit)
+	local function update(self)
+		local powerType = UnitPowerType(self.unit)
+		local current = UnitPower(self.unit, powerType)
+		local max = UnitPowerMax(self.unit, powerType)
 
 		bar:SetMinMaxValues(0, max)
 		bar:SetValue(current)
 		spark:SetShown(current > 0 and current < max)
 
-		local powerType = UnitPowerType(self.unit)
 		local color = PowerBarColor[powerType]
 		if color then
 			bar:SetStatusBarColor(color.r, color.g, color.b)
@@ -45,7 +45,7 @@ ns.unitframes.elements.powerbar = function(f)
 	f:RegisterCallback('UNIT_MAXPOWER', update)
 	f:RegisterCallback('UNIT_DISPLAYPOWER', update)
 
-	update(f, 'UNIT_POWER_UPDATE')
+	update(f)
 
 	return bd
 end
