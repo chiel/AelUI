@@ -18,7 +18,7 @@ ns.unitframes.elements.healthbar = function(f)
 	bar:SetPoint('BOTTOMRIGHT', -1, 1)
 	AelUIPlayerHealth = bar
 
-	local function update(self, event, ...)
+	local function update(self)
 		local current = UnitHealth(self.unit)
 		local max = UnitHealthMax(self.unit)
 
@@ -44,7 +44,7 @@ ns.unitframes.elements.healthbar = function(f)
 	f:RegisterCallback('UNIT_HEALTH_FREQUENT', update)
 	f:RegisterCallback('UNIT_MAXHEALTH', update)
 
-	update(f, 'UNIT_HEALTH', unit)
+	update(f)
 
 	return bd
 end
