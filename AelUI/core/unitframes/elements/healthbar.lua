@@ -34,9 +34,17 @@ ns.unitframes.elements.healthbar = function(f)
 					color = { c.r, c.g, c.b, 1 }
 				end
 			end
+		else
+			local reaction = UnitReaction(self.unit, 'player')
+			if reaction then
+				local c = FACTION_BAR_COLORS[reaction]
+				if c then
+					color = { c.r, c.g, c.b, 1 }
+				end
+			end
 		end
 
-		bg:SetVertexColor(color[1] * 0.85, color[2] * 0.85, color[3] * 0.85)
+		bg:SetVertexColor(color[1] * 0.75, color[2] * 0.75, color[3] * 0.75)
 		bar:SetStatusBarColor(unpack(defaultBarColor))
 	end
 
