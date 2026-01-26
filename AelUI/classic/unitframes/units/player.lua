@@ -17,6 +17,19 @@ table.insert(ns.unitframes.units, {
 		powerbar:SetPoint('BOTTOMRIGHT', AelUIPrimaryAnchor, 'TOPRIGHT', 0, 2)
 		powerbar:SetHeight(16)
 
+		local function onUpdate(bd, state)
+			if state.gcd then
+				bd:SetHeight(6)
+			else
+				bd:SetHeight(16)
+			end
+		end
+
+		local castbar = e.castbar(f, { onUpdate = onUpdate })
+		castbar:SetPoint('TOPLEFT', AelUISecondaryAnchor, 'BOTTOMLEFT', 0, -2)
+		castbar:SetPoint('TOPRIGHT', AelUISecondaryAnchor, 'BOTTOMRIGHT', 0, -2)
+		castbar:SetHeight(16)
+
 		return f
 	end,
 })
