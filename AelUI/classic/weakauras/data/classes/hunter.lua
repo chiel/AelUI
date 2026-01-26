@@ -60,6 +60,7 @@ ns.weakauras.data.classes.hunter = {
 		secondary = {
 			c.spellIcon(19263), -- Deterrence
 			c.spellIcon(19503), -- Scatter Shot
+			c.spellIcon(19577), -- Intimidation
 			c.spellIcon(5384), -- Feign Death
 			c.spellIcon(13809), -- Frost Trap
 			c.spellIcon(1543), -- Flare
