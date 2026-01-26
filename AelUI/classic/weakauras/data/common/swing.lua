@@ -14,7 +14,7 @@ table.insert(ns.weakauras.data.common, function(idSuffix)
 		frame = 'AelUISecondaryAnchor',
 		from = 'TOP',
 		to = 'BOTTOM',
-		y = -2,
+		y = -10,
 	})
 	bar.display:AddBorder({
 		color = { 0, 0, 0, 1 },
