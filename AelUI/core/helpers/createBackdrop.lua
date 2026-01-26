@@ -8,6 +8,7 @@ ns.helpers.createBackdrop = function(parent)
 	local bd = CreateFrame('Frame', nil, parent, 'BackdropTemplate')
 	bd:SetBackdrop({ edgeFile = m.borders.default.file, edgeSize = 1 })
 	bd:SetBackdropBorderColor(0, 0, 0, 1)
+	bd:SetClipsChildren(true)
 
 	local bg = bd:CreateTexture(nil, 'BORDER')
 	bg:SetTexture(m.backgrounds.default.file)
