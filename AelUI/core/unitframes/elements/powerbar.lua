@@ -5,7 +5,9 @@ local m = ns.media
 
 local defaultBarColor = { 35 / 255, 35 / 255, 35 / 255 }
 
-ns.unitframes.elements.powerbar = function(f)
+ns.unitframes.elements.powerbar = function(f, options)
+	local o = options or {}
+
 	local bd, bg = h.createBackdrop(f)
 	local defaultBgColor = bg:GetVertexColor()
 
@@ -25,16 +27,26 @@ ns.unitframes.elements.powerbar = function(f)
 
 	local function update(self)
 		local powerType = UnitPowerType(self.unit)
-		local current = UnitPower(self.unit, powerType)
-		local max = UnitPowerMax(self.unit, powerType)
+		local displayType = o.powerType ~= nil and o.powerType or powerType
+		local current = UnitPower(self.unit, displayType)
+		local max = UnitPowerMax(self.unit, displayType)
 
 		bar:SetMinMaxValues(0, max)
 		bar:SetValue(current)
 		spark:SetShown(current > 0 and current < max)
 
-		local color = PowerBarColor[powerType]
+		local color = PowerBarColor[displayType]
 		if color then
 			bar:SetStatusBarColor(color.r, color.g, color.b)
+		end
+
+		if o.onUpdate then
+			o.onUpdate(bd, {
+				current = current,
+				max = max,
+				displayType = displayType,
+				powerType = powerType,
+			})
 		end
 	end
 

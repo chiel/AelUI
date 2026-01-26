@@ -5,8 +5,9 @@ local m = ns.media
 
 local defaultBarColor = { 35 / 255, 35 / 255, 35 / 255 }
 
-ns.unitframes.elements.castbar = function(f, opts)
-	opts = opts or {}
+ns.unitframes.elements.castbar = function(f, options)
+	local o = options or {}
+
 	local bd, bg = h.createBackdrop(f)
 
 	local bar = CreateFrame('StatusBar', nil, bd)
@@ -38,8 +39,8 @@ ns.unitframes.elements.castbar = function(f, opts)
 			channeling = false
 			bar:SetValue(0)
 			bd:Show()
-			if opts.onUpdate then
-				opts.onUpdate(bd, { gcd = false, channeling = false, casting = true })
+			if o.onUpdate then
+				o.onUpdate(bd, { gcd = false, channeling = false, casting = true })
 			end
 			return
 		end
@@ -51,8 +52,8 @@ ns.unitframes.elements.castbar = function(f, opts)
 			channeling = true
 			bar:SetValue(1)
 			bd:Show()
-			if opts.onUpdate then
-				opts.onUpdate(bd, { gcd = false, channeling = true, casting = false })
+			if o.onUpdate then
+				o.onUpdate(bd, { gcd = false, channeling = true, casting = false })
 			end
 			return
 		end
@@ -65,8 +66,8 @@ ns.unitframes.elements.castbar = function(f, opts)
 				gcd = true
 				bar:SetValue(1)
 				bd:Show()
-				if opts.onUpdate then
-					opts.onUpdate(bd, { gcd = true, channeling = false, casting = false })
+				if o.onUpdate then
+					o.onUpdate(bd, { gcd = true, channeling = false, casting = false })
 				end
 				return
 			end

@@ -66,7 +66,7 @@ end
 **What's Implemented:**
 - `spawn.lua`: Creates frames with SecureUnitButtonTemplate, RegisterUnitWatch, click handling
 - `healthbar.lua`: Health bar with class colors for players
-- `powerbar.lua`: Power bar with power type colors
+- `powerbar.lua`: Power bar with power type colors, optional locked type and `onUpdate` callback
 - `castbar.lua`: Cast bar with GCD support (player only)
 - `player.lua` / `target.lua`: Unit-specific styling
 
@@ -98,6 +98,22 @@ end
   ```
 - Channels and GCD deplete (fill reversed), casts fill normally
 - Hides default `PlayerCastingBarFrame` when created for player unit
+
+**Powerbar Design:**
+- Supports optional `powerType` to lock bar to a specific power type (e.g., `Enum.PowerType.Mana`)
+- Supports optional `onUpdate` callback for dynamic styling/visibility:
+  ```lua
+  local manabar = e.powerbar(f, {
+      powerType = Enum.PowerType.Mana,
+      onUpdate = function(self, state)
+          -- state has: current, max, displayType, powerType
+          -- displayType = what bar shows, powerType = unit's actual power type
+          self:SetShown(state.displayType ~= state.powerType)
+      end,
+  })
+  ```
+- `UNIT_DISPLAYPOWER` event fires when power type changes (druid form shifts)
+- Druid mana bar pattern: create second powerbar locked to mana, hide when mana is primary
 
 **Special Casts (Not Yet Implemented):**
 - Hunter's Aimed Shot and Multi-Shot don't fire normal `UNIT_SPELLCAST_*` events in Classic/TBC
@@ -156,8 +172,8 @@ oUF features we DON'T need:
 
 ## File Locations
 
-- Main addon: `/home/chiel/dev/aelUI-classic/AelUI/`
-- Retail version (reference): `/home/chiel/dev/aelUI/`
+- Main addon: `~/dev/aelUI-classic/AelUI/`
+- Retail version (reference): `~/dev/aelUI/`
 
 ## Common Issues Encountered
 

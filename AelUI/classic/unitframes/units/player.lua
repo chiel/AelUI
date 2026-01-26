@@ -17,15 +17,25 @@ table.insert(ns.unitframes.units, {
 		powerbar:SetPoint('BOTTOMRIGHT', AelUIPrimaryAnchor, 'TOPRIGHT', 0, 2)
 		powerbar:SetHeight(16)
 
-		local function onUpdate(bd, state)
-			if state.gcd then
-				bd:SetHeight(6)
-			else
-				bd:SetHeight(16)
+		local _, playerClass = UnitClass('player')
+		if playerClass == 'DRUID' then
+			local function onUpdateManabar(self, state)
+				self:SetShown(state.displayType ~= state.powerType)
 			end
+
+			local manabar = e.powerbar(f, {
+				powerType = Enum.PowerType.Mana,
+				onUpdate = onUpdateManabar,
+			})
+			manabar:SetPoint('TOPRIGHT', healthbar, 'BOTTOMRIGHT', 0, -2)
+			manabar:SetSize(140, 8)
 		end
 
-		local castbar = e.castbar(f, { onUpdate = onUpdate })
+		local function onUpdateCastbar(self, state)
+			self:SetHeight(state.gcd and 8 or 16)
+		end
+
+		local castbar = e.castbar(f, { onUpdate = onUpdateCastbar })
 		castbar:SetPoint('TOPLEFT', AelUISecondaryAnchor, 'BOTTOMLEFT', 0, -2)
 		castbar:SetPoint('TOPRIGHT', AelUISecondaryAnchor, 'BOTTOMRIGHT', 0, -2)
 		castbar:SetHeight(16)
