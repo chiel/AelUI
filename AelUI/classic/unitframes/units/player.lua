@@ -7,7 +7,7 @@ table.insert(ns.unitframes.units, {
 	unit = 'player',
 	style = function(f)
 		f:SetPoint('TOPRIGHT', AelUIPrimaryAnchor, 'TOPLEFT', -20, 0)
-		f:SetSize(280, 60)
+		f:SetSize(280, 58)
 
 		local healthbar = e.healthbar(f)
 		healthbar:SetAllPoints()
