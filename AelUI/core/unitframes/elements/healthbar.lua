@@ -1,22 +1,15 @@
 local _, ns = ...
 
 local h = ns.helpers
-local m = ns.media
 
 local defaultBarColor = { 35 / 255, 35 / 255, 35 / 255 }
 
 ns.unitframes.elements.healthbar = function(f)
-	local bd, bg = h.createBackdrop(f)
+	local bar, bd, bg = h.createStatusBar(f)
+	bar:SetStatusBarColor(unpack(defaultBarColor))
+
 	local r, g, b = bg:GetVertexColor()
 	local defaultBgColor = { r, g, b }
-
-	local bar = CreateFrame('StatusBar', nil, bd)
-	bar:SetStatusBarTexture(m.statusbars.default.file)
-	bar:SetStatusBarColor(unpack(defaultBarColor))
-	bar:SetAllPoints()
-	bar:SetPoint('TOPLEFT', 1, -1)
-	bar:SetPoint('BOTTOMRIGHT', -1, 1)
-	AelUIPlayerHealth = bar
 
 	local function update(self)
 		local current = UnitHealth(self.unit)
