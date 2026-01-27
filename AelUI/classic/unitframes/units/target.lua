@@ -15,5 +15,7 @@ table.insert(ns.unitframes.units, function(f)
 	powerbar:SetPoint('TOPLEFT', healthbar, 'BOTTOMLEFT', 0, -2)
 	powerbar:SetSize(140, 8)
 
+	e.range(f)
+
 	return f
 end)
