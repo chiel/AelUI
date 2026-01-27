@@ -31,7 +31,7 @@ table.insert(ns.unitframes.units, function()
 	end
 
 	local function onUpdateCastbar(self, state)
-		self:SetHeight(state.gcd and 8 or 16)
+		self:SetHeight(state.gcd and 6 or 16)
 	end
 
 	local castbar = e.castbar(f, { onUpdate = onUpdateCastbar })
