@@ -1,21 +1,11 @@
 local _, ns = ...
 
 local h = ns.helpers
-local m = ns.media
-
-local defaultBarColor = { 35 / 255, 35 / 255, 35 / 255 }
 
 ns.unitframes.elements.powerbar = function(f, options)
 	local o = options or {}
 
-	local bd, bg = h.createBackdrop(f)
-	local defaultBgColor = bg:GetVertexColor()
-
-	local bar = CreateFrame('StatusBar', nil, bd)
-	bar:SetStatusBarTexture(m.statusbars.default.file)
-	bar:SetStatusBarColor(unpack(defaultBarColor))
-	bar:SetPoint('TOPLEFT', 1, -1)
-	bar:SetPoint('BOTTOMRIGHT', -1, 1)
+	local bar, bd, bg = h.createStatusBar(f)
 
 	local spark = bar:CreateTexture(nil, 'OVERLAY')
 	spark:SetTexture([[Interface\CastingBar\UI-CastingBar-Spark]])
