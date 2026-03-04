@@ -25,7 +25,7 @@ ns.unitframes.elements.powerbar = function(f, options)
 		bar:SetValue(current)
 		spark:SetShown(current > 0 and current < max)
 
-		local color = PowerBarColor[displayType]
+		local color = ns.colors.power[displayType] or PowerBarColor[displayType]
 		if color then
 			bar:SetStatusBarColor(color.r, color.g, color.b)
 		end
