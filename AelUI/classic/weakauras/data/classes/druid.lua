@@ -29,9 +29,13 @@ ns.weakauras.data.classes.druid = {
 			),
 		},
 		tracking = {
-			c.auraIcon('target', 'debuff', 17392), -- Faerie Fire (Feral)
-			c.auraIcon('target', 'debuff', 9904), -- Rake
-			c.auraIcon('target', 'debuff', 9894), -- Rip
+			c.auraIcon('target', 'debuff', 27011), -- Faerie Fire (Feral)
+			c.auraIcon('target', 'debuff', 33983), -- Mangle
+			c.auraIcon('target', 'debuff', 26998), -- Demoralizing Roar
+			c.composeAura(
+				c.auraIcon('target', 'debuff', 33745), -- Lacerate
+				h.addStacksText
+			),
 		},
 	},
 }
