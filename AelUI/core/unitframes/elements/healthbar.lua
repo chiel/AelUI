@@ -4,8 +4,8 @@ local h = ns.helpers
 
 local defaultBarColor = { 35 / 255, 35 / 255, 35 / 255 }
 
-ns.unitframes.elements.healthbar = function(f)
-	local bar, bd, bg = h.createStatusBar(f)
+ns.unitframes.elements.healthbar = function(f, options)
+	local bar, bd, bg = h.createStatusBar(f, options)
 	bar:SetStatusBarColor(unpack(defaultBarColor))
 
 	local r, g, b = bg:GetVertexColor()
@@ -47,5 +47,5 @@ ns.unitframes.elements.healthbar = function(f)
 
 	update(f)
 
-	return bd
+	return bd, bar
 end

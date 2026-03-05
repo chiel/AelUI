@@ -3,5 +3,6 @@
 	<Script file="castbar.lua"/>
 	<Script file="healthbar.lua"/>
 	<Script file="powerbar.lua"/>
+	<Script file="nameText.lua"/>
 	<Script file="range.lua"/>
 </Ui>

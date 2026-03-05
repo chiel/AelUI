@@ -21,41 +21,29 @@ local function getVisibleGroups()
 	return visibleGroups
 end
 
-local function style(f)
-	f:SetSize(40, 40)
-
-	local bg = f:CreateTexture(nil, 'BACKGROUND')
-	bg:SetAllPoints()
-	bg:SetColorTexture(0.2, 0.2, 0.2, 1)
-
-	f.Update = function(self)
-		local _, class = UnitClass(self.unit)
-		if class then
-			local c = RAID_CLASS_COLORS[class]
-			if c then
-				bg:SetColorTexture(c.r, c.g, c.b, 1)
-				return
-			end
-		end
-		bg:SetColorTexture(0.2, 0.2, 0.2, 1)
-	end
-
-	e.range(f)
-
-	f:Update()
-end
-
-local UNIT_WIDTH = 40
-local UNIT_HEIGHT = 40
+local UNIT_WIDTH = 60
+local UNIT_HEIGHT = 60
 local GROUP_SPACING = 4
 local UNIT_SPACING = 4
 local UNITS_PER_GROUP = 5
-local COLUMN_HEIGHT = UNITS_PER_GROUP * UNIT_HEIGHT + (UNITS_PER_GROUP - 1) * UNIT_SPACING
+
+local ROW_WIDTH = UNITS_PER_GROUP * UNIT_WIDTH + (UNITS_PER_GROUP - 1) * UNIT_SPACING
+
+local function style(f)
+	f:SetSize(UNIT_WIDTH, UNIT_HEIGHT)
+
+	local healthbar, healthbarBar = e.healthbar(f, { orientation = 'VERTICAL' })
+	healthbar:SetAllPoints()
+
+	local name = e.nameText(f, healthbarBar, { maxLength = 3 })
+	name:SetPoint('BOTTOM', 0, 4)
+
+	e.range(f)
+end
 
 table.insert(ns.unitframes.units, function()
 	local container = CreateFrame('Frame', 'AelUIRaidFrame', AelUIParent)
-	container:SetPoint('TOPLEFT', AelUIParent, 'TOPLEFT', 300, -240)
-	container:SetHeight(COLUMN_HEIGHT)
+	container:SetPoint('TOPRIGHT', AelUIPrimaryAnchor, 'BOTTOMLEFT', -300, -200)
 
 	local headers = {}
 	for i = 1, MAX_RAID_GROUPS do
@@ -68,8 +56,8 @@ table.insert(ns.unitframes.units, function()
 			sortMethod = 'INDEX',
 			maxColumns = 1,
 			unitsPerColumn = UNITS_PER_GROUP,
-			point = 'TOP',
-			yOffset = -UNIT_SPACING,
+			point = 'LEFT',
+			xOffset = UNIT_SPACING,
 		}, style, container)
 	end
 
@@ -99,13 +87,13 @@ table.insert(ns.unitframes.units, function()
 			header:ClearAllPoints()
 
 			if visibleGroups[i] then
-				header:SetPoint('TOPLEFT', container, 'TOPLEFT', visibleCount * (UNIT_WIDTH + GROUP_SPACING), 0)
+				header:SetPoint('TOPLEFT', container, 'TOPLEFT', 0, -visibleCount * (UNIT_HEIGHT + GROUP_SPACING))
 				visibleCount = visibleCount + 1
 			end
 		end
 
-		local width = math.max(1, visibleCount * UNIT_WIDTH + math.max(0, visibleCount - 1) * GROUP_SPACING)
-		container:SetWidth(width)
+		container:SetWidth(ROW_WIDTH)
+		container:SetHeight(math.max(1, visibleCount * UNIT_HEIGHT + math.max(0, visibleCount - 1) * GROUP_SPACING))
 	end
 
 	local f = CreateFrame('Frame')
