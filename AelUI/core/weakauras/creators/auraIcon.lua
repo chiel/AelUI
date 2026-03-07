@@ -3,9 +3,13 @@ local _, ns = ...
 local wa = ns.weakauras
 local h = wa.helpers
 
-wa.creators.auraIcon = function(unit, auraType, auraId)
+wa.creators.auraIcon = function(unit, auraType, spellIds)
+	if type(spellIds) ~= 'table' then
+		spellIds = { spellIds }
+	end
+
 	return function(idSuffix, config)
-		local spellInfo = C_Spell.GetSpellInfo(auraId)
+		local spellInfo = C_Spell.GetSpellInfo(spellIds[1])
 		local id = spellInfo.name .. idSuffix
 
 		local icon = h.icon(id, config)
@@ -19,7 +23,7 @@ wa.creators.auraIcon = function(unit, auraType, auraId)
 		local aura = icon.triggers:AddAura(unit, auraType, {
 			ownOnly = true,
 			show = 'onActive',
-			spellIds = { auraId },
+			spellIds = spellIds,
 		})
 		icon.triggers:AddUnitConditions({ alwaysActive = true })
 
