@@ -29,8 +29,20 @@ ns.weakauras.data.classes.druid = {
 			),
 		},
 		tracking = {
-			c.auraIcon('target', 'debuff', 27011), -- Faerie Fire (Feral)
-			c.auraIcon('target', 'debuff', 33983), -- Mangle
+			c.composeAura(
+				c.auraIcon('target', 'debuff', 27011), -- Faerie Fire (Feral)
+				function(icon)
+					local trigger = icon.triggers:Get(1)
+					trigger:SetOwnOnly(nil)
+				end
+			),
+			c.composeAura(
+				c.auraIcon('target', 'debuff', { 33983, 33987 }), -- Mangle
+				function(icon)
+					local trigger = icon.triggers:Get(1)
+					trigger:SetOwnOnly(nil)
+				end
+			),
 			c.auraIcon('target', 'debuff', 26998), -- Demoralizing Roar
 			c.composeAura(
 				c.auraIcon('target', 'debuff', 33745), -- Lacerate
