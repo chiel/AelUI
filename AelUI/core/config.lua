@@ -16,8 +16,8 @@ ns.config = {
 			minIcons = 7,
 		},
 		tracking = {
-			width = 42,
-			height = 34,
+			width = 48,
+			height = 36,
 			spacing = 2,
 		},
 		reminders = {
