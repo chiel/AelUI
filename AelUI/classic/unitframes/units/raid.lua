@@ -30,8 +30,6 @@ local UNITS_PER_GROUP = 5
 local ROW_WIDTH = UNITS_PER_GROUP * UNIT_WIDTH + (UNITS_PER_GROUP - 1) * UNIT_SPACING
 
 local function style(f)
-	f:SetSize(UNIT_WIDTH, UNIT_HEIGHT)
-
 	local healthbar, healthbarBar = e.healthbar(f, { orientation = 'VERTICAL' })
 	healthbar:SetAllPoints()
 
@@ -58,7 +56,13 @@ table.insert(ns.unitframes.units, function()
 			unitsPerColumn = UNITS_PER_GROUP,
 			point = 'LEFT',
 			xOffset = UNIT_SPACING,
-		}, style, container)
+		}, style, {
+			parent = container,
+			secureSetup = ([[
+				self:SetWidth(%d)
+				self:SetHeight(%d)
+			]]):format(UNIT_WIDTH, UNIT_HEIGHT),
+		})
 	end
 
 	local hasPendingUpdate = false

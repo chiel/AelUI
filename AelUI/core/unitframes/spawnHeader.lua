@@ -1,18 +1,29 @@
 local _, ns = ...
 
-local initialConfigFunction = [[
+local baseConfigFunction = [[
 	self:SetAttribute('*type1', 'target')
 	self:SetAttribute('*type2', 'togglemenu')
+
+	local body = self:GetParent():GetAttribute('aelUI-secureSetup')
+	if body then
+		self:Run(body)
+	end
 
 	local header = self:GetParent()
 	header:CallMethod('styleChild', self:GetName())
 ]]
 
-ns.unitframes.spawnHeader = function(name, attributes, style, parent)
-	local header = CreateFrame('Frame', name, parent or AelUIParent, 'SecureGroupHeaderTemplate')
+ns.unitframes.spawnHeader = function(name, attributes, style, options)
+	local o = options or {}
+
+	local header = CreateFrame('Frame', name, o.parent or AelUIParent, 'SecureGroupHeaderTemplate')
 
 	header:SetAttribute('template', 'SecureUnitButtonTemplate')
-	header:SetAttribute('initialConfigFunction', initialConfigFunction)
+	header:SetAttribute('initialConfigFunction', baseConfigFunction)
+
+	if o.secureSetup then
+		header:SetAttribute('aelUI-secureSetup', o.secureSetup)
+	end
 
 	for k, v in pairs(attributes) do
 		header:SetAttribute(k, v)
