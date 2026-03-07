@@ -24,8 +24,16 @@ ns.triggers.CreateAura = function(unit, type, options)
 		unit = unit,
 	}
 
+	aura.SetOwnOnly = function(self, ownOnly)
+		self.ownOnly = ownOnly
+	end
+
 	aura.SetShow = function(self, show)
 		self.show = show
+	end
+
+	aura.SetSpellIds = function(self, spellIds)
+		self.spellIds = spellIds
 	end
 
 	aura.Serialize = function(self)
@@ -38,7 +46,7 @@ ns.triggers.CreateAura = function(unit, type, options)
 		}
 
 		if self.spellIds ~= nil then
-			t.auraspellids = o.spellIds
+			t.auraspellids = self.spellIds
 			t.useExactSpellId = true
 		end
 
