@@ -19,6 +19,12 @@ ns.unitframes.elements.healthbar = function(f, options)
 		bar:SetValue(current)
 
 		local color = defaultBgColor
+
+		if UnitIsDead(self.unit) or UnitIsGhost(self.unit) then
+			bg:SetVertexColor(0.3, 0.3, 0.3)
+			bar:SetStatusBarColor(unpack(defaultBarColor))
+			return
+		end
 		if UnitIsPlayer(self.unit) then
 			local _, class = UnitClass(self.unit)
 			if class then

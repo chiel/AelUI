@@ -6,7 +6,7 @@ ns.unitframes.elements.nameText = function(f, parent, options)
 	local o = options or {}
 
 	local text = (parent or f):CreateFontString(nil, 'OVERLAY')
-	text:SetFont(m.fonts.default.file, 16, 'OUTLINE')
+	text:SetFont(m.fonts.default.file, o.fontSize or 16, 'OUTLINE')
 
 	local function update(self)
 		local name = UnitName(self.unit)

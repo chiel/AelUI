@@ -5,4 +5,5 @@
 	<Script file="powerbar.lua"/>
 	<Script file="nameText.lua"/>
 	<Script file="range.lua"/>
+	<Script file="selection.lua"/>
 </Ui>

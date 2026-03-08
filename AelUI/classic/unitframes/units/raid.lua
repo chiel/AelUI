@@ -2,46 +2,60 @@ local _, ns = ...
 
 local e = ns.unitframes.elements
 
-local function getVisibleGroups()
-	local visibleGroups = {}
+local function getGroupMemberCounts()
+	local memberCounts = {}
+	local maxGroupSize = 0
 
 	for i = 1, GetNumGroupMembers() do
 		local _, _, subgroup = GetRaidRosterInfo(i)
 		if subgroup then
-			visibleGroups[subgroup] = true
+			memberCounts[subgroup] = (memberCounts[subgroup] or 0) + 1
+			if memberCounts[subgroup] > maxGroupSize then
+				maxGroupSize = memberCounts[subgroup]
+			end
 		end
 	end
 
 	-- Solo or party: GetRaidRosterInfo only works in raids,
 	-- but all players are effectively in group 1
-	if not next(visibleGroups) then
-		visibleGroups[1] = true
+	-- Solo or party: GetRaidRosterInfo only works in raids,
+	-- but all players are effectively in group 1
+	if not next(memberCounts) then
+		local n = GetNumGroupMembers()
+		maxGroupSize = math.max(n, 1)
+		memberCounts[1] = maxGroupSize
 	end
 
-	return visibleGroups
+	return memberCounts, maxGroupSize
 end
 
-local UNIT_WIDTH = 60
+local UNIT_WIDTH = 80
 local UNIT_HEIGHT = 60
 local GROUP_SPACING = 4
 local UNIT_SPACING = 4
 local UNITS_PER_GROUP = 5
 
-local ROW_WIDTH = UNITS_PER_GROUP * UNIT_WIDTH + (UNITS_PER_GROUP - 1) * UNIT_SPACING
 
 local function style(f)
-	local healthbar, healthbarBar = e.healthbar(f, { orientation = 'VERTICAL' })
-	healthbar:SetAllPoints()
+	local powerbar = e.powerbar(f)
+	powerbar:SetPoint('BOTTOMLEFT')
+	powerbar:SetPoint('BOTTOMRIGHT')
+	powerbar:SetHeight(6)
+
+	local healthbar, healthbarBar = e.healthbar(f)
+	healthbar:SetPoint('TOPLEFT')
+	healthbar:SetPoint('BOTTOMRIGHT', powerbar, 'TOPRIGHT', 0, -1)
 
 	local name = e.nameText(f, healthbarBar, { maxLength = 3 })
 	name:SetPoint('BOTTOM', 0, 4)
 
+	e.selection(f)
 	e.range(f)
 end
 
 table.insert(ns.unitframes.units, function()
 	local container = CreateFrame('Frame', 'AelUIRaidFrame', AelUIParent)
-	container:SetPoint('TOPRIGHT', AelUIPrimaryAnchor, 'BOTTOMLEFT', -300, -200)
+	container:SetPoint('TOP', AelUIPrimaryAnchor, 'BOTTOM', 0, -200)
 
 	local headers = {}
 	for i = 1, MAX_RAID_GROUPS do
@@ -83,20 +97,20 @@ table.insert(ns.unitframes.units, function()
 
 		hasPendingUpdate = false
 
-		local visibleGroups = getVisibleGroups()
+		local memberCounts, maxGroupSize = getGroupMemberCounts()
 		local visibleCount = 0
 
 		for i = 1, MAX_RAID_GROUPS do
 			local header = headers[i]
 			header:ClearAllPoints()
 
-			if visibleGroups[i] then
+			if memberCounts[i] then
 				header:SetPoint('TOPLEFT', container, 'TOPLEFT', 0, -visibleCount * (UNIT_HEIGHT + GROUP_SPACING))
 				visibleCount = visibleCount + 1
 			end
 		end
 
-		container:SetWidth(ROW_WIDTH)
+		container:SetWidth(maxGroupSize * UNIT_WIDTH + math.max(0, maxGroupSize - 1) * UNIT_SPACING)
 		container:SetHeight(math.max(1, visibleCount * UNIT_HEIGHT + math.max(0, visibleCount - 1) * GROUP_SPACING))
 	end
 
