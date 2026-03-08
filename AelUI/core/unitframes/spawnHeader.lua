@@ -18,7 +18,7 @@ ns.unitframes.spawnHeader = function(name, attributes, style, options)
 
 	local header = CreateFrame('Frame', name, o.parent or AelUIParent, 'SecureGroupHeaderTemplate')
 
-	header:SetAttribute('template', 'SecureUnitButtonTemplate')
+	header:SetAttribute('template', 'AelUIUnitButtonTemplate')
 	header:SetAttribute('initialConfigFunction', baseConfigFunction)
 
 	if o.secureSetup then
@@ -32,7 +32,6 @@ ns.unitframes.spawnHeader = function(name, attributes, style, options)
 	function header:styleChild(frameName)
 		local f = _G[frameName]
 
-		f:RegisterForClicks('AnyUp')
 		f:SetScript('OnEnter', UnitFrame_OnEnter)
 		f:SetScript('OnLeave', UnitFrame_OnLeave)
 
