@@ -31,6 +31,7 @@ end
 
 local UNIT_WIDTH = 90
 local UNIT_HEIGHT = 60
+local PET_HEIGHT = 30
 local GROUP_SPACING = 4
 local UNIT_SPACING = 4
 local UNITS_PER_GROUP = 5
@@ -73,6 +74,17 @@ local function buffFilter(
 	return true
 end
 
+local function petStyle(f)
+	local healthbar, healthbarBar = e.healthbar(f)
+	healthbar:SetAllPoints()
+
+	local name = e.nameText(f, healthbarBar, { maxLength = 3 })
+	name:SetPoint('BOTTOM', 0, 4)
+
+	e.auras(f, 'HELPFUL', { parent = healthbarBar, anchor = 'TOPRIGHT', grow = 'LEFT', filter = buffFilter })
+	e.range(f)
+end
+
 local function style(f)
 	local powerbar = e.powerbar(f)
 	powerbar:SetPoint('BOTTOMLEFT')
@@ -86,7 +98,8 @@ local function style(f)
 	local name = e.nameText(f, healthbarBar, { maxLength = 3 })
 	name:SetPoint('BOTTOM', 0, 4)
 
-	e.buffs(f, { parent = healthbarBar, filter = buffFilter })
+	e.auras(f, 'HELPFUL', { parent = healthbarBar, anchor = 'TOPRIGHT', grow = 'LEFT', filter = buffFilter })
+	e.auras(f, 'HARMFUL', { parent = healthbarBar })
 
 	e.threat(f, { parent = healthbarBar })
 	e.selection(f)
@@ -95,7 +108,7 @@ end
 
 table.insert(ns.unitframes.units, function()
 	local container = CreateFrame('Frame', 'AelUIRaidFrame', AelUIParent)
-	container:SetPoint('TOP', AelUIPrimaryAnchor, 'BOTTOM', 0, -200)
+	container:SetPoint('TOP', AelUIPrimaryAnchor, 'BOTTOM', 0, -80)
 
 	local headers = {}
 	for i = 1, MAX_RAID_GROUPS do
@@ -123,6 +136,30 @@ table.insert(ns.unitframes.units, function()
 			}
 		)
 	end
+
+	local petHeader = ns.unitframes.spawnHeader(
+		'AelUIRaidPetHeader',
+		{
+			showSolo = true,
+			showRaid = true,
+			showParty = true,
+			showPlayer = true,
+			sortMethod = 'INDEX',
+			maxColumns = 1,
+			unitsPerColumn = UNITS_PER_GROUP,
+			point = 'LEFT',
+			xOffset = UNIT_SPACING,
+		},
+		petStyle,
+		{
+			parent = container,
+			template = 'SecureGroupPetHeaderTemplate',
+			secureSetup = ([[
+				self:SetWidth(%d)
+				self:SetHeight(%d)
+			]]):format(UNIT_WIDTH, PET_HEIGHT),
+		}
+	)
 
 	local hasPendingUpdate = false
 
@@ -155,8 +192,14 @@ table.insert(ns.unitframes.units, function()
 			end
 		end
 
+		petHeader:ClearAllPoints()
+		petHeader:SetPoint('TOPLEFT', container, 'TOPLEFT', 0, -visibleCount * (UNIT_HEIGHT + GROUP_SPACING))
+
+		local contentHeight = visibleCount * UNIT_HEIGHT + math.max(0, visibleCount - 1) * GROUP_SPACING
+		contentHeight = contentHeight + GROUP_SPACING + PET_HEIGHT
+
 		container:SetWidth(maxGroupSize * UNIT_WIDTH + math.max(0, maxGroupSize - 1) * UNIT_SPACING)
-		container:SetHeight(math.max(1, visibleCount * UNIT_HEIGHT + math.max(0, visibleCount - 1) * GROUP_SPACING))
+		container:SetHeight(math.max(1, contentHeight))
 	end
 
 	local f = CreateFrame('Frame')

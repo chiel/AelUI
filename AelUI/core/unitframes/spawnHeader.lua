@@ -16,7 +16,7 @@ local baseConfigFunction = [[
 ns.unitframes.spawnHeader = function(name, attributes, style, options)
 	local o = options or {}
 
-	local header = CreateFrame('Frame', name, o.parent or AelUIParent, 'SecureGroupHeaderTemplate')
+	local header = CreateFrame('Frame', name, o.parent or AelUIParent, o.template or 'SecureGroupHeaderTemplate')
 
 	header:SetAttribute('template', 'AelUIUnitButtonTemplate')
 	header:SetAttribute('initialConfigFunction', baseConfigFunction)

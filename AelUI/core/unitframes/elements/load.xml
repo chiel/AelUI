@@ -1,6 +1,6 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="init.lua"/>
-	<Script file="buffs.lua"/>
+	<Script file="auras.lua"/>
 	<Script file="castbar.lua"/>
 	<Script file="combopoints.lua"/>
 	<Script file="healthbar.lua"/>
