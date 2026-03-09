@@ -17,6 +17,14 @@ table.insert(ns.unitframes.units, function()
 	powerbar:SetHeight(16)
 
 	local _, playerClass = UnitClass('player')
+	if playerClass == 'DRUID' or playerClass == 'ROGUE' then
+		local combopoints = e.combopoints(f)
+		combopoints:SetPoint('BOTTOMLEFT', powerbar, 'TOPLEFT', 0, -1)
+		combopoints:SetPoint('BOTTOMRIGHT', powerbar, 'TOPRIGHT', 0, -1)
+		combopoints:SetHeight(4)
+		powerbar:SetHeight(12)
+	end
+
 	if playerClass == 'DRUID' then
 		local function onUpdateManabar(self, state)
 			self:SetShown(state.displayType ~= state.powerType)
