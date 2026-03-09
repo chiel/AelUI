@@ -30,7 +30,11 @@ ns.unitframes.spawn = function(unit)
 	f.RegisterCallback = function(self, event, cb)
 		if not self.eventCallbacks[event] then
 			self.eventCallbacks[event] = {}
-			self:RegisterUnitEvent(event, f.unit)
+			if event:match('^UNIT_') then
+				self:RegisterUnitEvent(event, f.unit)
+			else
+				self:RegisterEvent(event)
+			end
 		end
 		table.insert(self.eventCallbacks[event], cb)
 
