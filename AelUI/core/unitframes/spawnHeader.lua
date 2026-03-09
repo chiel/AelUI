@@ -52,7 +52,11 @@ ns.unitframes.spawnHeader = function(name, attributes, style, options)
 				self.eventCallbacks[event] = {}
 			end
 			if self.unit then
-				self:RegisterUnitEvent(event, self.unit)
+				if event:match('^UNIT_') then
+					self:RegisterUnitEvent(event, self.unit)
+				else
+					self:RegisterEvent(event)
+				end
 			end
 			table.insert(self.eventCallbacks[event], cb)
 			self.updaters[cb] = true
@@ -78,7 +82,11 @@ ns.unitframes.spawnHeader = function(name, attributes, style, options)
 			end
 
 			for event in pairs(self.eventCallbacks) do
-				self:RegisterUnitEvent(event, value)
+				if event:match('^UNIT_') then
+					self:RegisterUnitEvent(event, value)
+				else
+					self:RegisterEvent(event)
+				end
 			end
 
 			if not styled then

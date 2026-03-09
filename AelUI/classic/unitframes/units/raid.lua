@@ -29,12 +29,49 @@ local function getGroupMemberCounts()
 	return memberCounts, maxGroupSize
 end
 
-local UNIT_WIDTH = 80
+local UNIT_WIDTH = 90
 local UNIT_HEIGHT = 60
 local GROUP_SPACING = 4
 local UNIT_SPACING = 4
 local UNITS_PER_GROUP = 5
 
+-- spellId = showInCombat
+local buffWhitelist = {
+	[2893] = true, -- Abolish Poison
+	[29166] = true, -- Innervate
+	[26992] = false, -- Thorns
+	[26991] = false, -- Gift of the Wild
+	[26990] = false, -- Mark of the Wild
+	[33763] = true, -- Lifebloom
+	[26980] = true, -- Regrowth
+	[26982] = true, -- Rejuvenation
+	[26983] = true, -- Tranquility
+}
+
+local function buffFilter(
+	name,
+	texture,
+	count,
+	debuffType,
+	duration,
+	expirationTime,
+	caster,
+	isStealable,
+	nameplateShowPersonal,
+	spellId
+)
+	if caster ~= 'player' then
+		return false
+	end
+	local entry = buffWhitelist[spellId]
+	if entry == nil then
+		return false
+	end
+	if InCombatLockdown() and not entry then
+		return false
+	end
+	return true
+end
 
 local function style(f)
 	local powerbar = e.powerbar(f)
@@ -49,6 +86,9 @@ local function style(f)
 	local name = e.nameText(f, healthbarBar, { maxLength = 3 })
 	name:SetPoint('BOTTOM', 0, 4)
 
+	e.buffs(f, { parent = healthbarBar, filter = buffFilter })
+
+	e.threat(f, { parent = healthbarBar })
 	e.selection(f)
 	e.range(f)
 end
@@ -59,24 +99,29 @@ table.insert(ns.unitframes.units, function()
 
 	local headers = {}
 	for i = 1, MAX_RAID_GROUPS do
-		headers[i] = ns.unitframes.spawnHeader('AelUIRaidGroup' .. i .. 'Header', {
-			showSolo = true,
-			showRaid = true,
-			showParty = true,
-			showPlayer = true,
-			groupFilter = tostring(i),
-			sortMethod = 'INDEX',
-			maxColumns = 1,
-			unitsPerColumn = UNITS_PER_GROUP,
-			point = 'LEFT',
-			xOffset = UNIT_SPACING,
-		}, style, {
-			parent = container,
-			secureSetup = ([[
+		headers[i] = ns.unitframes.spawnHeader(
+			'AelUIRaidGroup' .. i .. 'Header',
+			{
+				showSolo = true,
+				showRaid = true,
+				showParty = true,
+				showPlayer = true,
+				groupFilter = tostring(i),
+				sortMethod = 'INDEX',
+				maxColumns = 1,
+				unitsPerColumn = UNITS_PER_GROUP,
+				point = 'LEFT',
+				xOffset = UNIT_SPACING,
+			},
+			style,
+			{
+				parent = container,
+				secureSetup = ([[
 				self:SetWidth(%d)
 				self:SetHeight(%d)
 			]]):format(UNIT_WIDTH, UNIT_HEIGHT),
-		})
+			}
+		)
 	end
 
 	local hasPendingUpdate = false
