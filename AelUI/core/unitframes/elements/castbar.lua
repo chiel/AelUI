@@ -1,20 +1,14 @@
 local _, ns = ...
 
 local h = ns.helpers
-local m = ns.media
 
 local defaultBarColor = { 35 / 255, 35 / 255, 35 / 255 }
 
 ns.unitframes.elements.castbar = function(f, options)
 	local o = options or {}
 
-	local bd, bg = h.createBackdrop(f)
-
-	local bar = CreateFrame('StatusBar', nil, bd)
-	bar:SetStatusBarTexture(m.statusbars.default.file)
+	local bar, bd, bg = h.createStatusBar(f)
 	bar:SetStatusBarColor(unpack(defaultBarColor))
-	bar:SetPoint('TOPLEFT', 1, -1)
-	bar:SetPoint('BOTTOMRIGHT', -1, 1)
 	bar:SetMinMaxValues(0, 1)
 	bar:SetValue(0)
 

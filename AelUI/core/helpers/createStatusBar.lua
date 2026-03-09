@@ -10,6 +10,7 @@ ns.helpers.createStatusBar = function(parent, options)
 
 	local bar = CreateFrame('StatusBar', nil, bd)
 	bar:SetStatusBarTexture(m.statusbars.default.file)
+	bar:SetClipsChildren(true)
 	bar:SetPoint('TOPLEFT', 1, -1)
 	bar:SetPoint('BOTTOMRIGHT', -1, 1)
 
