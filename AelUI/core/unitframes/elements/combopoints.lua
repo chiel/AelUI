@@ -2,8 +2,6 @@ local _, ns = ...
 
 local h = ns.helpers
 
-local POWER_COMBO_POINTS = Enum.PowerType.ComboPoints
-
 local colors = {
 	{ 1.0, 0.2, 0.2 },
 	{ 1.0, 0.4, 0.2 },
@@ -35,10 +33,8 @@ ns.unitframes.elements.combopoints = function(f)
 		end
 	end)
 
-	local function update(self, event, _, powerType)
-		if event == 'UNIT_POWER_UPDATE' and powerType ~= 'COMBO_POINTS' then return end
-
-		local cp = UnitPower(self.unit, POWER_COMBO_POINTS)
+	local function update(self)
+		local cp = GetComboPoints(self.unit, 'target')
 		for i = 1, 5 do
 			local c = colors[i]
 			if i <= cp then
