@@ -24,10 +24,18 @@ local ROLL_GREED = 2
 local ROLL_DISENCHANT = 3
 local ROLL_PASS = 0
 
+local ROLL_TYPE_BUTTONS = {
+	[ROLL_NEED] = 'needBtn',
+	[ROLL_GREED] = 'greedBtn',
+	[ROLL_PASS] = 'passBtn',
+}
+
 -- pool of roll frames
 local frames = {}
 -- map rollID -> frame
 local active = {}
+-- cache rolls that arrive before the frame is shown
+local cachedRolls = {}
 
 local anchor = CreateFrame('Frame', 'AelUILootRollAnchor', AelUIParent)
 anchor:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
@@ -152,15 +160,13 @@ local function createRollFrame(index)
 
 	-- timer
 	f:SetScript('OnUpdate', function(self, elapsed)
-		if not self.endTime then
-			return
-		end
-		local remaining = self.endTime - GetTime()
+		if not self.rollID then return end
+		local remaining = GetLootRollTimeLeft(self.rollID)
 		if remaining <= 0 then
 			self.bar:SetValue(0)
 			return
 		end
-		self.bar:SetValue(remaining / self.duration)
+		self.bar:SetValue(remaining / (self.duration * 1000))
 	end)
 
 	return f
@@ -194,7 +200,6 @@ end
 local function setupFrame(f, options)
 	f.rollID = options.rollID
 	f.duration = options.duration
-	f.endTime = GetTime() + options.duration
 
 	-- icon
 	f.icon.texture:SetTexture(options.texture)
@@ -218,9 +223,22 @@ local function setupFrame(f, options)
 	f.needBtn:EnableMouse(canNeed)
 	f.greedBtn:SetShown(options.canGreed ~= false)
 
+	f.rolls = { [ROLL_NEED] = 0, [ROLL_GREED] = 0, [ROLL_PASS] = 0 }
 	f.needBtn.count:SetText('0')
 	f.greedBtn.count:SetText('0')
 	f.passBtn.count:SetText('0')
+
+	-- apply any cached rolls that arrived before the frame
+	if options.rollID and cachedRolls[options.rollID] then
+		for rollType, count in pairs(cachedRolls[options.rollID]) do
+			f.rolls[rollType] = count
+			local btn = f[ROLL_TYPE_BUTTONS[rollType]]
+			if btn then
+				btn.count:SetText(count)
+			end
+		end
+		cachedRolls[options.rollID] = nil
+	end
 
 	f:Show()
 	layoutFrames()
@@ -255,27 +273,52 @@ local function cancelRoll(rollID)
 	end
 
 	f.rollID = nil
-	f.endTime = nil
 	active[rollID] = nil
 	f:Hide()
 	layoutFrames()
 end
 
--- disable default loot roll frames
-for i = 1, NUM_GROUP_LOOT_FRAMES do
-	local f = _G['GroupLootFrame' .. i]
-	f:UnregisterAllEvents()
-	f:Hide()
+local function onRollChanged(_, itemIdx, playerIdx)
+	local _, _, rollType = C_LootHistory.GetPlayerInfo(itemIdx, playerIdx)
+	local rollID = C_LootHistory.GetItem(itemIdx)
+	if not rollType or not ROLL_TYPE_BUTTONS[rollType] then return end
+
+	local f = active[rollID]
+	if f then
+		f.rolls[rollType] = (f.rolls[rollType] or 0) + 1
+		f[ROLL_TYPE_BUTTONS[rollType]].count:SetText(f.rolls[rollType])
+	else
+		-- cache for when the frame appears
+		if not cachedRolls[rollID] then cachedRolls[rollID] = {} end
+		cachedRolls[rollID][rollType] = (cachedRolls[rollID][rollType] or 0) + 1
+	end
+end
+
+local function clearRollCache()
+	wipe(cachedRolls)
 end
 
 -- event handler
 local handler = CreateFrame('Frame')
 handler:RegisterEvent('START_LOOT_ROLL')
 handler:RegisterEvent('CANCEL_LOOT_ROLL')
-handler:SetScript('OnEvent', function(self, event, rollID, rollTime)
+handler:RegisterEvent('LOOT_HISTORY_ROLL_CHANGED')
+handler:RegisterEvent('LOOT_HISTORY_ROLL_COMPLETE')
+handler:RegisterEvent('LOOT_ROLLS_COMPLETE')
+handler:SetScript('OnEvent', function(self, event, ...)
 	if event == 'START_LOOT_ROLL' then
+		local rollID, rollTime = ...
 		startRoll(rollID, rollTime)
 	elseif event == 'CANCEL_LOOT_ROLL' then
+		local rollID = ...
 		cancelRoll(rollID)
+	elseif event == 'LOOT_HISTORY_ROLL_CHANGED' then
+		onRollChanged(event, ...)
+	elseif event == 'LOOT_HISTORY_ROLL_COMPLETE' or event == 'LOOT_ROLLS_COMPLETE' then
+		clearRollCache()
 	end
 end)
+
+-- disable default loot roll frames
+UIParent:UnregisterEvent('START_LOOT_ROLL')
+UIParent:UnregisterEvent('CANCEL_LOOT_ROLL')
