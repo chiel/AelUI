@@ -29,7 +29,7 @@ local function getGroupMemberCounts()
 	return memberCounts, maxGroupSize
 end
 
-local UNIT_WIDTH = 90
+local UNIT_WIDTH = 120
 local UNIT_HEIGHT = 60
 local PET_HEIGHT = 30
 local GROUP_SPACING = 4
