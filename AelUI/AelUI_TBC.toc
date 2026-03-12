@@ -2,6 +2,7 @@
 ## Title: AelUI
 ## Author: Aelen
 ## Version: 0.0.1
+## SavedVariables: AelUIDB
 
 libs\load.xml
 core\load.xml

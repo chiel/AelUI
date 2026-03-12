@@ -18,6 +18,8 @@ ns.OnEnable = function(fn)
 end
 
 function addon:OnInitialize()
+	ns.db = LibStub('AceDB-3.0'):New('AelUIDB', {})
+
 	for _, fn in ipairs(ns.handlers.initialise) do
 		fn()
 	end
