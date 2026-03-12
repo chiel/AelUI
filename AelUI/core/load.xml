@@ -11,6 +11,7 @@
 	<Include file="unitframes\load.xml"/>
 	<Include file="weakauras\load.xml"/>
 	<Include file="xpbar\load.xml"/>
+	<Include file="repbar\load.xml"/>
 	<Include file="lootrolls\load.xml"/>
 	<Script file="actionbar.lua"/>
 </Ui>
