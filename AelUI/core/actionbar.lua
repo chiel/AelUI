@@ -10,7 +10,9 @@ local function createBar(name, buttonPrefix)
 
 	for i = 1, NUM_BUTTONS do
 		local btn = _G[buttonPrefix .. i]
-		if not btn then break end
+		if not btn then
+			break
+		end
 		btn:SetSize(BUTTON_SIZE, BUTTON_SIZE)
 		btn:ClearAllPoints()
 		btn:SetParent(bar)
@@ -24,16 +26,13 @@ local function createBar(name, buttonPrefix)
 		count = count + 1
 	end
 
-	bar:SetSize(
-		count * BUTTON_SIZE + (count - 1) * BUTTON_SPACING,
-		BUTTON_SIZE
-	)
+	bar:SetSize(count * BUTTON_SIZE + (count - 1) * BUTTON_SPACING, BUTTON_SIZE)
 
 	return bar
 end
 
 local bar5 = createBar('AelUIActionBar5', 'MultiBarLeftButton')
-bar5:SetPoint('BOTTOM', AelUIParent, 'BOTTOM', 0, 40)
+bar5:SetPoint('BOTTOM', AelUIParent, 'BOTTOM', 0, 72)
 
 local bar4 = createBar('AelUIActionBar4', 'MultiBarRightButton')
 bar4:SetPoint('BOTTOM', bar5, 'TOP', 0, BUTTON_SPACING)
