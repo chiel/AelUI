@@ -11,7 +11,7 @@ local restedBar = CreateFrame('StatusBar', nil, bd)
 restedBar:SetStatusBarTexture(m.statusbars.default.file)
 restedBar:SetPoint('TOPLEFT', 1, -1)
 restedBar:SetPoint('BOTTOMRIGHT', -1, 1)
-restedBar:SetStatusBarColor(0.0, 0.39, 0.88, 0.5)
+restedBar:SetStatusBarColor(0.0, 0.39, 0.88, 0.25)
 restedBar:SetFrameLevel(bar:GetFrameLevel() - 1)
 
 local text = bar:CreateFontString(nil, 'OVERLAY')
