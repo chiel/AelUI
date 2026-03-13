@@ -7,18 +7,10 @@ local defaultBarColor = { 35 / 255, 35 / 255, 35 / 255 }
 ns.unitframes.elements.castbar = function(f, options)
 	local o = options or {}
 
-	local bar, bd, bg = h.createStatusBar(f)
+	local bar, bd, bg, spark = h.createStatusBar(f, { spark = { overflow = 10 } })
 	bar:SetStatusBarColor(unpack(defaultBarColor))
 	bar:SetMinMaxValues(0, 1)
 	bar:SetValue(0)
-
-	local spark = bar:CreateTexture(nil, 'OVERLAY')
-	spark:SetTexture([[Interface\CastingBar\UI-CastingBar-Spark]])
-	spark:SetBlendMode('ADD')
-	spark:SetWidth(10)
-	spark:SetSize(10, 30)
-	spark:SetPoint('TOP', bar:GetStatusBarTexture(), 'TOPRIGHT', 0, 10)
-	spark:SetPoint('BOTTOM', bar:GetStatusBarTexture(), 'BOTTOMRIGHT', 0, -10)
 
 	local startTime, endTime
 	local channeling, gcd
