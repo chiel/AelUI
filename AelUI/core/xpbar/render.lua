@@ -3,7 +3,7 @@ local _, ns = ...
 local h = ns.helpers
 local m = ns.media
 
-local bar, bd, bg = h.createStatusBar(AelUIParent)
+local bar, bd, bg = h.createStatusBar(AelUIParent, { spark = { overflow = 12 } })
 bd:SetSize(500, 18)
 bd:SetPoint('BOTTOM', AelUIParent, 'BOTTOM', 0, 16)
 
