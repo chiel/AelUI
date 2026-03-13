@@ -25,5 +25,17 @@ ns.helpers.createStatusBar = function(parent, options)
 		bg:SetPoint('BOTTOMRIGHT', bd, 'BOTTOMRIGHT', -1, 1)
 	end
 
-	return bar, bd, bg
+	local spark
+	if o.spark then
+		local sparkOpts = type(o.spark) == 'table' and o.spark or {}
+		spark = bar:CreateTexture(nil, 'OVERLAY')
+		spark:SetTexture([[Interface\CastingBar\UI-CastingBar-Spark]])
+		spark:SetBlendMode('ADD')
+		spark:SetWidth(10)
+		local overflow = sparkOpts.overflow or 4
+		spark:SetPoint('TOP', bar:GetStatusBarTexture(), 'TOPRIGHT', 0, overflow)
+		spark:SetPoint('BOTTOM', bar:GetStatusBarTexture(), 'BOTTOMRIGHT', 0, -overflow)
+	end
+
+	return bar, bd, bg, spark
 end
