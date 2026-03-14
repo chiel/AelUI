@@ -3,7 +3,7 @@ local _, ns = ...
 local h = ns.helpers
 local m = ns.media
 
-local FRAME_WIDTH = 460
+local FRAME_WIDTH = 500
 local FRAME_HEIGHT = 40
 local ICON_SIZE = FRAME_HEIGHT
 local BAR_HEIGHT = 14
@@ -85,6 +85,7 @@ local function createRollFrame()
 	barBd:SetPoint('BOTTOMRIGHT', f, 'BOTTOMRIGHT', 0, 0)
 	barBd:SetHeight(BAR_HEIGHT)
 	bar:SetMinMaxValues(0, 1)
+	bar:SetValue(1)
 	f.bar = bar
 	f.barBd = barBd
 	f.barBg = barBg
@@ -95,7 +96,7 @@ local function createRollFrame()
 	f.name:SetJustifyH('LEFT')
 
 	local btnSize = 28
-	local btnSpacing = 6
+	local btnSpacing = 12
 
 	f.passBtn = createRollButton(f, [[Interface\RAIDFRAME\ReadyCheck-NotReady]], btnSize, -2)
 	f.greedBtn = createRollButton(f, [[Interface\Buttons\UI-GroupLoot-Coin-Up]], btnSize, -5)
@@ -155,6 +156,7 @@ local function releaseFrame(rollID)
 
 	f:Hide()
 	f.rollID = nil
+	f.bar:SetValue(1)
 	activeFrames[rollID] = nil
 	table.insert(pool, f)
 end
@@ -170,8 +172,6 @@ local function applyToFrame(f, roll)
 	local color = ITEM_QUALITY_COLORS[roll.quality] or ITEM_QUALITY_COLORS[1]
 	f.bar:GetStatusBarTexture():SetVertexColor(color.r * 0.6, color.g * 0.6, color.b * 0.6)
 	f.barBg:SetVertexColor(color.r * 0.15, color.g * 0.15, color.b * 0.15)
-	f.bar:SetValue(1)
-
 	local canNeed = roll.canNeed ~= false
 	f.needBtn:SetAlpha(canNeed and 1 or 0.3)
 	f.needBtn:EnableMouse(canNeed)
