@@ -13,5 +13,6 @@
 	<Include file="xpbar\load.xml"/>
 	<Include file="repbar\load.xml"/>
 	<Include file="lootrolls\load.xml"/>
+	<Include file="gearsets\load.xml"/>
 	<Script file="actionbar.lua"/>
 </Ui>
