@@ -3,10 +3,16 @@
 	<Script file="auras.lua"/>
 	<Script file="castbar.lua"/>
 	<Script file="combopoints.lua"/>
+	<Script file="happiness.lua"/>
 	<Script file="healthbar.lua"/>
+	<Script file="healthCurrent.lua"/>
+	<Script file="healthPercent.lua"/>
 	<Script file="nameText.lua"/>
 	<Script file="powerbar.lua"/>
+	<Script file="pvpText.lua"/>
+	<Script file="raidmarker.lua"/>
 	<Script file="range.lua"/>
+	<Script file="restingText.lua"/>
 	<Script file="selection.lua"/>
 	<Script file="threat.lua"/>
 </Ui>

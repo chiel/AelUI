@@ -6,10 +6,25 @@ local m = ns.media
 table.insert(ns.unitframes.units, function()
 	local f = ns.unitframes.spawn('player')
 	f:SetPoint('TOPRIGHT', AelUIPrimaryAnchor, 'TOPLEFT', -20, 0)
-	f:SetSize(280, 58)
+	f:SetSize(350, 58)
 
-	local healthbar = e.healthbar(f)
+	local healthbar, healthbarBar = e.healthbar(f)
 	healthbar:SetAllPoints()
+
+	local name = e.nameText(f, healthbarBar, { fontSize = 24 })
+	name:SetPoint('BOTTOMLEFT', healthbar, 'BOTTOMLEFT', 6, 0)
+
+	local pvp = e.pvpText(f, healthbarBar, { fontSize = 14 })
+	pvp:SetPoint('BOTTOMLEFT', name, 'BOTTOMRIGHT', 8, 3)
+
+	local hpPct = e.healthPercent(f, healthbarBar, { fontSize = 20 })
+	hpPct:SetPoint('BOTTOMRIGHT', healthbar, 'BOTTOMRIGHT', -4, 0)
+
+	local hpCur = e.healthCurrent(f, healthbarBar, { fontSize = 16 })
+	hpCur:SetPoint('BOTTOMRIGHT', hpPct, 'TOPRIGHT', 0, 0)
+
+	local resting = e.restingText(f, healthbarBar, { fontSize = 14 })
+	resting:SetPoint('TOPLEFT', healthbar, 'TOPLEFT', 8, -2)
 
 	local powerbar = e.powerbar(f)
 	powerbar:SetPoint('BOTTOMLEFT', AelUIPrimaryAnchor, 'TOPLEFT', 0, 2)
@@ -37,6 +52,9 @@ table.insert(ns.unitframes.units, function()
 		manabar:SetPoint('TOPRIGHT', healthbar, 'BOTTOMRIGHT', 0, -2)
 		manabar:SetSize(140, 8)
 	end
+
+	local marker = e.raidmarker(f, healthbarBar)
+	marker:SetPoint('LEFT', healthbarBar, 'LEFT', 4, 0)
 
 	local function onUpdateCastbar(self, state)
 		self:SetHeight(state.gcd and 6 or 16)

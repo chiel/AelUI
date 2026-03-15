@@ -15,6 +15,12 @@ ns.unitframes.elements.healthbar = function(f, options)
 		local current = UnitHealth(self.unit)
 		local max = UnitHealthMax(self.unit)
 
+		if max == 0 then
+			bar:SetMinMaxValues(0, 1)
+			bar:SetValue(1)
+			return
+		end
+
 		bar:SetMinMaxValues(0, max)
 		bar:SetValue(current)
 

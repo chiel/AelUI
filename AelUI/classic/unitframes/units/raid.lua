@@ -81,7 +81,12 @@ local function petStyle(f)
 	local name = e.nameText(f, healthbarBar, { maxLength = 3 })
 	name:SetPoint('BOTTOM', 0, 4)
 
-	e.auras(f, 'HELPFUL', { parent = healthbarBar, anchor = 'TOPRIGHT', grow = 'LEFT', filter = buffFilter })
+	local buffs = e.auras(f, 'HELPFUL', { initialAnchor = 'TOPRIGHT', growthX = 'LEFT', filter = buffFilter })
+	buffs:SetPoint('TOPRIGHT', healthbarBar, 'TOPRIGHT', -1, -1)
+
+	local marker = e.raidmarker(f, healthbarBar, { size = 14 })
+	marker:SetPoint('BOTTOMRIGHT', healthbarBar, 'BOTTOMRIGHT', -4, 4)
+
 	e.range(f)
 end
 
@@ -98,8 +103,13 @@ local function style(f)
 	local name = e.nameText(f, healthbarBar, { maxLength = 3 })
 	name:SetPoint('BOTTOM', 0, 4)
 
-	e.auras(f, 'HELPFUL', { parent = healthbarBar, anchor = 'TOPRIGHT', grow = 'LEFT', filter = buffFilter })
-	e.auras(f, 'HARMFUL', { parent = healthbarBar })
+	local buffs = e.auras(f, 'HELPFUL', { initialAnchor = 'TOPRIGHT', growthX = 'LEFT', filter = buffFilter })
+	buffs:SetPoint('TOPRIGHT', healthbarBar, 'TOPRIGHT', -1, -1)
+	local debuffs = e.auras(f, 'HARMFUL', { initialAnchor = 'TOPLEFT' })
+	debuffs:SetPoint('TOPLEFT', healthbarBar, 'TOPLEFT', 1, -1)
+
+	local marker = e.raidmarker(f, healthbarBar, { size = 16 })
+	marker:SetPoint('BOTTOMRIGHT', healthbarBar, 'BOTTOMRIGHT', -4, 4)
 
 	e.threat(f, { parent = healthbarBar })
 	e.selection(f)

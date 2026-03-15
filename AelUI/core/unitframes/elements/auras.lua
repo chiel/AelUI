@@ -17,29 +17,26 @@ local debuffTypeColors = {
 ns.unitframes.elements.auras = function(f, type, options)
 	local o = options or {}
 	local auraFn = auraFunctions[type]
-	local parent = o.parent or f
 	local iconSize = o.iconSize or 18
-	local spacing = o.spacing or 1
+	local spacingX = o.spacingX or o.spacing or 1
+	local spacingY = o.spacingY or o.spacing or 1
 	local filter = o.filter
-	local anchor = o.anchor or 'TOPLEFT'
-	local grow = o.grow or 'RIGHT'
+	local initialAnchor = o.initialAnchor or 'BOTTOMLEFT'
+	local growthx = (o.growthX == 'LEFT' and -1) or 1
+	local growthy = (o.growthY == 'DOWN' and -1) or 1
 	local colorBorders = type == 'HARMFUL'
+
+	local sizex = iconSize + spacingX
+	local sizey = iconSize + spacingY
+
+	local container = CreateFrame('Frame', nil, f)
+	container:SetSize(1, 1)
 
 	local icons = {}
 
 	local function getIcon(idx)
 		if not icons[idx] then
-			local icon = h.createIcon(parent, iconSize)
-			if idx == 1 then
-				icon:SetPoint(anchor, parent, anchor, anchor:find('RIGHT') and -1 or 1, anchor:find('TOP') and -1 or 1)
-			else
-				if grow == 'RIGHT' then
-					icon:SetPoint('LEFT', icons[idx - 1], 'RIGHT', spacing, 0)
-				else
-					icon:SetPoint('RIGHT', icons[idx - 1], 'LEFT', -spacing, 0)
-				end
-			end
-			icons[idx] = icon
+			icons[idx] = h.createIcon(container, iconSize)
 		end
 		return icons[idx]
 	end
@@ -55,6 +52,8 @@ ns.unitframes.elements.auras = function(f, type, options)
 
 			if not filter or filter(name, texture, count, debuffType, duration, expirationTime, caster, isStealable, nameplateShowPersonal, spellId) then
 				local icon = getIcon(idx)
+				icon:ClearAllPoints()
+				icon:SetPoint(initialAnchor, container, initialAnchor, (idx - 1) * sizex * growthx, 0)
 				icon.texture:SetTexture(texture)
 				if duration and duration > 0 then
 					icon.cooldown:SetCooldown(expirationTime - duration, duration)
@@ -89,5 +88,5 @@ ns.unitframes.elements.auras = function(f, type, options)
 	f.updaters[update] = true
 	update(f)
 
-	return icons
+	return container
 end
