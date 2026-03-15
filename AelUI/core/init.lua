@@ -17,8 +17,28 @@ ns.OnEnable = function(fn)
 	table.insert(ns.handlers.enable, fn)
 end
 
+local charDefaults = {
+	lootLog = {},
+	gearSets = {},
+	actionbars = {
+		showBars = false,
+	},
+}
+
+local function mergeDefaults(t, defaults)
+	for k, v in pairs(defaults) do
+		if type(v) == 'table' then
+			if type(t[k]) ~= 'table' then t[k] = {} end
+			mergeDefaults(t[k], v)
+		elseif t[k] == nil then
+			t[k] = v
+		end
+	end
+end
+
 function addon:OnInitialize()
-	ns.db = LibStub('AceDB-3.0'):New('AelUIDB', {})
+	ns.db = LibStub('AceDB-3.0'):New('AelUIDB')
+	mergeDefaults(ns.db.char, charDefaults)
 
 	for _, fn in ipairs(ns.handlers.initialise) do
 		fn()

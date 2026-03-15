@@ -11,7 +11,7 @@ ns.helpers.createIcon = function(parent, size)
 	icon.texture = icon:CreateTexture(nil, 'ARTWORK')
 	icon.texture:SetPoint('TOPLEFT', 1, -1)
 	icon.texture:SetPoint('BOTTOMRIGHT', -1, 1)
-	icon.texture:SetTexCoord(0.08, 0.92, 0.08, 0.92)
+	icon.texture:SetTexCoord(0, 1, 0, 1)
 
 	icon.cooldown = CreateFrame('Cooldown', nil, icon, 'CooldownFrameTemplate')
 	icon.cooldown:SetAllPoints(icon.texture)
