@@ -3,4 +3,5 @@
 	<Script file="createBackdrop.lua"/>
 	<Script file="createIcon.lua"/>
 	<Script file="createStatusBar.lua"/>
+	<Script file="styleIcon.lua"/>
 </Ui>
