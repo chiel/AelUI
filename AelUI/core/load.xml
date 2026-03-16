@@ -15,4 +15,5 @@
 	<Include file="lootrolls\load.xml"/>
 	<Include file="gearsets\load.xml"/>
 	<Include file="actionbars\load.xml"/>
+	<Include file="fishing\load.xml"/>
 </Ui>
