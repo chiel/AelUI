@@ -30,7 +30,7 @@ ns.weakauras.data.classes.druid = {
 		},
 		tracking = {
 			c.composeAura(
-				c.auraIcon('target', 'debuff', 27011), -- Faerie Fire (Feral)
+				c.auraIcon('target', 'debuff', { 26993, 27011 }), -- Faerie Fire
 				function(icon)
 					local trigger = icon.triggers:Get(1)
 					trigger:SetOwnOnly(nil)
@@ -43,6 +43,7 @@ ns.weakauras.data.classes.druid = {
 					trigger:SetOwnOnly(nil)
 				end
 			),
+			c.auraIcon('player', 'buff', 16870), -- Clearcasting
 			c.auraIcon('target', 'debuff', 26998), -- Demoralizing Roar
 			c.composeAura(
 				c.auraIcon('target', 'debuff', 33745), -- Lacerate
