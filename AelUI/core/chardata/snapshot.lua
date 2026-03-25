@@ -49,6 +49,7 @@ local function snapshotInventory()
 	if not char then return end
 	if not char.storage then char.storage = {} end
 	char.storage.inventory = snapshotBags(INV_BAG_IDS)
+	chardata.rebuildCurrentChar()
 end
 
 local function debounceInventory()
@@ -66,12 +67,11 @@ local function snapshotBank()
 	if not char then return end
 	if not char.storage then char.storage = {} end
 	char.storage.bank = snapshotBags(BANK_BAG_IDS)
+	chardata.rebuildCurrentChar()
 end
 
 -- Events
 local handler = CreateFrame('Frame')
-handler:RegisterEvent('PLAYER_ENTERING_WORLD')
-handler:RegisterEvent('PLAYER_LOGOUT')
 handler:RegisterEvent('BAG_UPDATE_DELAYED')
 handler:RegisterEvent('BANKFRAME_OPENED')
 handler:RegisterEvent('BANKFRAME_CLOSED')
@@ -79,9 +79,7 @@ handler:RegisterEvent('PLAYERBANKSLOTS_CHANGED')
 handler:RegisterEvent('PLAYERBANKBAGSLOTS_CHANGED')
 handler:RegisterEvent('PLAYER_MONEY')
 handler:SetScript('OnEvent', function(_, event)
-	if event == 'PLAYER_ENTERING_WORLD' then
-		snapshotInventory()
-	elseif event == 'BAG_UPDATE_DELAYED' then
+	if event == 'BAG_UPDATE_DELAYED' then
 		debounceInventory()
 		if bankOpen then snapshotBank() end
 	elseif event == 'BANKFRAME_OPENED' then
@@ -92,9 +90,6 @@ handler:SetScript('OnEvent', function(_, event)
 		bankOpen = false
 	elseif event == 'PLAYERBANKSLOTS_CHANGED' or event == 'PLAYERBANKBAGSLOTS_CHANGED' then
 		snapshotBank()
-	elseif event == 'PLAYER_LOGOUT' then
-		snapshotInventory()
-		if bankOpen then snapshotBank() end
 	elseif event == 'PLAYER_MONEY' then
 		local char = getCharData()
 		if char then char.money = GetMoney() end

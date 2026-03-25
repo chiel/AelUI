@@ -1,4 +1,6 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="init.lua"/>
+	<Script file="cache.lua"/>
 	<Script file="snapshot.lua"/>
+	<Script file="tooltip.lua"/>
 </Ui>
