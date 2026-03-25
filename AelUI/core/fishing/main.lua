@@ -5,15 +5,14 @@ local s = ns.fishing
 local MAINHAND_SLOT = 16
 
 local function render()
+	if InCombatLockdown() then return end
 	s.render(s.state)
 end
 
 -- Poll for enchant expiry
 local poller = CreateFrame('Frame')
 poller:SetScript('OnUpdate', function()
-	if s.updateEnchant() then
-		render()
-	end
+	if s.updateEnchant() then render() end
 end)
 
 -- Events

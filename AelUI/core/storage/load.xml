@@ -1,0 +1,9 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="init.lua"/>
+	<Include file="slot\load.xml"/>
+	<Include file="bag\load.xml"/>
+	<Include file="search\load.xml"/>
+	<Include file="gold\load.xml"/>
+	<Include file="inventory\load.xml"/>
+	<Include file="bank\load.xml"/>
+</Ui>

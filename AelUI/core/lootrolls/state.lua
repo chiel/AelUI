@@ -61,11 +61,36 @@ ns.lootrolls.onRollChanged = function(itemIdx, playerIdx)
 	})
 end
 
+local function logRoll(roll)
+	if not ns.db then
+		return
+	end
+	if #roll.players <= 1 then
+		return
+	end
+
+	local log = ns.db.char.lootLog
+	table.insert(log, 1, {
+		itemName = roll.name,
+		itemLink = roll.itemLink,
+		texture = roll.texture,
+		quality = roll.quality,
+		timestamp = time(),
+		rolls = roll.players,
+	})
+
+	-- Trim to 10 entries
+	while #log > 10 do
+		table.remove(log)
+	end
+end
+
 ns.lootrolls.onRollComplete = function()
 	for i = 1, C_LootHistory.GetNumItems() do
 		local rollID, _, _, isDone = C_LootHistory.GetItem(i)
 		local roll = rolls[rollID]
 		if roll and isDone then
+			logRoll(roll)
 			rolls[rollID] = nil
 		end
 	end

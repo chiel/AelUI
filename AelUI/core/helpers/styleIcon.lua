@@ -45,9 +45,19 @@ ns.helpers.styleIcon = function(btn)
 		icon:SetPoint('BOTTOMRIGHT', -2, 2)
 	end
 
+	-- restyle hotkey text
+	local hotkey = name and _G[name .. 'HotKey']
+	if hotkey then
+		hotkey:SetFont(m.fonts.default.file, 14, 'OUTLINE')
+		hotkey:SetTextColor(1, 1, 1)
+	end
+
 	-- custom cooldown text
 	local cd = btn.cooldown or btn.Cooldown or (name and _G[name .. 'Cooldown'])
 	if cd and cd.GetCooldownTimes then
+		if cd.SetHideCountdownNumbers then
+			cd:SetHideCountdownNumbers(true)
+		end
 		local cdText = cd:CreateFontString(nil, 'OVERLAY')
 		cdText:SetFont(m.fonts.bold.file, 16, 'OUTLINE')
 		cdText:SetPoint('BOTTOM', btn, 'BOTTOM', 0, 1)
@@ -62,7 +72,7 @@ ns.helpers.styleIcon = function(btn)
 			if start == 0 or duration <= 1.5 then
 				cdText:Hide()
 				if icon then
-					icon:SetDesaturated(false)
+					icon:SetDesaturated(icon.isLocked)
 				end
 				return
 			end
@@ -71,7 +81,7 @@ ns.helpers.styleIcon = function(btn)
 			if remaining <= 0 then
 				cdText:Hide()
 				if icon then
-					icon:SetDesaturated(false)
+					icon:SetDesaturated(icon.isLocked)
 				end
 				return
 			end
@@ -101,4 +111,7 @@ ns.helpers.styleIcon = function(btn)
 	end
 
 	btn._styled = true
+
+	return bd, bg
 end
+

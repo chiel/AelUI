@@ -24,8 +24,13 @@ ns.options = {
 		dialog:SetDefaultSize('AelUI', 800, 600)
 		registry:RegisterOptionsTable('AelUI', config, false)
 
-		ns.console:RegisterChatCommand('aelui', function()
-			dialog:Open('AelUI')
+		ns.console:RegisterChatCommand('aelui', function(input)
+			local cmd = input and input:trim():lower() or ''
+			if cmd == 'loot' then
+				ns.lootlog.show()
+			else
+				dialog:Open('AelUI')
+			end
 		end)
 	end,
 }

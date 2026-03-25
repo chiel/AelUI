@@ -1,6 +1,23 @@
 local _, ns = ...
 
+local hiddenParent = CreateFrame('Frame', nil, UIParent)
+hiddenParent:Hide()
+
+local blizzardFrames = {
+	player = PlayerFrame,
+}
+
+local function disableBlizzard(frame)
+	frame:UnregisterAllEvents()
+	frame:Hide()
+	frame:SetParent(hiddenParent)
+end
+
 ns.unitframes.spawn = function(unit)
+	if blizzardFrames[unit] then
+		disableBlizzard(blizzardFrames[unit])
+	end
+
 	local name = 'AelUI' .. unit:sub(1, 1):upper() .. unit:sub(2) .. 'Frame'
 
 	local f = CreateFrame('Button', name, AelUIParent, 'SecureUnitButtonTemplate')

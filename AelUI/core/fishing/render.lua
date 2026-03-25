@@ -41,9 +41,12 @@ castBtn:SetPoint('RIGHT', container, 'RIGHT', 0, 0)
 castBtn:SetAttribute('type', 'macro')
 castBtn:SetAttribute('macrotext', '/cast Fishing')
 
-local fishingSpellIcon = select(3, GetSpellInfo('Fishing'))
-if fishingSpellIcon then
-	castBtn.texture:SetTexture(fishingSpellIcon)
+local function updateCastIcon()
+	local icon = select(3, GetSpellInfo('Fishing'))
+	if icon then
+		castBtn.texture:SetTexture(icon)
+		return true
+	end
 end
 
 -- Lure buttons (created on demand, pooled)
@@ -71,10 +74,9 @@ s.render = function(state)
 		return
 	end
 
+	updateCastIcon()
 	container:Show()
 	castBtn.texture:SetDesaturated(not state.hasEnchant)
-
-	if InCombatLockdown() then return end
 
 	local lures = state.lures
 

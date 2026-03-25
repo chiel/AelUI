@@ -10,10 +10,13 @@
 	<Include file="anchors\load.xml"/>
 	<Include file="unitframes\load.xml"/>
 	<Include file="weakauras\load.xml"/>
+	<Include file="storage\load.xml"/>
 	<Include file="xpbar\load.xml"/>
 	<Include file="repbar\load.xml"/>
 	<Include file="lootrolls\load.xml"/>
 	<Include file="gearsets\load.xml"/>
+	<Script file="lootlog.lua"/>
 	<Include file="actionbars\load.xml"/>
+	<Include file="minimap\load.xml"/>
 	<Include file="fishing\load.xml"/>
 </Ui>
