@@ -71,6 +71,7 @@ ns.weakauras.data.classes.hunter = {
 		},
 		tracking = {
 			c.auraIcon('target', 'debuff', 14325), -- Hunter's Mark
+			c.auraIcon('target', 'debuff', 25295), -- Serpent Sting
 		},
 	},
 }
