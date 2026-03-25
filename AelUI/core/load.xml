@@ -10,6 +10,7 @@
 	<Include file="anchors\load.xml"/>
 	<Include file="unitframes\load.xml"/>
 	<Include file="weakauras\load.xml"/>
+	<Include file="chardata\load.xml"/>
 	<Include file="storage\load.xml"/>
 	<Include file="xpbar\load.xml"/>
 	<Include file="repbar\load.xml"/>
