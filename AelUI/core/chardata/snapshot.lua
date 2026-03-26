@@ -72,6 +72,7 @@ end
 
 -- Events
 local handler = CreateFrame('Frame')
+handler:RegisterEvent('PLAYER_ENTERING_WORLD')
 handler:RegisterEvent('BAG_UPDATE_DELAYED')
 handler:RegisterEvent('BANKFRAME_OPENED')
 handler:RegisterEvent('BANKFRAME_CLOSED')
@@ -79,7 +80,10 @@ handler:RegisterEvent('PLAYERBANKSLOTS_CHANGED')
 handler:RegisterEvent('PLAYERBANKBAGSLOTS_CHANGED')
 handler:RegisterEvent('PLAYER_MONEY')
 handler:SetScript('OnEvent', function(_, event)
-	if event == 'BAG_UPDATE_DELAYED' then
+	if event == 'PLAYER_ENTERING_WORLD' or event == 'PLAYER_MONEY' then
+		local char = getCharData()
+		if char then char.money = GetMoney() end
+	elseif event == 'BAG_UPDATE_DELAYED' then
 		debounceInventory()
 		if bankOpen then snapshotBank() end
 	elseif event == 'BANKFRAME_OPENED' then
@@ -90,8 +94,5 @@ handler:SetScript('OnEvent', function(_, event)
 		bankOpen = false
 	elseif event == 'PLAYERBANKSLOTS_CHANGED' or event == 'PLAYERBANKBAGSLOTS_CHANGED' then
 		snapshotBank()
-	elseif event == 'PLAYER_MONEY' then
-		local char = getCharData()
-		if char then char.money = GetMoney() end
 	end
 end)
