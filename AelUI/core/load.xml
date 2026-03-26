@@ -16,6 +16,7 @@
 	<Include file="repbar\load.xml"/>
 	<Include file="lootrolls\load.xml"/>
 	<Include file="gearsets\load.xml"/>
+	<Script file="chat.lua"/>
 	<Script file="lootlog.lua"/>
 	<Include file="actionbars\load.xml"/>
 	<Include file="minimap\load.xml"/>

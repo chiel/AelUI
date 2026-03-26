@@ -18,11 +18,11 @@ ns.media = {
 	fonts = {
 		default = {
 			name = 'AelUI',
-			file = [[Interface\AddOns\AelUI\core\media\fonts\RobotoCondensed-Regular.ttf]],
+			file = [[Interface\AddOns\AelUI\core\media\fonts\PTSansNarrow-Regular.ttf]],
 		},
 		bold = {
 			name = 'AelUI Bold',
-			file = [[Interface\AddOns\AelUI\core\media\fonts\RobotoCondensed-Bold.ttf]],
+			file = [[Interface\AddOns\AelUI\core\media\fonts\PTSansNarrow-Bold.ttf]],
 		},
 	},
 
