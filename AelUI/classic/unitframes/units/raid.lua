@@ -10,9 +10,7 @@ local function getGroupMemberCounts()
 		local _, _, subgroup = GetRaidRosterInfo(i)
 		if subgroup then
 			memberCounts[subgroup] = (memberCounts[subgroup] or 0) + 1
-			if memberCounts[subgroup] > maxGroupSize then
-				maxGroupSize = memberCounts[subgroup]
-			end
+			if memberCounts[subgroup] > maxGroupSize then maxGroupSize = memberCounts[subgroup] end
 		end
 	end
 
@@ -37,17 +35,22 @@ local UNIT_SPACING = 4
 local UNITS_PER_GROUP = 5
 
 -- spellId = showInCombat
-local buffWhitelist = {
-	[2893] = true, -- Abolish Poison
-	[29166] = true, -- Innervate
-	[26992] = false, -- Thorns
-	[26991] = false, -- Gift of the Wild
-	[26990] = false, -- Mark of the Wild
-	[33763] = true, -- Lifebloom
-	[26980] = true, -- Regrowth
-	[26982] = true, -- Rejuvenation
-	[26983] = true, -- Tranquility
+local buffWhitelists = {
+	DRUID = {
+		[2893] = true, -- Abolish Poison
+		[29166] = true, -- Innervate
+		[26992] = false, -- Thorns
+		[26991] = false, -- Gift of the Wild
+		[26990] = false, -- Mark of the Wild
+		[33763] = true, -- Lifebloom
+		[26980] = true, -- Regrowth
+		[26982] = true, -- Rejuvenation
+		[26983] = true, -- Tranquility
+	},
 }
+
+local _, playerClass = UnitClass('player')
+local buffWhitelist = buffWhitelists[playerClass]
 
 local function buffFilter(
 	name,
@@ -61,24 +64,25 @@ local function buffFilter(
 	nameplateShowPersonal,
 	spellId
 )
-	if caster ~= 'player' then
-		return false
+	if caster ~= 'player' then return false end
+
+	if buffWhitelist then
+		local entry = buffWhitelist[spellId]
+		if entry == nil then return false end
+		if InCombatLockdown() and not entry then return false end
+		return true
 	end
-	local entry = buffWhitelist[spellId]
-	if entry == nil then
-		return false
-	end
-	if InCombatLockdown() and not entry then
-		return false
-	end
-	return true
+
+	-- Default: short buffs (<=5min) always show, long/permanent buffs only out of combat
+	if duration and duration > 0 and duration <= 300 then return true end
+	return not InCombatLockdown()
 end
 
 local function petStyle(f)
 	local healthbar, healthbarBar = e.healthbar(f)
 	healthbar:SetAllPoints()
 
-	local name = e.nameText(f, healthbarBar, { maxLength = 3 })
+	local name = e.nameText(f, healthbarBar, { maxLength = 6 })
 	name:SetPoint('BOTTOM', 0, 4)
 
 	local buffs = e.auras(f, 'HELPFUL', { initialAnchor = 'TOPRIGHT', growthX = 'LEFT', filter = buffFilter })
@@ -100,7 +104,7 @@ local function style(f)
 	healthbar:SetPoint('TOPLEFT')
 	healthbar:SetPoint('BOTTOMRIGHT', powerbar, 'TOPRIGHT', 0, -1)
 
-	local name = e.nameText(f, healthbarBar, { maxLength = 3 })
+	local name = e.nameText(f, healthbarBar, { maxLength = 6 })
 	name:SetPoint('BOTTOM', 0, 4)
 
 	local buffs = e.auras(f, 'HELPFUL', { initialAnchor = 'TOPRIGHT', growthX = 'LEFT', filter = buffFilter })
@@ -183,9 +187,7 @@ table.insert(ns.unitframes.units, function()
 			or event == 'GROUP_ROSTER_UPDATE'
 			or event == 'PLAYER_ENTERING_WORLD'
 			or hasPendingUpdate
-		if not shouldUpdate then
-			return
-		end
+		if not shouldUpdate then return end
 
 		hasPendingUpdate = false
 

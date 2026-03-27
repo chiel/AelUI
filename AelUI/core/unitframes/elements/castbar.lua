@@ -25,9 +25,7 @@ ns.unitframes.elements.castbar = function(f, options)
 			channeling = false
 			bar:SetValue(0)
 			bd:Show()
-			if o.onUpdate then
-				o.onUpdate(bd, { gcd = false, channeling = false, casting = true })
-			end
+			if o.onUpdate then o.onUpdate(bd, { gcd = false, channeling = false, casting = true }) end
 			return
 		end
 
@@ -38,9 +36,7 @@ ns.unitframes.elements.castbar = function(f, options)
 			channeling = true
 			bar:SetValue(1)
 			bd:Show()
-			if o.onUpdate then
-				o.onUpdate(bd, { gcd = false, channeling = true, casting = false })
-			end
+			if o.onUpdate then o.onUpdate(bd, { gcd = false, channeling = true, casting = false }) end
 			return
 		end
 
@@ -52,9 +48,7 @@ ns.unitframes.elements.castbar = function(f, options)
 				gcd = true
 				bar:SetValue(1)
 				bd:Show()
-				if o.onUpdate then
-					o.onUpdate(bd, { gcd = true, channeling = false, casting = false })
-				end
+				if o.onUpdate then o.onUpdate(bd, { gcd = true, channeling = false, casting = false }) end
 				return
 			end
 		end
@@ -90,8 +84,9 @@ ns.unitframes.elements.castbar = function(f, options)
 	f:RegisterCallback('UNIT_SPELLCAST_SUCCEEDED', update)
 
 	if f.unit == 'player' then
-		PlayerCastingBarFrame:UnregisterAllEvents()
-		PlayerCastingBarFrame:Hide()
+		local playerCastBar = PlayerCastingBarFrame or CastingBarFrame
+		playerCastBar:UnregisterAllEvents()
+		playerCastBar:Hide()
 	end
 
 	bd:Hide()

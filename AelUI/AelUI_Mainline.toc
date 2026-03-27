@@ -1,0 +1,12 @@
+## Interface: 120005
+## Title: AelUI
+## Author: Aelen
+## Version: 0.0.1
+## SavedVariables: AelUIDB
+
+libs\load.xml
+# core\load.xml
+core\colors.lua
+core\init.lua
+core\uiscale.lua
+# classic\load.xml

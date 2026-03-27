@@ -4,13 +4,14 @@ local rolls = {} -- rollID -> roll state
 ns.lootrolls.rolls = rolls
 
 ns.lootrolls.onStartRoll = function(rollID, rollTime)
-	local texture, name, _, quality, bindOnPickUp, canNeed, canGreed = GetLootRollItemInfo(rollID)
+	local texture, name, count, quality, bindOnPickUp, canNeed, canGreed = GetLootRollItemInfo(rollID)
 	local itemLink = GetLootRollItemLink(rollID)
 
 	rolls[rollID] = {
 		rollID = rollID,
 		texture = texture,
 		name = name,
+		count = count,
 		itemLink = itemLink,
 		quality = quality,
 		bindOnPickUp = bindOnPickUp,

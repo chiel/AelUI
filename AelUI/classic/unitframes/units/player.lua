@@ -41,9 +41,7 @@ table.insert(ns.unitframes.units, function()
 	end
 
 	if playerClass == 'DRUID' then
-		local function onUpdateManabar(self, state)
-			self:SetShown(state.displayType ~= state.powerType)
-		end
+		local function onUpdateManabar(self, state) self:SetShown(state.displayType ~= state.powerType) end
 
 		local manabar = e.powerbar(f, {
 			powerType = Enum.PowerType.Mana,
@@ -53,12 +51,19 @@ table.insert(ns.unitframes.units, function()
 		manabar:SetSize(140, 8)
 	end
 
+	local debuffs = e.auras(f, 'HARMFUL', {
+		cooldownText = true,
+		growthX = 'LEFT',
+		iconSize = 40,
+		initialAnchor = 'BOTTOMRIGHT',
+		spacingX = 2,
+	})
+	debuffs:SetPoint('BOTTOMRIGHT', healthbar, 'TOPRIGHT', 0, 2)
+
 	local marker = e.raidmarker(f, healthbarBar)
 	marker:SetPoint('LEFT', healthbarBar, 'LEFT', 4, 0)
 
-	local function onUpdateCastbar(self, state)
-		self:SetHeight(state.gcd and 6 or 16)
-	end
+	local function onUpdateCastbar(self, state) self:SetHeight(state.gcd and 6 or 16) end
 
 	local castbar = e.castbar(f, { onUpdate = onUpdateCastbar })
 	castbar:SetPoint('TOPLEFT', AelUISecondaryAnchor, 'BOTTOMLEFT', 0, -2)

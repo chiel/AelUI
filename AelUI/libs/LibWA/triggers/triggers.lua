@@ -44,6 +44,12 @@ ns.triggers.Create = function()
 		return trigger
 	end
 
+	aura.AddUnitStance = function(self, ...)
+		local trigger = ns.triggers.CreateUnitStance(...)
+		table.insert(self.triggers, trigger)
+		return trigger
+	end
+
 	aura.AddUnitSwingTimer = function(self, ...)
 		local trigger = ns.triggers.CreateUnitSwingTimer(...)
 		table.insert(self.triggers, trigger)
@@ -53,22 +59,16 @@ ns.triggers.Create = function()
 	aura.Delete = function(self, index)
 		local newTriggers = {}
 		for i, trigger in ipairs(self.triggers) do
-			if i ~= index then
-				table.insert(newTriggers, trigger)
-			end
+			if i ~= index then table.insert(newTriggers, trigger) end
 		end
 
 		self.triggers = newTriggers
 	end
 
-	aura.Get = function(self, index)
-		return self.triggers[index]
-	end
+	aura.Get = function(self, index) return self.triggers[index] end
 
 	aura.SetActivateOn = function(self, type, customFn)
-		if type == nil then
-			self.type = nil
-		end
+		if type == nil then self.type = nil end
 
 		self.activateOn = {
 			type = type,
@@ -86,9 +86,7 @@ ns.triggers.Create = function()
 
 		if self.activateOn ~= nil then
 			r.triggers.disjunctive = self.activateOn.type
-			if self.activateOn.type == 'custom' then
-				r.triggers.customTriggerLogic = self.activateOn.customFn
-			end
+			if self.activateOn.type == 'custom' then r.triggers.customTriggerLogic = self.activateOn.customFn end
 		end
 
 		return r

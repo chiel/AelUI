@@ -165,6 +165,7 @@ local function applyToFrame(f, roll)
 	f.rollID = roll.rollID
 
 	f.icon.texture:SetTexture(roll.texture)
+	f.icon.stacks:SetText(roll.count and roll.count > 1 and roll.count or '')
 	f.name:SetText(roll.name)
 	f.name:SetTextColor(1, 1, 1)
 	f.bind:SetText(roll.bindOnPickUp and 'BoP' or 'BoE')

@@ -70,7 +70,13 @@ ns.weakauras.data.classes.hunter = {
 			c.spellIcon(14273), -- Disengage
 		},
 		tracking = {
-			c.auraIcon('target', 'debuff', 14325), -- Hunter's Mark
+			c.composeAura(
+				c.auraIcon('target', 'debuff', 14325), -- Hunter's Mark
+				function(icon)
+					local trigger = icon.triggers:Get(1)
+					trigger:SetOwnOnly(nil)
+				end
+			),
 			c.auraIcon('target', 'debuff', 25295), -- Serpent Sting
 		},
 	},

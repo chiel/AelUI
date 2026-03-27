@@ -8,10 +8,10 @@ local auraFunctions = {
 }
 
 local debuffTypeColors = {
-	Magic   = { 0.2, 0.6, 1 },
-	Curse   = { 0.6, 0,   1 },
+	Magic = { 0.2, 0.6, 1 },
+	Curse = { 0.6, 0, 1 },
 	Disease = { 0.6, 0.4, 0 },
-	Poison  = { 0,   0.6, 0 },
+	Poison = { 0, 0.6, 0 },
 }
 
 ns.unitframes.elements.auras = function(f, type, options)
@@ -25,6 +25,7 @@ ns.unitframes.elements.auras = function(f, type, options)
 	local growthx = (o.growthX == 'LEFT' and -1) or 1
 	local growthy = (o.growthY == 'DOWN' and -1) or 1
 	local colorBorders = type == 'HARMFUL'
+	local iconOptions = { cooldownText = o.cooldownText }
 
 	local sizex = iconSize + spacingX
 	local sizey = iconSize + spacingY
@@ -34,9 +35,21 @@ ns.unitframes.elements.auras = function(f, type, options)
 
 	local icons = {}
 
+	local tooltipFilter = type == 'HELPFUL' and 'HELPFUL' or 'HARMFUL'
+
 	local function getIcon(idx)
 		if not icons[idx] then
-			icons[idx] = h.createIcon(container, iconSize)
+			local icon = h.createIcon(container, iconSize, iconOptions)
+			icon:EnableMouse(true)
+			icon:SetScript('OnEnter', function(self)
+				if self.unit and self.auraIndex then
+					GameTooltip:SetOwner(self, 'ANCHOR_BOTTOMLEFT')
+					GameTooltip:SetUnitAura(self.unit, self.auraIndex, tooltipFilter)
+					GameTooltip:Show()
+				end
+			end)
+			icon:SetScript('OnLeave', GameTooltip_Hide)
+			icons[idx] = icon
 		end
 		return icons[idx]
 	end
@@ -50,8 +63,24 @@ ns.unitframes.elements.auras = function(f, type, options)
 				auraFn(self.unit, i)
 			if not name then break end
 
-			if not filter or filter(name, texture, count, debuffType, duration, expirationTime, caster, isStealable, nameplateShowPersonal, spellId) then
+			if
+				not filter
+				or filter(
+					name,
+					texture,
+					count,
+					debuffType,
+					duration,
+					expirationTime,
+					caster,
+					isStealable,
+					nameplateShowPersonal,
+					spellId
+				)
+			then
 				local icon = getIcon(idx)
+				icon.unit = self.unit
+				icon.auraIndex = i
 				icon:ClearAllPoints()
 				icon:SetPoint(initialAnchor, container, initialAnchor, (idx - 1) * sizex * growthx, 0)
 				icon.texture:SetTexture(texture)

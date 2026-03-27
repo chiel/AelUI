@@ -10,7 +10,18 @@ ns.weakauras.data.classes.warrior = {
 	id = 'WARRIOR',
 
 	groups = {
+		reminders = {
+			c.composeAura(c.auraIcon('player', 'buff', 25289), h.setNotOwnOnly, function(icon)
+				local t = icon.triggers:Get(1)
+				t:SetShow('onMissing')
+				icon.triggers:Delete(2)
+			end),
+		},
 		primary = {
+			-- melee
+			-- heroic strike / cleave
+			-- collapse overpower / revenge
+			-- collapse shield bash / pummel
 			c.spellIcon(12328), -- Sweeping Strikes
 			c.spellIcon(2687), -- Bloodrage
 			c.spellIcon(23924), -- Shield Slam
@@ -75,11 +86,24 @@ ns.weakauras.data.classes.warrior = {
 			c.spellIcon(355), -- Taunt
 		},
 		tracking = {
-			c.auraIcon('target', 'debuff', 11580), -- Thunder Clap
-			c.auraIcon('target', 'debuff', 11556), -- Demoralizing Shout
 			c.composeAura(
-				c.auraIcon('target', 'debuff', 11596), -- Sunder Armor
-				h.addStacksText
+				c.auraIcon('target', 'debuff', 11581), -- Thunder Clap
+				h.setNotOwnOnly
+			),
+			c.composeAura(
+				c.auraIcon('target', 'debuff', 25202), -- Demoralizing Shout
+				h.setNotOwnOnly
+			),
+			function(idSuffix, config)
+				local id = 'Stance' .. idSuffix
+				local icon = h.icon(id, config)
+				icon.triggers:AddUnitStance()
+				return icon
+			end,
+			c.composeAura(
+				c.auraIcon('target', 'debuff', 11597), -- Sunder Armor
+				h.addStacksText,
+				h.setNotOwnOnly
 			),
 			c.auraIcon('target', 'debuff', 11572), -- Rend
 		},

@@ -3,4 +3,5 @@
 	<Script file="addProgressText.lua"/>
 	<Script file="addStacksText.lua"/>
 	<Script file="icon.lua"/>
+	<Script file="setNotOwnOnly.lua"/>
 </Ui>

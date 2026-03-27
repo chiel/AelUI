@@ -1,8 +1,10 @@
 local _, ns = ...
 
+local h = ns.helpers
 local m = ns.media
 
-ns.helpers.createIcon = function(parent, size)
+ns.helpers.createIcon = function(parent, size, options)
+	local o = options or {}
 	local icon = CreateFrame('Frame', nil, parent, 'BackdropTemplate')
 	icon:SetSize(size, size)
 	icon:SetBackdrop({ edgeFile = m.borders.default.file, edgeSize = 1 })
@@ -22,6 +24,10 @@ ns.helpers.createIcon = function(parent, size)
 	icon.stacks = icon.cooldown:CreateFontString(nil, 'OVERLAY')
 	icon.stacks:SetFont(m.fonts.bold.file, 14, 'OUTLINE')
 	icon.stacks:SetPoint('TOPRIGHT', 4, 1)
+
+	if o.cooldownText then
+		h.createCooldownText(icon, icon.cooldown)
+	end
 
 	return icon
 end

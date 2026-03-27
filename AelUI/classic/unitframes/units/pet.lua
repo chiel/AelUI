@@ -22,7 +22,7 @@ table.insert(ns.unitframes.units, function()
 		happiness:SetPoint('RIGHT', healthbar, 'RIGHT', -4, 1)
 
 		local whitelist = {
-			[13544] = true,
+			[27046] = true,
 			[1539] = true,
 		}
 
@@ -31,7 +31,18 @@ table.insert(ns.unitframes.units, function()
 			spacing = 2,
 			initialAnchor = 'TOPLEFT',
 			growthX = 'RIGHT',
-			filter = function(name, texture, count, debuffType, duration, expirationTime, caster, isStealable, nameplateShowPersonal, spellId)
+			filter = function(
+				name,
+				texture,
+				count,
+				debuffType,
+				duration,
+				expirationTime,
+				caster,
+				isStealable,
+				nameplateShowPersonal,
+				spellId
+			)
 				return whitelist[spellId]
 			end,
 		})

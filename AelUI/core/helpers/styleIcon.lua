@@ -58,47 +58,18 @@ ns.helpers.styleIcon = function(btn)
 		if cd.SetHideCountdownNumbers then
 			cd:SetHideCountdownNumbers(true)
 		end
-		local cdText = cd:CreateFontString(nil, 'OVERLAY')
-		cdText:SetFont(m.fonts.bold.file, 16, 'OUTLINE')
-		cdText:SetPoint('BOTTOM', btn, 'BOTTOM', 0, 1)
-		cdText:SetJustifyH('CENTER')
-		cdText:Hide()
+		ns.helpers.createCooldownText(btn, cd)
 
-		btn:HookScript('OnUpdate', function()
-			local start, duration = cd:GetCooldownTimes()
-			start = start / 1000
-			duration = duration / 1000
+		if icon then
+			btn:HookScript('OnUpdate', function()
+				local start, duration = cd:GetCooldownTimes()
+				start = start / 1000
+				duration = duration / 1000
 
-			if start == 0 or duration <= 1.5 then
-				cdText:Hide()
-				if icon then
-					icon:SetDesaturated(icon.isLocked)
-				end
-				return
-			end
-
-			local remaining = start + duration - GetTime()
-			if remaining <= 0 then
-				cdText:Hide()
-				if icon then
-					icon:SetDesaturated(icon.isLocked)
-				end
-				return
-			end
-
-			if icon then
-				icon:SetDesaturated(true)
-			end
-
-			if remaining >= 3600 then
-				cdText:SetText(math.floor(remaining / 3600) .. 'h')
-			elseif remaining >= 300 then
-				cdText:SetText(math.floor(remaining / 60) .. 'm')
-			else
-				cdText:SetText(string.format('%d:%02d', math.floor(remaining / 60), math.floor(remaining % 60)))
-			end
-			cdText:Show()
-		end)
+				local onCooldown = start > 0 and duration > 1.5 and (start + duration - GetTime()) > 0
+				icon:SetDesaturated(onCooldown or icon.isLocked)
+			end)
+		end
 	end
 
 	-- restyle count text

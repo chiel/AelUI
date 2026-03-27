@@ -6,5 +6,6 @@
 	<Script file="CreateSpellQueuedAction.lua"/>
 	<Script file="CreateSpellUsable.lua"/>
 	<Script file="CreateUnitConditions.lua"/>
+	<Script file="CreateUnitStance.lua"/>
 	<Script file="CreateUnitSwingTimer.lua"/>
 </Ui>

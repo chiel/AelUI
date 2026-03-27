@@ -75,18 +75,65 @@ local function listSets()
 	end
 end
 
-ns.OnInitialise(function()
-	ns.console:RegisterChatCommand('gs', function(input)
-		local cmd, name = strsplit(' ', input or '', 2)
-		cmd = cmd and cmd:trim():lower() or ''
-		name = name and name:trim() or ''
+local function assignSpec(input)
+	local spec, name = strsplit(' ', input or '', 2)
+	spec = tonumber(spec)
+	name = name and name:trim() or ''
 
-		if cmd == 'save' and name ~= '' then
-			saveSet(name)
-		elseif cmd == 'equip' and name ~= '' then
-			equipSet(name)
-		elseif cmd == 'delete' and name ~= '' then
-			deleteSet(name)
+	if not spec or (spec ~= 1 and spec ~= 2) or name == '' then
+		ns.console:Print('Usage: /gs assign <1|2> <set name>')
+		return
+	end
+
+	if not ns.db.char.gearSets[name] then
+		ns.console:Print(string.format('Gear set "%s" not found.', name))
+		return
+	end
+
+	ns.db.char.gearSpecAssignments[spec] = name
+	ns.console:Print(string.format('Spec %d will now equip "%s".', spec, name))
+end
+
+local function unassignSpec(input)
+	local spec = tonumber(input and input:trim() or '')
+
+	if not spec or (spec ~= 1 and spec ~= 2) then
+		ns.console:Print('Usage: /gs unassign <1|2>')
+		return
+	end
+
+	ns.db.char.gearSpecAssignments[spec] = nil
+	ns.console:Print(string.format('Spec %d gear assignment cleared.', spec))
+end
+
+ns.OnEnable(function()
+	local f = CreateFrame('Frame')
+	f:RegisterEvent('ACTIVE_TALENT_GROUP_CHANGED')
+	f:SetScript('OnEvent', function(_, _, cur)
+		local name = ns.db.char.gearSpecAssignments[cur]
+		if not name then return end
+		equipSet(name)
+	end)
+end)
+
+ns.OnInitialise(function()
+	ns.db.char.gearSpecAssignments = ns.db.char.gearSpecAssignments or {}
+
+	ns.console:RegisterChatCommand('gs', function(input)
+		local cmd, rest = strsplit(' ', input or '', 2)
+		cmd = cmd and cmd:trim():lower() or ''
+		rest = rest and rest:trim() or ''
+
+		if cmd == 'save' and rest ~= '' then
+			saveSet(rest)
+		elseif cmd == 'equip' and rest ~= '' then
+			equipSet(rest)
+		elseif cmd == 'delete' and rest ~= '' then
+			deleteSet(rest)
+		elseif cmd == 'assign' and rest ~= '' then
+			assignSpec(rest)
+		elseif cmd == 'unassign' and rest ~= '' then
+			unassignSpec(rest)
 		elseif cmd == 'list' then
 			listSets()
 		else
@@ -94,6 +141,8 @@ ns.OnInitialise(function()
 			ns.console:Print('  /gs save <name>  - Save current gear')
 			ns.console:Print('  /gs equip <name> - Equip a saved set')
 			ns.console:Print('  /gs delete <name> - Delete a saved set')
+			ns.console:Print('  /gs assign <1|2> <name> - Auto-equip on spec swap')
+			ns.console:Print('  /gs unassign <1|2> - Remove spec assignment')
 			ns.console:Print('  /gs list - List saved sets')
 		end
 	end)

@@ -63,6 +63,7 @@ hideBlizzardBar(MultiBarRight)
 hideBlizzardBar(MainMenuBar)
 
 if MainMenuBarArtFrame then MainMenuBarArtFrame:Hide() end
+if BagsBar then BagsBar:Hide() end
 if MainMenuExpBar then MainMenuExpBar:Hide() end
 if ReputationWatchBar then ReputationWatchBar:Hide() end
 

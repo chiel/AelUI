@@ -1,6 +1,7 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="init.lua"/>
 	<Script file="createBackdrop.lua"/>
+	<Script file="createCooldownText.lua"/>
 	<Script file="createIcon.lua"/>
 	<Script file="createStatusBar.lua"/>
 	<Script file="styleIcon.lua"/>
