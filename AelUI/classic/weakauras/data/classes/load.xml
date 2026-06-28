@@ -3,5 +3,6 @@
 	<Script file="druid.lua"/>
 	<Script file="hunter.lua"/>
 	<Script file="mage.lua"/>
+	<Script file="warlock.lua"/>
 	<Script file="warrior.lua"/>
 </Ui>
