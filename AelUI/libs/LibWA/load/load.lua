@@ -12,6 +12,11 @@ ns.load.Create = function()
 		table.insert(self.conditions, cond)
 	end
 
+	aura.SpellKnown = function(self, ...)
+		local cond = ns.load.CreateSpellKnownCondition(...)
+		table.insert(self.conditions, cond)
+	end
+
 	aura.Serialize = function(self)
 		local r = { load = {} }
 
