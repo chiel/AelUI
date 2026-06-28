@@ -27,6 +27,15 @@ table.insert(ns.unitframes.units, function(f)
 	powerbar:SetPoint('TOPLEFT', healthbar, 'BOTTOMLEFT', 0, -2)
 	powerbar:SetSize(140, 8)
 
+	local debuffs = e.auras(f, 'HARMFUL', {
+		cooldownText = true,
+		growthX = 'RIGHT',
+		iconSize = 40,
+		initialAnchor = 'BOTTOMLEFT',
+		spacingX = 2,
+	})
+	debuffs:SetPoint('BOTTOMLEFT', healthbar, 'TOPLEFT', 0, 2)
+
 	local marker = e.raidmarker(f, healthbarBar)
 	marker:SetPoint('RIGHT', healthbarBar, 'RIGHT', -4, 0)
 
