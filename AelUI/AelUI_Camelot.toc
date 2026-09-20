@@ -3,4 +3,5 @@
 ## Author: Aelen
 ## Version: 0.0.1
 
+libs\load.xml
 core\load.xml
