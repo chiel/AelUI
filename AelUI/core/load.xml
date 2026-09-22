@@ -1,6 +1,23 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<!-- <Script file="config.lua"/> -->
+	<!-- <Script file="colors.lua"/> -->
+	<!-- <Script file="init.lua"/> -->
 	<Script file="parent.lua"/>
 	<Script file="media\init.lua"/>
+	<!-- <Script file="options.lua"/> -->
 	<Include file="utils\load.xml"/>
 	<Include file="anchors\load.xml"/>
+	<!-- <Include file="unitframes\load.xml"/> -->
+	<!-- <Include file="weakauras\load.xml"/> -->
+	<!-- <Include file="chardata\load.xml"/> -->
+	<!-- <Include file="storage\load.xml"/> -->
+	<!-- <Include file="xpbar\load.xml"/> -->
+	<!-- <Include file="repbar\load.xml"/> -->
+	<!-- <Include file="lootrolls\load.xml"/> -->
+	<!-- <Include file="gearsets\load.xml"/> -->
+	<!-- <Script file="chat.lua"/> -->
+	<!-- <Script file="lootlog.lua"/> -->
+	<!-- <Include file="actionbars\load.xml"/> -->
+	<!-- <Include file="minimap\load.xml"/> -->
+	<!-- <Include file="fishing\load.xml"/> -->
 </Ui>

@@ -57,6 +57,30 @@ ns.unitframes.units.spawn = function(unit, fn)
 				self:Update()
 			end,
 		}
+	elseif unit == 'targettarget' then
+		-- f:RegisterEvent('PLAYER_TARGET_CHANGED')
+		-- f.eventCallbacks['PLAYER_TARGET_CHANGED'] = {
+		-- 	function(self)
+		-- 		self:Update()
+		-- 	end,
+		-- }
+		-- f:RegisterEvent('UNIT_TARGET')
+		-- f.eventCallbacks['UNIT_TARGET'] = {
+		-- 	function(self, event, unit)
+		-- 		if unit == 'target' then
+		-- 			self:Update()
+		-- 		end
+		-- 	end,
+		-- }
+	elseif unit == 'pet' then
+		-- f:RegisterEvent('UNIT_PET')
+		-- f.eventCallbacks['UNIT_PET'] = {
+		-- 	function(self, event, unit)
+		-- 		if unit == 'player' then
+		-- 			self:Update()
+		-- 		end
+		-- 	end,
+		-- }
 	end
 
 	fn(f)
