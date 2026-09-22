@@ -50,5 +50,14 @@ ns.unitframes.units.spawn = function(unit, fn)
 		self:Update()
 	end)
 
+	if unit == 'target' then
+		f:RegisterEvent('PLAYER_TARGET_CHANGED')
+		f.eventCallbacks['PLAYER_TARGET_CHANGED'] = {
+			function(self)
+				self:Update()
+			end,
+		}
+	end
+
 	fn(f)
 end
