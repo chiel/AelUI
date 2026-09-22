@@ -2,4 +2,5 @@
 	<Script file="parent.lua"/>
 	<Script file="media\init.lua"/>
 	<Include file="utils\load.xml"/>
+	<Include file="anchors\load.xml"/>
 </Ui>
