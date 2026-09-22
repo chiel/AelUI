@@ -5,3 +5,4 @@
 
 libs\load.xml
 core\load.xml
+forever\load.xml
