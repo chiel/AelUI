@@ -2,4 +2,5 @@
 	<Script file="init.lua"/>
 	<Script file="castbar.lua"/>
 	<Script file="healthbar.lua"/>
+	<Script file="powerbar.lua"/>
 </Ui>

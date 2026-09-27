@@ -9,6 +9,11 @@ ns.unitframes.units.spawn('player', function(f)
 	local healthbar = e.healthbar(f)
 	healthbar:SetAllPoints()
 
+	local powerbar = e.powerbar(f)
+	powerbar:SetPoint('BOTTOMLEFT', AelUIPrimaryAnchor, 'TOPLEFT', 0, 2)
+	powerbar:SetPoint('BOTTOMRIGHT', AelUIPrimaryAnchor, 'TOPRIGHT', 0, 2)
+	powerbar:SetHeight(16)
+
 	local castbar = e.castbar(f)
 	castbar:SetPoint('TOPLEFT', AelUIPrimaryAnchor, 'BOTTOMLEFT', 0, 0)
 	castbar:SetPoint('TOPRIGHT', AelUIPrimaryAnchor, 'BOTTOMRIGHT', 0, 0)
