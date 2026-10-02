@@ -21,4 +21,7 @@ ns.unitframes.units.spawn('player', function(f)
 
 	local hpPct = e.healthPercentText(f, healthbarBar, { fontSize = 20 })
 	hpPct:SetPoint('BOTTOMRIGHT', healthbar, 'BOTTOMRIGHT', -4, 0)
+
+	local hpCur = e.healthCurrentText(f, healthbarBar, { fontSize = 16 })
+	hpCur:SetPoint('BOTTOMRIGHT', hpPct, 'TOPRIGHT', 0, 0)
 end)

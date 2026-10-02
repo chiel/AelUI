@@ -3,6 +3,7 @@
 	<Script file="text.lua"/>
 	<Script file="castbar.lua"/>
 	<Script file="healthbar.lua"/>
+	<Script file="healthCurrentText.lua"/>
 	<Script file="healthPercentText.lua"/>
 	<Script file="powerbar.lua"/>
 </Ui>
