@@ -12,11 +12,9 @@ ns.unitframes.elements.healthbar = function(f, options)
 	local defaultBgColor = { r, g, b }
 
 	local function update(self)
-		local current = UnitHealth(self.unit)
-		local max = UnitHealthMax(self.unit)
-
-		bar:SetMinMaxValues(0, max)
-		bar:SetValue(current)
+		local pct = UnitHealthPercent(self.unit, true, CurveConstants.ZeroToOne)
+		bar:SetMinMaxValues(0, 1)
+		bar:SetValue(pct)
 
 		local color = defaultBgColor
 
