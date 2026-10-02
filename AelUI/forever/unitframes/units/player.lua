@@ -23,6 +23,9 @@ ns.unitframes.units.spawn('player', function(f)
 	castbar:SetPoint('TOPRIGHT', AelUIPrimaryAnchor, 'BOTTOMRIGHT', 0, -2)
 	castbar:SetHeight(16)
 
+	local name = e.nameText(f, healthbarBar, { fontSize = 24 })
+	name:SetPoint('BOTTOMLEFT', healthbar, 'BOTTOMLEFT', 6, 0)
+
 	local hpPct = e.healthPercentText(f, healthbarBar, { fontSize = 20 })
 	hpPct:SetPoint('BOTTOMRIGHT', healthbar, 'BOTTOMRIGHT', -4, 0)
 
