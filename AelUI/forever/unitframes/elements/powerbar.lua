@@ -20,6 +20,13 @@ ns.unitframes.elements.powerbar = function(f, options)
 		if color then
 			bar:SetStatusBarColor(color.r, color.g, color.b)
 		end
+
+		if o.onUpdate then
+			o.onUpdate(bd, {
+				displayType = displayType,
+				powerType = powerType,
+			})
+		end
 	end
 
 	f:RegisterCallback('UNIT_POWER_UPDATE', update)
