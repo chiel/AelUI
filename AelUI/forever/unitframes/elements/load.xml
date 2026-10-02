@@ -1,6 +1,8 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="init.lua"/>
+	<Script file="text.lua"/>
 	<Script file="castbar.lua"/>
 	<Script file="healthbar.lua"/>
+	<Script file="healthPercentText.lua"/>
 	<Script file="powerbar.lua"/>
 </Ui>

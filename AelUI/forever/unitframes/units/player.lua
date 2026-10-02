@@ -6,7 +6,7 @@ ns.unitframes.units.spawn('player', function(f)
 	f:SetSize(300, 58)
 	f:SetPoint('TOPRIGHT', AelUIPrimaryAnchor, 'TOPLEFT', -20, 0)
 
-	local healthbar = e.healthbar(f)
+	local healthbar, healthbarBar = e.healthbar(f)
 	healthbar:SetAllPoints()
 
 	local powerbar = e.powerbar(f)
@@ -18,4 +18,7 @@ ns.unitframes.units.spawn('player', function(f)
 	castbar:SetPoint('TOPLEFT', AelUIPrimaryAnchor, 'BOTTOMLEFT', 0, 0)
 	castbar:SetPoint('TOPRIGHT', AelUIPrimaryAnchor, 'BOTTOMRIGHT', 0, 0)
 	castbar:SetHeight(6)
+
+	local hpPct = e.healthPercentText(f, healthbarBar, { fontSize = 20 })
+	hpPct:SetPoint('BOTTOMRIGHT', healthbar, 'BOTTOMRIGHT', -4, 0)
 end)
