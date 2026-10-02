@@ -67,6 +67,10 @@ ns.unitframes.elements.castbar = function(f, options)
 
 			bar:SetTimerDuration(duration, nil, direction)
 			bd:Show()
+
+			if o.onUpdate then
+				o.onUpdate(bd, { isGCD = isGCD })
+			end
 		else
 			hide()
 		end
