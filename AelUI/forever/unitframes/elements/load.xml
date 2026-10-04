@@ -5,6 +5,7 @@
 	<Script file="healthbar.lua"/>
 	<Script file="healthCurrentText.lua"/>
 	<Script file="healthPercentText.lua"/>
+	<Script file="leaderIcon.lua"/>
 	<Script file="nameText.lua"/>
 	<Script file="powerbar.lua"/>
 </Ui>

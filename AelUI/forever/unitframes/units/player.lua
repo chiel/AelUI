@@ -31,4 +31,8 @@ ns.unitframes.units.spawn('player', function(f)
 
 	local hpCur = e.healthCurrentText(f, healthbarBar, { fontSize = 16 })
 	hpCur:SetPoint('BOTTOMRIGHT', hpPct, 'TOPRIGHT', 0, 0)
+
+	local leaderIcon = e.leaderIcon(f, healthbarBar)
+	leaderIcon:SetPoint('TOPLEFT', 4, 0)
+	leaderIcon:SetSize(24, 24)
 end)
