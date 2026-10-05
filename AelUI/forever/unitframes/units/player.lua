@@ -35,4 +35,16 @@ ns.unitframes.units.spawn('player', function(f)
 	local leaderIcon = e.leaderIcon(f, healthbarBar)
 	leaderIcon:SetPoint('TOPLEFT', 4, 0)
 	leaderIcon:SetSize(24, 24)
+
+	local _, playerClass = UnitClass('player')
+	if playerClass == 'DRUID' then
+		local manabar = e.powerbar(f, {
+			powerType = Enum.PowerType.Mana,
+			onUpdate = function(self, state)
+				self:SetShown(state.displayType ~= state.powerType)
+			end,
+		})
+		manabar:SetPoint('TOPRIGHT', healthbar, 'BOTTOMRIGHT', 0, -2)
+		manabar:SetSize(140, 8)
+	end
 end)

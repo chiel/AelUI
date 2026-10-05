@@ -11,7 +11,6 @@ ns.unitframes.elements.nameText = function(f, parent, options)
 
 		if UnitIsDead(self.unit) or UnitIsGhost(self.unit) then
 			color = { 0.3, 0.3, 0.3 }
-			bar:SetValue(0)
 		elseif UnitIsPlayer(self.unit) then
 			local _, classToken = UnitClass(self.unit)
 

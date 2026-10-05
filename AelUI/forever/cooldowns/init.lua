@@ -1,0 +1,3 @@
+local _, ns = ...
+
+print('cooldowns: init')

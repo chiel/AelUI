@@ -1,3 +1,4 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Include file="cooldowns\load.xml"/>
 	<Include file="unitframes\load.xml"/>
 </Ui>
