@@ -1,10 +1,10 @@
 local _, ns = ...
 
 local Tracker = {}
-Tracker.__index = Tracker
 
 ns.trackers.createTracker = function(fn)
-	local tracker = setmetatable({}, Tracker)
+	local tracker = CreateFrame('Frame', nil, AelUIParent)
+	Mixin(tracker, Tracker)
 
 	fn(tracker)
 	tracker:Build()
@@ -19,19 +19,9 @@ function Tracker:Icon(...)
 end
 
 function Tracker:Build()
-	self.frame = CreateFrame('Frame', nil, AelUIParent)
-
 	if not self.display then
 		return
 	end
 
 	self.display:Build(self)
-end
-
-function Tracker:ClearAllPoints(...)
-	self.frame:ClearAllPoints(...)
-end
-
-function Tracker:SetPoint(...)
-	self.frame:SetPoint(...)
 end

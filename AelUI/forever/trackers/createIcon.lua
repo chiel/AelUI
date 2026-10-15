@@ -32,9 +32,9 @@ function Icon:Texture(texture)
 end
 
 function Icon:Build(tracker)
-	tracker.frame:SetSize(self.width, self.height)
+	tracker:SetSize(self.width, self.height)
 
-	self.texture = tracker.frame:CreateTexture(nil, 'ARTWORK')
+	self.texture = tracker:CreateTexture(nil, 'ARTWORK')
 	self.texture:SetAllPoints()
 	self.texture:SetTexture(self.textureId or 134400)
 
