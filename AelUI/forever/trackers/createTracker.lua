@@ -6,6 +6,7 @@ ns.trackers.createTracker = function(fn)
 	local tracker = CreateFrame('Frame', nil, AelUIParent)
 	Mixin(tracker, Tracker)
 	tracker.display = ns.trackers.createDisplay()
+	tracker.triggers = ns.trackers.createTriggers()
 
 	fn(tracker)
 	tracker:Build()
@@ -19,4 +20,5 @@ function Tracker:Build()
 	end
 
 	self.display:Build(self)
+	self.triggers:Build(self)
 end
