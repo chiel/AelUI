@@ -13,6 +13,12 @@ function Display:Build(tracker)
 	end
 end
 
+function Display:CooldownDuration(...)
+	if self.icon then
+		self.icon:CooldownDuration(...)
+	end
+end
+
 function Display:Icon(...)
 	self.icon = ns.trackers.display.createIcon(...)
 	return self.icon

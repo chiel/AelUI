@@ -20,6 +20,22 @@ function Icon:Color(color, override)
 	end
 end
 
+function Icon:Cooldown(cooldown)
+	self.cooldown = cooldown
+end
+
+function Icon:CooldownDuration(duration)
+	if not self.cooldownFrame then
+		return
+	end
+
+	if duration ~= nil then
+		self.cooldownFrame:SetCooldownFromDurationObject(duration)
+	else
+		self.cooldownFrame:Clear()
+	end
+end
+
 function Icon:Desaturate(desaturate, override)
 	if not override then
 		self.desaturate = desaturate
@@ -56,6 +72,18 @@ function Icon:Build(tracker)
 	self.texture = tracker:CreateTexture(nil, 'ARTWORK')
 	self.texture:SetAllPoints()
 	self.texture:SetTexture(self.textureId or 134400)
+
+	if self.cooldown then
+		local cd = CreateFrame('Cooldown', nil, tracker, 'CooldownFrameTemplate')
+		cd:SetAllPoints()
+		cd:SetDrawSwipe(true)
+		cd:SetSwipeColor(0, 0, 0, 0.7)
+		cd:SetDrawEdge(false)
+		cd:SetDrawBling(true)
+		cd:SetHideCountdownNumbers(true)
+		cd:Show()
+		self.cooldownFrame = cd
+	end
 
 	self:Reset()
 end

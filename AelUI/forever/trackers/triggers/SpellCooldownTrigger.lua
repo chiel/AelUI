@@ -19,6 +19,8 @@ ns.trackers.triggers.createSpellCooldownTrigger = function(spellId, options)
 end
 
 function SpellCooldownTrigger:Apply(tracker)
+	tracker.display:CooldownDuration(self.cooldownDuration)
+
 	if tracker.display.icon then
 		tracker.display.icon:Texture(C_Spell.GetSpellTexture(self.spellId))
 	end
@@ -70,12 +72,13 @@ function SpellCooldownTrigger:Update()
 	local cd = C_Spell.GetSpellCooldown(self.spellId)
 
 	if cd.isActive and not cd.isOnGCD then
+		self.cooldownDuration = C_Spell.GetSpellCooldownDuration(self.spellId)
 		self.state.isOnCooldown = true
-		local duration = C_Spell.GetSpellCooldownDuration(self.spellId)
 		if self.expiry then
-			self.expiry:SetCooldownFromDurationObject(duration)
+			self.expiry:SetCooldownFromDurationObject(self.cooldownDuration)
 		end
 	else
+		self.cooldownDuration = nil
 		self.state.isOnCooldown = false
 		if self.expiry then
 			self.expiry:Clear()
