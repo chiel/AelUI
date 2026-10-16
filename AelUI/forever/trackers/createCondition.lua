@@ -20,6 +20,10 @@ function Condition:ChangeColor(...)
 	tinsert(self.changes, ns.trackers.conditions.createChangeColor(...))
 end
 
+function Condition:ChangeDesaturate(...)
+	tinsert(self.changes, ns.trackers.conditions.createChangeDesaturate(...))
+end
+
 function Condition:CheckOnCooldown(...)
 	self.check = ns.trackers.conditions.createCheckOnCooldown(...)
 end
