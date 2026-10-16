@@ -12,3 +12,9 @@ function Triggers:Build(tracker)
 		trigger:Build(tracker)
 	end
 end
+
+function Triggers:SpellCooldown(...)
+	local trigger = ns.trackers.triggers.createSpellCooldownTrigger(...)
+	tinsert(self.entries, trigger)
+	return trigger
+end
