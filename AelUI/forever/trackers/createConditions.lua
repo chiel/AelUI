@@ -12,3 +12,11 @@ function Conditions:Add()
 	tinsert(self.entries, condition)
 	return condition
 end
+
+function Conditions:Apply(tracker)
+	for _, condition in ipairs(self.entries) do
+		if condition:Matches() then
+			condition:Apply(tracker)
+		end
+	end
+end

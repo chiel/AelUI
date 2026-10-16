@@ -33,4 +33,5 @@ end
 function Tracker:Update()
 	self.display:Reset(self)
 	self.triggers:Apply(self)
+	self.conditions:Apply(self)
 end

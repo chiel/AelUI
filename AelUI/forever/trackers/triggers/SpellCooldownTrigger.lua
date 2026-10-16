@@ -63,6 +63,10 @@ function SpellCooldownTrigger:IsActive()
 	return false
 end
 
+function SpellCooldownTrigger:IsOnCooldown()
+	return self.state.isOnCooldown
+end
+
 function SpellCooldownTrigger:Update()
 	local cd = C_Spell.GetSpellCooldown(self.spellId)
 
