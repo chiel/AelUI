@@ -5,7 +5,11 @@ ns.unitframes.elements.nameText = function(f, parent, options)
 
 	local function update(self)
 		local firstName, lastName = UnitName(self.unit)
-		text:SetText(firstName .. ' ' .. lastName)
+		local fullName = firstName
+		if lastName ~= nil then
+			fullName = firstName .. ' ' .. lastName
+		end
+		text:SetText(fullName)
 
 		local color = { 1, 1, 1 }
 
