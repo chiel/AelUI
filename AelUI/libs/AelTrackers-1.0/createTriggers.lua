@@ -1,9 +1,9 @@
-local _, ns = ...
+local lib = LibStub('AelTrackers-1.0')
 
 local Triggers = {}
 Triggers.__index = Triggers
 
-ns.trackers.createTriggers = function()
+lib.createTriggers = function()
 	return setmetatable({ entries = {} }, Triggers)
 end
 
@@ -27,7 +27,7 @@ function Triggers:Build(tracker)
 end
 
 function Triggers:SpellCooldown(...)
-	local trigger = ns.trackers.triggers.createSpellCooldownTrigger(...)
+	local trigger = lib.triggers.createSpellCooldownTrigger(...)
 	tinsert(self.entries, trigger)
 	return trigger
 end

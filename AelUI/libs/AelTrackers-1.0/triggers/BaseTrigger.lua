@@ -1,9 +1,9 @@
-local _, ns = ...
+local lib = LibStub('AelTrackers-1.0')
 
 local BaseTrigger = {}
 BaseTrigger.__index = BaseTrigger
 
-ns.trackers.triggers.BaseTrigger = BaseTrigger
+lib.triggers.BaseTrigger = BaseTrigger
 
 function BaseTrigger:Init()
 	self.watchers = {}

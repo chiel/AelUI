@@ -1,9 +1,9 @@
-local _, ns = ...
+local lib = LibStub('AelTrackers-1.0')
 
 local ChangeDesaturate = {}
 ChangeDesaturate.__index = ChangeDesaturate
 
-ns.trackers.conditions.createChangeDesaturate = function(target, value)
+lib.conditions.createChangeDesaturate = function(target, value)
 	assert(type(target.Desaturate) == 'function', 'ChangeDesaturate requires a target with Desaturate()')
 
 	return setmetatable({

@@ -1,9 +1,9 @@
-local _, ns = ...
+local lib = LibStub('AelTrackers-1.0')
 
 local CheckOnCooldown = {}
 CheckOnCooldown.__index = CheckOnCooldown
 
-ns.trackers.conditions.createCheckOnCooldown = function(trigger, value)
+lib.conditions.createCheckOnCooldown = function(trigger, value)
 	assert(type(trigger.IsOnCooldown) == 'function', 'CheckOnCooldown requires a trigger with IsOnCooldown()')
 
 	return setmetatable({

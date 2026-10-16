@@ -1,9 +1,9 @@
-local _, ns = ...
+local lib = LibStub('AelTrackers-1.0')
 
 local Display = {}
 Display.__index = Display
 
-ns.trackers.createDisplay = function()
+lib.createDisplay = function()
 	return setmetatable({}, Display)
 end
 
@@ -20,7 +20,7 @@ function Display:CooldownDuration(...)
 end
 
 function Display:Icon(...)
-	self.icon = ns.trackers.display.createIcon(...)
+	self.icon = lib.display.createIcon(...)
 	return self.icon
 end
 

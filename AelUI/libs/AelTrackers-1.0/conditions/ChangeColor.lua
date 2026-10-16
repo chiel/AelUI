@@ -1,9 +1,9 @@
-local _, ns = ...
+local lib = LibStub('AelTrackers-1.0')
 
 local ChangeColor = {}
 ChangeColor.__index = ChangeColor
 
-ns.trackers.conditions.createChangeColor = function(target, value)
+lib.conditions.createChangeColor = function(target, value)
 	assert(type(target.Color) == 'function', 'ChangeColor requires a target with Color()')
 
 	return setmetatable({

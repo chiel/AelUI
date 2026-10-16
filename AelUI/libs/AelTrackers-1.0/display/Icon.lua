@@ -1,9 +1,9 @@
-local _, ns = ...
+local lib = LibStub('AelTrackers-1.0')
 
 local Icon = {}
 Icon.__index = Icon
 
-ns.trackers.display.createIcon = function(width, height)
+lib.display.createIcon = function(width, height)
 	local i = setmetatable({}, Icon)
 	i:Size(width, height)
 

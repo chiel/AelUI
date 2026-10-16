@@ -1,12 +1,11 @@
-local _, ns = ...
-
+local lib = LibStub('AelTrackers-1.0')
 local AelEvents = LibStub('AelEvents-1.0')
 
 local SpellCooldownTrigger = {}
 SpellCooldownTrigger.__index = SpellCooldownTrigger
-setmetatable(SpellCooldownTrigger, { __index = ns.trackers.triggers.BaseTrigger })
+setmetatable(SpellCooldownTrigger, { __index = lib.triggers.BaseTrigger })
 
-ns.trackers.triggers.createSpellCooldownTrigger = function(spellId, options)
+lib.triggers.createSpellCooldownTrigger = function(spellId, options)
 	options = options or {}
 
 	local trigger = setmetatable({

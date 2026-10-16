@@ -1,9 +1,9 @@
-local _, ns = ...
+local lib = LibStub('AelTrackers-1.0')
 
 local Condition = {}
 Condition.__index = Condition
 
-ns.trackers.createCondition = function()
+lib.createCondition = function()
 	return setmetatable({
 		changes = {},
 		check = nil,
@@ -17,15 +17,15 @@ function Condition:Apply()
 end
 
 function Condition:ChangeColor(...)
-	tinsert(self.changes, ns.trackers.conditions.createChangeColor(...))
+	tinsert(self.changes, lib.conditions.createChangeColor(...))
 end
 
 function Condition:ChangeDesaturate(...)
-	tinsert(self.changes, ns.trackers.conditions.createChangeDesaturate(...))
+	tinsert(self.changes, lib.conditions.createChangeDesaturate(...))
 end
 
 function Condition:CheckOnCooldown(...)
-	self.check = ns.trackers.conditions.createCheckOnCooldown(...)
+	self.check = lib.conditions.createCheckOnCooldown(...)
 end
 
 function Condition:Matches()

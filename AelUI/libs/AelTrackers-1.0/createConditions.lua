@@ -1,14 +1,14 @@
-local _, ns = ...
+local lib = LibStub('AelTrackers-1.0')
 
 local Conditions = {}
 Conditions.__index = Conditions
 
-ns.trackers.createConditions = function()
+lib.createConditions = function()
 	return setmetatable({ entries = {} }, Conditions)
 end
 
 function Conditions:Add()
-	local condition = ns.trackers.createCondition()
+	local condition = lib.createCondition()
 	tinsert(self.entries, condition)
 	return condition
 end
