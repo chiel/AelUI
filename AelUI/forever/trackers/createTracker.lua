@@ -5,6 +5,7 @@ local Tracker = {}
 ns.trackers.createTracker = function(fn)
 	local tracker = CreateFrame('Frame', nil, AelUIParent)
 	Mixin(tracker, Tracker)
+	tracker.conditions = ns.trackers.createConditions()
 	tracker.display = ns.trackers.createDisplay()
 	tracker.triggers = ns.trackers.createTriggers()
 
