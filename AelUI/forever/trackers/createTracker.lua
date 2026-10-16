@@ -22,7 +22,7 @@ function Tracker:Build()
 
 	self.display:Build(self)
 	self.triggers:Build(self)
-
+	self.triggers:Update()
 	self.triggers:Watch(function()
 		self:Update()
 	end)

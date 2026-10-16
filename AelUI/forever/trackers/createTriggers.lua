@@ -32,6 +32,12 @@ function Triggers:SpellCooldown(...)
 	return trigger
 end
 
+function Triggers:Update()
+	for _, trigger in ipairs(self.entries) do
+		trigger:Update()
+	end
+end
+
 function Triggers:Watch(fn)
 	for _, trigger in ipairs(self.entries) do
 		trigger:Watch(fn)

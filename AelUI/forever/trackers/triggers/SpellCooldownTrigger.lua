@@ -14,7 +14,6 @@ ns.trackers.triggers.createSpellCooldownTrigger = function(spellId, options)
 	}, SpellCooldownTrigger)
 
 	trigger:Init()
-	trigger:Update()
 
 	return trigger
 end
