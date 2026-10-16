@@ -35,8 +35,10 @@ function Icon:Size(width, height)
 	self.height = height or width
 end
 
-function Icon:Texture(texture)
-	self.textureId = texture
+function Icon:Texture(texture, override)
+	if not override then
+		self.textureId = texture
+	end
 
 	if self.texture then
 		self.texture:SetTexture(texture)

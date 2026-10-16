@@ -22,4 +22,15 @@ function Tracker:Build()
 
 	self.display:Build(self)
 	self.triggers:Build(self)
+
+	self.triggers:Watch(function()
+		self:Update()
+	end)
+
+	self:Update()
+end
+
+function Tracker:Update()
+	self.display:Reset(self)
+	self.triggers:Apply(self)
 end

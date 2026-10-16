@@ -17,3 +17,9 @@ function Display:Icon(...)
 	self.icon = ns.trackers.display.createIcon(...)
 	return self.icon
 end
+
+function Display:Reset()
+	if self.icon then
+		self.icon:Reset()
+	end
+end

@@ -2,6 +2,7 @@ local _, ns = ...
 
 local SpellCooldownTrigger = {}
 SpellCooldownTrigger.__index = SpellCooldownTrigger
+setmetatable(SpellCooldownTrigger, { __index = ns.trackers.triggers.BaseTrigger })
 
 ns.trackers.triggers.createSpellCooldownTrigger = function(spellId, options)
 	options = options or {}
@@ -12,9 +13,16 @@ ns.trackers.triggers.createSpellCooldownTrigger = function(spellId, options)
 		spellId = spellId,
 	}, SpellCooldownTrigger)
 
+	trigger:Init()
 	trigger:Update()
 
 	return trigger
+end
+
+function SpellCooldownTrigger:Apply(tracker)
+	if tracker.display.icon then
+		tracker.display.icon:Texture(C_Spell.GetSpellTexture(self.spellId))
+	end
 end
 
 function SpellCooldownTrigger:Build(tracker)
@@ -25,6 +33,7 @@ function SpellCooldownTrigger:Build(tracker)
 	self.expiry:SetScript('OnCooldownDone', function()
 		C_Timer.After(0, function()
 			self:Update()
+			self:Notify()
 		end)
 	end)
 
@@ -32,7 +41,9 @@ function SpellCooldownTrigger:Build(tracker)
 		if spellId ~= self.spellId then
 			return
 		end
+
 		self:Update()
+		self:Notify()
 	end)
 end
 
