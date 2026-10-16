@@ -3,7 +3,7 @@ local _, ns = ...
 local Icon = {}
 Icon.__index = Icon
 
-ns.trackers.createIcon = function(width, height)
+ns.trackers.display.createIcon = function(width, height)
 	local i = setmetatable({}, Icon)
 	i:Size(width, height)
 
