@@ -16,6 +16,10 @@ function Condition:Apply()
 	end
 end
 
+function Condition:ChangeColor(...)
+	tinsert(self.changes, ns.trackers.conditions.createChangeColor(...))
+end
+
 function Condition:CheckOnCooldown(...)
 	self.check = ns.trackers.conditions.createCheckOnCooldown(...)
 end
