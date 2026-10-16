@@ -10,12 +10,24 @@ ns.trackers.createIcon = function(width, height)
 	return i
 end
 
-function Icon:Color(r, g, b, a)
-	self.color = { r, g, b, a == nil and 1 or a }
+function Icon:Color(color, override)
+	if not override then
+		self.color = color
+	end
+
+	if self.texture then
+		self.texture:SetVertexColor(unpack(color))
+	end
 end
 
-function Icon:Desaturate(value)
-	self.desaturate = value
+function Icon:Desaturate(desaturate, override)
+	if not override then
+		self.desaturate = desaturate
+	end
+
+	if self.texture then
+		self.texture:SetDesaturated(desaturate)
+	end
 end
 
 function Icon:Size(width, height)
@@ -31,6 +43,11 @@ function Icon:Texture(texture)
 	end
 end
 
+function Icon:Reset()
+	self.texture:SetVertexColor(unpack(self.color or { 1, 1, 1, 1 }))
+	self.texture:SetDesaturated(self.desaturate or false)
+end
+
 function Icon:Build(tracker)
 	tracker:SetSize(self.width, self.height)
 
@@ -38,11 +55,5 @@ function Icon:Build(tracker)
 	self.texture:SetAllPoints()
 	self.texture:SetTexture(self.textureId or 134400)
 
-	if self.color then
-		self.texture:SetVertexColor(unpack(self.color))
-	end
-
-	if self.desaturate then
-		self.texture:SetDesaturated(self.desaturate)
-	end
+	self:Reset()
 end
