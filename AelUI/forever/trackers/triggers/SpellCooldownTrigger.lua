@@ -1,5 +1,7 @@
 local _, ns = ...
 
+local AelEvents = LibStub('AelEvents-1.0')
+
 local SpellCooldownTrigger = {}
 SpellCooldownTrigger.__index = SpellCooldownTrigger
 setmetatable(SpellCooldownTrigger, { __index = ns.trackers.triggers.BaseTrigger })
@@ -38,7 +40,7 @@ function SpellCooldownTrigger:Build(tracker)
 		end)
 	end)
 
-	ns.events.on('SPELL_UPDATE_COOLDOWN', function(_, spellId)
+	AelEvents.on('SPELL_UPDATE_COOLDOWN', function(_, spellId)
 		if spellId ~= self.spellId then
 			return
 		end

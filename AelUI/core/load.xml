@@ -1,6 +1,5 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="colors.lua"/>
-	<Include file="events\load.xml"/>
 	<Script file="parent.lua"/>
 	<Script file="media\init.lua"/>
 	<Include file="utils\load.xml"/>

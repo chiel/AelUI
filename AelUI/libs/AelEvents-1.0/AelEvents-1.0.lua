@@ -1,11 +1,16 @@
-local _, ns = ...
+local MAJOR, MINOR = 'AelEvents-1.0', 10000
+local lib = LibStub:NewLibrary(MAJOR, MINOR)
+if not lib then
+	return
+end
 
-local events = ns.events
-
-local frames = {}
-local listeners = {
+lib.frames = lib.frames or {}
+lib.listeners = lib.listeners or {
 	global = {},
 }
+
+local frames = lib.frames
+local listeners = lib.listeners
 
 local function dispatch(ls, event, ...)
 	for _, fn in ipairs(ls[event]) do
@@ -13,7 +18,7 @@ local function dispatch(ls, event, ...)
 	end
 end
 
-events.on = function(event, unit, fn)
+lib.on = function(event, unit, fn)
 	if fn == nil then
 		fn = unit
 		unit = nil
