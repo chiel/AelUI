@@ -2,5 +2,6 @@
 	<Script file="init.lua"/>
 	<Script file="ChangeColor.lua"/>
 	<Script file="ChangeDesaturate.lua"/>
+	<Script file="CheckInRange.lua"/>
 	<Script file="CheckOnCooldown.lua"/>
 </Ui>

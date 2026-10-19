@@ -24,6 +24,10 @@ function Condition:ChangeDesaturate(...)
 	tinsert(self.changes, lib.conditions.createChangeDesaturate(...))
 end
 
+function Condition:CheckInRange(...)
+	self.check = lib.conditions.createCheckInRange(...)
+end
+
 function Condition:CheckOnCooldown(...)
 	self.check = lib.conditions.createCheckOnCooldown(...)
 end
