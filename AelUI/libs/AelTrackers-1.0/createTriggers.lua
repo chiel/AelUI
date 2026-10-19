@@ -32,6 +32,12 @@ function Triggers:SpellCooldown(...)
 	return trigger
 end
 
+function Triggers:Spell(...)
+	local trigger = lib.triggers.createSpellTrigger(...)
+	tinsert(self.entries, trigger)
+	return trigger
+end
+
 function Triggers:Update()
 	for _, trigger in ipairs(self.entries) do
 		trigger:Update()
