@@ -38,7 +38,11 @@ ns.unitframes.elements.healthbar = function(f, options)
 			end
 		end
 
-		bg:SetVertexColor(color[1] * 0.75, color[2] * 0.75, color[3] * 0.75)
+		if issecretvalue(color[1]) then
+			bg:SetVertexColor(color[1], color[2], color[3])
+		else
+			bg:SetVertexColor(color[1] * 0.75, color[2] * 0.75, color[3] * 0.75)
+		end
 		bar:SetStatusBarColor(unpack(defaultBarColor))
 	end
 
