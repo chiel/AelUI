@@ -4,12 +4,22 @@ local Display = {}
 Display.__index = Display
 
 lib.createDisplay = function()
-	return setmetatable({}, Display)
+	return setmetatable({ elements = {} }, Display)
+end
+
+function Display:Border(...)
+	local border = lib.display.createBorder()
+	tinsert(self.elements, border)
+	return border
 end
 
 function Display:Build(tracker)
 	if self.icon then
 		self.icon:Build(tracker)
+	end
+
+	for _, element in ipairs(self.elements) do
+		element:Build(tracker)
 	end
 end
 
@@ -33,5 +43,9 @@ end
 function Display:Reset()
 	if self.icon then
 		self.icon:Reset()
+	end
+
+	for _, element in ipairs(self.elements) do
+		element:Reset()
 	end
 end
