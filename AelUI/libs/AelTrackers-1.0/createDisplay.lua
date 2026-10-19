@@ -24,6 +24,12 @@ function Display:Icon(...)
 	return self.icon
 end
 
+function Display:IconTexture(...)
+	if self.icon then
+		self.icon:Texture(...)
+	end
+end
+
 function Display:Reset()
 	if self.icon then
 		self.icon:Reset()
