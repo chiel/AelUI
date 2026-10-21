@@ -20,7 +20,7 @@ f.state = state
 f.updateEquipment = function()
 	local itemID = GetInventoryItemID('player', f.mainhandSlot)
 	if itemID then
-		local subclassID = select(7, GetItemInfoInstant(itemID))
+		local subclassID = select(7, C_Item.GetItemInfoInstant(itemID))
 		state.hasPole = subclassID == 20
 	else
 		state.hasPole = false
@@ -34,10 +34,10 @@ f.updateLures = function()
 
 	for _, lure in ipairs(LURES) do
 		local id, bonus = lure[1], lure[2]
-		local count = GetItemCount(id)
+		local count = C_Item.GetItemCount(id)
 		if count > 0 then
-			local name = GetItemInfo(id)
-			local icon = GetItemIcon(id)
+			local name = C_Item.GetItemInfo(id)
+			local icon = C_Item.GetItemIcon(id)
 			if name then
 				table.insert(lures, {
 					id = id,
