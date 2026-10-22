@@ -6,7 +6,7 @@ ns.unitframes.elements.nameText = function(f, parent, options)
 	local function update(self)
 		local firstName, lastName = UnitName(self.unit)
 		local fullName = firstName
-		if lastName ~= nil then
+		if lastName ~= nil and options.includeLast then
 			fullName = firstName .. ' ' .. lastName
 		end
 		text:SetText(fullName)
