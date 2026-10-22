@@ -9,7 +9,7 @@ ns.unitframes.units.spawn('target', function(f)
 	local healthbar, healthbarBar = e.healthbar(f)
 	healthbar:SetAllPoints()
 
-	local name = e.nameText(f, healthbarBar, { fontSize = 24 })
+	local name = e.nameText(f, healthbarBar, { fontSize = 24, includeLast = true })
 	name:SetPoint('BOTTOMRIGHT', healthbar, 'BOTTOMRIGHT', -6, 0)
 
 	local hpPct = e.healthPercentText(f, healthbarBar, { fontSize = 20 })
