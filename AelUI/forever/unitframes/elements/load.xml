@@ -8,4 +8,5 @@
 	<Script file="leaderIcon.lua"/>
 	<Script file="nameText.lua"/>
 	<Script file="powerbar.lua"/>
+	<Script file="range.lua"/>
 </Ui>
