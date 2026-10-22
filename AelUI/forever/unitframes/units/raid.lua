@@ -17,6 +17,9 @@ local function style(f)
 	healthbar:SetPoint('TOPLEFT')
 	healthbar:SetPoint('BOTTOMRIGHT', powerbar, 'TOPRIGHT', 0, -1)
 
+	local name = e.nameText(f, healthbarBar, { maxLength = 6 })
+	name:SetPoint('BOTTOM', 0, 4)
+
 	e.range(f)
 end
 
