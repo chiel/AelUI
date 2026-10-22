@@ -1,5 +1,7 @@
 local _, ns = ...
 
+local h = ns.unitframes.helpers
+
 ns.unitframes.units.spawn = function(unit, fn)
 	local name = 'AelUI' .. unit:sub(1, 1):upper() .. unit:sub(2) .. 'Frame'
 	local f = CreateFrame('Button', name, AelUIParent, 'SecureUnitButtonTemplate, PingableUnitFrameTemplate')
@@ -15,40 +17,7 @@ ns.unitframes.units.spawn = function(unit, fn)
 
 	RegisterUnitWatch(f)
 
-	f.eventCallbacks = {}
-	f.updaters = {}
-
-	f:SetScript('OnEvent', function(self, event, ...)
-		if self.eventCallbacks[event] then
-			for _, cb in ipairs(self.eventCallbacks[event]) do
-				cb(self, event, ...)
-			end
-		end
-	end)
-
-	f.RegisterCallback = function(self, event, cb)
-		if not self.eventCallbacks[event] then
-			self.eventCallbacks[event] = {}
-			if event:match('^UNIT_') then
-				self:RegisterUnitEvent(event, f.unit)
-			else
-				self:RegisterEvent(event)
-			end
-		end
-		table.insert(self.eventCallbacks[event], cb)
-
-		f.updaters[cb] = true
-	end
-
-	f.Update = function(self)
-		for cb in pairs(self.updaters) do
-			cb(self)
-		end
-	end
-
-	f:SetScript('OnShow', function(self)
-		self:Update()
-	end)
+	h.addCallbacks(f)
 
 	if unit == 'target' then
 		f:RegisterEvent('PLAYER_TARGET_CHANGED')
