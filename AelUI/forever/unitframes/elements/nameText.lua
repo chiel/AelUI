@@ -1,14 +1,20 @@
 local _, ns = ...
 
 ns.unitframes.elements.nameText = function(f, parent, options)
+	options = options or {}
 	local text = ns.unitframes.elements.text(parent or f, options)
 
 	local function update(self)
 		local firstName, lastName = UnitName(self.unit)
 		local fullName = firstName
-		if lastName ~= nil and options.includeLast then
+		if lastName ~= nil and options.includeLast and not options.maxLength then
 			fullName = firstName .. ' ' .. lastName
 		end
+
+		if options.maxLength and fullName then
+			fullName = fullName:utf8sub(1, options.maxLength)
+		end
+
 		text:SetText(fullName)
 
 		local color = { 1, 1, 1 }
