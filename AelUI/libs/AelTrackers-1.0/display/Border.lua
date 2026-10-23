@@ -7,9 +7,11 @@ lib.display.createBorder = function(width, height)
 	return setmetatable({}, Border)
 end
 
-function Border:Build(tracker)
+function Border:Build(tracker, level)
 	self.border = CreateFrame('Frame', nil, tracker, 'BackdropTemplate')
 	self.border:SetAllPoints()
+	self.border:SetFrameLevel(level)
+
 	self.border:SetBackdrop({
 		edgeFile = [[Interface\Buttons\WHITE8X8]],
 		edgeSize = 1,

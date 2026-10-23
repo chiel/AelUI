@@ -14,8 +14,9 @@ function Display:Border(...)
 end
 
 function Display:Build(tracker)
+	local baseLevel = tracker:GetFrameLevel()
 	for index, element in ipairs(self.elements) do
-		element:Build(tracker)
+		element:Build(tracker, baseLevel + index)
 	end
 end
 

@@ -66,12 +66,13 @@ function Icon:Reset()
 	self.texture:SetDesaturated(self.desaturate or false)
 end
 
-function Icon:Build(tracker)
+function Icon:Build(tracker, level)
 	tracker:SetSize(self.width, self.height)
 
 	self.frame = CreateFrame('Frame', nil, tracker)
 	self.frame:SetPoint('TOPLEFT')
 	self.frame:SetSize(self.width, self.height)
+	self.frame:SetFrameLevel(level)
 
 	self.texture = self.frame:CreateTexture(nil, 'ARTWORK')
 	self.texture:SetAllPoints()
