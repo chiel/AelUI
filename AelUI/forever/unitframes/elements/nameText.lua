@@ -19,7 +19,7 @@ ns.unitframes.elements.nameText = function(f, parent, options)
 
 		local color = { 1, 1, 1 }
 
-		if UnitIsDead(self.unit) or UnitIsGhost(self.unit) then
+		if options.colorDead and (UnitIsDead(self.unit) or UnitIsGhost(self.unit)) then
 			color = { 0.3, 0.3, 0.3 }
 		elseif UnitIsPlayer(self.unit) then
 			local _, classToken = UnitClass(self.unit)
@@ -43,6 +43,10 @@ ns.unitframes.elements.nameText = function(f, parent, options)
 
 	f:RegisterCallback('UNIT_FACTION', update)
 	f:RegisterCallback('UNIT_NAME_UPDATE', update)
+
+	if options.colorDead then
+		f:RegisterCallback('UNIT_HEALTH', update)
+	end
 
 	update(f)
 
