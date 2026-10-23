@@ -3,7 +3,7 @@ local lib = LibStub('AelTrackers-1.0')
 local Border = {}
 Border.__index = Border
 
-lib.display.createBorder = function(width, height)
+lib.display.createBorder = function()
 	return setmetatable({}, Border)
 end
 
