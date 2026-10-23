@@ -9,7 +9,7 @@ ns.anchors.create = function(name)
 	local anchor = CreateFrame('Frame', name, AelUIParent)
 
 	local function update()
-		if UnitAffectingCombat('player') then
+		if currentWidth ~= -1 and InCombatLockdown() then
 			return
 		end
 
