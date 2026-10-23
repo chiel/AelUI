@@ -20,6 +20,10 @@ local function style(f)
 	local name = e.nameText(f, healthbarBar, { maxLength = 6 })
 	name:SetPoint('BOTTOM', 0, 4)
 
+	local leaderIcon = e.leaderIcon(f, healthbarBar, { leaderOnly = true })
+	leaderIcon:SetPoint('TOPLEFT', 4, 0)
+	leaderIcon:SetSize(16, 16)
+
 	e.range(f)
 end
 
