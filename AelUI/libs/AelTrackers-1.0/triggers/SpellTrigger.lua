@@ -4,9 +4,12 @@ local SpellTrigger = {}
 SpellTrigger.__index = SpellTrigger
 setmetatable(SpellTrigger, { __index = lib.triggers.BaseTrigger })
 
-lib.triggers.createSpellTrigger = function(spellId)
+lib.triggers.createSpellTrigger = function(spellId, options)
+	options = options or {}
+
 	local trigger = setmetatable({
 		state = {},
+		icon = options.icon,
 		spellId = spellId,
 	}, SpellTrigger)
 
@@ -23,7 +26,9 @@ SpellTrigger.attributes = {
 }
 
 function SpellTrigger:Apply(tracker)
-	tracker.display:IconTexture(C_Spell.GetSpellTexture(self.spellId))
+	if self.icon then
+		icon:Texture(C_Spell.GetSpellTexture(self.spellId))
+	end
 end
 
 function SpellTrigger:Build(tracker)

@@ -14,37 +14,18 @@ function Display:Border(...)
 end
 
 function Display:Build(tracker)
-	if self.icon then
-		self.icon:Build(tracker)
-	end
-
-	for _, element in ipairs(self.elements) do
+	for index, element in ipairs(self.elements) do
 		element:Build(tracker)
 	end
 end
 
-function Display:CooldownDuration(...)
-	if self.icon then
-		self.icon:CooldownDuration(...)
-	end
-end
-
 function Display:Icon(...)
-	self.icon = lib.display.createIcon(...)
-	return self.icon
-end
-
-function Display:IconTexture(...)
-	if self.icon then
-		self.icon:Texture(...)
-	end
+	local icon = lib.display.createIcon(...)
+	tinsert(self.elements, icon)
+	return icon
 end
 
 function Display:Reset()
-	if self.icon then
-		self.icon:Reset()
-	end
-
 	for _, element in ipairs(self.elements) do
 		element:Reset()
 	end

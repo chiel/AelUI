@@ -10,6 +10,7 @@ lib.triggers.createSpellCooldownTrigger = function(spellId, options)
 
 	local trigger = setmetatable({
 		state = { isOnCooldown = false },
+		icon = options.icon,
 		show = options.show or 'always',
 		spellId = spellId,
 	}, SpellCooldownTrigger)
@@ -20,10 +21,9 @@ lib.triggers.createSpellCooldownTrigger = function(spellId, options)
 end
 
 function SpellCooldownTrigger:Apply(tracker)
-	tracker.display:CooldownDuration(self.cooldownDuration)
-
-	if tracker.display.icon then
-		tracker.display.icon:Texture(C_Spell.GetSpellTexture(self.spellId))
+	if self.icon then
+		self.icon:Texture(C_Spell.GetSpellTexture(self.spellId))
+		self.icon:CooldownDuration(self.cooldownDuration)
 	end
 end
 

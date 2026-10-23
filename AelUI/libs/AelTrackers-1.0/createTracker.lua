@@ -16,10 +16,6 @@ lib.createTracker = function(fn)
 end
 
 function Tracker:Build()
-	if not self.display.icon then
-		return
-	end
-
 	self.display:Build(self)
 	self.triggers:Build(self)
 	self.triggers:Update()
