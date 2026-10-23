@@ -10,7 +10,7 @@ ns.unitframes.elements.powerbar = function(f, options)
 	local function update(self)
 		local powerType = UnitPowerType(self.unit)
 		local displayType = o.powerType ~= nil and o.powerType or powerType
-		local pct = UnitPowerPercent(self.unit, powerType, false, CurveConstants.ZeroToOne)
+		local pct = UnitPowerPercent(self.unit, displayType, false, CurveConstants.ZeroToOne)
 
 		bar:SetMinMaxValues(0, 1)
 		bar:SetValue(pct)
