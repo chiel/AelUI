@@ -69,17 +69,20 @@ end
 function Icon:Build(tracker)
 	tracker:SetSize(self.width, self.height)
 
-	self.texture = tracker:CreateTexture(nil, 'ARTWORK')
+	self.frame = CreateFrame('Frame', nil, tracker)
+	self.frame:SetPoint('TOPLEFT')
+	self.frame:SetSize(self.width, self.height)
+
+	self.texture = self.frame:CreateTexture(nil, 'ARTWORK')
 	self.texture:SetAllPoints()
 	self.texture:SetTexture(self.textureId or 134400)
 
 	if self.cooldown then
-		local cd = CreateFrame('Cooldown', nil, tracker, 'CooldownFrameTemplate')
+		local cd = CreateFrame('Cooldown', nil, self.frame, 'CooldownFrameTemplate')
 		cd:SetAllPoints()
 		cd:SetDrawSwipe(true)
 		cd:SetSwipeColor(0, 0, 0, 0.7)
 		cd:SetDrawEdge(false)
-		cd:SetDrawBling(true)
 		cd:SetHideCountdownNumbers(true)
 		cd:Show()
 		self.cooldownFrame = cd
