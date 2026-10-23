@@ -19,7 +19,7 @@ local pc = config.primary
 local sc = config.secondary
 
 local primary = ns.anchors.create('AelUIPrimaryAnchor')
-primary:SetPoint('TOP', AelUIParent, 'CENTER', 0, -280)
+primary:SetPoint('TOP', AelUIParent, 'CENTER', 0, -360)
 primary:SetMinWidth((pc.minIcons * pc.width) + ((pc.minIcons - 1) * pc.spacing))
 primary:SetHeight(pc.height)
 
