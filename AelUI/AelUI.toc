@@ -11,5 +11,5 @@ formatters\load.xml
 utils\load.xml
 anchors\load.xml
 fishing\load.xml
+unitframes\load.xml
 trackers\load.xml
-forever\load.xml
