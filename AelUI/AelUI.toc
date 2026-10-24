@@ -5,5 +5,6 @@
 
 libs\load.xml
 colors.lua
+parent.lua
 core\load.xml
 forever\load.xml
