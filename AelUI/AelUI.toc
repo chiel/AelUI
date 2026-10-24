@@ -8,5 +8,6 @@ colors.lua
 parent.lua
 media\init.lua
 formatters\load.xml
+utils\load.xml
 core\load.xml
 forever\load.xml
