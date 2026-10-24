@@ -2,4 +2,5 @@
 	<Script file="init.lua"/>
 	<Script file="Border.lua"/>
 	<Script file="Icon.lua"/>
+	<Script file="Text.lua"/>
 </Ui>

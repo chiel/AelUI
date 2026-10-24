@@ -31,3 +31,9 @@ function Display:Reset()
 		element:Reset()
 	end
 end
+
+function Display:Text(...)
+	local text = lib.display.createText(...)
+	tinsert(self.elements, text)
+	return text
+end
