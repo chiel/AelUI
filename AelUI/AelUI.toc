@@ -7,5 +7,6 @@ libs\load.xml
 colors.lua
 parent.lua
 media\init.lua
+formatters\load.xml
 core\load.xml
 forever\load.xml
