@@ -32,12 +32,6 @@ function Triggers:Build(tracker)
 	end
 end
 
-function Triggers:SpellCooldown(...)
-	local trigger = lib.triggers.createSpellCooldownTrigger(...)
-	tinsert(self.entries, trigger)
-	return trigger
-end
-
 function Triggers:Spell(...)
 	local trigger = lib.triggers.createSpellTrigger(...)
 	tinsert(self.entries, trigger)

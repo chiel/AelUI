@@ -8,9 +8,18 @@ end
 
 local wotf = AelTrackers.createTracker(function(t)
 	local icon = t.display:Icon(42, 42)
-	icon:Cooldown({})
+	icon:Cooldown()
 
-	local spell = t.triggers:SpellCooldown(7744)
+	local border = t.display:Border()
+	border:Color({ 0, 0, 0 })
+
+	local progress = t.display:Text()
+	progress:Point('BOTTOM', 0, -2)
+
+	local spell = t.triggers:Spell(7744, {
+		durations = { icon, progress },
+		icon = icon,
+	})
 
 	local cond = t.conditions:Add()
 	cond:CheckOnCooldown(spell, true)
