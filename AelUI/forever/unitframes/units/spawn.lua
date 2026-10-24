@@ -26,6 +26,15 @@ ns.unitframes.units.spawn = function(unit, fn)
 				self:Update()
 			end,
 		}
+	elseif unit == 'pet' then
+		f:RegisterEvent('UNIT_PET')
+		f.eventCallbacks['UNIT_PET'] = {
+			function(self, event, unit)
+				if unit == 'player' then
+					self:Update()
+				end
+			end,
+		}
 	end
 
 	fn(f)
