@@ -20,6 +20,17 @@ local function style(f)
 	local name = e.nameText(f, healthbarBar, { maxLength = 6 })
 	name:SetPoint('BOTTOM', 0, 4)
 
+	-- local buffs = e.auras(f, 'HELPFUL', { initialAnchor = 'TOPRIGHT', growthX = 'LEFT', filter = buffFilter })
+	-- buffs:SetPoint('TOPRIGHT', healthbarBar, 'TOPRIGHT', -1, -1)
+	-- local debuffs = e.auras(f, 'HARMFUL', { initialAnchor = 'TOPLEFT' })
+	-- debuffs:SetPoint('TOPLEFT', healthbarBar, 'TOPLEFT', 1, -1)
+
+	-- local marker = e.raidmarker(f, healthbarBar, { size = 16 })
+	-- marker:SetPoint('BOTTOMRIGHT', healthbarBar, 'BOTTOMRIGHT', -4, 4)
+
+	-- e.threat(f, { parent = healthbarBar })
+	-- e.selection(f)
+
 	local leaderIcon = e.leaderIcon(f, healthbarBar, { leaderOnly = true })
 	leaderIcon:SetPoint('TOPLEFT', 4, 0)
 	leaderIcon:SetSize(16, 16)

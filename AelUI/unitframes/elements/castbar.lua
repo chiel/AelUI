@@ -2,7 +2,8 @@ local _, ns = ...
 
 local u = ns.utils
 
-local GCD_SPELL_ID = 29515
+-- local GCD_SPELL_ID = 29515
+local GCD_SPELL_ID = WOW_PROJECT_ID == WOW_PROJECT_MAINLINE and 61304 or 29515
 local defaultBarColor = { 35 / 255, 35 / 255, 35 / 255 }
 
 ns.unitframes.elements.castbar = function(f, options)

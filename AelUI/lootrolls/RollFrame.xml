@@ -1,0 +1,146 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Button name="AelUILootRollButtonTemplate" virtual="true">
+		<Size x="28" y="28"/>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture parentKey="icon" alpha="0.8">
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+						<Anchor point="BOTTOMRIGHT"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Button>
+
+	<Frame name="AelUILootRollFrameTemplate" mixin="AelUILootRollFrameMixin" virtual="true" hidden="true">
+		<Size x="500" y="40"/>
+		<Frames>
+			<Frame parentKey="icon" enableMouse="true">
+				<Size x="40" y="40"/>
+				<Anchors>
+					<Anchor point="LEFT"/>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture setAllPoints="true">
+							<Color r="0" g="0" b="0" a="1"/>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<Texture parentKey="texture">
+							<Anchors>
+								<Anchor point="TOPLEFT" x="1" y="-1"/>
+								<Anchor point="BOTTOMRIGHT" x="-1" y="1"/>
+							</Anchors>
+						</Texture>
+					</Layer>
+					<Layer level="OVERLAY">
+						<FontString parentKey="stacks" font="Interface\AddOns\AelUI\core\media\fonts\PTSansNarrow-Bold.ttf" outline="NORMAL">
+							<FontHeight val="14"/>
+							<Anchors>
+								<Anchor point="TOPRIGHT" x="4" y="1"/>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+			<Frame parentKey="barBd">
+				<Size y="14"/>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeKey="$parent.icon" relativePoint="BOTTOMRIGHT" x="2"/>
+					<Anchor point="BOTTOMRIGHT"/>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture setAllPoints="true">
+							<Color r="0" g="0" b="0" a="1"/>
+						</Texture>
+					</Layer>
+					<Layer level="BORDER">
+						<Texture parentKey="bg" file="Interface\Buttons\WHITE8X8">
+							<Color r="0.15" g="0.15" b="0.15"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" x="1" y="-1"/>
+								<Anchor point="BOTTOMRIGHT" x="-1" y="1"/>
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Frames>
+					<StatusBar parentKey="bar" minValue="0" maxValue="1" defaultValue="1">
+						<Anchors>
+							<Anchor point="TOPLEFT" x="1" y="-1"/>
+							<Anchor point="BOTTOMRIGHT" x="-1" y="1"/>
+						</Anchors>
+						<BarTexture file="Interface\AddOns\AelUI\core\media\statusbars\statusbar"/>
+					</StatusBar>
+				</Frames>
+			</Frame>
+			<Button parentKey="passBtn" inherits="AelUILootRollButtonTemplate" id="0">
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativeKey="$parent.barBd" relativePoint="TOPRIGHT" x="-2"/>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture parentKey="icon" file="Interface\RAIDFRAME\ReadyCheck-NotReady">
+							<Anchors>
+								<Anchor point="TOPLEFT" y="-2"/>
+								<Anchor point="BOTTOMRIGHT" y="-2"/>
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+			</Button>
+			<Button parentKey="greedBtn" inherits="AelUILootRollButtonTemplate" id="2">
+				<Anchors>
+					<Anchor point="RIGHT" relativeKey="$parent.passBtn" relativePoint="LEFT" x="-12"/>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture parentKey="icon" file="Interface\Buttons\UI-GroupLoot-Coin-Up">
+							<Anchors>
+								<Anchor point="TOPLEFT" y="-5"/>
+								<Anchor point="BOTTOMRIGHT" y="-5"/>
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+			</Button>
+			<Button parentKey="needBtn" inherits="AelUILootRollButtonTemplate" id="1">
+				<Anchors>
+					<Anchor point="RIGHT" relativeKey="$parent.greedBtn" relativePoint="LEFT" x="-12"/>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture parentKey="icon" file="Interface\Buttons\UI-GroupLoot-Dice-Up">
+							<Anchors>
+								<Anchor point="TOPLEFT" y="-3"/>
+								<Anchor point="BOTTOMRIGHT" y="-3"/>
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+			</Button>
+		</Frames>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString parentKey="bind" font="Interface\AddOns\AelUI\core\media\fonts\PTSansNarrow-Bold.ttf" outline="NORMAL">
+					<FontHeight val="14"/>
+					<Color r="0.8" g="0.6" b="0.6"/>
+					<Anchors>
+						<Anchor point="RIGHT" relativeKey="$parent.needBtn" relativePoint="LEFT" x="-6" y="-4"/>
+					</Anchors>
+				</FontString>
+				<FontString parentKey="name" font="Interface\AddOns\AelUI\core\media\fonts\PTSansNarrow-Regular.ttf" outline="NORMAL" justifyH="LEFT">
+					<FontHeight val="18"/>
+					<Color r="1" g="1" b="1" a="1"/>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeKey="$parent.barBd" relativePoint="TOPLEFT" x="2" y="2"/>
+						<Anchor point="RIGHT" relativeKey="$parent.bind" relativePoint="LEFT" x="-6"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+	</Frame>
+</Ui>
