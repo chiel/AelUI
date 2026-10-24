@@ -10,7 +10,7 @@ lib.triggers.createSpellCooldownTrigger = function(spellId, options)
 
 	local trigger = setmetatable({
 		state = { isOnCooldown = false },
-		durations = options.durations,
+		durations = options.durations or {},
 		icon = options.icon,
 		show = options.show or 'always',
 		spellId = spellId,
