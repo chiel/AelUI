@@ -27,7 +27,7 @@ SpellTrigger.attributes = {
 
 function SpellTrigger:Apply(tracker)
 	if self.icon then
-		icon:Texture(C_Spell.GetSpellTexture(self.spellId))
+		self.icon:Texture(C_Spell.GetSpellTexture(self.spellId))
 	end
 end
 
