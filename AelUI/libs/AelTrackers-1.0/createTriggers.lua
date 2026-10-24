@@ -20,6 +20,12 @@ function Triggers:Apply(tracker)
 	tracker:SetShown(hasActiveTrigger)
 end
 
+function Triggers:Aura(...)
+	local trigger = lib.triggers.createAuraTrigger(...)
+	tinsert(self.entries, trigger)
+	return trigger
+end
+
 function Triggers:Build(tracker)
 	for _, trigger in ipairs(self.entries) do
 		trigger:Build(tracker)
