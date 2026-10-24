@@ -24,7 +24,7 @@ function Icon:Cooldown(cooldown)
 	self.cooldown = cooldown
 end
 
-function Icon:CooldownDuration(duration)
+function Icon:Duration(duration)
 	if not self.cooldownFrame then
 		return
 	end

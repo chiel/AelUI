@@ -23,7 +23,7 @@ end
 function SpellCooldownTrigger:Apply(tracker)
 	if self.icon then
 		self.icon:Texture(C_Spell.GetSpellTexture(self.spellId))
-		self.icon:CooldownDuration(self.cooldownDuration)
+		self.icon:Duration(self.cooldownDuration)
 	end
 end
 
