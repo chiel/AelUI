@@ -3,6 +3,7 @@ local lib = LibStub('AelTrackers-1.0')
 local Text = {}
 Text.__index = Text
 
+lib.display.Text = Text
 lib.display.createText = function(options)
 	options = options or {}
 
@@ -12,13 +13,17 @@ lib.display.createText = function(options)
 end
 
 function Text:Build(tracker, level)
-	self.frame = CreateFrame('Frame', nil, tracker)
+	self:BuildInto(tracker, level)
+end
+
+function Text:BuildInto(target, level)
+	self.frame = CreateFrame('Frame', nil, target)
 	self.frame:SetFrameLevel(level)
 	self.frame:SetAllPoints()
 
 	local font = lib.defaults.text.font
 	self.text = self.frame:CreateFontString(nil, 'OVERLAY')
-	self.text:SetPoint('BOTTOM', 0, -6)
+	self.text:SetPoint(unpack(self.point or { 'CENTER', 0, -2 }))
 	self.text:SetFont(self.font.file or font.file, self.font.size or font.size, self.font.flags or font.flags)
 
 	self:Reset()
@@ -37,6 +42,14 @@ function Text:Duration(duration)
 	end
 
 	self.binding:SetDuration(duration)
+end
+
+function Text:Point(...)
+	self.point = { ... }
+
+	if self.text then
+		self.text:SetPoint(...)
+	end
 end
 
 function Text:Reset() end

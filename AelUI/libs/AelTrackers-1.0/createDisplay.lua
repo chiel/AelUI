@@ -13,6 +13,12 @@ function Display:AuraIcon(...)
 	return icon
 end
 
+function Display:AuraText(...)
+	local text = lib.display.createAuraText(...)
+	tinsert(self.elements, text)
+	return text
+end
+
 function Display:Border(...)
 	local border = lib.display.createBorder()
 	tinsert(self.elements, border)
