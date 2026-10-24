@@ -18,22 +18,22 @@ ns.media = {
 	fonts = {
 		default = {
 			name = 'AelUI',
-			file = [[Interface\AddOns\AelUI\core\media\fonts\PTSansNarrow-Regular.ttf]],
+			file = [[Interface\AddOns\AelUI\media\fonts\PTSansNarrow-Regular.ttf]],
 		},
 		bold = {
 			name = 'AelUI Bold',
-			file = [[Interface\AddOns\AelUI\core\media\fonts\PTSansNarrow-Bold.ttf]],
+			file = [[Interface\AddOns\AelUI\media\fonts\PTSansNarrow-Bold.ttf]],
 		},
 	},
 
 	statusbars = {
 		default = {
 			name = 'AelUI Bar',
-			file = [[Interface\AddOns\AelUI\core\media\statusbars\statusbar]],
+			file = [[Interface\AddOns\AelUI\media\statusbars\statusbar]],
 		},
 		pixel = {
 			name = 'AelUI Pixel Bar',
-			file = [[Interface\AddOns\AelUI\core\media\statusbars\statusbar-pixel]],
+			file = [[Interface\AddOns\AelUI\media\statusbars\statusbar-pixel]],
 		},
 	},
 }
