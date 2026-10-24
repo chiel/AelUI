@@ -4,5 +4,6 @@
 ## Version: 0.0.1
 
 libs\load.xml
+colors.lua
 core\load.xml
 forever\load.xml
