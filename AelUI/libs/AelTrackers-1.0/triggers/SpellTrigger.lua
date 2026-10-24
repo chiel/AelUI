@@ -74,10 +74,6 @@ function SpellTrigger:FilterRangeEvents(event, ...)
 	return spellId == self.spellId
 end
 
-function SpellTrigger:IsActive()
-	return true
-end
-
 function SpellTrigger:IsInRange()
 	return self.state.isInRange
 end

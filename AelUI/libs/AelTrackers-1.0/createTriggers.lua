@@ -8,16 +8,11 @@ lib.createTriggers = function()
 end
 
 function Triggers:Apply(tracker)
-	local hasActiveTrigger = false
 	for _, trigger in ipairs(self.entries) do
-		if trigger:IsActive() then
-			hasActiveTrigger = true
+		if trigger.Apply then
 			trigger:Apply(tracker)
-			break
 		end
 	end
-
-	tracker:SetShown(hasActiveTrigger)
 end
 
 function Triggers:Aura(...)
@@ -40,7 +35,9 @@ end
 
 function Triggers:Update()
 	for _, trigger in ipairs(self.entries) do
-		trigger:Update()
+		if trigger.Update then
+			trigger:Update()
+		end
 	end
 end
 

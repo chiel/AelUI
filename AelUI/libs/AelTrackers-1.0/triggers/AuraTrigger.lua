@@ -25,8 +25,6 @@ lib.triggers.createAuraTrigger = function(unit, auraType, spellIds, options)
 	return trigger
 end
 
-function AuraTrigger:Apply(tracker) end
-
 function AuraTrigger:Build(tracker)
 	local flags = self.auraType == 'buff' and 'HELPFUL' or 'HARMFUL'
 	if self.ownOnly then
@@ -52,9 +50,3 @@ function AuraTrigger:Build(tracker)
 		end,
 	})
 end
-
-function AuraTrigger:IsActive()
-	return false
-end
-
-function AuraTrigger:Update() end
