@@ -1,6 +1,6 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="init.lua"/>
-	<Script file="state.lua"/>
-	<Script file="render.lua"/>
+	<Include file="helpers\load.xml"/>
+	<Script file="Angler.lua"/>
 	<Script file="main.lua"/>
 </Ui>

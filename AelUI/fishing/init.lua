@@ -1,5 +1,3 @@
 local _, ns = ...
 
-ns.fishing = {
-	mainhandSlot = 16,
-}
+ns.fishing = {}
