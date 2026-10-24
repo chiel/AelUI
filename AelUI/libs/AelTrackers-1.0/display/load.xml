@@ -3,4 +3,5 @@
 	<Script file="Border.lua"/>
 	<Script file="Icon.lua"/>
 	<Script file="Text.lua"/>
+	<Script file="AuraIcon.lua"/>
 </Ui>

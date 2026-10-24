@@ -3,11 +3,43 @@ local lib = LibStub('AelTrackers-1.0')
 local Icon = {}
 Icon.__index = Icon
 
+lib.display.Icon = Icon
 lib.display.createIcon = function(width, height)
 	local i = setmetatable({}, Icon)
 	i:Size(width, height)
 
 	return i
+end
+
+function Icon:Build(tracker, level)
+	tracker:SetSize(self.width, self.height)
+	self:BuildInto(tracker, level)
+end
+
+function Icon:BuildInto(target, level)
+	self.frame = CreateFrame('Frame', nil, target)
+	self.frame:SetPoint('TOPLEFT')
+	self.frame:SetSize(self.width, self.height)
+	self.frame:SetFrameLevel(level)
+	self.level = level
+
+	self.texture = self.frame:CreateTexture(nil, 'ARTWORK')
+	self.texture:SetAllPoints()
+	self.texture:SetTexture(self.textureId or 134400)
+
+	if self.cooldown then
+		local cd = CreateFrame('Cooldown', nil, self.frame, 'CooldownFrameTemplate')
+		cd:SetAllPoints()
+		cd:SetDrawSwipe(true)
+		cd:SetSwipeColor(0, 0, 0, 0.7)
+		cd:SetDrawEdge(false)
+		cd:SetHideCountdownNumbers(true)
+		cd:SetReverse(self.cooldown.reverse == true)
+		cd:Show()
+		self.cooldownFrame = cd
+	end
+
+	self:Reset()
 end
 
 function Icon:Color(color, override)
@@ -21,7 +53,17 @@ function Icon:Color(color, override)
 end
 
 function Icon:Cooldown(cooldown)
-	self.cooldown = cooldown
+	self.cooldown = cooldown ~= nil and cooldown or {}
+end
+
+function Icon:Desaturate(desaturate, override)
+	if not override then
+		self.desaturate = desaturate
+	end
+
+	if self.texture then
+		self.texture:SetDesaturated(desaturate)
+	end
 end
 
 function Icon:Duration(duration)
@@ -36,14 +78,9 @@ function Icon:Duration(duration)
 	end
 end
 
-function Icon:Desaturate(desaturate, override)
-	if not override then
-		self.desaturate = desaturate
-	end
-
-	if self.texture then
-		self.texture:SetDesaturated(desaturate)
-	end
+function Icon:Reset()
+	self.texture:SetVertexColor(unpack(self.color or { 1, 1, 1, 1 }))
+	self.texture:SetDesaturated(self.desaturate or false)
 end
 
 function Icon:Size(width, height)
@@ -59,35 +96,4 @@ function Icon:Texture(texture, override)
 	if self.texture then
 		self.texture:SetTexture(texture)
 	end
-end
-
-function Icon:Reset()
-	self.texture:SetVertexColor(unpack(self.color or { 1, 1, 1, 1 }))
-	self.texture:SetDesaturated(self.desaturate or false)
-end
-
-function Icon:Build(tracker, level)
-	tracker:SetSize(self.width, self.height)
-
-	self.frame = CreateFrame('Frame', nil, tracker)
-	self.frame:SetPoint('TOPLEFT')
-	self.frame:SetSize(self.width, self.height)
-	self.frame:SetFrameLevel(level)
-
-	self.texture = self.frame:CreateTexture(nil, 'ARTWORK')
-	self.texture:SetAllPoints()
-	self.texture:SetTexture(self.textureId or 134400)
-
-	if self.cooldown then
-		local cd = CreateFrame('Cooldown', nil, self.frame, 'CooldownFrameTemplate')
-		cd:SetAllPoints()
-		cd:SetDrawSwipe(true)
-		cd:SetSwipeColor(0, 0, 0, 0.7)
-		cd:SetDrawEdge(false)
-		cd:SetHideCountdownNumbers(true)
-		cd:Show()
-		self.cooldownFrame = cd
-	end
-
-	self:Reset()
 end

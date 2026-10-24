@@ -7,6 +7,12 @@ lib.createDisplay = function()
 	return setmetatable({ elements = {} }, Display)
 end
 
+function Display:AuraIcon(...)
+	local icon = lib.display.createAuraIcon(...)
+	tinsert(self.elements, icon)
+	return icon
+end
+
 function Display:Border(...)
 	local border = lib.display.createBorder()
 	tinsert(self.elements, border)
