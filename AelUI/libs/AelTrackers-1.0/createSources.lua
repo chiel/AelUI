@@ -23,8 +23,16 @@ end
 
 function Sources:Build(tracker)
 	for _, source in ipairs(self.sources) do
-		source:Build(tracker)
+		if source.Build then
+			source:Build(tracker)
+		end
 	end
+end
+
+function Sources:Item(...)
+	local source = lib.sources.createItem(...)
+	tinsert(self.sources, source)
+	return source
 end
 
 function Sources:Spell(...)

@@ -1,5 +1,6 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="init.lua"/>
 	<Script file="AuraSource.lua"/>
+	<Script file="ItemSource.lua"/>
 	<Script file="SpellSource.lua"/>
 </Ui>
