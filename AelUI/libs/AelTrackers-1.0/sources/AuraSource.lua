@@ -2,7 +2,6 @@ local lib = LibStub('AelTrackers-1.0')
 
 local AuraSource = {}
 AuraSource.__index = AuraSource
-setmetatable(AuraSource, { __index = lib.sources.BaseSource })
 
 lib.sources.createAura = function(unit, auraType, spellIds, options)
 	options = options or {}
@@ -18,8 +17,6 @@ lib.sources.createAura = function(unit, auraType, spellIds, options)
 		spellIds = spellIds,
 		unit = unit,
 	}, AuraSource)
-
-	source:Init()
 
 	return source
 end

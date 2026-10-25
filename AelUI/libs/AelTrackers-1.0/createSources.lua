@@ -43,6 +43,8 @@ end
 
 function Sources:Watch(fn)
 	for _, source in ipairs(self.sources) do
-		source:Watch(fn)
+		if source.Watch then
+			source:Watch(fn)
+		end
 	end
 end

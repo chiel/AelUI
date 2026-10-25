@@ -2,7 +2,7 @@ local lib = LibStub('AelTrackers-1.0')
 
 local SpellSource = {}
 SpellSource.__index = SpellSource
-setmetatable(SpellSource, { __index = lib.sources.BaseSource })
+setmetatable(SpellSource, { __index = lib.utils.Watchable })
 
 lib.sources.createSpell = function(spellId, options)
 	options = options or {}
@@ -12,8 +12,6 @@ lib.sources.createSpell = function(spellId, options)
 		icon = options.icon,
 		spellId = spellId,
 	}, SpellSource)
-
-	source:Init()
 
 	return source
 end
