@@ -13,4 +13,5 @@
 	<Script file="createEffect.lua"/>
 	<Script file="createEffects.lua"/>
 	<Script file="createTracker.lua"/>
+	<Script file="createGroup.lua"/>
 </Ui>
