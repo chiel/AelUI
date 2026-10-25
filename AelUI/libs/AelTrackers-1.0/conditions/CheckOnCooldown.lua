@@ -3,17 +3,17 @@ local lib = LibStub('AelTrackers-1.0')
 local CheckOnCooldown = {}
 CheckOnCooldown.__index = CheckOnCooldown
 
-lib.conditions.createCheckOnCooldown = function(trigger, value)
-	assert(type(trigger.IsOnCooldown) == 'function', 'CheckOnCooldown requires a trigger with IsOnCooldown()')
+lib.conditions.createCheckOnCooldown = function(source, value)
+	assert(type(source.IsOnCooldown) == 'function', 'CheckOnCooldown requires a source with IsOnCooldown()')
 
-	trigger:Require('cooldown')
+	source:Require('cooldown')
 
 	return setmetatable({
-		trigger = trigger,
+		source = source,
 		value = value,
 	}, CheckOnCooldown)
 end
 
 function CheckOnCooldown:Matches()
-	return self.trigger:IsOnCooldown() == self.value
+	return self.source:IsOnCooldown() == self.value
 end

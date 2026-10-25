@@ -3,17 +3,17 @@ local lib = LibStub('AelTrackers-1.0')
 local CheckInRange = {}
 CheckInRange.__index = CheckInRange
 
-lib.conditions.createCheckInRange = function(trigger, value)
-	assert(type(trigger.IsInRange) == 'function', 'CheckInRange requires a trigger with IsInRange()')
+lib.conditions.createCheckInRange = function(source, value)
+	assert(type(source.IsInRange) == 'function', 'CheckInRange requires a source with IsInRange()')
 
-	trigger:Require('range')
+	source:Require('range')
 
 	return setmetatable({
-		trigger = trigger,
+		source = source,
 		value = value,
 	}, CheckInRange)
 end
 
 function CheckInRange:Matches()
-	return self.trigger:IsInRange() == self.value
+	return self.source:IsInRange() == self.value
 end

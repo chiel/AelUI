@@ -1,25 +1,25 @@
 local lib = LibStub('AelTrackers-1.0')
 
-local SpellTrigger = {}
-SpellTrigger.__index = SpellTrigger
-setmetatable(SpellTrigger, { __index = lib.triggers.BaseTrigger })
+local SpellSource = {}
+SpellSource.__index = SpellSource
+setmetatable(SpellSource, { __index = lib.sources.BaseSource })
 
-lib.triggers.createSpellTrigger = function(spellId, options)
+lib.sources.createSpell = function(spellId, options)
 	options = options or {}
 
-	local trigger = setmetatable({
+	local source = setmetatable({
 		state = {},
 		durations = options.durations or {},
 		icon = options.icon,
 		spellId = spellId,
-	}, SpellTrigger)
+	}, SpellSource)
 
-	trigger:Init()
+	source:Init()
 
-	return trigger
+	return source
 end
 
-SpellTrigger.attributes = {
+SpellSource.attributes = {
 	cooldown = {
 		events = { 'SPELL_UPDATE_COOLDOWN' },
 		eventFilter = 'FilterCooldownEvents',
@@ -30,7 +30,7 @@ SpellTrigger.attributes = {
 	},
 }
 
-function SpellTrigger:Apply(tracker)
+function SpellSource:Apply(tracker)
 	for _, d in ipairs(self.durations) do
 		d:Duration(self.duration)
 	end
@@ -40,7 +40,7 @@ function SpellTrigger:Apply(tracker)
 	end
 end
 
-function SpellTrigger:Build(tracker)
+function SpellSource:Build(tracker)
 	if self:Requires('cooldown') then
 		self.cdTracker = CreateFrame('Cooldown', nil, WorldFrame)
 		self.cdTracker:SetSize(1, 1)
@@ -61,11 +61,11 @@ function SpellTrigger:Build(tracker)
 	self:RegisterAttributeEvents()
 end
 
-function SpellTrigger:FilterCooldownEvents(_, spellId)
+function SpellSource:FilterCooldownEvents(_, spellId)
 	return spellId == self.spellId
 end
 
-function SpellTrigger:FilterRangeEvents(event, ...)
+function SpellSource:FilterRangeEvents(event, ...)
 	if event == 'PLAYER_TARGET_CHANGED' then
 		return true
 	end
@@ -74,15 +74,15 @@ function SpellTrigger:FilterRangeEvents(event, ...)
 	return spellId == self.spellId
 end
 
-function SpellTrigger:IsInRange()
+function SpellSource:IsInRange()
 	return self.state.isInRange
 end
 
-function SpellTrigger:IsOnCooldown()
+function SpellSource:IsOnCooldown()
 	return self.state.isOnCooldown
 end
 
-function SpellTrigger:Update()
+function SpellSource:Update()
 	if self:Requires('cooldown') then
 		local cd = C_Spell.GetSpellCooldown(self.spellId)
 

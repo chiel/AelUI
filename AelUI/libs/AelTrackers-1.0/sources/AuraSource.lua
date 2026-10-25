@@ -1,31 +1,31 @@
 local _, ns = ...
 local lib = LibStub('AelTrackers-1.0')
 
-local AuraTrigger = {}
-AuraTrigger.__index = AuraTrigger
-setmetatable(AuraTrigger, { __index = lib.triggers.BaseTrigger })
+local AuraSource = {}
+AuraSource.__index = AuraSource
+setmetatable(AuraSource, { __index = lib.sources.BaseSource })
 
-lib.triggers.createAuraTrigger = function(unit, auraType, spellIds, options)
+lib.sources.createAura = function(unit, auraType, spellIds, options)
 	options = options or {}
 
 	if type(spellIds) ~= 'table' then
 		spellIds = { spellIds }
 	end
 
-	local trigger = setmetatable({
+	local source = setmetatable({
 		auraType = auraType,
 		elements = options.elements or {},
 		ownOnly = options.ownOnly,
 		spellIds = spellIds,
 		unit = unit,
-	}, AuraTrigger)
+	}, AuraSource)
 
-	trigger:Init()
+	source:Init()
 
-	return trigger
+	return source
 end
 
-function AuraTrigger:Build(tracker)
+function AuraSource:Build(tracker)
 	local flags = self.auraType == 'buff' and 'HELPFUL' or 'HARMFUL'
 	if self.ownOnly then
 		flags = flags .. '|PLAYER'

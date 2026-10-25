@@ -16,7 +16,7 @@ local wotf = AelTrackers.createTracker(function(t)
 	local progress = t.display:Text()
 	progress:Point('BOTTOM', 0, -2)
 
-	local spell = t.triggers:Spell(7744, {
+	local spell = t.sources:Spell(7744, {
 		durations = { icon, progress },
 		icon = icon,
 	})

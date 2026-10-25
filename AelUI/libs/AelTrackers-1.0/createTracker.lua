@@ -8,7 +8,7 @@ lib.createTracker = function(fn)
 	tracker.conditions = lib.createConditions()
 	tracker.display = lib.createDisplay()
 	tracker.needs = lib.createNeeds()
-	tracker.triggers = lib.createTriggers()
+	tracker.sources = lib.createSources()
 
 	fn(tracker)
 
@@ -25,10 +25,10 @@ function Tracker:Build()
 	self.built = true
 
 	self.display:Build(self)
-	self.triggers:Build(self)
-	self.triggers:Update()
+	self.sources:Build(self)
+	self.sources:Update()
 
-	self.triggers:Watch(function()
+	self.sources:Watch(function()
 		self:Update()
 	end)
 end
@@ -45,6 +45,6 @@ function Tracker:Update()
 
 	self:Show()
 	self.display:Reset(self)
-	self.triggers:Apply(self)
+	self.sources:Apply(self)
 	self.conditions:Apply(self)
 end
