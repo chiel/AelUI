@@ -1,4 +1,3 @@
-local _, ns = ...
 local lib = LibStub('AelTrackers-1.0')
 
 local AuraSource = {}
