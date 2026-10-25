@@ -3,7 +3,7 @@ local lib = LibStub('AelTrackers-1.0')
 local CheckInRange = {}
 CheckInRange.__index = CheckInRange
 
-lib.conditions.createCheckInRange = function(source, value)
+lib.effects.createCheckInRange = function(source, value)
 	assert(type(source.IsInRange) == 'function', 'CheckInRange requires a source with IsInRange()')
 
 	source:Require('range')

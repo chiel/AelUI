@@ -3,7 +3,7 @@ local lib = LibStub('AelTrackers-1.0')
 local CheckOnCooldown = {}
 CheckOnCooldown.__index = CheckOnCooldown
 
-lib.conditions.createCheckOnCooldown = function(source, value)
+lib.effects.createCheckOnCooldown = function(source, value)
 	assert(type(source.IsOnCooldown) == 'function', 'CheckOnCooldown requires a source with IsOnCooldown()')
 
 	source:Require('cooldown')

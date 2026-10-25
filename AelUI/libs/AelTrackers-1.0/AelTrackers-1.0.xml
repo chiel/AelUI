@@ -3,14 +3,14 @@
 	<Script file="auraContainers.lua"/>
 	<Include file="utils\load.xml"/>
 	<Include file="probes\load.xml"/>
-	<Include file="conditions\load.xml"/>
+	<Include file="effects\load.xml"/>
 	<Include file="display\load.xml"/>
 	<Include file="needs\load.xml"/>
 	<Include file="sources\load.xml"/>
 	<Script file="createDisplay.lua"/>
 	<Script file="createNeeds.lua"/>
 	<Script file="createSources.lua"/>
-	<Script file="createCondition.lua"/>
-	<Script file="createConditions.lua"/>
+	<Script file="createEffect.lua"/>
+	<Script file="createEffects.lua"/>
 	<Script file="createTracker.lua"/>
 </Ui>

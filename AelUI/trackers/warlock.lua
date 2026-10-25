@@ -21,10 +21,10 @@ local wotf = AelTrackers.createTracker(function(t)
 		icon = icon,
 	})
 
-	local cond = t.conditions:Add()
-	cond:CheckOnCooldown(spell, true)
-	cond:ChangeColor(icon, { 1, 1, 1, 0.75 })
-	cond:ChangeDesaturate(icon, true)
+	local effect = t.effects:Add()
+	effect:CheckOnCooldown(spell, true)
+	effect:ChangeColor(icon, { 1, 1, 1, 0.75 })
+	effect:ChangeDesaturate(icon, true)
 end)
 
 wotf:SetPoint('TOP', AelUISecondaryAnchor, 'TOP', 0, 0)
