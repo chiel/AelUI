@@ -6,7 +6,9 @@ CheckOnCooldown.__index = CheckOnCooldown
 lib.effects.createCheckOnCooldown = function(source, value)
 	assert(type(source.IsOnCooldown) == 'function', 'CheckOnCooldown requires a source with IsOnCooldown()')
 
-	source:Require('cooldown')
+	if source.RequireCooldown then
+		source:RequireCooldown()
+	end
 
 	return setmetatable({
 		source = source,
