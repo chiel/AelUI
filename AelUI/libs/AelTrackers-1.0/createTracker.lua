@@ -3,7 +3,7 @@ local lib = LibStub('AelTrackers-1.0')
 local Tracker = {}
 
 lib.createTracker = function(fn)
-	local tracker = CreateFrame('Frame', nil, AelUIParent)
+	local tracker = CreateFrame('Frame', nil, lib.defaults.parent or UIParent)
 	Mixin(tracker, Tracker)
 	tracker.effects = lib.createEffects()
 	tracker.display = lib.createDisplay()

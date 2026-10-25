@@ -5,6 +5,7 @@ local AelTrackers = LibStub('AelTrackers-1.0')
 local m = ns.media
 
 AelTrackers.setDefaults({
+	parent = AelUIParent,
 	text = {
 		font = {
 			file = m.fonts.bold.file,

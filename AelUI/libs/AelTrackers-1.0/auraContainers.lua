@@ -23,8 +23,9 @@ function AuraContainers:Get(unit)
 		C_AddOns.LoadAddOn('Blizzard_AuraContainer')
 	end
 
-	container = CreateFrame('AuraContainer', nil, AelUIParent, 'CustomAuraContainerTemplate')
-	container:SetPoint('TOPLEFT', AelUIParent, 'TOPLEFT')
+	local parent = lib.defaults.parent or UIParent
+	container = CreateFrame('AuraContainer', nil, parent, 'CustomAuraContainerTemplate')
+	container:SetPoint('TOPLEFT', parent, 'TOPLEFT')
 	container:SetSize(1, 1)
 
 	self.containers[unit] = container
