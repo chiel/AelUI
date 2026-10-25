@@ -2,6 +2,7 @@
 	<Script file="init.lua"/>
 	<Script file="auraContainers.lua"/>
 	<Include file="utils\load.xml"/>
+	<Include file="probes\load.xml"/>
 	<Include file="conditions\load.xml"/>
 	<Include file="display\load.xml"/>
 	<Include file="triggers\load.xml"/>
