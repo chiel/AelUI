@@ -6,7 +6,9 @@ CheckInRange.__index = CheckInRange
 lib.effects.createCheckInRange = function(source, value)
 	assert(type(source.IsInRange) == 'function', 'CheckInRange requires a source with IsInRange()')
 
-	source:Require('range')
+	if source.RequireRange then
+		source:RequireRange()
+	end
 
 	return setmetatable({
 		source = source,

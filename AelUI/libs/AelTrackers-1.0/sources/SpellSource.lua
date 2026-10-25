@@ -8,7 +8,6 @@ lib.sources.createSpell = function(spellId, options)
 	options = options or {}
 
 	local source = setmetatable({
-		state = {},
 		durations = options.durations or {},
 		icon = options.icon,
 		spellId = spellId,
@@ -18,13 +17,6 @@ lib.sources.createSpell = function(spellId, options)
 
 	return source
 end
-
-SpellSource.attributes = {
-	range = {
-		events = { 'PLAYER_TARGET_CHANGED', 'SPELL_RANGE_CHECK_UPDATE' },
-		eventFilter = 'FilterRangeEvents',
-	},
-}
 
 function SpellSource:Apply(tracker)
 	local duration = self.cooldownProbe and self.cooldownProbe:Duration()
@@ -45,24 +37,15 @@ function SpellSource:Build(tracker)
 		end)
 	end
 
-	if self:Requires('range') then
-		C_Spell.EnableSpellRangeCheck(self.spellId, true)
+	if self.rangeProbe then
+		self.rangeProbe:Watch(function()
+			self:Notify()
+		end)
 	end
-
-	self:RegisterAttributeEvents()
-end
-
-function SpellSource:FilterRangeEvents(event, ...)
-	if event == 'PLAYER_TARGET_CHANGED' then
-		return true
-	end
-
-	local spellId = ...
-	return spellId == self.spellId
 end
 
 function SpellSource:IsInRange()
-	return self.state.isInRange
+	return self.rangeProbe:IsInRange()
 end
 
 function SpellSource:IsOnCooldown()
@@ -77,9 +60,10 @@ function SpellSource:RequireCooldown()
 	self.cooldownProbe = lib.probes.createSpellCooldownProbe(self.spellId)
 end
 
-function SpellSource:Update()
-	if self:Requires('range') then
-		local isInRange = C_Spell.IsSpellInRange(self.spellId)
-		self.state.isInRange = isInRange
+function SpellSource:RequireRange()
+	if self.rangeProbe then
+		return
 	end
+
+	self.rangeProbe = lib.probes.createSpellRangeProbe(self.spellId)
 end
