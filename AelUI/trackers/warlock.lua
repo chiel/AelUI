@@ -7,7 +7,9 @@ if playerClass ~= 'WARLOCK' then
 end
 
 local wotf = AelTrackers.createTracker(function(t)
-	local icon = t.display:Icon(42, 42)
+	t.needs:SpellKnown(7744)
+
+	local icon = t.display:Icon(44)
 	icon:Cooldown()
 
 	local border = t.display:Border()

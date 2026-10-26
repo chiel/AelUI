@@ -3,7 +3,7 @@ local _, ns = ...
 local e = ns.unitframes.elements
 
 ns.unitframes.units.spawn('player', function(f)
-	f:SetSize(300, 58)
+	f:SetSize(320, 64)
 	f:SetPoint('TOPRIGHT', AelUIPrimaryAnchor, 'TOPLEFT', -20, 0)
 
 	local healthbar, healthbarBar = e.healthbar(f)
@@ -19,8 +19,8 @@ ns.unitframes.units.spawn('player', function(f)
 			self:SetHeight(state.isGCD and 6 or 16)
 		end,
 	})
-	castbar:SetPoint('TOPLEFT', AelUIPrimaryAnchor, 'BOTTOMLEFT', 0, -2)
-	castbar:SetPoint('TOPRIGHT', AelUIPrimaryAnchor, 'BOTTOMRIGHT', 0, -2)
+	castbar:SetPoint('TOPLEFT', AelUISecondaryAnchor, 'BOTTOMLEFT', 0, -2)
+	castbar:SetPoint('TOPRIGHT', AelUISecondaryAnchor, 'BOTTOMRIGHT', 0, -2)
 	castbar:SetHeight(16)
 
 	local name = e.nameText(f, healthbarBar, { fontSize = 24 })
@@ -45,6 +45,6 @@ ns.unitframes.units.spawn('player', function(f)
 			end,
 		})
 		manabar:SetPoint('TOPRIGHT', healthbar, 'BOTTOMRIGHT', 0, -2)
-		manabar:SetSize(140, 6)
+		manabar:SetSize(120, 6)
 	end
 end)

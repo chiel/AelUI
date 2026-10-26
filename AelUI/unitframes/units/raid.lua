@@ -29,7 +29,7 @@ end
 
 local layout = h.getRaidLayout()
 local container = CreateFrame('Frame', 'AelUIRaidFrame', AelUIParent)
-container:SetPoint('TOP', AelUIPrimaryAnchor, 'BOTTOM', 0, -80)
+container:SetPoint('TOP', AelUISecondaryAnchor, 'BOTTOM', 0, -20)
 container:SetSize(layout.containerWidth, layout.containerHeight)
 
 local headers = {}

@@ -2,14 +2,14 @@ local _, ns = ...
 
 local config = {
 	primary = {
-		width = 58,
-		height = 58,
+		width = 64,
+		height = 64,
 		spacing = 2,
 		minIcons = 6,
 	},
 	secondary = {
-		width = 42,
-		height = 42,
+		width = 44,
+		height = 44,
 		spacing = 2,
 		minIcons = 7,
 	},
