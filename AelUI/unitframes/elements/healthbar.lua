@@ -2,6 +2,7 @@ local _, ns = ...
 
 local u = ns.utils
 
+local tint = CreateColor(0.75, 0.75, 0.75)
 local defaultBarColor = { 35 / 255, 35 / 255, 35 / 255 }
 
 ns.unitframes.elements.healthbar = function(f, options)
@@ -25,7 +26,7 @@ ns.unitframes.elements.healthbar = function(f, options)
 			local _, classToken = UnitClass(self.unit)
 
 			if classToken then
-				local c = C_ClassColor.GetClassColor(classToken)
+				local c = C_ClassColor.GetClassColor(classToken, tint)
 				color = { c.r, c.g, c.b }
 			end
 		else
@@ -33,16 +34,12 @@ ns.unitframes.elements.healthbar = function(f, options)
 			if reaction then
 				local c = FACTION_BAR_COLORS[reaction]
 				if c then
-					color = { c.r, c.g, c.b }
+					color = { c.r * 0.75, c.g * 0.75, c.b * 0.75 }
 				end
 			end
 		end
 
-		if issecretvalue(color[1]) then
-			bg:SetVertexColor(color[1], color[2], color[3])
-		else
-			bg:SetVertexColor(color[1] * 0.75, color[2] * 0.75, color[3] * 0.75)
-		end
+		bg:SetVertexColor(color[1], color[2], color[3])
 		bar:SetStatusBarColor(unpack(defaultBarColor))
 	end
 
