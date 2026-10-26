@@ -4,6 +4,8 @@ local AelTrackers = LibStub('AelTrackers-1.0')
 
 local m = ns.media
 
+ns.trackers = {}
+
 AelTrackers.setDefaults({
 	parent = AelUIParent,
 	text = {

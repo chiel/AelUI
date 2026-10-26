@@ -1,4 +1,8 @@
+local _, ns = ...
+
 local AelTrackers = LibStub('AelTrackers-1.0')
+
+local h = ns.trackers.helpers
 
 local _, playerClass = UnitClass('player')
 
@@ -6,27 +10,11 @@ if playerClass ~= 'WARLOCK' then
 	return
 end
 
-local wotf = AelTrackers.createTracker(function(t)
-	t.needs:SpellKnown(7744)
-
-	local icon = t.display:Icon(44)
-	icon:Cooldown()
-
-	local border = t.display:Border()
-	border:Color({ 0, 0, 0 })
-
-	local progress = t.display:Text()
-	progress:Point('BOTTOM', 0, -2)
-
-	local spell = t.sources:Spell(7744, {
-		durations = { icon, progress },
-		icon = icon,
-	})
-
-	local effect = t.effects:Add()
-	effect:CheckOnCooldown(spell, true)
-	effect:ChangeColor(icon, { 1, 1, 1, 0.75 })
-	effect:ChangeDesaturate(icon, true)
+local secondary = AelTrackers.createGroup(function(g)
+	g:Tracker(h.createSpellIcon(7744)) -- Will of the Forsaken
 end)
 
-wotf:SetPoint('TOP', AelUISecondaryAnchor, 'TOP', 0, 0)
+secondary:SetPoint('TOP', AelUISecondaryAnchor, 'TOP', 0, 0)
+secondary:Watch(function(width, height)
+	ns.anchors.secondary:UpdateWidth(width)
+end)
