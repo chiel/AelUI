@@ -13,6 +13,8 @@ lib.sources.createSpell = function(spellId, options)
 		spellId = spellId,
 	}, SpellSource)
 
+	source.overrideProbe = lib.probes.createSpellOverrideProbe(spellId)
+
 	return source
 end
 
@@ -24,11 +26,21 @@ function SpellSource:Apply(tracker)
 	end
 
 	if self.icon then
-		self.icon:Texture(C_Spell.GetSpellTexture(self.spellId))
+		self.icon:Texture(C_Spell.GetSpellTexture(self.overrideProbe:SpellId()))
 	end
 end
 
 function SpellSource:Build(tracker)
+	self.overrideProbe:Watch(function(spellId)
+		if self.cooldownProbe then
+			self.cooldownProbe:SpellId(spellId)
+		end
+		if self.rangeProbe then
+			self.rangeProbe:SpellId(spellId)
+		end
+		self:Notify()
+	end)
+
 	if self.cooldownProbe then
 		self.cooldownProbe:Watch(function()
 			self:Notify()
@@ -55,7 +67,8 @@ function SpellSource:RequireCooldown()
 		return
 	end
 
-	self.cooldownProbe = lib.probes.createSpellCooldownProbe(self.spellId)
+	local spellId = self.overrideProbe:SpellId()
+	self.cooldownProbe = lib.probes.createSpellCooldownProbe(spellId)
 end
 
 function SpellSource:RequireRange()
@@ -63,5 +76,6 @@ function SpellSource:RequireRange()
 		return
 	end
 
-	self.rangeProbe = lib.probes.createSpellRangeProbe(self.spellId)
+	local spellId = self.overrideProbe:SpellId()
+	self.rangeProbe = lib.probes.createSpellRangeProbe(spellId)
 end

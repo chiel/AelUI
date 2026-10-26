@@ -43,6 +43,11 @@ function SpellCooldownProbe:OnWatch()
 	self:Update()
 end
 
+function SpellCooldownProbe:SpellId(spellId)
+	self.spellId = spellId
+	self:Update()
+end
+
 function SpellCooldownProbe:Update()
 	local cd = C_Spell.GetSpellCooldown(self.spellId)
 	local isOnCooldown = cd.isActive and not cd.isOnGCD

@@ -33,6 +33,12 @@ function SpellRangeProbe:OnWatch()
 	end)
 end
 
+function SpellRangeProbe:SpellId(spellId)
+	C_Spell.EnableSpellRangeCheck(spellId, true)
+	self.spellId = spellId
+	self:Update()
+end
+
 function SpellRangeProbe:Update()
 	local isInRange = C_Spell.IsSpellInRange(self.spellId)
 

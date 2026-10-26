@@ -4,5 +4,6 @@
 	<Script file="ItemCountProbe.lua"/>
 	<Script file="SpellCooldownProbe.lua"/>
 	<Script file="SpellKnownProbe.lua"/>
+	<Script file="SpellOverrideProbe.lua"/>
 	<Script file="SpellRangeProbe.lua"/>
 </Ui>
