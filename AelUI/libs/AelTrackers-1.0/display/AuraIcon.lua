@@ -22,3 +22,7 @@ end
 function AuraIcon:Build(tracker, level)
 	self.level = level
 end
+
+function AuraIcon:Reset()
+	-- do nothing, aura icons may never be modified by effects anyway
+end
