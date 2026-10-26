@@ -5,9 +5,6 @@ local AuraContainers = {}
 AuraContainers.__index = AuraContainers
 
 lib.auraContainers = setmetatable({ containers = {} }, AuraContainers)
-C_Timer.After(0, function()
-	lib.auraContainers:Finalise()
-end)
 
 AelEvents.on('PLAYER_TARGET_CHANGED', function()
 	lib.auraContainers:Update()
@@ -27,17 +24,11 @@ function AuraContainers:Get(unit)
 	container = CreateFrame('AuraContainer', nil, parent, 'CustomAuraContainerTemplate')
 	container:SetPoint('TOPLEFT', parent, 'TOPLEFT')
 	container:SetSize(1, 1)
+	container:SetUnit(unit)
+	container:SetEnabled(true)
 
 	self.containers[unit] = container
 	return container
-end
-
-function AuraContainers:Finalise()
-	for unit, container in pairs(self.containers) do
-		container:SetEnabled(true)
-		container:SetUnit(unit)
-		container:UpdateAllAuras()
-	end
 end
 
 function AuraContainers:Update()
