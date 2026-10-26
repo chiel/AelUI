@@ -44,6 +44,10 @@ function Group:Layout(orientation, alignment, spacing)
 	self:Update()
 end
 
+function Group:OnWatch()
+	self:Notify(self.width, self.height)
+end
+
 function Group:Tracker(fn)
 	local tracker = lib.createTracker(self, fn)
 	tinsert(self.trackers, tracker)
