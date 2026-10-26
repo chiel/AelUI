@@ -29,6 +29,10 @@ function Text:BuildInto(target, level)
 	self:Reset()
 end
 
+function Text:Count(count)
+	self.text:SetText(count)
+end
+
 function Text:Duration(duration)
 	if not duration then
 		return
