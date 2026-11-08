@@ -22,6 +22,8 @@ function SpellOverrideProbe:OnWatch()
 	AelEvents.on('SPELLS_CHANGED', function()
 		self:Update()
 	end)
+
+	self:Update()
 end
 
 function SpellOverrideProbe:Update()

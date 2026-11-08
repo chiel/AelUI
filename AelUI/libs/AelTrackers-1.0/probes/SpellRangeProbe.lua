@@ -31,6 +31,8 @@ function SpellRangeProbe:OnWatch()
 			self:Update()
 		end
 	end)
+
+	self:Update()
 end
 
 function SpellRangeProbe:SpellId(spellId)

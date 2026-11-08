@@ -23,6 +23,8 @@ function SpellKnownProbe:OnWatch()
 	AelEvents.on('SPELLS_CHANGED', function()
 		self:Update()
 	end)
+
+	self:Update()
 end
 
 function SpellKnownProbe:Update()
