@@ -32,6 +32,9 @@ end
 
 function SpellSource:Build(tracker)
 	self.overrideProbe:Watch(function(spellId)
+		if self.autoRepeatProbe then
+			self.autoRepeatProbe:SpellId(spellId)
+		end
 		if self.cooldownProbe then
 			self.cooldownProbe:SpellId(spellId)
 		end
@@ -40,6 +43,12 @@ function SpellSource:Build(tracker)
 		end
 		self:Notify()
 	end)
+
+	if self.autoRepeatProbe then
+		self.autoRepeatProbe:Watch(function()
+			self:Notify()
+		end)
+	end
 
 	if self.cooldownProbe then
 		self.cooldownProbe:Watch(function()
@@ -54,12 +63,25 @@ function SpellSource:Build(tracker)
 	end
 end
 
+function SpellSource:IsAutoRepeating()
+	return self.autoRepeatProbe:IsRepeating()
+end
+
 function SpellSource:IsInRange()
 	return self.rangeProbe:IsInRange()
 end
 
 function SpellSource:IsOnCooldown()
 	return self.cooldownProbe:IsOnCooldown()
+end
+
+function SpellSource:RequireAutoRepeat()
+	if self.autoRepeatProbe then
+		return
+	end
+
+	local spellId = self.overrideProbe:SpellId()
+	self.autoRepeatProbe = lib.probes.createAutoRepeatSpellProbe(spellId)
 end
 
 function SpellSource:RequireCooldown()

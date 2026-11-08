@@ -24,6 +24,10 @@ function Effect:ChangeDesaturate(...)
 	tinsert(self.changes, lib.effects.createChangeDesaturate(...))
 end
 
+function Effect:CheckAutoRepeating(...)
+	self.check = lib.effects.createCheckAutoRepeating(...)
+end
+
 function Effect:CheckInRange(...)
 	self.check = lib.effects.createCheckInRange(...)
 end
