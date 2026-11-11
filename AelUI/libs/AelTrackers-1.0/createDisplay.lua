@@ -19,6 +19,12 @@ function Display:AuraProgressText(...)
 	return text
 end
 
+function Display:AuraStacksText(...)
+	local text = lib.display.createAuraStacksText(...)
+	tinsert(self.elements, text)
+	return text
+end
+
 function Display:Border(...)
 	local border = lib.display.createBorder()
 	tinsert(self.elements, border)

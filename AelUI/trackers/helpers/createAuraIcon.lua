@@ -19,9 +19,12 @@ ns.trackers.helpers.createAuraIcon = function(unit, auraType, spellIds, size)
 		local progress = t.display:AuraProgressText()
 		progress:Point('BOTTOM', 0, -2)
 
+		local stacks = t.display:AuraStacksText()
+		stacks:Point('TOPRIGHT', 0, -2)
+
 		local spell = t.sources:Spell(spellIds[1], { icon = icon })
 		local aura = t.sources:Aura(unit, auraType, spellIds, {
-			elements = { auraIcon, progress },
+			elements = { auraIcon, progress, stacks },
 			ownOnly = true,
 		})
 
