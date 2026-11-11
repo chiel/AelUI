@@ -13,8 +13,8 @@ function Display:AuraIcon(...)
 	return icon
 end
 
-function Display:AuraText(...)
-	local text = lib.display.createAuraText(...)
+function Display:AuraProgressText(...)
+	local text = lib.display.createAuraProgressText(...)
 	tinsert(self.elements, text)
 	return text
 end

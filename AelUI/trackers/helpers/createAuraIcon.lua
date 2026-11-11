@@ -16,7 +16,7 @@ ns.trackers.helpers.createAuraIcon = function(unit, auraType, spellIds, size)
 		local border = t.display:Border()
 		border:Color({ 0, 0, 0 })
 
-		local progress = t.display:AuraText()
+		local progress = t.display:AuraProgressText()
 		progress:Point('BOTTOM', 0, -2)
 
 		local spell = t.sources:Spell(spellIds[1], { icon = icon })

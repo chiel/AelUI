@@ -4,5 +4,5 @@
 	<Script file="Icon.lua"/>
 	<Script file="Text.lua"/>
 	<Script file="AuraIcon.lua"/>
-	<Script file="AuraText.lua"/>
+	<Script file="AuraProgressText.lua"/>
 </Ui>
