@@ -36,6 +36,17 @@ ns.unitframes.units.spawn('player', function(f)
 	leaderIcon:SetPoint('TOPLEFT', 4, 0)
 	leaderIcon:SetSize(24, 24)
 
+	local auras = e.auras(f, {
+		initialAnchor = 'BOTTOMRIGHT',
+		growthX = 'LEFT',
+	})
+	auras:AddGroup('debuffs', 'HARMFUL', {
+		maxFrameCount = 24,
+		size = 44,
+		spacing = 2,
+	})
+	auras:SetPoint('BOTTOMRIGHT', healthbar, 'TOPRIGHT', 0, 2)
+
 	local _, playerClass = UnitClass('player')
 	if playerClass == 'DRUID' then
 		local manabar = e.powerbar(f, {

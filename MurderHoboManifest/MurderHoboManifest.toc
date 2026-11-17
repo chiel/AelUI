@@ -1,0 +1,9 @@
+## Interface: 16001
+## Title: Murder Hobo Manifest
+## Author: Aelen
+## Version: 0.0.1
+## SavedVariables: MurderHoboManifestDB
+
+core.lua
+menus.lua
+commands.lua

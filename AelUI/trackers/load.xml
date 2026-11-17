@@ -1,5 +1,8 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="init.lua"/>
 	<Include file="helpers\load.xml"/>
+	<Script file="druid.lua"/>
+	<Script file="hunter.lua"/>
 	<Script file="warlock.lua"/>
+	<Script file="warrior.lua"/>
 </Ui>

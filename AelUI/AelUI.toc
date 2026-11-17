@@ -1,4 +1,4 @@
-## Interface: 16001
+## Interface: 11509, 16001, 120105
 ## Title: AelUI
 ## Author: Aelen
 ## Version: 0.0.1
@@ -10,6 +10,8 @@ media\init.lua
 formatters\load.xml
 utils\load.xml
 anchors\load.xml
+alerts.lua
+lootrolls\load.xml [AllowLoadGameType forever, standard]
 fishing\load.xml
 unitframes\load.xml
 trackers\load.xml

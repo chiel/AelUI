@@ -22,6 +22,28 @@ ns.unitframes.units.spawn('target', function(f)
 	leaderIcon:SetPoint('TOPLEFT', 4, 0)
 	leaderIcon:SetSize(24, 24)
 
+	local auras = e.auras(f, {
+		initialAnchor = 'BOTTOMLEFT',
+		growthY = 'UP',
+		layoutLimit = f:GetWidth(),
+	})
+	auras:AddGroup('debuffs', 'HARMFUL', {
+		maxFrameCount = 24,
+		size = 44,
+		spacing = 2,
+		showProgress = true,
+		showStacks = true,
+	})
+	auras:AddGroup('buffs', 'HELPFUL', {
+		maxFrameCount = 24,
+		size = 44,
+		spacing = 2,
+		forceNewLine = true,
+		showProgress = true,
+		showStacks = true,
+	})
+	auras:SetPoint('BOTTOMLEFT', healthbar, 'TOPLEFT', 0, 2)
+
 	local castbar = e.castbar(f)
 	castbar:SetPoint('BOTTOMLEFT', AelUIPrimaryAnchor, 'TOPLEFT', 0, 60)
 	castbar:SetPoint('BOTTOMRIGHT', AelUIPrimaryAnchor, 'TOPRIGHT', 0, 60)
